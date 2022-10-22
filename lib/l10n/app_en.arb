@@ -1,7 +1,8 @@
 {
     "language": "English",
     "errorTitel": "Error",
-    "primeNumberErrorMessage": "(n) and (r) must be prime numbers!",
+    "primeNumberErrorMessage": "(n) must be prime number!",
+    "primitiveRootErrorMessage": "(r) must be primitive root of (n)!",
     "emptyErrorMessage": "Empty values are not accepted!",
     "doneTitel": "Done",
     "correctMessage": "The values have been set.",

@@ -1,7 +1,8 @@
 {
     "language": "Deutsch",
     "errorTitel": "Fehler",
-    "primeNumberErrorMessage": "(n) und (r) müssen Primzahlen sein!",
+    "primeNumberErrorMessage": "(n) muss Primzahl sein!",
+    "primitiveRootErrorMessage": "(r) muss primitve Wurzel von (n) sein!",
     "emptyErrorMessage": "Leere Werte sind nicht erlaubt.",
     "doneTitel": "Erledigt",
     "correctMessage": "Die Werte sind gesetzt.",

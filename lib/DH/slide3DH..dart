@@ -202,6 +202,19 @@ class _Slide3DHState extends State<Slide3DH>
     return true;
   }
 
+  bool isPrimitiveRoot(int root, int prime) {
+    List results = [];
+    for (int i = 1; i < prime; i++) {
+      num res = (pow(root, i) % prime);
+      if (results.contains(res)) {
+        return false;
+      } else {
+        results.add(res);
+      }
+    }
+    return true;
+  }
+
   Timer videoTimerProblem() {
     videoTimerVariable = Timer.periodic(
       Duration(seconds: Languages.slider),
@@ -1768,7 +1781,8 @@ class _Slide3DHState extends State<Slide3DH>
                                   secretBobController.text.isNotEmpty &&
                                   secretAliceController.text.isNotEmpty) {
                                 if (isPrime(int.parse(nController.text)) &&
-                                    isPrime(int.parse(rController.text))) {
+                                    isPrimitiveRoot(int.parse(rController.text),
+                                        int.parse(nController.text))) {
                                   n = int.parse(nController.text);
                                   r = int.parse(rController.text);
                                   secretAlice =
@@ -1780,8 +1794,7 @@ class _Slide3DHState extends State<Slide3DH>
                                 setState(
                                   () {
                                     isCanceled = false;
-                                    if (!isPrime(int.parse(nController.text)) ||
-                                        !isPrime(int.parse(rController.text))) {
+                                    if (!isPrime(int.parse(nController.text))) {
                                       showFlushBarMessage(
                                           const Icon(
                                             Icons.error,
@@ -1794,6 +1807,22 @@ class _Slide3DHState extends State<Slide3DH>
                                           // 'n must be prime number',
                                           AppLocalizations.of(context)!
                                               .primeNumberErrorMessage,
+                                          Colors.red);
+                                    } else if (!isPrimitiveRoot(
+                                        int.parse(rController.text),
+                                        int.parse(nController.text))) {
+                                      showFlushBarMessage(
+                                          const Icon(
+                                            Icons.error,
+                                            size: 32,
+                                            color: Colors.white,
+                                          ),
+                                          // 'Error',
+                                          AppLocalizations.of(context)!
+                                              .errorTitel,
+                                          // 'n must be prime number',
+                                          AppLocalizations.of(context)!
+                                              .primitiveRootErrorMessage,
                                           Colors.red);
                                     }
                                   },
