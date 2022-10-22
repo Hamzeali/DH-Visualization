@@ -12,7 +12,7 @@ import 'description-widget.dart';
 import 'positioned-widget.dart';
 import 'package:flutter/material.dart';
 import '../language-provider.dart';
-import '../languages.dart';
+import '../global.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:another_flushbar/flushbar.dart';
 
@@ -51,7 +51,7 @@ int isPressedUp = 0;
 int isPressedDown = 0;
 var timerProblem = 0;
 List stepsVisibility = [true, false];
-var seconds = Languages.slider;
+var seconds = Global.slider;
 bool dropButton = false;
 bool desc = true;
 bool descVisbility = desc;
@@ -63,7 +63,7 @@ Timer delayTimer = Timer(const Duration(seconds: 1), () {});
 Timer videoTimerVariable = Timer(const Duration(seconds: 1), () {});
 Timer timerSlide3DH = Timer(const Duration(seconds: 1), () {});
 Timer videoTimerSlide3DH =
-    Timer.periodic(Duration(seconds: Languages.slider), (videoTimer) {});
+    Timer.periodic(Duration(seconds: Global.slider), (videoTimer) {});
 
 List contentOpacity = [
   0.0,
@@ -110,7 +110,7 @@ class _Slide3DHState extends State<Slide3DH>
   @override
   // ignore: must_call_super
   void dispose() {
-    Languages.replacedSliderValue = Languages.slider;
+    Global.replacedSliderValue = Global.slider;
     indexVisibilitySlide3DH = -1;
     checkVisibility = 0;
     delay = true;
@@ -125,7 +125,7 @@ class _Slide3DHState extends State<Slide3DH>
     isPressedDown = 0;
     timerProblem = 0;
     stepsVisibility = [true, false];
-    seconds = Languages.slider;
+    seconds = Global.slider;
     dropButton = false;
     desc = true;
     descVisbility = desc;
@@ -217,11 +217,11 @@ class _Slide3DHState extends State<Slide3DH>
 
   Timer videoTimerProblem() {
     videoTimerVariable = Timer.periodic(
-      Duration(seconds: Languages.slider),
+      Duration(seconds: Global.slider),
       (Timer videoTimerVariable) {
         setState(
           () {
-            seconds = Languages.slider;
+            seconds = Global.slider;
             if (indexVisibilitySlide3DH < 5 && delay) {
               // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide3DH++;
@@ -1299,7 +1299,7 @@ class _Slide3DHState extends State<Slide3DH>
                       videoTimerSlide3DH.cancel();
                     }
                     videoButton = true;
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
 
                     if (indexVisibilitySlide3DH < 5 && delay) {
                       indexVisibilitySlide3DH++;
@@ -1353,7 +1353,7 @@ class _Slide3DHState extends State<Slide3DH>
                     }
                     videoButton = true;
 
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
                     if (indexVisibilitySlide3DH == 0) text = '';
 
                     if (indexVisibilitySlide3DH == 0) {
@@ -1462,10 +1462,10 @@ class _Slide3DHState extends State<Slide3DH>
                   rOldVal = r;
                   secretBobOldVal = secretBob;
                   scretAliceOldVal = secretAlice;
-                  locale = Languages.locale;
-                  sliderOldValue = Languages.slider;
-                  valOldValue = Languages.val;
-                  languageOldValue = Languages.selectedLanguage;
+                  locale = Global.locale;
+                  sliderOldValue = Global.slider;
+                  valOldValue = Global.val;
+                  languageOldValue = Global.selectedLanguage;
                   showDialog<String>(
                     barrierDismissible: false,
                     context: context,
@@ -1533,35 +1533,32 @@ class _Slide3DHState extends State<Slide3DH>
                                         void Function(void Function())
                                             setState) {
                                       return Slider(
-                                        value: Languages.val.toDouble(),
+                                        value: Global.val.toDouble(),
                                         min: 1.0,
                                         max: 3.0,
                                         divisions: 2,
-                                        label: Languages.val.toString(),
+                                        label: Global.val.toString(),
                                         onChanged: (double newValue) {
                                           setState(
                                             () {
-                                              Languages.val = newValue.round();
+                                              Global.val = newValue.round();
 
-                                              if (Languages.val == 1) {
-                                                Languages.slider =
-                                                    Languages.val + 2;
+                                              if (Global.val == 1) {
+                                                Global.slider = Global.val + 2;
                                                 if (!videoButton) {
                                                   videoTimerSlide3DH.cancel();
                                                   videoTimerSlide3DH =
                                                       videoTimerProblem();
                                                 }
-                                              } else if (Languages.val == 3) {
-                                                Languages.slider =
-                                                    Languages.val - 2;
+                                              } else if (Global.val == 3) {
+                                                Global.slider = Global.val - 2;
                                                 if (!videoButton) {
                                                   videoTimerSlide3DH.cancel();
                                                   videoTimerSlide3DH =
                                                       videoTimerProblem();
                                                 }
                                               } else {
-                                                Languages.slider =
-                                                    Languages.val;
+                                                Global.slider = Global.val;
                                                 if (!videoButton) {
                                                   videoTimerSlide3DH.cancel();
                                                   videoTimerSlide3DH =
@@ -1581,10 +1578,9 @@ class _Slide3DHState extends State<Slide3DH>
                                           void Function(void Function())
                                               setState) {
                                         return DropdownButton<String>(
-                                          value:
-                                              Languages.selectedLanguage == true
-                                                  ? Languages.languages[0]
-                                                  : Languages.languages[1],
+                                          value: Global.selectedLanguage == true
+                                              ? Global.languages[0]
+                                              : Global.languages[1],
                                           elevation: 16,
                                           style: const TextStyle(
                                             color: Colors.blue,
@@ -1598,20 +1594,20 @@ class _Slide3DHState extends State<Slide3DH>
                                               () {
                                                 dropdownValue = newValue!;
                                                 if (dropdownValue ==
-                                                    Languages.languages[1]) {
-                                                  Languages.selectedLanguage =
+                                                    Global.languages[1]) {
+                                                  Global.selectedLanguage =
                                                       false;
                                                   MyApp.of(context)!.setLocale(
                                                       const Locale.fromSubtags(
                                                           languageCode: 'en'));
-                                                  Languages.locale = 'en';
+                                                  Global.locale = 'en';
                                                 } else {
-                                                  Languages.selectedLanguage =
+                                                  Global.selectedLanguage =
                                                       true;
                                                   MyApp.of(context)!.setLocale(
                                                       const Locale.fromSubtags(
                                                           languageCode: 'de'));
-                                                  Languages.locale = 'de';
+                                                  Global.locale = 'de';
                                                 }
                                               },
                                             );
@@ -1620,7 +1616,7 @@ class _Slide3DHState extends State<Slide3DH>
                                                     listen: false)
                                                 .changeLanguage(1);
                                           },
-                                          items: Languages.languages
+                                          items: Global.languages
                                               .map<DropdownMenuItem<String>>(
                                             (String value) {
                                               return DropdownMenuItem<String>(
@@ -1848,10 +1844,10 @@ class _Slide3DHState extends State<Slide3DH>
                             onPressed: () {
                               Navigator.pop(context, 'Cancel');
                               setState(() {
-                                Languages.slider = sliderOldValue;
-                                Languages.val = valOldValue;
-                                Languages.selectedLanguage = languageOldValue;
-                                Languages.locale = locale;
+                                Global.slider = sliderOldValue;
+                                Global.val = valOldValue;
+                                Global.selectedLanguage = languageOldValue;
+                                Global.locale = locale;
                                 MyApp.of(context)!.setLocale(
                                     Locale.fromSubtags(languageCode: locale));
                                 n = nOldVal;
@@ -1921,9 +1917,9 @@ class _Slide3DHState extends State<Slide3DH>
                     r = 3;
                     secretAlice = 9;
                     secretBob = 7;
-                    Languages.slider = 3;
-                    Languages.val = 1;
-                    Languages.replacedSliderValue = Languages.slider;
+                    Global.slider = 3;
+                    Global.val = 1;
+                    Global.replacedSliderValue = Global.slider;
                     indexVisibilitySlide3DH = -1;
                     checkVisibility = 0;
                     delay = true;
@@ -1938,7 +1934,7 @@ class _Slide3DHState extends State<Slide3DH>
                     isPressedDown = 0;
                     timerProblem = 0;
                     stepsVisibility = [true, false];
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
                     dropButton = false;
                     desc = true;
                     descVisbility = desc;
@@ -1981,8 +1977,8 @@ class _Slide3DHState extends State<Slide3DH>
                     delayTimer = Timer(const Duration(milliseconds: 50), () {
                       setState(() {
                         textVisibility = true;
-                        Languages.slider = Languages.replacedSliderValue;
-                        seconds = Languages.slider;
+                        Global.slider = Global.replacedSliderValue;
+                        seconds = Global.slider;
                         delayTimer.cancel();
                       });
                     });

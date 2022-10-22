@@ -2,7 +2,6 @@
 
 import 'dart:async';
 import '../main.dart';
-import 'description-list-deutschDH.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import '../home-page-DH.dart';
@@ -10,8 +9,7 @@ import 'description-widget.dart';
 import 'positioned-widget.dart';
 import 'package:flutter/material.dart';
 import '../language-provider.dart';
-import '../languages.dart';
-import 'description-list-englishDH.dart';
+import '../global.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Slide1DH extends StatefulWidget {
@@ -45,7 +43,7 @@ var timerProblem = 0;
 List stepsVisibility = [true, false];
 double turquoisePosition = 0.61;
 double redPosition = 0.6;
-var seconds = Languages.slider;
+var seconds = Global.slider;
 bool dropButton = false;
 bool desc = true;
 bool descVisbility = desc;
@@ -58,7 +56,7 @@ Timer delayTimer2 = Timer(Duration(seconds: seconds), () {});
 Timer videoTimerVariable = Timer(Duration(seconds: seconds), () {});
 Timer timerSlide1DH = Timer(Duration(seconds: seconds), () {});
 Timer videoTimerSlide1DH =
-    Timer.periodic(Duration(seconds: Languages.slider), (videoTimer) {});
+    Timer.periodic(Duration(seconds: Global.slider), (videoTimer) {});
 
 List colorsVisibility = [true, true, true, true];
 List contentOpacity = [
@@ -115,7 +113,7 @@ class _Slide1DHState extends State<Slide1DH>
     stepsVisibility = [true, false];
     turquoisePosition = 0.61;
     redPosition = 0.6;
-    seconds = Languages.slider;
+    seconds = Global.slider;
     dropButton = false;
     desc = true;
     descVisbility = desc;
@@ -171,11 +169,11 @@ class _Slide1DHState extends State<Slide1DH>
 
   Timer videoTimerProblem() {
     videoTimerVariable = Timer.periodic(
-      Duration(seconds: Languages.slider),
+      Duration(seconds: Global.slider),
       (Timer videoTimerVariable) {
         setState(
           () {
-            seconds = Languages.slider;
+            seconds = Global.slider;
             if (indexVisibilitySlide1DH < 6 && delay) {
               // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide1DH++;
@@ -256,11 +254,11 @@ class _Slide1DHState extends State<Slide1DH>
                 });
               });
             }
-            if (Languages.selectedLanguage) {
-              text = DescListDeutchDH.slide1Desc[indexVisibilitySlide1DH];
-            } else {
-              text = DescListEnglishDH.slide1Desc[indexVisibilitySlide1DH];
-            }
+            // if (Languages.selectedLanguage) {
+            //   text = DescListDeutchDH.slide1Desc[indexVisibilitySlide1DH];
+            // } else {
+            //   text = DescListEnglishDH.slide1Desc[indexVisibilitySlide1DH];
+            // }
           },
         );
       },
@@ -927,7 +925,7 @@ class _Slide1DHState extends State<Slide1DH>
                       videoTimerSlide1DH.cancel();
                     }
                     videoButton = true;
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
 
                     if (indexVisibilitySlide1DH < 6 && delay) {
                       // Languages.player.play("assets/steps.mp3");
@@ -1027,7 +1025,7 @@ class _Slide1DHState extends State<Slide1DH>
                     }
                     videoButton = true;
 
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
                     if (indexVisibilitySlide1DH == 0) text = '';
 
                     if (indexVisibilitySlide1DH == 0) {
@@ -1174,10 +1172,10 @@ class _Slide1DHState extends State<Slide1DH>
                 heroTag: "settings9",
                 backgroundColor: Colors.orange,
                 onPressed: () {
-                  locale = Languages.locale;
-                  sliderOldValue = Languages.slider;
-                  valOldValue = Languages.val;
-                  languageOldValue = Languages.selectedLanguage;
+                  locale = Global.locale;
+                  sliderOldValue = Global.slider;
+                  valOldValue = Global.val;
+                  languageOldValue = Global.selectedLanguage;
                   showDialog<String>(
                     barrierDismissible: false,
                     context: context,
@@ -1221,35 +1219,32 @@ class _Slide1DHState extends State<Slide1DH>
                                         void Function(void Function())
                                             setState) {
                                       return Slider(
-                                        value: Languages.val.toDouble(),
+                                        value: Global.val.toDouble(),
                                         min: 1.0,
                                         max: 3.0,
                                         divisions: 2,
-                                        label: Languages.val.toString(),
+                                        label: Global.val.toString(),
                                         onChanged: (double newValue) {
                                           setState(
                                             () {
-                                              Languages.val = newValue.round();
+                                              Global.val = newValue.round();
 
-                                              if (Languages.val == 1) {
-                                                Languages.slider =
-                                                    Languages.val + 2;
+                                              if (Global.val == 1) {
+                                                Global.slider = Global.val + 2;
                                                 if (!videoButton) {
                                                   videoTimerSlide1DH.cancel();
                                                   videoTimerSlide1DH =
                                                       videoTimerProblem();
                                                 }
-                                              } else if (Languages.val == 3) {
-                                                Languages.slider =
-                                                    Languages.val - 2;
+                                              } else if (Global.val == 3) {
+                                                Global.slider = Global.val - 2;
                                                 if (!videoButton) {
                                                   videoTimerSlide1DH.cancel();
                                                   videoTimerSlide1DH =
                                                       videoTimerProblem();
                                                 }
                                               } else {
-                                                Languages.slider =
-                                                    Languages.val;
+                                                Global.slider = Global.val;
                                                 if (!videoButton) {
                                                   videoTimerSlide1DH.cancel();
                                                   videoTimerSlide1DH =
@@ -1269,10 +1264,9 @@ class _Slide1DHState extends State<Slide1DH>
                                             void Function(void Function())
                                                 setState) {
                                       return DropdownButton<String>(
-                                        value:
-                                            Languages.selectedLanguage == true
-                                                ? Languages.languages[0]
-                                                : Languages.languages[1],
+                                        value: Global.selectedLanguage == true
+                                            ? Global.languages[0]
+                                            : Global.languages[1],
                                         elevation: 16,
                                         style: const TextStyle(
                                             color: Colors.deepPurple),
@@ -1285,20 +1279,18 @@ class _Slide1DHState extends State<Slide1DH>
                                             () {
                                               dropdownValue = newValue!;
                                               if (dropdownValue ==
-                                                  Languages.languages[1]) {
-                                                Languages.selectedLanguage =
-                                                    false;
+                                                  Global.languages[1]) {
+                                                Global.selectedLanguage = false;
                                                 MyApp.of(context)!.setLocale(
                                                     const Locale.fromSubtags(
                                                         languageCode: 'en'));
-                                                Languages.locale = 'en';
+                                                Global.locale = 'en';
                                               } else {
-                                                Languages.selectedLanguage =
-                                                    true;
+                                                Global.selectedLanguage = true;
                                                 MyApp.of(context)!.setLocale(
                                                     const Locale.fromSubtags(
                                                         languageCode: 'de'));
-                                                Languages.locale = 'de';
+                                                Global.locale = 'de';
                                               }
                                             },
                                           );
@@ -1306,7 +1298,7 @@ class _Slide1DHState extends State<Slide1DH>
                                                   listen: false)
                                               .changeLanguage(1);
                                         },
-                                        items: Languages.languages
+                                        items: Global.languages
                                             .map<DropdownMenuItem<String>>(
                                           (String value) {
                                             return DropdownMenuItem<String>(
@@ -1334,10 +1326,10 @@ class _Slide1DHState extends State<Slide1DH>
                             onPressed: () {
                               Navigator.pop(context, 'Cancel');
                               setState(() {
-                                Languages.slider = sliderOldValue;
-                                Languages.val = valOldValue;
-                                Languages.selectedLanguage = languageOldValue;
-                                Languages.locale = locale;
+                                Global.slider = sliderOldValue;
+                                Global.val = valOldValue;
+                                Global.selectedLanguage = languageOldValue;
+                                Global.locale = locale;
                                 MyApp.of(context)!.setLocale(
                                     Locale.fromSubtags(languageCode: locale));
                               });
@@ -1368,9 +1360,9 @@ class _Slide1DHState extends State<Slide1DH>
                 backgroundColor: Colors.red,
                 onPressed: () => setState(
                   () {
-                    Languages.slider = 3;
-                    Languages.val = 1;
-                    Languages.replacedSliderValue = Languages.slider;
+                    Global.slider = 3;
+                    Global.val = 1;
+                    Global.replacedSliderValue = Global.slider;
                     colorsVisibility = [false, false, false, false];
                     videoTimerVariable.cancel();
                     timerSlide1DH.cancel();
@@ -1391,7 +1383,7 @@ class _Slide1DHState extends State<Slide1DH>
                     stepsVisibility = [true, false];
                     turquoisePosition = 0.61;
                     redPosition = 0.6;
-                    seconds = Languages.slider;
+                    seconds = Global.slider;
                     dropButton = false;
                     desc = true;
                     descVisbility = desc;
@@ -1420,8 +1412,8 @@ class _Slide1DHState extends State<Slide1DH>
                     delayTimer = Timer(const Duration(milliseconds: 50), () {
                       setState(() {
                         colorsVisibility = [true, true, true, true];
-                        Languages.slider = Languages.replacedSliderValue;
-                        seconds = Languages.slider;
+                        Global.slider = Global.replacedSliderValue;
+                        seconds = Global.slider;
                         delayTimer.cancel();
                       });
                     });
