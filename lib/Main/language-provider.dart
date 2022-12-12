@@ -10,6 +10,8 @@ class LanguageProvider with ChangeNotifier {
   bool secretBob = true;
   bool secretAlice = true;
   bool cancel = true;
+  bool isClicked = false;
+  bool isMorePressed = false;
 
   void changeLanguage(int languageIndex) {
     if (languageIndex == 0) {
@@ -31,6 +33,11 @@ class LanguageProvider with ChangeNotifier {
       secretAlice = false;
       cancel = false;
     }
+    notifyListeners();
+  }
+
+  void changeIsMorePressed(bool b) {
+    isMorePressed = b;
     notifyListeners();
   }
 }
