@@ -1438,8 +1438,8 @@ class Slide1DHState extends State<Slide1DH>
               top: (MediaQuery.of(context).size.height -
                       HomePageDHState.returnAppBar[1]) *
                   0.03,
-              right: MediaQuery.of(context).size.width * 0.25,
-              width: MediaQuery.of(context).size.width * 0.7,
+              left: MediaQuery.of(context).size.width * 0.05,
+              width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.06,
               child: Align(
                 alignment: Alignment.topLeft,

@@ -4323,98 +4323,6 @@ class Slide2DHState extends State<Slide2DH>
                       ),
                     ),
                     const TextSpan(
-                      text: '(n)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro4,
-                      // text: ' is congruent to a power of ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(r)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro5,
-                      // text: ' modulo ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(n)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '.',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro6,
-                      // text: '• In other words we can call ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(r)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro7,
-                      // text: ' primitive root of the prime number ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(n)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro8,
-                      // text: ' if ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
                       text: 'r',
                       style: TextStyle(
                         color: Colors.blue,
@@ -4477,17 +4385,172 @@ class Slide2DHState extends State<Slide2DH>
                         ),
                       ),
                     ),
+                    // const TextSpan(
+                    //   text: '(n)',
+                    //   style: TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
                     TextSpan(
-                      text: AppLocalizations.of(context)!.intro9,
-                      // text: ' are distinct.',
+                      text: AppLocalizations.of(context)!.intro4,
+                      // text: ' is congruent to a power of ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                       ),
                     ),
+                    // const TextSpan(
+                    //   text: '(r)',
+                    //   style: TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
+                    // TextSpan(
+                    //   text: AppLocalizations.of(context)!.intro5,
+                    //   // text: ' modulo ',
+                    //   style: const TextStyle(
+                    //     fontSize: 20,
+                    //     color: Colors.black,
+                    //   ),
+                    // ),
+                    // const TextSpan(
+                    //   text: '(n)',
+                    //   style: TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
+                    // const TextSpan(
+                    //   text: '.',
+                    //   style: TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              // TextSpan(
+              //   text: AppLocalizations.of(context)!.intro6,
+              //   // text: '• In other words we can call ',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.black,
+              //   ),
+              // ),
+              // const TextSpan(
+              //   text: '(r)',
+              //   style: TextStyle(
+              //     color: Colors.blue,
+              //     fontStyle: FontStyle.italic,
+              //   ),
+              // ),
+              // TextSpan(
+              //   text: AppLocalizations.of(context)!.intro7,
+              //   // text: ' primitive root of the prime number ',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.black,
+              //   ),
+              // ),
+              // const TextSpan(
+              //   text: '(n)',
+              //   style: TextStyle(
+              //     color: Colors.blue,
+              //     fontStyle: FontStyle.italic,
+              //   ),
+              // ),
+              // TextSpan(
+              //   text: AppLocalizations.of(context)!.intro8,
+              //   // text: ' if ',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.black,
+              //   ),
+              // ),
+              // const TextSpan(
+              //   text: 'r',
+              //   style: TextStyle(
+              //     color: Colors.blue,
+              //     fontStyle: FontStyle.italic,
+              //   ),
+              // ),
+              // WidgetSpan(
+              //   child: Transform.translate(
+              //     offset: const Offset(2, -10),
+              //     child: const Text(
+              //       '1',
+              //       //superscript is usually smaller in size
+              //       textScaleFactor: 1,
+              //       style: TextStyle(
+              //         color: Colors.blue,
+              //         fontStyle: FontStyle.italic,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // const TextSpan(
+              //   text: ' mod n, r',
+              //   style: TextStyle(
+              //     color: Colors.blue,
+              //     fontStyle: FontStyle.italic,
+              //   ),
+              // ),
+              // WidgetSpan(
+              //   child: Transform.translate(
+              //     offset: const Offset(2, -10),
+              //     child: const Text(
+              //       '2',
+              //       //superscript is usually smaller in size
+              //       textScaleFactor: 1,
+              //       style: TextStyle(
+              //         color: Colors.blue,
+              //         fontStyle: FontStyle.italic,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // const TextSpan(
+              //   text: ' mod n, ..., r',
+              //   style: TextStyle(
+              //     color: Colors.blue,
+              //     fontStyle: FontStyle.italic,
+              //   ),
+              // ),
+              // WidgetSpan(
+              //   child: Transform.translate(
+              //     offset: const Offset(2, -10),
+              //     child: const Text(
+              //       'n-1',
+              //       //superscript is usually smaller in size
+              //       textScaleFactor: 1,
+              //       style: TextStyle(
+              //         color: Colors.blue,
+              //         fontStyle: FontStyle.italic,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // TextSpan(
+              //   text: AppLocalizations.of(context)!.intro9,
+              //   // text: ' are distinct.',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.black,
+              //   ),
+              // ),
+              //     ],
+              //   ),
+              // ),
               const SizedBox(
                 height: 20,
               ),

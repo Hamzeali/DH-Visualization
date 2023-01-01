@@ -23,6 +23,7 @@ class Intro extends StatefulWidget {
   State<Intro> createState() => IntroState();
 }
 
+bool isTyperFinished = false;
 // bool isClickHereVisible = false;
 bool isTouchEnabled = false;
 bool isScenarioBtnVisible = false;
@@ -432,14 +433,11 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AnimatedTextKit(
-                  // onFinished: () {
-                  //   setState(() {
-                  //     if (cnt == 5) {
-                  //       isClickHereVisible = true;
-                  //       isTouchEnabled = true;
-                  //     }
-                  //   });
-                  // },
+                  onFinished: () {
+                    setState(() {
+                      isTyperFinished = true;
+                    });
+                  },
                   key: ValueKey<int>(cnt),
                   animatedTexts: [
                     TypewriterAnimatedText(
@@ -453,7 +451,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                     ),
                   ],
                   isRepeatingAnimation: false,
-                  displayFullTextOnTap: false,
+                  displayFullTextOnTap: true,
                 ),
               ],
             ),
@@ -484,7 +482,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                 if (isTouchEnabled) {
                   setState(
                     () {
-                      sec = 150;
+                      // sec = 0;
                       cnt++;
                       isClicked = true;
 
@@ -650,6 +648,24 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                             ),
                           ),
                         ),
+                        // Visibility(
+                        //   visible: true, //isScenarioBtnVisible,
+                        //   child: AnimatedPositioned(
+                        //     top: MediaQuery.of(context).size.height * 0.63,
+                        //     left: MediaQuery.of(context).size.width * 0.45,
+                        //     width: MediaQuery.of(context).size.width * 0.4,
+                        //     height: MediaQuery.of(context).size.height * 0.3,
+                        //     duration: const Duration(seconds: 1),
+                        //     child: AnimatedOpacity(
+                        //       opacity: 1.0,
+                        //       duration: const Duration(microseconds: 1),
+                        //       child: Image.asset(
+                        //         'assets/scene1.gif',
+                        //         fit: BoxFit.fill,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         Visibility(
                           visible: cnt == 0 ? true : false,
                           child: AnimatedPositioned(
@@ -863,17 +879,83 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                           ),
                         ),
                         Visibility(
-                          visible: isTextVisible,
-                          child: textContainer(
-                            containerPosition,
-                            containerLeft,
-                            containerWidth,
-                            contaienrSec,
-                            xShape,
-                            messageText,
-                            isClicked,
-                          ),
-                        ),
+                            visible: isTextVisible,
+                            // child: textContainer(
+                            //   containerPosition,
+                            //   containerLeft,
+                            //   containerWidth,
+                            //   contaienrSec,
+                            //   xShape,
+                            //   messageText,
+                            //   isClicked,
+                            // ),
+                            child: AnimatedPositioned(
+                              top: MediaQuery.of(context).size.height *
+                                  containerPosition,
+                              left: MediaQuery.of(context).size.width *
+                                  containerLeft,
+                              width: MediaQuery.of(context).size.width *
+                                  containerWidth,
+                              // height: MediaQuery.of(context).size.height * 0.3,
+                              duration: Duration(milliseconds: contaienrSec),
+                              child: Container(
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: TooltipShippingFeeBorder(
+                                    MediaQuery.of(context).size.width * xShape,
+                                    MediaQuery.of(context).size.width * 0.2 / 6,
+                                    MediaQuery.of(context).size.width * -0.08,
+                                    MediaQuery.of(context).size.width * -0.08,
+                                    MediaQuery.of(context).size.width * 0.2,
+                                    MediaQuery.of(context).size.width * 0.2 / 3,
+                                  ),
+                                  shadows: const [
+                                    BoxShadow(
+                                      color: Colors.blue,
+                                      blurRadius: 4.0,
+                                      offset: Offset(2, 2),
+                                    ),
+                                  ],
+                                ),
+                                child: Visibility(
+                                  visible: isClicked,
+                                  child: Container(
+                                    margin: const EdgeInsets.all(30.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        AnimatedTextKit(
+                                          onFinished: () {
+                                            setState(() {
+                                              isTyperFinished = true;
+                                            });
+                                          },
+                                          key: ValueKey<int>(cnt),
+                                          animatedTexts: [
+                                            TypewriterAnimatedText(
+                                              messageText,
+                                              speed:
+                                                  Duration(milliseconds: sec),
+                                              textAlign: TextAlign.start,
+                                              textStyle: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.02,
+                                                color: Colors.black,
+                                              ),
+                                            ),
+                                          ],
+                                          isRepeatingAnimation: false,
+                                          displayFullTextOnTap: true,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )),
                         // Visibility(
                         //   visible: isClickHereVisible,
                         //   child: Positioned(
@@ -1229,10 +1311,8 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                                   );
                                   setState(() {
                                     timer.cancel();
-                                    // bool isClickHereVisible = false;
                                     isTouchEnabled = false;
                                     isScenarioBtnVisible = false;
-//  isPref = true;
                                     containerLeft = 0.0;
                                     containerWidth = 0.0;
                                     contaienrSec = 0;
@@ -1241,8 +1321,6 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
 
                                     globalOacity = 1.0;
                                     isTextVisible = false;
-                                    // dropdownValue = 'Deutsch';
-                                    // locale = 'de';
                                     languageOldValue = true;
                                     b = true;
                                     isResizing = false;
@@ -1252,27 +1330,55 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                                     bobTop = -0.5;
                                     eveTop = -0.5;
                                     containerPosition = 1.5;
-//  path = 'assets/AliceDH.jpeg';
-// List introduction = [
-//   '',
-//   'And I am Bob.',
-//   'And here is Eve.',
-//   'In this app we will explain you how DHKE works.',
-//   'The application consists of 4 scenes',
-//   'The first scene will explain you the basic idea of DHKE using colors.',
-//   'The second one will give you some mathematical basic about what root of prime numbers.',
-//   'The third one will explain DHKE with numbers. Here you can use your own values :)',
-//   'The fourth one will show you how MitM-Attack on DHKE can be happened.',
-//   'So let\'s start the scenes...',
-// ];
                                     cnt = 0;
                                   });
                                 },
                                 child: Text(
                                   '${AppLocalizations.of(context)!.skip} >',
-                                  // style: const TextStyle(
-                                  //   fontSize: 20,
-                                  // ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        Visibility(
+                          // visible: cnt >= 10 ? false : true,
+
+                          visible: true,
+                          child: Positioned(
+                            left: MediaQuery.of(context).size.width * 0.01,
+                            top: MediaQuery.of(context).size.height * 0.01,
+                            width: MediaQuery.of(context).size.width * 0.1,
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            child: FittedBox(
+                              child: TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    timer.cancel();
+                                    isTouchEnabled = false;
+                                    isScenarioBtnVisible = false;
+                                    containerLeft = 0.0;
+                                    containerWidth = 0.0;
+                                    contaienrSec = 0;
+                                    xShape = 0.0;
+                                    messageText = '';
+
+                                    globalOacity = 1.0;
+                                    isTextVisible = false;
+                                    languageOldValue = true;
+                                    b = true;
+                                    isResizing = false;
+                                    isClicked = false;
+                                    sec = 0;
+                                    aliceTop = 0.1;
+                                    bobTop = -0.5;
+                                    eveTop = -0.5;
+                                    containerPosition = 1.5;
+                                    cnt = 0;
+                                  });
+                                },
+                                child: Text(
+                                  AppLocalizations.of(context)!.reset,
                                 ),
                               ),
                             ),

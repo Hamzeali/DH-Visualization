@@ -32,7 +32,7 @@ class ArrowPainter extends CustomPainter {
     final angle = math.atan2(dY, dX);
 
     final arrowSize = arrowSizeVal;
-    final arrowAngle = 25 * math.pi / 180;
+    const arrowAngle = 25 * math.pi / 180;
 
     final path = Path();
 

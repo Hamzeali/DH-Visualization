@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:auto_size_text/auto_size_text.dart';
+// import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -49,8 +49,8 @@ class DescriptionState extends State<Description> {
       bottom: widget.visible
           ? (MediaQuery.of(context).size.height - widget.appBarHeight) * 0.08
           : (MediaQuery.of(context).size.height - widget.appBarHeight) * -0.04,
-      left: MediaQuery.of(context).size.width * boxLeft, //0.1
-      width: MediaQuery.of(context).size.width * boxWidth, // 0.78
+      left: MediaQuery.of(context).size.width * 0.1, //boxLeft, //0.1
+      width: MediaQuery.of(context).size.width * 0.8, //boxWidth, // 0.78
       height: widget.visible
           ? (MediaQuery.of(context).size.height - widget.appBarHeight) *
               boxHeight // 0.23
