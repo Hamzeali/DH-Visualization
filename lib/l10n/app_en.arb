@@ -125,7 +125,7 @@
     "slide2": "Some Mathematical basics",
     "slide3": "How does the DHKE work?",
     "slide4": "MitM Attack on DHKE",
-    "text1": "TThe Diffie-Hellman key exchange protocol can be demonstrated using an analogy that works with color mixtures\n(later we will see how it works with numbers)",
+    "text1": "The Diffie-Hellman key exchange protocol can be demonstrated using an analogy that works with color mixtures\n(later we will see how it works with numbers)",
     "text2": "Multiplicative group of integers modulo n\n",
     "text31": "This time with numbers – with small numbers; In practice, DHKE uses large numbers (> 3000 bit according to the BSI recommendation)",
     "text321": "Alice selects a multiplicative group: n = ",
