@@ -2453,7 +2453,7 @@ class Slide1DHState extends State<Slide1DH>
                         numberPageDialog();
                       },
                       child: Text(
-                        '1: ${indexVisibilitySlide1DH + 1} / 7',
+                        '${indexVisibilitySlide1DH + 1} / 7',
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -2663,18 +2663,9 @@ class Slide1DHState extends State<Slide1DH>
 
   stepNumber() {
     setState(() {
-      //videoTimerVariable.cancel();
-      // indexVisibilitySlide1DH = (int.parse(pageController1.text));
-
       stopFunction();
 
       selectPageNumber(int.parse(pageController1.text) - 1, 0);
-
-      // if (controllerIndex > a) {
-      //   videoTimerProblem(int.parse(pageController1.text) - 1, 0);
-      // } else {
-      //   videoTimerProblemBack(int.parse(pageController1.text) - 1);
-      // }
     });
   }
 

@@ -342,9 +342,9 @@ class Slide4DHState extends State<Slide4DH>
               alignment: align,
               child: Text(
                 text,
-                // style: TextStyle(
-                //   fontSize: MediaQuery.of(context).size.width * fontSize,
-                // ),
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
           ),
@@ -604,7 +604,7 @@ class Slide4DHState extends State<Slide4DH>
 
             // a exchange between Alice and Eve
             texVisibility(textVisibility, 0.05, 0.35, 0.01, 0.1,
-                contentOpacity[2], Alignment.topLeft, 'a', shortWidth),
+                contentOpacity[2], Alignment.topLeft, 'A', shortWidth),
             // Visibility(
             //   visible: textVisibility,
             //   child: Positioned(
@@ -635,7 +635,7 @@ class Slide4DHState extends State<Slide4DH>
 
             // eb exchange between Alice and Eve
             texVisibility(textVisibility, 0.18, 0.35, 0.02, 0.1,
-                contentOpacity[5], Alignment.topLeft, 'eb', shortWidth),
+                contentOpacity[5], Alignment.topLeft, 'EA', shortWidth),
             // Visibility(
             //   visible: textVisibility,
             //   child: Positioned(
@@ -666,7 +666,7 @@ class Slide4DHState extends State<Slide4DH>
 
             // b exchange between Bob and Eve
             texVisibility(textVisibility, 0.05, 0.67, 0.01, 0.1,
-                contentOpacity[9], Alignment.topLeft, 'b', shortWidth),
+                contentOpacity[9], Alignment.topLeft, 'B', shortWidth),
             // Visibility(
             //   visible: textVisibility,
             //   child: Positioned(
@@ -697,7 +697,7 @@ class Slide4DHState extends State<Slide4DH>
 
             // ea exchange between Bob and Eve
             texVisibility(textVisibility, 0.18, 0.67, 0.02, 0.1,
-                contentOpacity[12], Alignment.topLeft, 'ea', shortWidth),
+                contentOpacity[12], Alignment.topLeft, 'EB', shortWidth),
             // Visibility(
             //   visible: textVisibility,
             //   child: Positioned(
@@ -749,10 +749,9 @@ class Slide4DHState extends State<Slide4DH>
                       children: [
                         const Text(
                           'Secret ',
-                          // style: TextStyle(
-                          //   fontSize:
-                          //       (MediaQuery.of(context).size.width * middleWidth),
-                          // ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         // Text(
@@ -766,28 +765,29 @@ class Slide4DHState extends State<Slide4DH>
                         //   textAlign: TextAlign.left,
                         // ),
                         RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
+                          text: const TextSpan(
+                            style: TextStyle(
                               color: Colors.black,
                             ),
                             children: [
-                              const TextSpan(
-                                text: 'S',
+                              TextSpan(
+                                text: 'a',
                                 style: TextStyle(
+                                  fontStyle: FontStyle.italic,
                                   color: Colors.red,
                                 ),
                               ),
-                              WidgetSpan(
-                                child: Transform.translate(
-                                  offset: const Offset(0, 6),
-                                  child: const Text(
-                                    'A',
-                                    //superscript is usually smaller in size
-                                    textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
-                                  ),
-                                ),
-                              ),
+                              // WidgetSpan(
+                              //   child: Transform.translate(
+                              //     offset: const Offset(0, 6),
+                              //     child: const Text(
+                              //       'A',
+                              //       //superscript is usually smaller in size
+                              //       textScaleFactor: 0.8,
+                              //       style: TextStyle(color: Colors.red),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -821,14 +821,15 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'a = r',
+                              text: 'A = g',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, -4),
                                 // child: const Text(
                                 //   's_A',
                                 //   //superscript is usually smaller in size
@@ -836,36 +837,38 @@ class Slide4DHState extends State<Slide4DH>
                                 //   style: TextStyle(color: Colors.red),
                                 // ),
                                 child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
+                                  text: const TextSpan(
+                                    style: TextStyle(
                                       color: Colors.black,
                                     ),
                                     children: [
-                                      const TextSpan(
-                                        text: 'S',
+                                      TextSpan(
+                                        text: 'a',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
-                                      WidgetSpan(
-                                        child: Transform.translate(
-                                          offset: const Offset(0, 4),
-                                          child: const Text(
-                                            'A',
-                                            //superscript is usually smaller in size
-                                            textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ),
+                                      // WidgetSpan(
+                                      //   child: Transform.translate(
+                                      //     offset: const Offset(0, 4),
+                                      //     child: const Text(
+                                      //       'A',
+                                      //       //superscript is usually smaller in size
+                                      //       textScaleFactor: 0.8,
+                                      //       style: TextStyle(color: Colors.red),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -938,14 +941,35 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'S1 = eb',
+                              text: 'S',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, 4),
+                                child: const Text(
+                                  '1',
+                                  //superscript is usually smaller in size
+                                  textScaleFactor: 0.8,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            const TextSpan(
+                              text: ' = EA',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(0, -5),
                                 // child: const Text(
                                 //   's_A',
                                 //   //superscript is usually smaller in size
@@ -953,36 +977,38 @@ class Slide4DHState extends State<Slide4DH>
                                 //   style: TextStyle(color: Colors.red),
                                 // ),
                                 child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
+                                  text: const TextSpan(
+                                    style: TextStyle(
                                       color: Colors.black,
                                     ),
                                     children: [
-                                      const TextSpan(
-                                        text: 'S',
+                                      TextSpan(
+                                        text: 'a',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
-                                      WidgetSpan(
-                                        child: Transform.translate(
-                                          offset: const Offset(0, 4),
-                                          child: const Text(
-                                            'A',
-                                            //superscript is usually smaller in size
-                                            textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ),
+                                      // WidgetSpan(
+                                      //   child: Transform.translate(
+                                      //     offset: const Offset(0, 4),
+                                      //     child: const Text(
+                                      //       'A',
+                                      //       //superscript is usually smaller in size
+                                      //       textScaleFactor: 0.8,
+                                      //       style: TextStyle(color: Colors.red),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1058,10 +1084,9 @@ class Slide4DHState extends State<Slide4DH>
                       children: [
                         const Text(
                           'Secret ',
-                          // style: TextStyle(
-                          //   fontSize:
-                          //       (MediaQuery.of(context).size.width * middleWidth),
-                          // ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         // Text(
@@ -1081,19 +1106,22 @@ class Slide4DHState extends State<Slide4DH>
                             ),
                             children: [
                               const TextSpan(
-                                text: 'S',
+                                text: 'e',
                                 style: TextStyle(
+                                  fontStyle: FontStyle.italic,
                                   color: Colors.red,
                                 ),
                               ),
                               WidgetSpan(
                                 child: Transform.translate(
-                                  offset: const Offset(0, 6),
+                                  offset: const Offset(0, 4),
                                   child: const Text(
-                                    'EA',
+                                    '1',
                                     //superscript is usually smaller in size
                                     textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.red),
                                   ),
                                 ),
                               ),
@@ -1152,10 +1180,9 @@ class Slide4DHState extends State<Slide4DH>
                       children: [
                         const Text(
                           'Secret ',
-                          // style: TextStyle(
-                          //   fontSize:
-                          //       (MediaQuery.of(context).size.width * middleWidth),
-                          // ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         // Text(
@@ -1175,19 +1202,22 @@ class Slide4DHState extends State<Slide4DH>
                             ),
                             children: [
                               const TextSpan(
-                                text: 'S',
+                                text: 'e',
                                 style: TextStyle(
+                                  fontStyle: FontStyle.italic,
                                   color: Colors.red,
                                 ),
                               ),
                               WidgetSpan(
                                 child: Transform.translate(
-                                  offset: const Offset(0, 6),
+                                  offset: const Offset(0, 4),
                                   child: const Text(
-                                    'EB',
+                                    '2',
                                     //superscript is usually smaller in size
                                     textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
+                                    style: TextStyle(
+                                        fontStyle: FontStyle.italic,
+                                        color: Colors.red),
                                   ),
                                 ),
                               ),
@@ -1248,14 +1278,15 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'ea = r',
+                              text: 'EA = g',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, -6),
                                 // child: const Text(
                                 //   's_EA',
                                 //   //superscript is usually smaller in size
@@ -1269,8 +1300,9 @@ class Slide4DHState extends State<Slide4DH>
                                     ),
                                     children: [
                                       const TextSpan(
-                                        text: 'S',
+                                        text: 'e',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
@@ -1278,10 +1310,12 @@ class Slide4DHState extends State<Slide4DH>
                                         child: Transform.translate(
                                           offset: const Offset(0, 4),
                                           child: const Text(
-                                            'EA',
+                                            '1',
                                             //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.red),
                                           ),
                                         ),
                                       ),
@@ -1291,8 +1325,9 @@ class Slide4DHState extends State<Slide4DH>
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1368,14 +1403,15 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'eb = r',
+                              text: 'EB = g',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, -6),
                                 // child: const Text(
                                 //   's_EB',
                                 //   //superscript is usually smaller in size
@@ -1389,8 +1425,9 @@ class Slide4DHState extends State<Slide4DH>
                                     ),
                                     children: [
                                       const TextSpan(
-                                        text: 'S',
+                                        text: 'e',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
@@ -1398,10 +1435,12 @@ class Slide4DHState extends State<Slide4DH>
                                         child: Transform.translate(
                                           offset: const Offset(0, 4),
                                           child: const Text(
-                                            'EB',
+                                            '2',
                                             //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.red),
                                           ),
                                         ),
                                       ),
@@ -1411,8 +1450,9 @@ class Slide4DHState extends State<Slide4DH>
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1488,14 +1528,35 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'S1 = a',
+                              text: 'S',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, 4),
+                                child: const Text(
+                                  '1',
+                                  //superscript is usually smaller in size
+                                  textScaleFactor: 0.8,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            const TextSpan(
+                              text: ' = A',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(0, -6),
                                 // child: const Text(
                                 //   's_EB',
                                 //   //superscript is usually smaller in size
@@ -1509,8 +1570,9 @@ class Slide4DHState extends State<Slide4DH>
                                     ),
                                     children: [
                                       const TextSpan(
-                                        text: 'S',
+                                        text: 'e',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
@@ -1518,10 +1580,12 @@ class Slide4DHState extends State<Slide4DH>
                                         child: Transform.translate(
                                           offset: const Offset(0, 4),
                                           child: const Text(
-                                            'EB',
+                                            '1',
                                             //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.red),
                                           ),
                                         ),
                                       ),
@@ -1531,8 +1595,9 @@ class Slide4DHState extends State<Slide4DH>
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1608,14 +1673,35 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'S2 = b',
+                              text: 'S',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, 4),
+                                child: const Text(
+                                  '2',
+                                  //superscript is usually smaller in size
+                                  textScaleFactor: 0.8,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            const TextSpan(
+                              text: ' = B',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(0, -6),
                                 // child: const Text(
                                 //   's_EA',
                                 //   //superscript is usually smaller in size
@@ -1629,8 +1715,9 @@ class Slide4DHState extends State<Slide4DH>
                                     ),
                                     children: [
                                       const TextSpan(
-                                        text: 'S',
+                                        text: 'e',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
@@ -1638,10 +1725,12 @@ class Slide4DHState extends State<Slide4DH>
                                         child: Transform.translate(
                                           offset: const Offset(0, 4),
                                           child: const Text(
-                                            'EA',
+                                            '2',
                                             //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
+                                            style: TextStyle(
+                                                fontStyle: FontStyle.italic,
+                                                color: Colors.red),
                                           ),
                                         ),
                                       ),
@@ -1651,8 +1740,9 @@ class Slide4DHState extends State<Slide4DH>
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1729,12 +1819,9 @@ class Slide4DHState extends State<Slide4DH>
                         const Text(
                           'Secret ',
                           style: TextStyle(
+                            fontStyle: FontStyle.italic,
                             color: Colors.black,
                           ),
-                          // style: TextStyle(
-                          //   fontSize:
-                          //       (MediaQuery.of(context).size.width * middleWidth),
-                          // ),
                           textAlign: TextAlign.left,
                         ),
                         // Text(
@@ -1748,28 +1835,29 @@ class Slide4DHState extends State<Slide4DH>
                         //   textAlign: TextAlign.left,
                         // ),
                         RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
+                          text: const TextSpan(
+                            style: TextStyle(
                               color: Colors.black,
                             ),
                             children: [
-                              const TextSpan(
-                                text: 'S',
+                              TextSpan(
+                                text: 'b',
                                 style: TextStyle(
+                                  fontStyle: FontStyle.italic,
                                   color: Colors.red,
                                 ),
                               ),
-                              WidgetSpan(
-                                child: Transform.translate(
-                                  offset: const Offset(0, 6),
-                                  child: const Text(
-                                    'B',
-                                    //superscript is usually smaller in size
-                                    textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
-                                  ),
-                                ),
-                              ),
+                              // WidgetSpan(
+                              //   child: Transform.translate(
+                              //     offset: const Offset(0, 6),
+                              //     child: const Text(
+                              //       'B',
+                              //       //superscript is usually smaller in size
+                              //       textScaleFactor: 0.8,
+                              //       style: TextStyle(color: Colors.red),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -1827,14 +1915,15 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'b = r',
+                              text: 'B = g',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, -4),
                                 // child: const Text(
                                 //   's_B',
                                 //   //superscript is usually smaller in size
@@ -1842,36 +1931,38 @@ class Slide4DHState extends State<Slide4DH>
                                 //   style: TextStyle(color: Colors.red),
                                 // ),
                                 child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
+                                  text: const TextSpan(
+                                    style: TextStyle(
                                       color: Colors.black,
                                     ),
                                     children: [
-                                      const TextSpan(
-                                        text: 'S',
+                                      TextSpan(
+                                        text: 'b',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
-                                      WidgetSpan(
-                                        child: Transform.translate(
-                                          offset: const Offset(0, 4),
-                                          child: const Text(
-                                            'B',
-                                            //superscript is usually smaller in size
-                                            textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ),
+                                      // WidgetSpan(
+                                      //   child: Transform.translate(
+                                      //     offset: const Offset(0, 4),
+                                      //     child: const Text(
+                                      //       'B',
+                                      //       //superscript is usually smaller in size
+                                      //       textScaleFactor: 0.8,
+                                      //       style: TextStyle(color: Colors.red),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -1947,14 +2038,35 @@ class Slide4DHState extends State<Slide4DH>
                         text: TextSpan(
                           children: [
                             const TextSpan(
-                              text: 'S2 = ea',
+                              text: 'S',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, 4),
+                                child: const Text(
+                                  '2',
+                                  //superscript is usually smaller in size
+                                  textScaleFactor: 0.8,
+                                  style: TextStyle(
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black),
+                                ),
+                              ),
+                            ),
+                            const TextSpan(
+                              text: ' = EB',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: Transform.translate(
+                                offset: const Offset(0, -5),
                                 // child: const Text(
                                 //   's_B',
                                 //   //superscript is usually smaller in size
@@ -1962,36 +2074,38 @@ class Slide4DHState extends State<Slide4DH>
                                 //   style: TextStyle(color: Colors.red),
                                 // ),
                                 child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
+                                  text: const TextSpan(
+                                    style: TextStyle(
                                       color: Colors.black,
                                     ),
                                     children: [
-                                      const TextSpan(
-                                        text: 'S',
+                                      TextSpan(
+                                        text: 'b',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
-                                      WidgetSpan(
-                                        child: Transform.translate(
-                                          offset: const Offset(0, 4),
-                                          child: const Text(
-                                            'B',
-                                            //superscript is usually smaller in size
-                                            textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ),
+                                      // WidgetSpan(
+                                      //   child: Transform.translate(
+                                      //     offset: const Offset(0, 4),
+                                      //     child: const Text(
+                                      //       'B',
+                                      //       //superscript is usually smaller in size
+                                      //       textScaleFactor: 0.8,
+                                      //       style: TextStyle(color: Colors.red),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                             const TextSpan(
-                              text: ' mod n',
+                              text: ' mod p',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -2233,7 +2347,7 @@ class Slide4DHState extends State<Slide4DH>
                             controller: scrollController,
                             shrinkWrap: true,
                             children: <Widget>[
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               _buildRow(
                                 AppLocalizations.of(context)!.animationSpeed,
                                 StatefulBuilder(
@@ -2740,7 +2854,7 @@ class Slide4DHState extends State<Slide4DH>
                         numberPageDialog();
                       },
                       child: Text(
-                        '4: ${indexVisibilitySlide4DH + 1} / 15',
+                        '${indexVisibilitySlide4DH + 1} / 15',
                         style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -2761,8 +2875,8 @@ class Slide4DHState extends State<Slide4DH>
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: Column(
         children: <Widget>[
-          SizedBox(height: 12),
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
+          const SizedBox(height: 12),
           Container(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,

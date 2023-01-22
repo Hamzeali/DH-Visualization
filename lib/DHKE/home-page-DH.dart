@@ -141,7 +141,7 @@ class HomePageDHState extends State<HomePageDH>
       // backgroundColor: Colors.blueGrey[900],
       toolbarHeight: MediaQuery.of(context).size.height * 0.06,
       flexibleSpace: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.only(bottom: 35.0),
         child: Center(
           child: FittedBox(
             fit: BoxFit.fitWidth,

@@ -508,7 +508,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                         containerWidth = 0.55;
                         contaienrSec = 1000;
                         xShape = 0.17;
-                        messageText = AppLocalizations.of(context)!.appDesc;
+                        messageText = AppLocalizations.of(context)!.appDesc0;
                         // messageText = introduction[3];
                       }
                       // Alice
@@ -524,7 +524,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                         containerWidth = 0.6;
                         contaienrSec = 1000;
                         xShape = -0.22;
-                        messageText = AppLocalizations.of(context)!.appDesc2;
+                        messageText = AppLocalizations.of(context)!.appDesc1;
                         // messageText = introduction[4];
                       } else if (cnt == 6) {
                         // isClickHereVisible = false;
@@ -536,9 +536,25 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                         containerWidth = 0.55;
                         contaienrSec = 1000;
                         xShape = 0.17;
-                        messageText = AppLocalizations.of(context)!.firstScene;
+                        messageText = AppLocalizations.of(context)!.appDesc2;
                         // messageText = introduction[5];
                       } else if (cnt == 7) {
+                        // isClickHereVisible = false;
+                        // containerLeft = 0.25;
+                        // containerWidth = 0.55;
+                        // contaienrSec = 1000;
+                        // xShape = -0.02;
+                        // containerLeft = 0.37;
+                        // containerWidth = 0.55;
+                        // contaienrSec = 1000;
+                        // xShape = 0.17;
+                        containerLeft = 0.07;
+                        containerWidth = 0.6;
+                        contaienrSec = 1000;
+                        xShape = -0.22;
+                        messageText = AppLocalizations.of(context)!.firstScene;
+                        // messageText = introduction[5];
+                      } else if (cnt == 8) {
                         // containerLeft = 0.25;
                         // containerWidth = 0.55;
                         // contaienrSec = 1000;
@@ -549,7 +565,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                         xShape = -0.02;
                         messageText = AppLocalizations.of(context)!.secondScene;
                         // messageText = introduction[6];
-                      } else if (cnt == 8) {
+                      } else if (cnt == 9) {
                         // containerLeft = 0.07;
                         // containerWidth = 0.6;
                         // contaienrSec = 1000;
@@ -562,14 +578,14 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                         // messageText = introduction[7];
                         // isTouchEnabled = false;
 
-                      } else if (cnt == 9) {
+                      } else if (cnt == 10) {
                         containerLeft = 0.37;
                         containerWidth = 0.55;
                         contaienrSec = 1000;
                         xShape = 0.17;
                         messageText = AppLocalizations.of(context)!.fourthScene;
                         // messageText = introduction[8];
-                      } else if (cnt == 10) {
+                      } else if (cnt == 11) {
                         isTouchEnabled = false;
                         containerLeft = 0.25;
                         containerWidth = 0.55;
@@ -1278,7 +1294,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                           child: Positioned(
                             right: MediaQuery.of(context).size.width * 0.01,
                             top: MediaQuery.of(context).size.height * 0.01,
-                            width: MediaQuery.of(context).size.width * 0.1,
+                            width: MediaQuery.of(context).size.width * 0.125,
                             height: MediaQuery.of(context).size.height * 0.1,
                             child: FittedBox(
                               child: TextButton(
@@ -1348,7 +1364,7 @@ class IntroState extends State<Intro> with WidgetsBindingObserver {
                           child: Positioned(
                             left: MediaQuery.of(context).size.width * 0.01,
                             top: MediaQuery.of(context).size.height * 0.01,
-                            width: MediaQuery.of(context).size.width * 0.1,
+                            width: MediaQuery.of(context).size.width * 0.125,
                             height: MediaQuery.of(context).size.height * 0.1,
                             child: FittedBox(
                               child: TextButton(

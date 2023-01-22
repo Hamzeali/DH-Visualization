@@ -27,38 +27,38 @@ class Slide2DH extends StatefulWidget {
   Slide2DHState createState() => Slide2DHState();
 }
 
-double x1 = 0.16;
-double x2 = 0.16;
-double x3 = 0.16;
-double x4 = 0.16;
-double x5 = 0.16;
-double x6 = 0.16;
-double x7 = 0.16;
-double x8 = 0.16;
-double x9 = 0.16;
-double x10 = 0.16;
-double x11 = 0.16;
-double x12 = 0.16;
-double x13 = 0.16;
-double x14 = 0.16;
-double x15 = 0.16;
-double x16 = 0.16;
-double y1 = 0.355;
-double y2 = 0.355;
-double y3 = 0.355;
-double y4 = 0.355;
-double y5 = 0.355;
-double y6 = 0.355;
-double y7 = 0.355;
-double y8 = 0.355;
-double y9 = 0.355;
-double y10 = 0.355;
-double y11 = 0.355;
-double y12 = 0.355;
-double y13 = 0.355;
-double y14 = 0.355;
-double y15 = 0.355;
-double y16 = 0.355;
+double x1 = 0.3;
+double x2 = 0.3;
+double x3 = 0.3;
+double x4 = 0.3;
+double x5 = 0.3;
+double x6 = 0.3;
+double x7 = 0.3;
+double x8 = 0.3;
+double x9 = 0.3;
+double x10 = 0.3;
+double x11 = 0.3;
+double x12 = 0.3;
+double x13 = 0.3;
+double x14 = 0.3;
+double x15 = 0.3;
+double x16 = 0.3;
+double y1 = 0.478;
+double y2 = 0.478;
+double y3 = 0.478;
+double y4 = 0.478;
+double y5 = 0.478;
+double y6 = 0.478;
+double y7 = 0.478;
+double y8 = 0.478;
+double y9 = 0.478;
+double y10 = 0.478;
+double y11 = 0.478;
+double y12 = 0.478;
+double y13 = 0.478;
+double y14 = 0.478;
+double y15 = 0.478;
+double y16 = 0.478;
 
 bool isShown = true;
 final scrollController = ScrollController();
@@ -99,6 +99,7 @@ bool videoButton = true;
 bool settingButton = true;
 var timerSeconds = 3;
 int result = 1;
+int prevResult = 0;
 List power = [
   '0',
   '1',
@@ -119,11 +120,13 @@ List power = [
   '16'
 ];
 double resultOpacity = 0.0;
+double prevResultOpacity = 0.0;
 TextEditingController pageController2 = TextEditingController()
   ..text = (indexVisibilitySlide2DH + 1).toString();
 
 Timer delayTimer = Timer(const Duration(seconds: 1), () {});
 Timer videoTimerVariable = Timer(const Duration(seconds: 1), () {});
+Timer pageNumberTimer = Timer(Duration(seconds: seconds), () {});
 Timer timerSlide2DH = Timer(const Duration(seconds: 1), () {});
 Timer videoTimerSlide2DH =
     Timer.periodic(Duration(seconds: Global.slider), (videoTimer) {});
@@ -280,9 +283,14 @@ class Slide2DHState extends State<Slide2DH>
   // ignore: must_call_super
   void dispose() {
     videoTimerVariable.cancel();
+    videoTimerProblem().cancel();
     timerSlide2DH.cancel();
+    delayTimer.cancel();
     videoTimerSlide2DH.cancel();
     opacityTimer.cancel();
+    videoTimerVariable.cancel;
+    pageNumberTimer.cancel();
+    selectPageNumber(0, 0).cancel();
 
     isLastIndex = [false, true];
     indexVisibilitySlide2DH = -1;
@@ -579,23 +587,30 @@ class Slide2DHState extends State<Slide2DH>
     });
   }
 
-  Timer videoTimerProblem() {
-    videoTimerVariable = Timer.periodic(
-      Duration(seconds: Global.slider),
-      (Timer videoTimerVariable) {
+  Timer selectPageNumber(int a, int sec) {
+    pageNumberTimer = Timer.periodic(
+      Duration(seconds: sec),
+      (Timer pageNumberTimer) {
         setState(
           () {
-            seconds = Global.slider;
-
-            if (indexVisibilitySlide2DH == 16) {
-              openDialog(false);
-              videoTimerVariable.cancel();
+            if (sec == 0) {
+              delay = true;
             }
-            if (indexVisibilitySlide2DH < 16 && delay) {
+            seconds = 0;
+            if (indexVisibilitySlide2DH == a) {
+              pageNumberTimer.cancel();
+            }
+            if (indexVisibilitySlide2DH < a && delay) {
               // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide2DH++;
+              pageController2 = TextEditingController()
+                ..text = (indexVisibilitySlide2DH + 1).toString();
+
               stepsVisibility[0] = !stepsVisibility[0];
               stepsVisibility[1] = !stepsVisibility[1];
+              if (indexVisibilitySlide2DH > 0) {
+                prevResult = (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
+              }
               result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
             }
             if (indexVisibilitySlide2DH == 0) {
@@ -617,6 +632,7 @@ class Slide2DHState extends State<Slide2DH>
               //   });
               // });
             } else if (indexVisibilitySlide2DH == 1 && delay) {
+              prevResultOpacity = 1.0;
               numberColor[0] = Colors.black;
               numberOpacity[1] = 1.0;
               x2 = 0.812;
@@ -625,7 +641,7 @@ class Slide2DHState extends State<Slide2DH>
               // resOpacity[1] = 1.0;
               // x[1] = 0.78;
               // y[1] = 0.115;
-              opTimer(0, false);
+              opTimer(0, false, 0);
               redBulletOpacity[0] = 0.0;
               blackBulletOpacity[0] = 1.0;
               redBulletOpacity[2] = 1.0;
@@ -644,7 +660,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[0] = 0.0;
               lineOpacity[0] = 1.0;
               opacityTimer.cancel();
-              opTimer(1, false);
+              opTimer(1, false, 0);
               redBulletOpacity[2] = 0.0;
               blackBulletOpacity[2] = 1.0;
               redBulletOpacity[8] = 1.0;
@@ -664,7 +680,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[1] = 0.0;
               lineOpacity[1] = 1.0;
               opacityTimer.cancel();
-              opTimer(2, false);
+              opTimer(2, false, 0);
               redBulletOpacity[8] = 0.0;
               blackBulletOpacity[8] = 1.0;
               redBulletOpacity[9] = 1.0;
@@ -684,7 +700,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[2] = 0.0;
               lineOpacity[2] = 1.0;
               opacityTimer.cancel();
-              opTimer(3, false);
+              opTimer(3, false, 0);
               redBulletOpacity[9] = 0.0;
               blackBulletOpacity[9] = 1.0;
               redBulletOpacity[12] = 1.0;
@@ -704,7 +720,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[3] = 0.0;
               lineOpacity[3] = 1.0;
               opacityTimer.cancel();
-              opTimer(4, false);
+              opTimer(4, false, 0);
               redBulletOpacity[12] = 0.0;
               blackBulletOpacity[12] = 1.0;
               redBulletOpacity[4] = 1.0;
@@ -724,7 +740,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[4] = 0.0;
               lineOpacity[4] = 1.0;
               opacityTimer.cancel();
-              opTimer(5, false);
+              opTimer(5, false, 0);
               redBulletOpacity[4] = 0.0;
               blackBulletOpacity[4] = 1.0;
               redBulletOpacity[14] = 1.0;
@@ -744,7 +760,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[5] = 0.0;
               lineOpacity[5] = 1.0;
               opacityTimer.cancel();
-              opTimer(6, false);
+              opTimer(6, false, 0);
               redBulletOpacity[14] = 0.0;
               blackBulletOpacity[14] = 1.0;
               redBulletOpacity[10] = 1.0;
@@ -764,7 +780,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[6] = 0.0;
               lineOpacity[6] = 1.0;
               opacityTimer.cancel();
-              opTimer(7, false);
+              opTimer(7, false, 0);
               redBulletOpacity[10] = 0.0;
               blackBulletOpacity[10] = 1.0;
               redBulletOpacity[15] = 1.0;
@@ -784,7 +800,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[7] = 0.0;
               lineOpacity[7] = 1.0;
               opacityTimer.cancel();
-              opTimer(8, false);
+              opTimer(8, false, 0);
               redBulletOpacity[15] = 0.0;
               blackBulletOpacity[15] = 1.0;
               redBulletOpacity[13] = 1.0;
@@ -804,7 +820,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[8] = 0.0;
               lineOpacity[8] = 1.0;
               opacityTimer.cancel();
-              opTimer(9, false);
+              opTimer(9, false, 0);
               redBulletOpacity[13] = 0.0;
               blackBulletOpacity[13] = 1.0;
               redBulletOpacity[7] = 1.0;
@@ -824,7 +840,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[9] = 0.0;
               lineOpacity[9] = 1.0;
               opacityTimer.cancel();
-              opTimer(10, false);
+              opTimer(10, false, 0);
               redBulletOpacity[7] = 0.0;
               blackBulletOpacity[7] = 1.0;
               redBulletOpacity[6] = 1.0;
@@ -844,7 +860,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[10] = 0.0;
               lineOpacity[10] = 1.0;
               opacityTimer.cancel();
-              opTimer(11, false);
+              opTimer(11, false, 0);
               redBulletOpacity[6] = 0.0;
               blackBulletOpacity[6] = 1.0;
               redBulletOpacity[3] = 1.0;
@@ -864,7 +880,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[11] = 0.0;
               lineOpacity[11] = 1.0;
               opacityTimer.cancel();
-              opTimer(12, false);
+              opTimer(12, false, 0);
               redBulletOpacity[3] = 0.0;
               blackBulletOpacity[3] = 1.0;
               redBulletOpacity[11] = 1.0;
@@ -884,7 +900,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[12] = 0.0;
               lineOpacity[12] = 1.0;
               opacityTimer.cancel();
-              opTimer(13, false);
+              opTimer(13, false, 0);
               redBulletOpacity[11] = 0.0;
               blackBulletOpacity[11] = 1.0;
               redBulletOpacity[1] = 1.0;
@@ -911,7 +927,7 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[13] = 0.0;
               lineOpacity[13] = 1.0;
               opacityTimer.cancel();
-              opTimer(14, false);
+              opTimer(14, false, 0);
               redBulletOpacity[1] = 0.0;
               blackBulletOpacity[1] = 1.0;
               redBulletOpacity[5] = 1.0;
@@ -920,7 +936,377 @@ class Slide2DHState extends State<Slide2DH>
               circlesOpacity[14] = 0.0;
               lineOpacity[14] = 1.0;
               opacityTimer.cancel();
-              opTimer(15, false);
+              opTimer(15, false, 0);
+              blackBulletOpacity[0] = 0.0;
+              redBulletOpacity[5] = 0.0;
+              blackBulletOpacity[5] = 1.0;
+              redBulletOpacity[0] = 1.0;
+
+              // circlesOpacity[16] = 0.0;
+              // circlesOpacity[17] = 1.0;
+              isLastIndex[0] = true;
+            }
+            // if (Languages.selectedLanguage) {
+            //   text = DescListDeutchDH.slide2Desc[indexVisibilitySlide2DH];
+            // } else {
+            //   text = DescListEnglishDH.slide2Desc[indexVisibilitySlide2DH];
+            // }
+          },
+        );
+      },
+    );
+    return pageNumberTimer;
+  }
+
+  Timer videoTimerProblem() {
+    videoTimerVariable = Timer.periodic(
+      Duration(seconds: Global.slider),
+      (Timer videoTimerVariable) {
+        setState(
+          () {
+            seconds = Global.slider;
+
+            if (indexVisibilitySlide2DH == 16) {
+              openDialog(false);
+              videoTimerVariable.cancel();
+            }
+            if (indexVisibilitySlide2DH < 16 && delay) {
+              // Languages.player.play("assets/steps.mp3");
+              indexVisibilitySlide2DH++;
+              pageController2 = TextEditingController()
+                ..text = (indexVisibilitySlide2DH + 1).toString();
+
+              stepsVisibility[0] = !stepsVisibility[0];
+              stepsVisibility[1] = !stepsVisibility[1];
+              if (indexVisibilitySlide2DH > 0) {
+                prevResult = (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
+              }
+              result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
+            }
+            if (indexVisibilitySlide2DH == 0) {
+              numberOpacity[0] = 1.0;
+              x1 = 0.728;
+              y1 = 0.06;
+              redBulletOpacity[0] = 1.0;
+              numberOpacity[0] = 1.0;
+              resultOpacity = 1.0;
+              isLastIndex[1] = false;
+              // delay = false;
+              // delayTimer = Timer(Duration(seconds: seconds * 2), () {
+              //   setState(() {
+              //     // resVisibility = false;
+              //     resOpacity = 0.0;
+              //     x = 0.16;
+              //     y = 0.355;
+              //     delay = true;
+              //   });
+              // });
+            } else if (indexVisibilitySlide2DH == 1 && delay) {
+              prevResultOpacity = 1.0;
+              numberColor[0] = Colors.black;
+              numberOpacity[1] = 1.0;
+              x2 = 0.812;
+              y2 = 0.2;
+              // resOpacity[0] = 0.0;
+              // resOpacity[1] = 1.0;
+              // x[1] = 0.78;
+              // y[1] = 0.115;
+              opTimer(0, false, 1);
+              redBulletOpacity[0] = 0.0;
+              blackBulletOpacity[0] = 1.0;
+              redBulletOpacity[2] = 1.0;
+              // circlesOpacity[0] = 0.0;
+              // lineOpacity[0] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(1);
+
+              // circlesOpacity[1] = 0.0;
+              // circlesOpacity[2] = 1.0;
+            } else if (indexVisibilitySlide2DH == 2 && delay) {
+              numberColor[1] = Colors.black;
+              numberOpacity[2] = 1.0;
+              x3 = 0.58;
+              y3 = 0.57;
+              circlesOpacity[0] = 0.0;
+              lineOpacity[0] = 1.0;
+              opacityTimer.cancel();
+              opTimer(1, false, 1);
+              redBulletOpacity[2] = 0.0;
+              blackBulletOpacity[2] = 1.0;
+              redBulletOpacity[8] = 1.0;
+
+              // circlesOpacity[1] = 0.0;
+              // lineOpacity[1] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(2);
+
+              // circlesOpacity[2] = 0.0;
+              // circlesOpacity[3] = 1.0;
+            } else if (indexVisibilitySlide2DH == 3 && delay) {
+              numberColor[2] = Colors.black;
+              numberOpacity[3] = 1.0;
+              x4 = 0.52;
+              y4 = 0.5;
+              circlesOpacity[1] = 0.0;
+              lineOpacity[1] = 1.0;
+              opacityTimer.cancel();
+              opTimer(2, false, 1);
+              redBulletOpacity[8] = 0.0;
+              blackBulletOpacity[8] = 1.0;
+              redBulletOpacity[9] = 1.0;
+
+              // circlesOpacity[2] = 0.0;
+              // lineOpacity[2] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(3);
+
+              // circlesOpacity[3] = 0.0;
+              // circlesOpacity[4] = 1.0;
+            } else if (indexVisibilitySlide2DH == 4 && delay) {
+              numberColor[3] = Colors.black;
+              numberOpacity[4] = 1.0;
+              x5 = 0.49;
+              y5 = 0.2;
+              circlesOpacity[2] = 0.0;
+              lineOpacity[2] = 1.0;
+              opacityTimer.cancel();
+              opTimer(3, false, 1);
+              redBulletOpacity[9] = 0.0;
+              blackBulletOpacity[9] = 1.0;
+              redBulletOpacity[12] = 1.0;
+
+              // circlesOpacity[3] = 0.0;
+              // lineOpacity[3] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(4);
+
+              // circlesOpacity[4] = 0.0;
+              // circlesOpacity[5] = 1.0;
+            } else if (indexVisibilitySlide2DH == 5 && delay) {
+              numberColor[4] = Colors.black;
+              numberOpacity[5] = 1.0;
+              x6 = 0.815;
+              y6 = 0.42;
+              circlesOpacity[3] = 0.0;
+              lineOpacity[3] = 1.0;
+              opacityTimer.cancel();
+              opTimer(4, false, 1);
+              redBulletOpacity[12] = 0.0;
+              blackBulletOpacity[12] = 1.0;
+              redBulletOpacity[4] = 1.0;
+
+              // circlesOpacity[4] = 0.0;
+              // lineOpacity[4] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(5);
+
+              // circlesOpacity[5] = 0.0;
+              // circlesOpacity[6] = 1.0;
+            } else if (indexVisibilitySlide2DH == 6 && delay) {
+              numberColor[5] = Colors.black;
+              numberOpacity[6] = 1.0;
+              x7 = 0.585;
+              y7 = 0.052;
+              circlesOpacity[4] = 0.0;
+              lineOpacity[4] = 1.0;
+              opacityTimer.cancel();
+              opTimer(5, false, 1);
+              redBulletOpacity[4] = 0.0;
+              blackBulletOpacity[4] = 1.0;
+              redBulletOpacity[14] = 1.0;
+
+              // circlesOpacity[5] = 0.0;
+              // lineOpacity[5] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(6);
+
+              // circlesOpacity[6] = 0.0;
+              // circlesOpacity[7] = 1.0;
+            } else if (indexVisibilitySlide2DH == 7 && delay) {
+              numberColor[6] = Colors.black;
+              numberOpacity[7] = 1.0;
+              x8 = 0.49;
+              y8 = 0.42;
+              circlesOpacity[5] = 0.0;
+              lineOpacity[5] = 1.0;
+              opacityTimer.cancel();
+              opTimer(6, false, 1);
+              redBulletOpacity[14] = 0.0;
+              blackBulletOpacity[14] = 1.0;
+              redBulletOpacity[10] = 1.0;
+
+              // circlesOpacity[6] = 0.0;
+              // lineOpacity[6] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(7);
+
+              // circlesOpacity[7] = 0.0;
+              // circlesOpacity[8] = 1.0;
+            } else if (indexVisibilitySlide2DH == 8 && delay) {
+              numberColor[7] = Colors.black;
+              numberOpacity[8] = 1.0;
+              x9 = 0.65;
+              y9 = 0.035;
+              circlesOpacity[6] = 0.0;
+              lineOpacity[6] = 1.0;
+              opacityTimer.cancel();
+              opTimer(7, false, 1);
+              redBulletOpacity[10] = 0.0;
+              blackBulletOpacity[10] = 1.0;
+              redBulletOpacity[15] = 1.0;
+
+              // circlesOpacity[7] = 0.0;
+              // lineOpacity[7] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(8);
+
+              // circlesOpacity[8] = 0.0;
+              // circlesOpacity[9] = 1.0;
+            } else if (indexVisibilitySlide2DH == 9 && delay) {
+              numberColor[8] = Colors.black;
+              numberOpacity[9] = 1.0;
+              x10 = 0.52;
+              y10 = 0.11;
+              circlesOpacity[7] = 0.0;
+              lineOpacity[7] = 1.0;
+              opacityTimer.cancel();
+              opTimer(8, false, 1);
+              redBulletOpacity[15] = 0.0;
+              blackBulletOpacity[15] = 1.0;
+              redBulletOpacity[13] = 1.0;
+
+              // circlesOpacity[8] = 0.0;
+              // lineOpacity[8] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(9);
+
+              // circlesOpacity[9] = 0.0;
+              // circlesOpacity[10] = 1.0;
+            } else if (indexVisibilitySlide2DH == 10 && delay) {
+              numberColor[9] = Colors.black;
+              numberOpacity[10] = 1.0;
+              x11 = 0.65;
+              y11 = 0.59;
+              circlesOpacity[8] = 0.0;
+              lineOpacity[8] = 1.0;
+              opacityTimer.cancel();
+              opTimer(9, false, 1);
+              redBulletOpacity[13] = 0.0;
+              blackBulletOpacity[13] = 1.0;
+              redBulletOpacity[7] = 1.0;
+
+              // circlesOpacity[9] = 0.0;
+              // lineOpacity[9] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(10);
+
+              // circlesOpacity[10] = 0.0;
+              // circlesOpacity[11] = 1.0;
+            } else if (indexVisibilitySlide2DH == 11 && delay) {
+              numberColor[10] = Colors.black;
+              numberOpacity[11] = 1.0;
+              x12 = 0.723;
+              y12 = 0.57;
+              circlesOpacity[9] = 0.0;
+              lineOpacity[9] = 1.0;
+              opacityTimer.cancel();
+              opTimer(10, false, 1);
+              redBulletOpacity[7] = 0.0;
+              blackBulletOpacity[7] = 1.0;
+              redBulletOpacity[6] = 1.0;
+
+              // circlesOpacity[10] = 0.0;
+              // lineOpacity[10] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(11);
+
+              // circlesOpacity[11] = 0.0;
+              // circlesOpacity[12] = 1.0;
+            } else if (indexVisibilitySlide2DH == 12 && delay) {
+              numberColor[11] = Colors.black;
+              numberOpacity[12] = 1.0;
+              x13 = 0.825;
+              y13 = 0.31;
+              circlesOpacity[10] = 0.0;
+              lineOpacity[10] = 1.0;
+              opacityTimer.cancel();
+              opTimer(11, false, 1);
+              redBulletOpacity[6] = 0.0;
+              blackBulletOpacity[6] = 1.0;
+              redBulletOpacity[3] = 1.0;
+
+              // circlesOpacity[11] = 0.0;
+              // lineOpacity[11] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(12);
+
+              // circlesOpacity[12] = 0.0;
+              // circlesOpacity[13] = 1.0;
+            } else if (indexVisibilitySlide2DH == 13 && delay) {
+              numberColor[12] = Colors.black;
+              numberOpacity[13] = 1.0;
+              x14 = 0.475;
+              y14 = 0.311;
+              circlesOpacity[11] = 0.0;
+              lineOpacity[11] = 1.0;
+              opacityTimer.cancel();
+              opTimer(12, false, 1);
+              redBulletOpacity[3] = 0.0;
+              blackBulletOpacity[3] = 1.0;
+              redBulletOpacity[11] = 1.0;
+
+              // circlesOpacity[12] = 0.0;
+              // lineOpacity[12] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(13);
+
+              // circlesOpacity[13] = 0.0;
+              // circlesOpacity[14] = 1.0;
+            } else if (indexVisibilitySlide2DH == 14 && delay) {
+              numberColor[13] = Colors.black;
+              numberOpacity[14] = 1.0;
+              x15 = 0.78;
+              y15 = 0.115;
+              circlesOpacity[12] = 0.0;
+              lineOpacity[12] = 1.0;
+              opacityTimer.cancel();
+              opTimer(13, false, 1);
+              redBulletOpacity[11] = 0.0;
+              blackBulletOpacity[11] = 1.0;
+              redBulletOpacity[1] = 1.0;
+
+              // circlesOpacity[13] = 0.0;
+              // lineOpacity[13] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(14);
+
+              // circlesOpacity[14] = 0.0;
+              // circlesOpacity[15] = 1.0;
+
+              // circlesOpacity[14] = 0.0;
+              // lineOpacity[14] = 1.0;
+              // opacityTimer.cancel();
+              // opTimer(15);
+              // circlesOpacity[15] = 0.0;
+              // circlesOpacity[16] = 1.0;
+            } else if (indexVisibilitySlide2DH == 15 && delay) {
+              numberColor[14] = Colors.black;
+              numberOpacity[15] = 1.0;
+              x16 = 0.78;
+              y16 = 0.52;
+              circlesOpacity[13] = 0.0;
+              lineOpacity[13] = 1.0;
+              opacityTimer.cancel();
+              opTimer(14, false, 1);
+              redBulletOpacity[1] = 0.0;
+              blackBulletOpacity[1] = 1.0;
+              redBulletOpacity[5] = 1.0;
+            } else if (indexVisibilitySlide2DH == 16 && delay) {
+              numberColor[15] = Colors.black;
+              circlesOpacity[14] = 0.0;
+              lineOpacity[14] = 1.0;
+              opacityTimer.cancel();
+              opTimer(15, false, 1);
               blackBulletOpacity[0] = 0.0;
               redBulletOpacity[5] = 0.0;
               blackBulletOpacity[5] = 1.0;
@@ -2371,7 +2757,7 @@ class Slide2DHState extends State<Slide2DH>
               alignment: Alignment.topLeft,
               child: FittedBox(
                 child: Text(
-                  'r = 3, n = 17',
+                  'g = 3, p = 17',
                   style: TextStyle(
                     fontSize:
                         MediaQuery.of(context).size.width * 0.02, //middleWidth,
@@ -2381,12 +2767,69 @@ class Slide2DHState extends State<Slide2DH>
             ),
           ),
 
+          // previous operation
+
           Positioned(
             top: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
                 0.33, //0.4
             left: MediaQuery.of(context).size.width * 0.065,
-            width: MediaQuery.of(context).size.width * 0.15, //0.25,
+            width: MediaQuery.of(context).size.width * 0.3, //0.25,
+            height: (MediaQuery.of(context).size.height -
+                    HomePageDHState.returnAppBar[1]) *
+                0.15, // 0.25
+            child: AnimatedOpacity(
+              opacity: prevResultOpacity,
+              duration: Duration(seconds: seconds),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: FittedBox(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15.0),
+                        child: Text(
+                          'Previous operation: 3',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width *
+                                0.02, //modWidth,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        power[indexVisibilitySlide2DH < 1
+                            ? 0
+                            : indexVisibilitySlide2DH - 1],
+                        style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.width * 0.015,
+                          // modWidth /
+                          // 1.5,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15.0),
+                        child: Text(
+                          ' mod 17 = $prevResult',
+                          style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.width *
+                                0.02, //modWidth,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          // new operation
+          Positioned(
+            top: (MediaQuery.of(context).size.height -
+                    HomePageDHState.returnAppBar[1]) *
+                0.44, //0.4
+            left: MediaQuery.of(context).size.width * 0.065,
+            width: MediaQuery.of(context).size.width * 0.3, //0.25,
             height: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
                 0.15, // 0.25
@@ -2401,7 +2844,7 @@ class Slide2DHState extends State<Slide2DH>
                       Padding(
                         padding: const EdgeInsets.only(top: 15.0),
                         child: Text(
-                          '3',
+                          'New operation: 3',
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width *
                                 0.02, //modWidth,
@@ -2503,6 +2946,11 @@ class Slide2DHState extends State<Slide2DH>
 
                     stepsVisibility[0] = !stepsVisibility[0];
                     stepsVisibility[1] = !stepsVisibility[1];
+                    if (indexVisibilitySlide2DH > 0) {
+                      prevResult =
+                          (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
+                    }
+                    ;
                     result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
                   }
                   if (indexVisibilitySlide2DH == 0) {
@@ -2524,6 +2972,7 @@ class Slide2DHState extends State<Slide2DH>
                     //   });
                     // });
                   } else if (indexVisibilitySlide2DH == 1 && delay) {
+                    prevResultOpacity = 1.0;
                     numberColor[0] = Colors.black;
                     numberOpacity[1] = 1.0;
                     x2 = 0.812;
@@ -2532,7 +2981,7 @@ class Slide2DHState extends State<Slide2DH>
                     // resOpacity[1] = 1.0;
                     // x[1] = 0.78;
                     // y[1] = 0.115;
-                    opTimer(0, false);
+                    opTimer(0, false, 1);
                     redBulletOpacity[0] = 0.0;
                     blackBulletOpacity[0] = 1.0;
                     redBulletOpacity[2] = 1.0;
@@ -2551,7 +3000,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[0] = 0.0;
                     lineOpacity[0] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(1, false);
+                    opTimer(1, false, 1);
                     redBulletOpacity[2] = 0.0;
                     blackBulletOpacity[2] = 1.0;
                     redBulletOpacity[8] = 1.0;
@@ -2571,7 +3020,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[1] = 0.0;
                     lineOpacity[1] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(2, false);
+                    opTimer(2, false, 1);
                     redBulletOpacity[8] = 0.0;
                     blackBulletOpacity[8] = 1.0;
                     redBulletOpacity[9] = 1.0;
@@ -2591,7 +3040,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[2] = 0.0;
                     lineOpacity[2] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(3, false);
+                    opTimer(3, false, 1);
                     redBulletOpacity[9] = 0.0;
                     blackBulletOpacity[9] = 1.0;
                     redBulletOpacity[12] = 1.0;
@@ -2611,7 +3060,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[3] = 0.0;
                     lineOpacity[3] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(4, false);
+                    opTimer(4, false, 1);
                     redBulletOpacity[12] = 0.0;
                     blackBulletOpacity[12] = 1.0;
                     redBulletOpacity[4] = 1.0;
@@ -2631,7 +3080,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[4] = 0.0;
                     lineOpacity[4] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(5, false);
+                    opTimer(5, false, 1);
                     redBulletOpacity[4] = 0.0;
                     blackBulletOpacity[4] = 1.0;
                     redBulletOpacity[14] = 1.0;
@@ -2651,7 +3100,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[5] = 0.0;
                     lineOpacity[5] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(6, false);
+                    opTimer(6, false, 1);
                     redBulletOpacity[14] = 0.0;
                     blackBulletOpacity[14] = 1.0;
                     redBulletOpacity[10] = 1.0;
@@ -2671,7 +3120,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[6] = 0.0;
                     lineOpacity[6] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(7, false);
+                    opTimer(7, false, 1);
                     redBulletOpacity[10] = 0.0;
                     blackBulletOpacity[10] = 1.0;
                     redBulletOpacity[15] = 1.0;
@@ -2691,7 +3140,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[7] = 0.0;
                     lineOpacity[7] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(8, false);
+                    opTimer(8, false, 1);
                     redBulletOpacity[15] = 0.0;
                     blackBulletOpacity[15] = 1.0;
                     redBulletOpacity[13] = 1.0;
@@ -2711,7 +3160,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[8] = 0.0;
                     lineOpacity[8] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(9, false);
+                    opTimer(9, false, 1);
                     redBulletOpacity[13] = 0.0;
                     blackBulletOpacity[13] = 1.0;
                     redBulletOpacity[7] = 1.0;
@@ -2731,7 +3180,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[9] = 0.0;
                     lineOpacity[9] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(10, false);
+                    opTimer(10, false, 1);
                     redBulletOpacity[7] = 0.0;
                     blackBulletOpacity[7] = 1.0;
                     redBulletOpacity[6] = 1.0;
@@ -2751,7 +3200,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[10] = 0.0;
                     lineOpacity[10] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(11, false);
+                    opTimer(11, false, 1);
                     redBulletOpacity[6] = 0.0;
                     blackBulletOpacity[6] = 1.0;
                     redBulletOpacity[3] = 1.0;
@@ -2771,7 +3220,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[11] = 0.0;
                     lineOpacity[11] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(12, false);
+                    opTimer(12, false, 1);
                     redBulletOpacity[3] = 0.0;
                     blackBulletOpacity[3] = 1.0;
                     redBulletOpacity[11] = 1.0;
@@ -2791,7 +3240,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[12] = 0.0;
                     lineOpacity[12] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(13, false);
+                    opTimer(13, false, 1);
                     redBulletOpacity[11] = 0.0;
                     blackBulletOpacity[11] = 1.0;
                     redBulletOpacity[1] = 1.0;
@@ -2818,7 +3267,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[13] = 0.0;
                     lineOpacity[13] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(14, false);
+                    opTimer(14, false, 1);
                     redBulletOpacity[1] = 0.0;
                     blackBulletOpacity[1] = 1.0;
                     redBulletOpacity[5] = 1.0;
@@ -2827,7 +3276,7 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[14] = 0.0;
                     lineOpacity[14] = 1.0;
                     opacityTimer.cancel();
-                    opTimer(15, false);
+                    opTimer(15, false, 1);
                     blackBulletOpacity[0] = 0.0;
                     redBulletOpacity[5] = 0.0;
                     blackBulletOpacity[5] = 1.0;
@@ -2880,8 +3329,8 @@ class Slide2DHState extends State<Slide2DH>
                     pageController2 = TextEditingController()
                       ..text = (indexVisibilitySlide2DH + 1).toString();
                     numberOpacity[0] = 0.0;
-                    x1 = 0.16;
-                    y1 = 0.355;
+                    x1 = 0.3;
+                    y1 = 0.478;
                     redBulletOpacity[0] = 0.0;
                     numberOpacity[0] = 0.0;
                     resultOpacity = 0.0;
@@ -2890,12 +3339,14 @@ class Slide2DHState extends State<Slide2DH>
                     // resultOpacity = 0.0;
                     isLastIndex[1] = true;
                   } else if (indexVisibilitySlide2DH == 1 && delay) {
+                    prevResultOpacity = 0.0;
                     numberColor[0] = Colors.red;
                     numberOpacity[1] = 0.0;
-                    x2 = 0.16;
-                    y2 = 0.355;
+                    x2 = 0.3;
+                    y2 = 0.478;
                     circlesOpacity[0] = 0.0;
                     lineOpacity[0] = 0.0;
+                    opacityTimer.cancel();
                     // opTimer(0);
                     redBulletOpacity[0] = 1.0;
                     blackBulletOpacity[0] = 0.0;
@@ -2906,8 +3357,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 2 && delay) {
                     numberColor[1] = Colors.red;
                     numberOpacity[2] = 0.0;
-                    x3 = 0.16;
-                    y3 = 0.355;
+                    x3 = 0.3;
+                    y3 = 0.478;
                     circlesOpacity[0] = 1.0;
                     lineOpacity[0] = 0.0;
                     circlesOpacity[1] = 0.0;
@@ -2922,8 +3373,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 3 && delay) {
                     numberColor[2] = Colors.red;
                     numberOpacity[3] = 0.0;
-                    x4 = 0.16;
-                    y4 = 0.355;
+                    x4 = 0.3;
+                    y4 = 0.478;
                     circlesOpacity[1] = 1.0;
                     lineOpacity[1] = 0.0;
                     circlesOpacity[2] = 0.0;
@@ -2938,8 +3389,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 4 && delay) {
                     numberColor[3] = Colors.red;
                     numberOpacity[4] = 0.0;
-                    x5 = 0.16;
-                    y5 = 0.355;
+                    x5 = 0.3;
+                    y5 = 0.478;
                     circlesOpacity[2] = 1.0;
                     lineOpacity[2] = 0.0;
                     circlesOpacity[3] = 0.0;
@@ -2954,8 +3405,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 5 && delay) {
                     numberColor[4] = Colors.red;
                     numberOpacity[5] = 0.0;
-                    x6 = 0.16;
-                    y6 = 0.355;
+                    x6 = 0.3;
+                    y6 = 0.478;
                     circlesOpacity[3] = 1.0;
                     lineOpacity[3] = 0.0;
                     circlesOpacity[4] = 0.0;
@@ -2970,8 +3421,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 6 && delay) {
                     numberColor[5] = Colors.red;
                     numberOpacity[6] = 0.0;
-                    x7 = 0.16;
-                    y7 = 0.355;
+                    x7 = 0.3;
+                    y7 = 0.478;
                     circlesOpacity[4] = 1.0;
                     lineOpacity[4] = 0.0;
                     circlesOpacity[5] = 0.0;
@@ -2986,8 +3437,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 7 && delay) {
                     numberColor[6] = Colors.red;
                     numberOpacity[7] = 0.0;
-                    x8 = 0.16;
-                    y8 = 0.355;
+                    x8 = 0.3;
+                    y8 = 0.478;
                     circlesOpacity[5] = 1.0;
                     lineOpacity[5] = 0.0;
                     circlesOpacity[6] = 0.0;
@@ -3002,8 +3453,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 8 && delay) {
                     numberColor[7] = Colors.red;
                     numberOpacity[8] = 0.0;
-                    x9 = 0.16;
-                    y9 = 0.355;
+                    x9 = 0.3;
+                    y9 = 0.478;
                     circlesOpacity[6] = 1.0;
                     lineOpacity[6] = 0.0;
                     circlesOpacity[7] = 0.0;
@@ -3018,8 +3469,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 9 && delay) {
                     numberColor[8] = Colors.red;
                     numberOpacity[9] = 0.0;
-                    x10 = 0.16;
-                    y10 = 0.355;
+                    x10 = 0.3;
+                    y10 = 0.478;
                     circlesOpacity[7] = 1.0;
                     lineOpacity[7] = 0.0;
                     circlesOpacity[8] = 0.0;
@@ -3034,8 +3485,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 10 && delay) {
                     numberColor[9] = Colors.red;
                     numberOpacity[10] = 0.0;
-                    x11 = 0.16;
-                    y11 = 0.355;
+                    x11 = 0.3;
+                    y11 = 0.478;
                     circlesOpacity[8] = 1.0;
                     lineOpacity[8] = 0.0;
                     circlesOpacity[9] = 0.0;
@@ -3050,8 +3501,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 11 && delay) {
                     numberColor[10] = Colors.red;
                     numberOpacity[11] = 0.0;
-                    x12 = 0.16;
-                    y12 = 0.355;
+                    x12 = 0.3;
+                    y12 = 0.478;
                     circlesOpacity[9] = 1.0;
                     lineOpacity[9] = 0.0;
                     circlesOpacity[10] = 0.0;
@@ -3066,8 +3517,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 12 && delay) {
                     numberColor[11] = Colors.red;
                     numberOpacity[12] = 0.0;
-                    x13 = 0.16;
-                    y13 = 0.355;
+                    x13 = 0.3;
+                    y13 = 0.478;
                     circlesOpacity[10] = 1.0;
                     lineOpacity[10] = 0.0;
                     circlesOpacity[11] = 0.0;
@@ -3082,8 +3533,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 13 && delay) {
                     numberColor[12] = Colors.red;
                     numberOpacity[13] = 0.0;
-                    x14 = 0.16;
-                    y14 = 0.355;
+                    x14 = 0.3;
+                    y14 = 0.478;
                     circlesOpacity[11] = 1.0;
                     lineOpacity[11] = 0.0;
                     circlesOpacity[12] = 0.0;
@@ -3098,8 +3549,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 14 && delay) {
                     numberColor[13] = Colors.red;
                     numberOpacity[14] = 0.0;
-                    x15 = 0.16;
-                    y15 = 0.355;
+                    x15 = 0.3;
+                    y15 = 0.478;
                     circlesOpacity[12] = 1.0;
                     lineOpacity[12] = 0.0;
                     circlesOpacity[13] = 0.0;
@@ -3114,8 +3565,8 @@ class Slide2DHState extends State<Slide2DH>
                   } else if (indexVisibilitySlide2DH == 15 && delay) {
                     numberColor[14] = Colors.red;
                     numberOpacity[15] = 0.0;
-                    x16 = 0.16;
-                    y16 = 0.355;
+                    x16 = 0.3;
+                    y16 = 0.478;
                     circlesOpacity[13] = 1.0;
                     lineOpacity[13] = 0.0;
                     circlesOpacity[14] = 0.0;
@@ -3160,6 +3611,10 @@ class Slide2DHState extends State<Slide2DH>
                     // }
                   }
                   if (indexVisibilitySlide2DH >= 0) {
+                    if (indexVisibilitySlide2DH > 0) {
+                      prevResult =
+                          (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
+                    }
                     result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
                   }
                 },
@@ -3715,9 +4170,14 @@ class Slide2DHState extends State<Slide2DH>
                   Global.val = 1;
                   Global.replacedSliderValue = Global.slider;
                   videoTimerVariable.cancel();
+                  videoTimerProblem().cancel();
                   timerSlide2DH.cancel();
+                  delayTimer.cancel();
                   videoTimerSlide2DH.cancel();
                   opacityTimer.cancel();
+                  videoTimerVariable.cancel;
+                  pageNumberTimer.cancel();
+                  selectPageNumber(0, 0).cancel();
                   isLastIndex = [false, true];
                   indexVisibilitySlide2DH = -1;
                   checkVisibility = 0;
@@ -3744,39 +4204,42 @@ class Slide2DHState extends State<Slide2DH>
                   timerSeconds = 3;
                   circleVisibility = false;
                   resultOpacity = 0.0;
+                  prevResultOpacity = 0.0;
+                  prevResult = 1;
+                  result = 1;
                   isShown = true;
-                  x1 = 0.16;
-                  x2 = 0.16;
-                  x3 = 0.16;
-                  x4 = 0.16;
-                  x5 = 0.16;
-                  x6 = 0.16;
-                  x7 = 0.16;
-                  x8 = 0.16;
-                  x9 = 0.16;
-                  x10 = 0.16;
-                  x11 = 0.16;
-                  x12 = 0.16;
-                  x13 = 0.16;
-                  x14 = 0.16;
-                  x15 = 0.16;
-                  x16 = 0.16;
-                  y1 = 0.355;
-                  y2 = 0.355;
-                  y3 = 0.355;
-                  y4 = 0.355;
-                  y5 = 0.355;
-                  y6 = 0.355;
-                  y7 = 0.355;
-                  y8 = 0.355;
-                  y9 = 0.355;
-                  y10 = 0.355;
-                  y11 = 0.355;
-                  y12 = 0.355;
-                  y13 = 0.355;
-                  y14 = 0.355;
-                  y15 = 0.355;
-                  y16 = 0.355;
+                  x1 = 0.3;
+                  x2 = 0.3;
+                  x3 = 0.3;
+                  x4 = 0.3;
+                  x5 = 0.3;
+                  x6 = 0.3;
+                  x7 = 0.3;
+                  x8 = 0.3;
+                  x9 = 0.3;
+                  x10 = 0.3;
+                  x11 = 0.3;
+                  x12 = 0.3;
+                  x13 = 0.3;
+                  x14 = 0.3;
+                  x15 = 0.3;
+                  x16 = 0.3;
+                  y1 = 0.478;
+                  y2 = 0.478;
+                  y3 = 0.478;
+                  y4 = 0.478;
+                  y5 = 0.478;
+                  y6 = 0.478;
+                  y7 = 0.478;
+                  y8 = 0.478;
+                  y9 = 0.478;
+                  y10 = 0.478;
+                  y11 = 0.478;
+                  y12 = 0.478;
+                  y13 = 0.478;
+                  y14 = 0.478;
+                  y15 = 0.478;
+                  y16 = 0.478;
                   circlesOpacity = [
                     0.0,
                     0.0,
@@ -4022,7 +4485,7 @@ class Slide2DHState extends State<Slide2DH>
                     numberPageDialog();
                   },
                   child: Text(
-                    '2: ${indexVisibilitySlide2DH + 1} / 17',
+                    '${indexVisibilitySlide2DH + 1} / 17',
                     style: const TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
@@ -4214,33 +4677,37 @@ class Slide2DHState extends State<Slide2DH>
     );
   }
 
-  opTimer(int op, bool fromDialog) {
+  opTimer(int op, bool fromDialog, int blinkSec) {
     int cnt = 0;
     isShown = true;
-    if (!fromDialog) {
-      opacityTimer = Timer.periodic(
-        const Duration(seconds: 1),
-        (_) {
-          setState(
-            () {
-              if (cnt == 4) {
-                circlesOpacity[op] = 1.0;
-                opacityTimer.cancel();
-              }
-              if (isShown) {
-                circlesOpacity[op] = 1.0;
-                isShown = false;
-              } else {
-                circlesOpacity[op] = 0.2;
-                isShown = true;
-              }
-              cnt++;
-            },
-          );
-        },
-      );
-    } else {
+    if (blinkSec == 0) {
       circlesOpacity[op] = 1.0;
+    } else {
+      if (!fromDialog) {
+        opacityTimer = Timer.periodic(
+          Duration(seconds: blinkSec),
+          (_) {
+            setState(
+              () {
+                if (cnt == 4) {
+                  circlesOpacity[op] = 1.0;
+                  opacityTimer.cancel();
+                }
+                if (isShown) {
+                  circlesOpacity[op] = 1.0;
+                  isShown = false;
+                } else {
+                  circlesOpacity[op] = 0.2;
+                  isShown = true;
+                }
+                cnt++;
+              },
+            );
+          },
+        );
+      } else {
+        circlesOpacity[op] = 1.0;
+      }
     }
   }
 
@@ -4267,7 +4734,7 @@ class Slide2DHState extends State<Slide2DH>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppLocalizations.of(context)!.intro0,
+                AppLocalizations.of(context)!.intro36,
                 // '- What is primitive root of prime number?',
                 style: const TextStyle(
                   fontSize: 20,
@@ -4277,161 +4744,51 @@ class Slide2DHState extends State<Slide2DH>
               const SizedBox(
                 height: 20,
               ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro1,
-                      // text: '• A primitive root ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(r)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro2,
-                      // text: ' is a primitive root modulo ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '(n)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro3,
-                      // text: ' if every number coprime to ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'r',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '1',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod n, r',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '2',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod n, ..., r',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          'n-1',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    // const TextSpan(
-                    //   text: '(n)',
-                    //   style: TextStyle(
-                    //     color: Colors.blue,
-                    //     fontStyle: FontStyle.italic,
-                    //   ),
-                    // ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro4,
-                      // text: ' is congruent to a power of ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    // const TextSpan(
-                    //   text: '(r)',
-                    //   style: TextStyle(
-                    //     color: Colors.blue,
-                    //     fontStyle: FontStyle.italic,
-                    //   ),
-                    // ),
-                    // TextSpan(
-                    //   text: AppLocalizations.of(context)!.intro5,
-                    //   // text: ' modulo ',
-                    //   style: const TextStyle(
-                    //     fontSize: 20,
-                    //     color: Colors.black,
-                    //   ),
-                    // ),
-                    // const TextSpan(
-                    //   text: '(n)',
-                    //   style: TextStyle(
-                    //     color: Colors.blue,
-                    //     fontStyle: FontStyle.italic,
-                    //   ),
-                    // ),
-                    // const TextSpan(
-                    //   text: '.',
-                    //   style: TextStyle(
-                    //     color: Colors.blue,
-                    //     fontStyle: FontStyle.italic,
-                    //   ),
-                    // ),
-                  ],
+
+              Text(
+                AppLocalizations.of(context)!.intro37,
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+
+              Text(
+                AppLocalizations.of(context)!.intro38,
+                // '- What is primitive root of prime number?',
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.red,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+
+              Text(
+                AppLocalizations.of(context)!.intro39,
+                style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              // Text(
+              //   AppLocalizations.of(context)!.intro0,
+              //   // '- What is primitive root of prime number?',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //     color: Colors.red,
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               // RichText(
               //   text: TextSpan(
               //     style: const TextStyle(
@@ -4439,414 +4796,569 @@ class Slide2DHState extends State<Slide2DH>
               //       color: Colors.black,
               //     ),
               //     children: [
-              // TextSpan(
-              //   text: AppLocalizations.of(context)!.intro6,
-              //   // text: '• In other words we can call ',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.black,
-              //   ),
-              // ),
-              // const TextSpan(
-              //   text: '(r)',
-              //   style: TextStyle(
-              //     color: Colors.blue,
-              //     fontStyle: FontStyle.italic,
-              //   ),
-              // ),
-              // TextSpan(
-              //   text: AppLocalizations.of(context)!.intro7,
-              //   // text: ' primitive root of the prime number ',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.black,
-              //   ),
-              // ),
-              // const TextSpan(
-              //   text: '(n)',
-              //   style: TextStyle(
-              //     color: Colors.blue,
-              //     fontStyle: FontStyle.italic,
-              //   ),
-              // ),
-              // TextSpan(
-              //   text: AppLocalizations.of(context)!.intro8,
-              //   // text: ' if ',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.black,
-              //   ),
-              // ),
-              // const TextSpan(
-              //   text: 'r',
-              //   style: TextStyle(
-              //     color: Colors.blue,
-              //     fontStyle: FontStyle.italic,
-              //   ),
-              // ),
-              // WidgetSpan(
-              //   child: Transform.translate(
-              //     offset: const Offset(2, -10),
-              //     child: const Text(
-              //       '1',
-              //       //superscript is usually smaller in size
-              //       textScaleFactor: 1,
-              //       style: TextStyle(
-              //         color: Colors.blue,
-              //         fontStyle: FontStyle.italic,
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro1,
+              //         // text: '• A primitive root ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
               //       ),
-              //     ),
-              //   ),
-              // ),
-              // const TextSpan(
-              //   text: ' mod n, r',
-              //   style: TextStyle(
-              //     color: Colors.blue,
-              //     fontStyle: FontStyle.italic,
-              //   ),
-              // ),
-              // WidgetSpan(
-              //   child: Transform.translate(
-              //     offset: const Offset(2, -10),
-              //     child: const Text(
-              //       '2',
-              //       //superscript is usually smaller in size
-              //       textScaleFactor: 1,
-              //       style: TextStyle(
-              //         color: Colors.blue,
-              //         fontStyle: FontStyle.italic,
+              //       const TextSpan(
+              //         text: '(r)',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
               //       ),
-              //     ),
-              //   ),
-              // ),
-              // const TextSpan(
-              //   text: ' mod n, ..., r',
-              //   style: TextStyle(
-              //     color: Colors.blue,
-              //     fontStyle: FontStyle.italic,
-              //   ),
-              // ),
-              // WidgetSpan(
-              //   child: Transform.translate(
-              //     offset: const Offset(2, -10),
-              //     child: const Text(
-              //       'n-1',
-              //       //superscript is usually smaller in size
-              //       textScaleFactor: 1,
-              //       style: TextStyle(
-              //         color: Colors.blue,
-              //         fontStyle: FontStyle.italic,
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro2,
+              //         // text: ' is a primitive root modulo ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
               //       ),
-              //     ),
-              //   ),
-              // ),
-              // TextSpan(
-              //   text: AppLocalizations.of(context)!.intro9,
-              //   // text: ' are distinct.',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.black,
-              //   ),
-              // ),
+              //       const TextSpan(
+              //         text: '(n)',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro3,
+              //         // text: ' if every number coprime to ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'r',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '1',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod n, r',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '2',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod n, ..., r',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             'n-1',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       // const TextSpan(
+              //       //   text: '(n)',
+              //       //   style: TextStyle(
+              //       //     color: Colors.blue,
+              //       //     fontStyle: FontStyle.italic,
+              //       //   ),
+              //       // ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro4,
+              //         // text: ' is congruent to a power of ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       // const TextSpan(
+              //       //   text: '(r)',
+              //       //   style: TextStyle(
+              //       //     color: Colors.blue,
+              //       //     fontStyle: FontStyle.italic,
+              //       //   ),
+              //       // ),
+              //       // TextSpan(
+              //       //   text: AppLocalizations.of(context)!.intro5,
+              //       //   // text: ' modulo ',
+              //       //   style: const TextStyle(
+              //       //     fontSize: 20,
+              //       //     color: Colors.black,
+              //       //   ),
+              //       // ),
+              //       // const TextSpan(
+              //       //   text: '(n)',
+              //       //   style: TextStyle(
+              //       //     color: Colors.blue,
+              //       //     fontStyle: FontStyle.italic,
+              //       //   ),
+              //       // ),
+              //       // const TextSpan(
+              //       //   text: '.',
+              //       //   style: TextStyle(
+              //       //     color: Colors.blue,
+              //       //     fontStyle: FontStyle.italic,
+              //       //   ),
+              //       // ),
               //     ],
               //   ),
               // ),
-              const SizedBox(
-                height: 20,
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro10,
-                      // text: '-> Example: ',
-                      style: const TextStyle(
-                        color: Colors.green,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro11,
-                      // text: 'Let\'s assume that ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'r = 2',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro12,
-                      // text: ' and ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'n = 5',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' :',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Text(
-                AppLocalizations.of(context)!.intro13,
-                // '    After calculating the modulos, we get:',
-                style: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text: '      2',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '1',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.purple,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 5 = 2 ',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text: '      2',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '2',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.purple,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 5 = 4 ',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text: '      2',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '3',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.purple,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 5 = 3 ',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    const TextSpan(
-                      text: '      2',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '4',
-                          //superscript is usually smaller in size
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.purple,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 5 = 1 ',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro14,
-                      // text: '    As we see, all results are ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro15,
-                      // text: ' dstinct',
-                      style: const TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro16,
-                      // text: ', so we can say that ',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '2',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro17,
-                      // text: ' is a primitive root of the prime number',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '5',
-                      style: TextStyle(
-                        color: Colors.purple,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro18,
-                      // text: '',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' .',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+              // // RichText(
+              // //   text: TextSpan(
+              // //     style: const TextStyle(
+              // //       fontSize: 20,
+              // //       color: Colors.black,
+              // //     ),
+              // //     children: [
+              // // TextSpan(
+              // //   text: AppLocalizations.of(context)!.intro6,
+              // //   // text: '• In other words we can call ',
+              // //   style: const TextStyle(
+              // //     fontSize: 20,
+              // //     color: Colors.black,
+              // //   ),
+              // // ),
+              // // const TextSpan(
+              // //   text: '(r)',
+              // //   style: TextStyle(
+              // //     color: Colors.blue,
+              // //     fontStyle: FontStyle.italic,
+              // //   ),
+              // // ),
+              // // TextSpan(
+              // //   text: AppLocalizations.of(context)!.intro7,
+              // //   // text: ' primitive root of the prime number ',
+              // //   style: const TextStyle(
+              // //     fontSize: 20,
+              // //     color: Colors.black,
+              // //   ),
+              // // ),
+              // // const TextSpan(
+              // //   text: '(n)',
+              // //   style: TextStyle(
+              // //     color: Colors.blue,
+              // //     fontStyle: FontStyle.italic,
+              // //   ),
+              // // ),
+              // // TextSpan(
+              // //   text: AppLocalizations.of(context)!.intro8,
+              // //   // text: ' if ',
+              // //   style: const TextStyle(
+              // //     fontSize: 20,
+              // //     color: Colors.black,
+              // //   ),
+              // // ),
+              // // const TextSpan(
+              // //   text: 'r',
+              // //   style: TextStyle(
+              // //     color: Colors.blue,
+              // //     fontStyle: FontStyle.italic,
+              // //   ),
+              // // ),
+              // // WidgetSpan(
+              // //   child: Transform.translate(
+              // //     offset: const Offset(2, -10),
+              // //     child: const Text(
+              // //       '1',
+              // //       //superscript is usually smaller in size
+              // //       textScaleFactor: 1,
+              // //       style: TextStyle(
+              // //         color: Colors.blue,
+              // //         fontStyle: FontStyle.italic,
+              // //       ),
+              // //     ),
+              // //   ),
+              // // ),
+              // // const TextSpan(
+              // //   text: ' mod n, r',
+              // //   style: TextStyle(
+              // //     color: Colors.blue,
+              // //     fontStyle: FontStyle.italic,
+              // //   ),
+              // // ),
+              // // WidgetSpan(
+              // //   child: Transform.translate(
+              // //     offset: const Offset(2, -10),
+              // //     child: const Text(
+              // //       '2',
+              // //       //superscript is usually smaller in size
+              // //       textScaleFactor: 1,
+              // //       style: TextStyle(
+              // //         color: Colors.blue,
+              // //         fontStyle: FontStyle.italic,
+              // //       ),
+              // //     ),
+              // //   ),
+              // // ),
+              // // const TextSpan(
+              // //   text: ' mod n, ..., r',
+              // //   style: TextStyle(
+              // //     color: Colors.blue,
+              // //     fontStyle: FontStyle.italic,
+              // //   ),
+              // // ),
+              // // WidgetSpan(
+              // //   child: Transform.translate(
+              // //     offset: const Offset(2, -10),
+              // //     child: const Text(
+              // //       'n-1',
+              // //       //superscript is usually smaller in size
+              // //       textScaleFactor: 1,
+              // //       style: TextStyle(
+              // //         color: Colors.blue,
+              // //         fontStyle: FontStyle.italic,
+              // //       ),
+              // //     ),
+              // //   ),
+              // // ),
+              // // TextSpan(
+              // //   text: AppLocalizations.of(context)!.intro9,
+              // //   // text: ' are distinct.',
+              // //   style: const TextStyle(
+              // //     fontSize: 20,
+              // //     color: Colors.black,
+              // //   ),
+              // // ),
+              // //     ],
+              // //   ),
+              // // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro10,
+              //         // text: '-> Example: ',
+              //         style: const TextStyle(
+              //           color: Colors.green,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro11,
+              //         // text: 'Let\'s assume that ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'r = 2',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro12,
+              //         // text: ' and ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'n = 5',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' :',
+              //         style: TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // Text(
+              //   AppLocalizations.of(context)!.intro13,
+              //   // '    After calculating the modulos, we get:',
+              //   style: const TextStyle(
+              //     fontSize: 20,
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       const TextSpan(
+              //         text: '      2',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '1',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.purple,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 5 = 2 ',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       const TextSpan(
+              //         text: '      2',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '2',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.purple,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 5 = 4 ',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       const TextSpan(
+              //         text: '      2',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '3',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.purple,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 5 = 3 ',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       const TextSpan(
+              //         text: '      2',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '4',
+              //             //superscript is usually smaller in size
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.purple,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 5 = 1 ',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro14,
+              //         // text: '    As we see, all results are ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro15,
+              //         // text: ' dstinct',
+              //         style: const TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro16,
+              //         // text: ', so we can say that ',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '2',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro17,
+              //         // text: ' is a primitive root of the prime number',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '5',
+              //         style: TextStyle(
+              //           color: Colors.purple,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro18,
+              //         // text: '',
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' .',
+              //         style: TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
               Text(
                 AppLocalizations.of(context)!.intro19,
                 // '- Discrete Logarithm Problem:',
@@ -5231,419 +5743,434 @@ class Slide2DHState extends State<Slide2DH>
 
   stepNumber() {
     setState(() {
-      int controllerIndex = (int.parse(pageController2.text)) - 1;
-      int a = indexVisibilitySlide2DH;
-      indexVisibilitySlide2DH = (int.parse(pageController2.text)) - 1;
+      stopFunction();
 
-      if (controllerIndex > a) {
-        while (controllerIndex >= a) {
-          result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
-          if (controllerIndex == 16 && delay) {
-            numberColor[15] = Colors.black;
-            circlesOpacity[14] = 0.0;
-            lineOpacity[14] = 1.0;
-            opTimer(15, true);
-            blackBulletOpacity[0] = 0.0;
-            redBulletOpacity[5] = 0.0;
-            blackBulletOpacity[5] = 1.0;
-            redBulletOpacity[0] = 1.0;
-            isLastIndex[0] = true;
-          } else if (controllerIndex == 15 && delay) {
-            numberColor[14] = Colors.black;
-            numberOpacity[15] = 1.0;
-            x16 = 0.78;
-            y16 = 0.52;
-            circlesOpacity[13] = 0.0;
-            lineOpacity[13] = 1.0;
-            opTimer(14, true);
-            redBulletOpacity[1] = 0.0;
-            blackBulletOpacity[1] = 1.0;
-            redBulletOpacity[5] = 1.0;
-          } else if (controllerIndex == 14 && delay) {
-            numberColor[13] = Colors.black;
-            numberOpacity[14] = 1.0;
-            x15 = 0.78;
-            y15 = 0.115;
-            circlesOpacity[12] = 0.0;
-            lineOpacity[12] = 1.0;
-            opTimer(13, true);
-            redBulletOpacity[11] = 0.0;
-            blackBulletOpacity[11] = 1.0;
-            redBulletOpacity[1] = 1.0;
-          } else if (controllerIndex == 13 && delay) {
-            numberColor[12] = Colors.black;
-            numberOpacity[13] = 1.0;
-            x14 = 0.475;
-            y14 = 0.311;
-            circlesOpacity[11] = 0.0;
-            lineOpacity[11] = 1.0;
-            opTimer(12, true);
-            redBulletOpacity[3] = 0.0;
-            blackBulletOpacity[3] = 1.0;
-            redBulletOpacity[11] = 1.0;
-          } else if (controllerIndex == 12 && delay) {
-            numberColor[11] = Colors.black;
-            numberOpacity[12] = 1.0;
-            x13 = 0.825;
-            y13 = 0.31;
-            circlesOpacity[10] = 0.0;
-            lineOpacity[10] = 1.0;
-            opTimer(11, true);
-            redBulletOpacity[6] = 0.0;
-            blackBulletOpacity[6] = 1.0;
-            redBulletOpacity[3] = 1.0;
-          } else if (controllerIndex == 11 && delay) {
-            numberColor[10] = Colors.black;
-            numberOpacity[11] = 1.0;
-            x12 = 0.723;
-            y12 = 0.57;
-            circlesOpacity[9] = 0.0;
-            lineOpacity[9] = 1.0;
-            opTimer(10, true);
-            redBulletOpacity[7] = 0.0;
-            blackBulletOpacity[7] = 1.0;
-            redBulletOpacity[6] = 1.0;
-          } else if (controllerIndex == 10 && delay) {
-            numberColor[9] = Colors.black;
-            numberOpacity[10] = 1.0;
-            x11 = 0.65;
-            y11 = 0.59;
-            circlesOpacity[8] = 0.0;
-            lineOpacity[8] = 1.0;
-            opTimer(9, true);
-            redBulletOpacity[13] = 0.0;
-            blackBulletOpacity[13] = 1.0;
-            redBulletOpacity[7] = 1.0;
-          } else if (controllerIndex == 9 && delay) {
-            numberColor[8] = Colors.black;
-            numberOpacity[9] = 1.0;
-            x10 = 0.52;
-            y10 = 0.11;
-            circlesOpacity[7] = 0.0;
-            lineOpacity[7] = 1.0;
-            opTimer(8, true);
-            redBulletOpacity[15] = 0.0;
-            blackBulletOpacity[15] = 1.0;
-            redBulletOpacity[13] = 1.0;
-          } else if (controllerIndex == 8 && delay) {
-            numberColor[7] = Colors.black;
-            numberOpacity[8] = 1.0;
-            x9 = 0.65;
-            y9 = 0.035;
-            circlesOpacity[6] = 0.0;
-            lineOpacity[6] = 1.0;
-            opTimer(7, true);
-            redBulletOpacity[10] = 0.0;
-            blackBulletOpacity[10] = 1.0;
-            redBulletOpacity[15] = 1.0;
-          } else if (controllerIndex == 7 && delay) {
-            numberColor[6] = Colors.black;
-            numberOpacity[7] = 1.0;
-            x8 = 0.49;
-            y8 = 0.42;
-            circlesOpacity[5] = 0.0;
-            lineOpacity[5] = 1.0;
-            opTimer(6, true);
-            redBulletOpacity[14] = 0.0;
-            blackBulletOpacity[14] = 1.0;
-            redBulletOpacity[10] = 1.0;
-          } else if (controllerIndex == 6 && delay) {
-            numberColor[5] = Colors.black;
-            numberOpacity[6] = 1.0;
-            x7 = 0.585;
-            y7 = 0.052;
-            circlesOpacity[4] = 0.0;
-            lineOpacity[4] = 1.0;
-            opTimer(5, true);
-            redBulletOpacity[4] = 0.0;
-            blackBulletOpacity[4] = 1.0;
-            redBulletOpacity[14] = 1.0;
-          } else if (controllerIndex == 5 && delay) {
-            numberColor[4] = Colors.black;
-            numberOpacity[5] = 1.0;
-            x6 = 0.815;
-            y6 = 0.42;
-            circlesOpacity[3] = 0.0;
-            lineOpacity[3] = 1.0;
-            opTimer(4, true);
-            redBulletOpacity[12] = 0.0;
-            blackBulletOpacity[12] = 1.0;
-            redBulletOpacity[4] = 1.0;
-          } else if (controllerIndex == 4 && delay) {
-            numberColor[3] = Colors.black;
-            numberOpacity[4] = 1.0;
-            x5 = 0.49;
-            y5 = 0.2;
-            circlesOpacity[2] = 0.0;
-            lineOpacity[2] = 1.0;
-            opTimer(3, true);
-            redBulletOpacity[9] = 0.0;
-            blackBulletOpacity[9] = 1.0;
-            redBulletOpacity[12] = 1.0;
-          } else if (controllerIndex == 3 && delay) {
-            numberColor[2] = Colors.black;
-            numberOpacity[3] = 1.0;
-            x4 = 0.52;
-            y4 = 0.5;
-            circlesOpacity[1] = 0.0;
-            lineOpacity[1] = 1.0;
-            opTimer(2, true);
-            redBulletOpacity[8] = 0.0;
-            blackBulletOpacity[8] = 1.0;
-            redBulletOpacity[9] = 1.0;
-          } else if (controllerIndex == 2 && delay) {
-            numberColor[1] = Colors.black;
-            numberOpacity[2] = 1.0;
-            x3 = 0.58;
-            y3 = 0.57;
-            circlesOpacity[0] = 0.0;
-            lineOpacity[0] = 1.0;
-            opTimer(1, true);
-            redBulletOpacity[2] = 0.0;
-            blackBulletOpacity[2] = 1.0;
-            redBulletOpacity[8] = 1.0;
-          } else if (controllerIndex == 1 && delay) {
-            numberColor[0] = Colors.black;
-            numberOpacity[1] = 1.0;
-            x2 = 0.812;
-            y2 = 0.2;
-            opTimer(0, true);
-            redBulletOpacity[0] = 0.0;
-            blackBulletOpacity[0] = 1.0;
-            redBulletOpacity[2] = 1.0;
-          } else if (controllerIndex == 0) {
-            numberOpacity[0] = 1.0;
-            x1 = 0.728;
-            y1 = 0.06;
-            redBulletOpacity[0] = 1.0;
-            numberOpacity[0] = 1.0;
-            resultOpacity = 1.0;
-            isLastIndex[1] = false;
-          }
-          controllerIndex--;
-        }
-      } else {
-        while (a >= controllerIndex) {
-          if (a == 0) {
-            pageController2 = TextEditingController()
-              ..text = (indexVisibilitySlide2DH + 1).toString();
-            numberOpacity[0] = 0.0;
-            x1 = 0.16;
-            y1 = 0.355;
-            redBulletOpacity[0] = 0.0;
-            numberOpacity[0] = 0.0;
-            resultOpacity = 0.0;
-            isLastIndex[1] = true;
-          } else if (a == 1 && delay) {
-            numberColor[0] = Colors.red;
-            numberOpacity[1] = 0.0;
-            x2 = 0.16;
-            y2 = 0.355;
-            circlesOpacity[0] = 0.0;
-            lineOpacity[0] = 0.0;
-            redBulletOpacity[0] = 1.0;
-            blackBulletOpacity[0] = 0.0;
-            redBulletOpacity[2] = 0.0;
-          } else if (a == 2 && delay) {
-            numberColor[1] = Colors.red;
-            numberOpacity[2] = 0.0;
-            x3 = 0.16;
-            y3 = 0.355;
-            circlesOpacity[0] = 1.0;
-            lineOpacity[0] = 0.0;
-            circlesOpacity[1] = 0.0;
-            lineOpacity[1] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[2] = 1.0;
-            blackBulletOpacity[2] = 0.0;
-            redBulletOpacity[8] = 0.0;
-          } else if (a == 3 && delay) {
-            numberColor[2] = Colors.red;
-            numberOpacity[3] = 0.0;
-            x4 = 0.16;
-            y4 = 0.355;
-            circlesOpacity[1] = 1.0;
-            lineOpacity[1] = 0.0;
-            circlesOpacity[2] = 0.0;
-            lineOpacity[2] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[8] = 1.0;
-            blackBulletOpacity[8] = 0.0;
-            redBulletOpacity[9] = 0.0;
-          } else if (a == 4 && delay) {
-            numberColor[3] = Colors.red;
-            numberOpacity[4] = 0.0;
-            x5 = 0.16;
-            y5 = 0.355;
-            circlesOpacity[2] = 1.0;
-            lineOpacity[2] = 0.0;
-            circlesOpacity[3] = 0.0;
-            lineOpacity[3] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[9] = 1.0;
-            blackBulletOpacity[9] = 0.0;
-            redBulletOpacity[12] = 0.0;
-          } else if (a == 5 && delay) {
-            numberColor[4] = Colors.red;
-            numberOpacity[5] = 0.0;
-            x6 = 0.16;
-            y6 = 0.355;
-            circlesOpacity[3] = 1.0;
-            lineOpacity[3] = 0.0;
-            circlesOpacity[4] = 0.0;
-            lineOpacity[4] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[12] = 1.0;
-            blackBulletOpacity[12] = 0.0;
-            redBulletOpacity[4] = 0.0;
-          } else if (a == 6 && delay) {
-            numberColor[5] = Colors.red;
-            numberOpacity[6] = 0.0;
-            x7 = 0.16;
-            y7 = 0.355;
-            circlesOpacity[4] = 1.0;
-            lineOpacity[4] = 0.0;
-            circlesOpacity[5] = 0.0;
-            lineOpacity[5] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[4] = 1.0;
-            blackBulletOpacity[4] = 0.0;
-            redBulletOpacity[14] = 0.0;
-          } else if (a == 7 && delay) {
-            numberColor[6] = Colors.red;
-            numberOpacity[7] = 0.0;
-            x8 = 0.16;
-            y8 = 0.355;
-            circlesOpacity[5] = 1.0;
-            lineOpacity[5] = 0.0;
-            circlesOpacity[6] = 0.0;
-            lineOpacity[6] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[14] = 1.0;
-            blackBulletOpacity[14] = 0.0;
-            redBulletOpacity[10] = 0.0;
-          } else if (a == 8 && delay) {
-            numberColor[7] = Colors.red;
-            numberOpacity[8] = 0.0;
-            x9 = 0.16;
-            y9 = 0.355;
-            circlesOpacity[6] = 1.0;
-            lineOpacity[6] = 0.0;
-            circlesOpacity[7] = 0.0;
-            lineOpacity[7] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[10] = 1.0;
-            blackBulletOpacity[10] = 0.0;
-            redBulletOpacity[15] = 0.0;
-          } else if (a == 9 && delay) {
-            numberColor[8] = Colors.red;
-            numberOpacity[9] = 0.0;
-            x10 = 0.16;
-            y10 = 0.355;
-            circlesOpacity[7] = 1.0;
-            lineOpacity[7] = 0.0;
-            circlesOpacity[8] = 0.0;
-            lineOpacity[8] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[15] = 1.0;
-            blackBulletOpacity[15] = 0.0;
-            redBulletOpacity[13] = 0.0;
-          } else if (a == 10 && delay) {
-            numberColor[9] = Colors.red;
-            numberOpacity[10] = 0.0;
-            x11 = 0.16;
-            y11 = 0.355;
-            circlesOpacity[8] = 1.0;
-            lineOpacity[8] = 0.0;
-            circlesOpacity[9] = 0.0;
-            lineOpacity[9] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[13] = 1.0;
-            blackBulletOpacity[13] = 0.0;
-            redBulletOpacity[7] = 0.0;
-          } else if (a == 11 && delay) {
-            numberColor[10] = Colors.red;
-            numberOpacity[11] = 0.0;
-            x12 = 0.16;
-            y12 = 0.355;
-            circlesOpacity[9] = 1.0;
-            lineOpacity[9] = 0.0;
-            circlesOpacity[10] = 0.0;
-            lineOpacity[10] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[7] = 1.0;
-            blackBulletOpacity[7] = 0.0;
-            redBulletOpacity[6] = 0.0;
-          } else if (a == 12 && delay) {
-            numberColor[11] = Colors.red;
-            numberOpacity[12] = 0.0;
-            x13 = 0.16;
-            y13 = 0.355;
-            circlesOpacity[10] = 1.0;
-            lineOpacity[10] = 0.0;
-            circlesOpacity[11] = 0.0;
-            lineOpacity[11] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[6] = 1.0;
-            blackBulletOpacity[6] = 0.0;
-            redBulletOpacity[3] = 0.0;
-          } else if (a == 13 && delay) {
-            numberColor[12] = Colors.red;
-            numberOpacity[13] = 0.0;
-            x14 = 0.16;
-            y14 = 0.355;
-            circlesOpacity[11] = 1.0;
-            lineOpacity[11] = 0.0;
-            circlesOpacity[12] = 0.0;
-            lineOpacity[12] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[3] = 1.0;
-            blackBulletOpacity[3] = 0.0;
-            redBulletOpacity[11] = 0.0;
-          } else if (a == 14 && delay) {
-            numberColor[13] = Colors.red;
-            numberOpacity[14] = 0.0;
-            x15 = 0.16;
-            y15 = 0.355;
-            circlesOpacity[12] = 1.0;
-            lineOpacity[12] = 0.0;
-            circlesOpacity[13] = 0.0;
-            lineOpacity[13] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[11] = 1.0;
-            blackBulletOpacity[11] = 0.0;
-            redBulletOpacity[1] = 0.0;
-          } else if (a == 15 && delay) {
-            numberColor[14] = Colors.red;
-            numberOpacity[15] = 0.0;
-            x16 = 0.16;
-            y16 = 0.355;
-            circlesOpacity[13] = 1.0;
-            lineOpacity[13] = 0.0;
-            circlesOpacity[14] = 0.0;
-            lineOpacity[14] = 0.0;
-            opacityTimer.cancel();
-            redBulletOpacity[1] = 1.0;
-            blackBulletOpacity[1] = 0.0;
-            redBulletOpacity[5] = 0.0;
-          } else if (a == 16 && delay) {
-            numberColor[15] = Colors.red;
-            circlesOpacity[14] = 1.0;
-            lineOpacity[14] = 0.0;
-            circlesOpacity[15] = 0.0;
-            lineOpacity[15] = 0.0;
-            opacityTimer.cancel();
-            blackBulletOpacity[0] = 1.0;
-            redBulletOpacity[5] = 1.0;
-            blackBulletOpacity[5] = 0.0;
-            redBulletOpacity[0] = 0.0;
-            isLastIndex[0] = false;
-          }
-          a--;
-        }
-      }
+      selectPageNumber(int.parse(pageController2.text) - 1, 0);
     });
   }
+
+  // stepNumber() {
+  //   setState(() {
+  //     int controllerIndex = (int.parse(pageController2.text));
+  //     int a = indexVisibilitySlide2DH;
+  //     indexVisibilitySlide2DH = (int.parse(pageController2.text)) - 1;
+
+  //     if (controllerIndex > a) {
+  //       while (controllerIndex >= a) {
+  //         if (indexVisibilitySlide2DH != 0) {
+  //           prevResult = (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
+  //         }
+  //         result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
+  //         if (controllerIndex == 16 && delay) {
+  //           numberColor[15] = Colors.black;
+  //           circlesOpacity[14] = 0.0;
+  //           lineOpacity[14] = 1.0;
+  //           opTimer(15, true);
+  //           blackBulletOpacity[0] = 0.0;
+  //           redBulletOpacity[5] = 0.0;
+  //           blackBulletOpacity[5] = 1.0;
+  //           redBulletOpacity[0] = 1.0;
+  //           isLastIndex[0] = true;
+  //         } else if (controllerIndex == 15 && delay) {
+  //           numberColor[14] = Colors.black;
+  //           numberOpacity[15] = 1.0;
+  //           x16 = 0.78;
+  //           y16 = 0.52;
+  //           circlesOpacity[13] = 0.0;
+  //           lineOpacity[13] = 1.0;
+  //           opTimer(14, true);
+  //           redBulletOpacity[1] = 0.0;
+  //           blackBulletOpacity[1] = 1.0;
+  //           redBulletOpacity[5] = 1.0;
+  //         } else if (controllerIndex == 14 && delay) {
+  //           numberColor[13] = Colors.black;
+  //           numberOpacity[14] = 1.0;
+  //           x15 = 0.78;
+  //           y15 = 0.115;
+  //           circlesOpacity[12] = 0.0;
+  //           lineOpacity[12] = 1.0;
+  //           opTimer(13, true);
+  //           redBulletOpacity[11] = 0.0;
+  //           blackBulletOpacity[11] = 1.0;
+  //           redBulletOpacity[1] = 1.0;
+  //         } else if (controllerIndex == 13 && delay) {
+  //           numberColor[12] = Colors.black;
+  //           numberOpacity[13] = 1.0;
+  //           x14 = 0.475;
+  //           y14 = 0.311;
+  //           circlesOpacity[11] = 0.0;
+  //           lineOpacity[11] = 1.0;
+  //           opTimer(12, true);
+  //           redBulletOpacity[3] = 0.0;
+  //           blackBulletOpacity[3] = 1.0;
+  //           redBulletOpacity[11] = 1.0;
+  //         } else if (controllerIndex == 12 && delay) {
+  //           numberColor[11] = Colors.black;
+  //           numberOpacity[12] = 1.0;
+  //           x13 = 0.825;
+  //           y13 = 0.31;
+  //           circlesOpacity[10] = 0.0;
+  //           lineOpacity[10] = 1.0;
+  //           opTimer(11, true);
+  //           redBulletOpacity[6] = 0.0;
+  //           blackBulletOpacity[6] = 1.0;
+  //           redBulletOpacity[3] = 1.0;
+  //         } else if (controllerIndex == 11 && delay) {
+  //           numberColor[10] = Colors.black;
+  //           numberOpacity[11] = 1.0;
+  //           x12 = 0.723;
+  //           y12 = 0.57;
+  //           circlesOpacity[9] = 0.0;
+  //           lineOpacity[9] = 1.0;
+  //           opTimer(10, true);
+  //           redBulletOpacity[7] = 0.0;
+  //           blackBulletOpacity[7] = 1.0;
+  //           redBulletOpacity[6] = 1.0;
+  //         } else if (controllerIndex == 10 && delay) {
+  //           numberColor[9] = Colors.black;
+  //           numberOpacity[10] = 1.0;
+  //           x11 = 0.65;
+  //           y11 = 0.59;
+  //           circlesOpacity[8] = 0.0;
+  //           lineOpacity[8] = 1.0;
+  //           opTimer(9, true);
+  //           redBulletOpacity[13] = 0.0;
+  //           blackBulletOpacity[13] = 1.0;
+  //           redBulletOpacity[7] = 1.0;
+  //         } else if (controllerIndex == 9 && delay) {
+  //           numberColor[8] = Colors.black;
+  //           numberOpacity[9] = 1.0;
+  //           x10 = 0.52;
+  //           y10 = 0.11;
+  //           circlesOpacity[7] = 0.0;
+  //           lineOpacity[7] = 1.0;
+  //           opTimer(8, true);
+  //           redBulletOpacity[15] = 0.0;
+  //           blackBulletOpacity[15] = 1.0;
+  //           redBulletOpacity[13] = 1.0;
+  //         } else if (controllerIndex == 8 && delay) {
+  //           numberColor[7] = Colors.black;
+  //           numberOpacity[8] = 1.0;
+  //           x9 = 0.65;
+  //           y9 = 0.035;
+  //           circlesOpacity[6] = 0.0;
+  //           lineOpacity[6] = 1.0;
+  //           opTimer(7, true);
+  //           redBulletOpacity[10] = 0.0;
+  //           blackBulletOpacity[10] = 1.0;
+  //           redBulletOpacity[15] = 1.0;
+  //         } else if (controllerIndex == 7 && delay) {
+  //           numberColor[6] = Colors.black;
+  //           numberOpacity[7] = 1.0;
+  //           x8 = 0.49;
+  //           y8 = 0.42;
+  //           circlesOpacity[5] = 0.0;
+  //           lineOpacity[5] = 1.0;
+  //           opTimer(6, true);
+  //           redBulletOpacity[14] = 0.0;
+  //           blackBulletOpacity[14] = 1.0;
+  //           redBulletOpacity[10] = 1.0;
+  //         } else if (controllerIndex == 6 && delay) {
+  //           numberColor[5] = Colors.black;
+  //           numberOpacity[6] = 1.0;
+  //           x7 = 0.585;
+  //           y7 = 0.052;
+  //           circlesOpacity[4] = 0.0;
+  //           lineOpacity[4] = 1.0;
+  //           opTimer(5, true);
+  //           redBulletOpacity[4] = 0.0;
+  //           blackBulletOpacity[4] = 1.0;
+  //           redBulletOpacity[14] = 1.0;
+  //         } else if (controllerIndex == 5 && delay) {
+  //           numberColor[4] = Colors.black;
+  //           numberOpacity[5] = 1.0;
+  //           x6 = 0.815;
+  //           y6 = 0.42;
+  //           circlesOpacity[3] = 0.0;
+  //           lineOpacity[3] = 1.0;
+  //           opTimer(4, true);
+  //           redBulletOpacity[12] = 0.0;
+  //           blackBulletOpacity[12] = 1.0;
+  //           redBulletOpacity[4] = 1.0;
+  //         } else if (controllerIndex == 4 && delay) {
+  //           numberColor[3] = Colors.black;
+  //           numberOpacity[4] = 1.0;
+  //           x5 = 0.49;
+  //           y5 = 0.2;
+  //           circlesOpacity[2] = 0.0;
+  //           lineOpacity[2] = 1.0;
+  //           opTimer(3, true);
+  //           redBulletOpacity[9] = 0.0;
+  //           blackBulletOpacity[9] = 1.0;
+  //           redBulletOpacity[12] = 1.0;
+  //         } else if (controllerIndex == 3 && delay) {
+  //           numberColor[2] = Colors.black;
+  //           numberOpacity[3] = 1.0;
+  //           x4 = 0.52;
+  //           y4 = 0.5;
+  //           circlesOpacity[1] = 0.0;
+  //           lineOpacity[1] = 1.0;
+  //           opTimer(2, true);
+  //           redBulletOpacity[8] = 0.0;
+  //           blackBulletOpacity[8] = 1.0;
+  //           redBulletOpacity[9] = 1.0;
+  //         } else if (controllerIndex == 2 && delay) {
+  //           numberColor[1] = Colors.black;
+  //           numberOpacity[2] = 1.0;
+  //           x3 = 0.58;
+  //           y3 = 0.57;
+  //           circlesOpacity[0] = 0.0;
+  //           lineOpacity[0] = 1.0;
+  //           opTimer(1, true);
+  //           redBulletOpacity[2] = 0.0;
+  //           blackBulletOpacity[2] = 1.0;
+  //           redBulletOpacity[8] = 1.0;
+  //         } else if (controllerIndex == 1 && delay) {
+  //           numberColor[0] = Colors.black;
+  //           numberOpacity[1] = 1.0;
+  //           x2 = 0.812;
+  //           y2 = 0.2;
+  //           opTimer(0, true);
+  //           redBulletOpacity[0] = 0.0;
+  //           blackBulletOpacity[0] = 1.0;
+  //           redBulletOpacity[2] = 1.0;
+  //           prevResultOpacity = 1.0;
+  //         } else if (controllerIndex == 0) {
+  //           numberOpacity[0] = 1.0;
+  //           x1 = 0.728;
+  //           y1 = 0.06;
+  //           redBulletOpacity[0] = 1.0;
+  //           numberOpacity[0] = 1.0;
+  //           resultOpacity = 1.0;
+  //           isLastIndex[1] = false;
+  //         }
+  //         controllerIndex--;
+  //       }
+  //     } else {
+  //       print(controllerIndex);
+  //       while (a >= controllerIndex) {
+  //         if (a == 0) {
+  //           pageController2 = TextEditingController()
+  //             ..text = (indexVisibilitySlide2DH + 1).toString();
+  //           numberOpacity[0] = 0.0;
+  //           x1 = 0.16;
+  //           y1 = 0.355;
+  //           redBulletOpacity[0] = 0.0;
+  //           numberOpacity[0] = 0.0;
+  //           resultOpacity = 0.0;
+
+  //           isLastIndex[1] = true;
+  //         } else if (a == 1 && delay) {
+  //           prevResultOpacity = 0.0;
+  //           numberColor[0] = Colors.red;
+  //           numberOpacity[1] = 0.0;
+  //           x2 = 0.16;
+  //           y2 = 0.355;
+  //           circlesOpacity[0] = 0.0;
+  //           lineOpacity[0] = 0.0;
+  //           redBulletOpacity[0] = 1.0;
+  //           blackBulletOpacity[0] = 0.0;
+  //           redBulletOpacity[2] = 0.0;
+  //         } else if (a == 2 && delay) {
+  //           numberColor[1] = Colors.red;
+  //           numberOpacity[2] = 0.0;
+  //           x3 = 0.16;
+  //           y3 = 0.355;
+  //           circlesOpacity[0] = 1.0;
+  //           lineOpacity[0] = 0.0;
+  //           circlesOpacity[1] = 0.0;
+  //           lineOpacity[1] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[2] = 1.0;
+  //           blackBulletOpacity[2] = 0.0;
+  //           redBulletOpacity[8] = 0.0;
+  //         } else if (a == 3 && delay) {
+  //           numberColor[2] = Colors.red;
+  //           numberOpacity[3] = 0.0;
+  //           x4 = 0.16;
+  //           y4 = 0.355;
+  //           circlesOpacity[1] = 1.0;
+  //           lineOpacity[1] = 0.0;
+  //           circlesOpacity[2] = 0.0;
+  //           lineOpacity[2] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[8] = 1.0;
+  //           blackBulletOpacity[8] = 0.0;
+  //           redBulletOpacity[9] = 0.0;
+  //         } else if (a == 4 && delay) {
+  //           numberColor[3] = Colors.red;
+  //           numberOpacity[4] = 0.0;
+  //           x5 = 0.16;
+  //           y5 = 0.355;
+  //           circlesOpacity[2] = 1.0;
+  //           lineOpacity[2] = 0.0;
+  //           circlesOpacity[3] = 0.0;
+  //           lineOpacity[3] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[9] = 1.0;
+  //           blackBulletOpacity[9] = 0.0;
+  //           redBulletOpacity[12] = 0.0;
+  //         } else if (a == 5 && delay) {
+  //           numberColor[4] = Colors.red;
+  //           numberOpacity[5] = 0.0;
+  //           x6 = 0.16;
+  //           y6 = 0.355;
+  //           circlesOpacity[3] = 1.0;
+  //           lineOpacity[3] = 0.0;
+  //           circlesOpacity[4] = 0.0;
+  //           lineOpacity[4] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[12] = 1.0;
+  //           blackBulletOpacity[12] = 0.0;
+  //           redBulletOpacity[4] = 0.0;
+  //         } else if (a == 6 && delay) {
+  //           numberColor[5] = Colors.red;
+  //           numberOpacity[6] = 0.0;
+  //           x7 = 0.16;
+  //           y7 = 0.355;
+  //           circlesOpacity[4] = 1.0;
+  //           lineOpacity[4] = 0.0;
+  //           circlesOpacity[5] = 0.0;
+  //           lineOpacity[5] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[4] = 1.0;
+  //           blackBulletOpacity[4] = 0.0;
+  //           redBulletOpacity[14] = 0.0;
+  //         } else if (a == 7 && delay) {
+  //           numberColor[6] = Colors.red;
+  //           numberOpacity[7] = 0.0;
+  //           x8 = 0.16;
+  //           y8 = 0.355;
+  //           circlesOpacity[5] = 1.0;
+  //           lineOpacity[5] = 0.0;
+  //           circlesOpacity[6] = 0.0;
+  //           lineOpacity[6] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[14] = 1.0;
+  //           blackBulletOpacity[14] = 0.0;
+  //           redBulletOpacity[10] = 0.0;
+  //         } else if (a == 8 && delay) {
+  //           numberColor[7] = Colors.red;
+  //           numberOpacity[8] = 0.0;
+  //           x9 = 0.16;
+  //           y9 = 0.355;
+  //           circlesOpacity[6] = 1.0;
+  //           lineOpacity[6] = 0.0;
+  //           circlesOpacity[7] = 0.0;
+  //           lineOpacity[7] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[10] = 1.0;
+  //           blackBulletOpacity[10] = 0.0;
+  //           redBulletOpacity[15] = 0.0;
+  //         } else if (a == 9 && delay) {
+  //           numberColor[8] = Colors.red;
+  //           numberOpacity[9] = 0.0;
+  //           x10 = 0.16;
+  //           y10 = 0.355;
+  //           circlesOpacity[7] = 1.0;
+  //           lineOpacity[7] = 0.0;
+  //           circlesOpacity[8] = 0.0;
+  //           lineOpacity[8] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[15] = 1.0;
+  //           blackBulletOpacity[15] = 0.0;
+  //           redBulletOpacity[13] = 0.0;
+  //         } else if (a == 10 && delay) {
+  //           numberColor[9] = Colors.red;
+  //           numberOpacity[10] = 0.0;
+  //           x11 = 0.16;
+  //           y11 = 0.355;
+  //           circlesOpacity[8] = 1.0;
+  //           lineOpacity[8] = 0.0;
+  //           circlesOpacity[9] = 0.0;
+  //           lineOpacity[9] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[13] = 1.0;
+  //           blackBulletOpacity[13] = 0.0;
+  //           redBulletOpacity[7] = 0.0;
+  //         } else if (a == 11 && delay) {
+  //           numberColor[10] = Colors.red;
+  //           numberOpacity[11] = 0.0;
+  //           x12 = 0.16;
+  //           y12 = 0.355;
+  //           circlesOpacity[9] = 1.0;
+  //           lineOpacity[9] = 0.0;
+  //           circlesOpacity[10] = 0.0;
+  //           lineOpacity[10] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[7] = 1.0;
+  //           blackBulletOpacity[7] = 0.0;
+  //           redBulletOpacity[6] = 0.0;
+  //         } else if (a == 12 && delay) {
+  //           numberColor[11] = Colors.red;
+  //           numberOpacity[12] = 0.0;
+  //           x13 = 0.16;
+  //           y13 = 0.355;
+  //           circlesOpacity[10] = 1.0;
+  //           lineOpacity[10] = 0.0;
+  //           circlesOpacity[11] = 0.0;
+  //           lineOpacity[11] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[6] = 1.0;
+  //           blackBulletOpacity[6] = 0.0;
+  //           redBulletOpacity[3] = 0.0;
+  //         } else if (a == 13 && delay) {
+  //           numberColor[12] = Colors.red;
+  //           numberOpacity[13] = 0.0;
+  //           x14 = 0.16;
+  //           y14 = 0.355;
+  //           circlesOpacity[11] = 1.0;
+  //           lineOpacity[11] = 0.0;
+  //           circlesOpacity[12] = 0.0;
+  //           lineOpacity[12] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[3] = 1.0;
+  //           blackBulletOpacity[3] = 0.0;
+  //           redBulletOpacity[11] = 0.0;
+  //         } else if (a == 14 && delay) {
+  //           numberColor[13] = Colors.red;
+  //           numberOpacity[14] = 0.0;
+  //           x15 = 0.16;
+  //           y15 = 0.355;
+  //           circlesOpacity[12] = 1.0;
+  //           lineOpacity[12] = 0.0;
+  //           circlesOpacity[13] = 0.0;
+  //           lineOpacity[13] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[11] = 1.0;
+  //           blackBulletOpacity[11] = 0.0;
+  //           redBulletOpacity[1] = 0.0;
+  //         } else if (a == 15 && delay) {
+  //           numberColor[14] = Colors.red;
+  //           numberOpacity[15] = 0.0;
+  //           x16 = 0.16;
+  //           y16 = 0.355;
+  //           circlesOpacity[13] = 1.0;
+  //           lineOpacity[13] = 0.0;
+  //           circlesOpacity[14] = 0.0;
+  //           lineOpacity[14] = 0.0;
+  //           opacityTimer.cancel();
+  //           redBulletOpacity[1] = 1.0;
+  //           blackBulletOpacity[1] = 0.0;
+  //           redBulletOpacity[5] = 0.0;
+  //         } else if (a == 16 && delay) {
+  //           numberColor[15] = Colors.red;
+  //           circlesOpacity[14] = 1.0;
+  //           lineOpacity[14] = 0.0;
+  //           circlesOpacity[15] = 0.0;
+  //           lineOpacity[15] = 0.0;
+  //           opacityTimer.cancel();
+  //           blackBulletOpacity[0] = 1.0;
+  //           redBulletOpacity[5] = 1.0;
+  //           blackBulletOpacity[5] = 0.0;
+  //           redBulletOpacity[0] = 0.0;
+  //           isLastIndex[0] = false;
+  //         }
+  //         a--;
+  //       }
+  //     }
+  //   });
+  // }
 
   void showFlushBarMessage(
       Icon icon, String title, String message, Color backgroundColor) {
@@ -5658,5 +6185,225 @@ class Slide2DHState extends State<Slide2DH>
       backgroundColor: backgroundColor,
       flushbarPosition: FlushbarPosition.TOP,
     ).show(context);
+  }
+
+  stopFunction() {
+    setState(() {
+      Global.slider = 3;
+      Global.val = 1;
+      Global.replacedSliderValue = Global.slider;
+      videoTimerVariable.cancel();
+      // videoTimerProblem().cancel();
+      timerSlide2DH.cancel();
+      delayTimer.cancel();
+      videoTimerSlide2DH.cancel();
+      opacityTimer.cancel();
+      videoTimerVariable.cancel;
+      pageNumberTimer.cancel();
+      // selectPageNumber(0, 0).cancel();
+      isLastIndex = [false, true];
+      indexVisibilitySlide2DH = -1;
+      checkVisibility = 0;
+      delay = true;
+      dropdownValue = 'Deutsch';
+      backToZero = 0;
+      checkSettingsDuration = 0;
+      isSettingsPressed = 0;
+      settingsButtonDuration = 0;
+      descIndex = -1;
+      containerSeconds = 0;
+      isPressedUp = 0;
+      isPressedDown = 0;
+      timerProblem = 0;
+      stepsVisibility = [true, false];
+      turquoisePosition = 0.61;
+      redPosition = 0.6;
+      seconds = Global.slider;
+      dropButton = true;
+      desc = true;
+      descVisbility = desc;
+      text = '';
+      videoButton = true;
+      timerSeconds = 3;
+      circleVisibility = false;
+      resultOpacity = 0.0;
+      prevResultOpacity = 0.0;
+      prevResult = 1;
+      result = 1;
+      isShown = true;
+      x1 = 0.3;
+      x2 = 0.3;
+      x3 = 0.3;
+      x4 = 0.3;
+      x5 = 0.3;
+      x6 = 0.3;
+      x7 = 0.3;
+      x8 = 0.3;
+      x9 = 0.3;
+      x10 = 0.3;
+      x11 = 0.3;
+      x12 = 0.3;
+      x13 = 0.3;
+      x14 = 0.3;
+      x15 = 0.3;
+      x16 = 0.3;
+      y1 = 0.478;
+      y2 = 0.478;
+      y3 = 0.478;
+      y4 = 0.478;
+      y5 = 0.478;
+      y6 = 0.478;
+      y7 = 0.478;
+      y8 = 0.478;
+      y9 = 0.478;
+      y10 = 0.478;
+      y11 = 0.478;
+      y12 = 0.478;
+      y13 = 0.478;
+      y14 = 0.478;
+      y15 = 0.478;
+      y16 = 0.478;
+      circlesOpacity = [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+      ];
+      numberOpacity = [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+      ];
+
+      lineOpacity = [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+      ];
+
+      linesColor = [
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+      ];
+
+      numberColor = [
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+        Colors.red,
+      ];
+
+      redBulletOpacity = [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+      ];
+
+      blackBulletOpacity = [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+      ];
+      resultVisibility = false;
+      delayTimer = Timer(const Duration(milliseconds: 50), () {
+        setState(() {
+          resultVisibility = true;
+          circleVisibility = true;
+          Global.slider = Global.replacedSliderValue;
+          seconds = Global.slider;
+          delayTimer.cancel();
+        });
+      });
+    });
   }
 }

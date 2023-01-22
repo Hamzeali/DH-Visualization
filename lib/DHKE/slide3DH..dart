@@ -91,23 +91,23 @@ List contentOpacity = [
 double verticalTopOpacity = 0.0;
 double verticalBottomOpacity = 0.0;
 
-int n = 17;
-int r = 3;
+int p = 17;
+int g = 3;
 int secretAlice = 9;
 int secretBob = 7;
-TextEditingController nController = TextEditingController()
-  ..text = n.toString();
-TextEditingController rController = TextEditingController()
-  ..text = r.toString();
+TextEditingController pController = TextEditingController()
+  ..text = p.toString();
+TextEditingController gController = TextEditingController()
+  ..text = g.toString();
 TextEditingController secretBobController = TextEditingController()
   ..text = secretBob.toString();
 TextEditingController secretAliceController = TextEditingController()
   ..text = secretAlice.toString();
 
 TextEditingController nControllerOldVal = TextEditingController()
-  ..text = n.toString();
+  ..text = p.toString();
 TextEditingController rControllerOldVal = TextEditingController()
-  ..text = r.toString();
+  ..text = g.toString();
 TextEditingController secretBobControllerOldVal = TextEditingController()
   ..text = secretBob.toString();
 TextEditingController secretAliceControllerOldVal = TextEditingController()
@@ -219,22 +219,19 @@ class Slide3DHState extends State<Slide3DH>
     }
   }
 
-  bool isPrime(int number) {
-    if (number <= 1) {
-      return false;
-    }
-    for (int i = 2; i < number; i++) {
-      if (number % i == 0) {
-        return false;
-      }
+  bool isPrime(int p) {
+    if (p <= 1) return false;
+    if (p <= 3) return true;
+    for (var i = 2; i <= sqrt(p); i++) {
+      if (p % i == 0) return false;
     }
     return true;
   }
 
-  bool isPrimitiveRoot(int root, int prime) {
+  bool isPrimitvRoot(int g, int p) {
     List results = [];
-    for (int i = 1; i < prime; i++) {
-      num res = (pow(root, i) % prime);
+    for (int i = 1; i < p; i++) {
+      num res = (pow(g, i) % p);
       if (results.contains(res)) {
         return false;
       } else {
@@ -242,6 +239,54 @@ class Slide3DHState extends State<Slide3DH>
       }
     }
     return true;
+  }
+
+  // List allGenerators(int p) {
+  //   List generators = [];
+  //   for (int i = 2; i < p; i++) {
+  //     if (isGenerator(i, p)) {
+  //       generators.add(i);
+  //     }
+  //   }
+  //   return generators;
+  // }
+
+  int pow2(int base, int exponent, int modulus) {
+    var result = 1;
+    base %= modulus;
+    while (exponent > 0) {
+      if (exponent % 2 == 1) result = (result * base) % modulus;
+      base = (base * base) % modulus;
+      exponent ~/= 2;
+    }
+    return result;
+  }
+
+  List<int> allroots(int p) {
+    if (p == 2) return [1];
+
+    var phi = p - 1;
+    var factors = <int>{};
+    for (var i = 2; i * i <= phi; i++) {
+      if (phi % i == 0) {
+        factors.add(i);
+        if (i * i != phi) factors.add(phi ~/ i);
+      }
+    }
+
+    var roots = <int>[];
+    for (var i = 2; i < p; i++) {
+      var isRoot = true;
+      for (var f in factors) {
+        if (pow2(i, phi ~/ f, p) == 1) {
+          isRoot = false;
+          break;
+        }
+      }
+      if (isRoot) roots.add(i);
+    }
+
+    return roots;
   }
 
   Positioned bulletPosition(
@@ -715,7 +760,7 @@ class Slide3DHState extends State<Slide3DH>
                     alignment: Alignment.topLeft,
                     child: FittedBox(
                       child: Text(
-                        '${AppLocalizations.of(context)!.text321}$n\n${AppLocalizations.of(context)!.text322}$r',
+                        '${AppLocalizations.of(context)!.text321}$p\n${AppLocalizations.of(context)!.text322}$g',
                         style: const TextStyle(
                           fontSize: 30,
                         ),
@@ -745,11 +790,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'n = $n; r = $r',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'p = $p; g = $g',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -783,10 +828,10 @@ class Slide3DHState extends State<Slide3DH>
                       children: [
                         const Text(
                           'Secret ',
-                          // style: TextStyle(
-                          //   fontSize: MediaQuery.of(context).size.width *
-                          //       0.02, //middleWidth,
-                          // ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         // const Text(
@@ -799,28 +844,30 @@ class Slide3DHState extends State<Slide3DH>
                         //   textAlign: TextAlign.left,
                         // ),
                         RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
+                          text: const TextSpan(
+                            style: TextStyle(
                               color: Colors.black,
+                              fontStyle: FontStyle.italic,
                             ),
                             children: [
-                              const TextSpan(
-                                text: 'S',
+                              TextSpan(
+                                text: 'a',
                                 style: TextStyle(
                                   color: Colors.red,
+                                  fontStyle: FontStyle.italic,
                                 ),
                               ),
-                              WidgetSpan(
-                                child: Transform.translate(
-                                  offset: const Offset(0, 6),
-                                  child: const Text(
-                                    'A',
-                                    //superscript is usually smaller in size
-                                    textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
-                                  ),
-                                ),
-                              ),
+                              // WidgetSpan(
+                              //   child: Transform.translate(
+                              //     offset: const Offset(0, 6),
+                              //     child: const Text(
+                              //       'A',
+                              //       //superscript is usually smaller in size
+                              //       textScaleFactor: 0.8,
+                              //       style: TextStyle(color: Colors.red),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -840,10 +887,10 @@ class Slide3DHState extends State<Slide3DH>
                         // ),
                         Text(
                           ' = $secretAlice',
-                          // style: TextStyle(
-                          //   fontSize: MediaQuery.of(context).size.width *
-                          //       0.02, //middleWidth,
-                          // ),
+                          style: const TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                       ],
@@ -875,17 +922,19 @@ class Slide3DHState extends State<Slide3DH>
                         text: TextSpan(
                           style: const TextStyle(
                             color: Colors.black,
+                            fontStyle: FontStyle.italic,
                           ),
                           children: [
                             const TextSpan(
-                              text: 'a = r',
+                              text: 'A = g',
                               style: TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -10),
+                                offset: const Offset(0, -4),
                                 // child: const Text(
                                 //   's_A',
                                 //   //superscript is usually smaller in size
@@ -893,53 +942,61 @@ class Slide3DHState extends State<Slide3DH>
                                 //   style: TextStyle(color: Colors.red),
                                 // ),
                                 child: RichText(
-                                  text: TextSpan(
-                                    style: const TextStyle(
+                                  text: const TextSpan(
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.italic,
                                       color: Colors.black,
                                     ),
                                     children: [
-                                      const TextSpan(
-                                        text: 'S',
+                                      TextSpan(
+                                        text: 'a',
                                         style: TextStyle(
+                                          fontStyle: FontStyle.italic,
                                           color: Colors.red,
                                         ),
                                       ),
-                                      WidgetSpan(
-                                        child: Transform.translate(
-                                          offset: const Offset(0, 4),
-                                          child: const Text(
-                                            'A',
-                                            //superscript is usually smaller in size
-                                            textScaleFactor: 0.8,
-                                            style: TextStyle(color: Colors.red),
-                                          ),
-                                        ),
-                                      ),
+                                      // WidgetSpan(
+                                      //   child: Transform.translate(
+                                      //     offset: const Offset(0, 4),
+                                      //     child: const Text(
+                                      //       'A',
+                                      //       //superscript is usually smaller in size
+                                      //       textScaleFactor: 0.8,
+                                      //       style: TextStyle(color: Colors.red),
+                                      //     ),
+                                      //   ),
+                                      // ),
                                     ],
                                   ),
                                 ),
                               ),
                             ),
                             TextSpan(
-                              text: ' mod n = $r',
+                              text: ' mod p = $g',
                               style: const TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
                             WidgetSpan(
                               child: Transform.translate(
-                                offset: const Offset(2, -8),
+                                offset: const Offset(0, -6),
                                 child: Text(
                                   '$secretAlice',
                                   //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
                                   // style: TextStyle(color: Colors.red),
+                                  style: const TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),
                             TextSpan(
-                              text: ' mod $n = ${pow(r, secretAlice) % n}',
+                              text: ' mod $p = ${pow(g, secretAlice) % p}',
                               style: const TextStyle(
+                                fontStyle: FontStyle.italic,
                                 color: Colors.black,
                               ),
                             ),
@@ -971,11 +1028,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'a = ${pow(r, secretAlice) % n}; b = ${pow(r, secretBob) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'A = ${pow(g, secretAlice) % p}; B = ${pow(g, secretBob) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1002,11 +1059,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'n = $n; r = $r',
-                        // style: TextStyle(
-                        //     // fontSize: MediaQuery.of(context).size.width *
-                        //     //     0.02, //shortWidth,
-                        //     ),
+                        'p = $p; g = $g',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1034,10 +1091,10 @@ class Slide3DHState extends State<Slide3DH>
                       children: [
                         const Text(
                           'Secret ',
-                          // style: TextStyle(
-                          //     // fontSize: MediaQuery.of(context).size.width *
-                          //     //     0.015, //middleWidth,
-                          //     ),
+                          style: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                         // const Text(
@@ -1050,28 +1107,29 @@ class Slide3DHState extends State<Slide3DH>
                         //   textAlign: TextAlign.left,
                         // ),
                         RichText(
-                          text: TextSpan(
-                            style: const TextStyle(
+                          text: const TextSpan(
+                            style: TextStyle(
                               color: Colors.black,
                             ),
                             children: [
-                              const TextSpan(
-                                text: 'S',
+                              TextSpan(
+                                text: 'b',
                                 style: TextStyle(
                                   color: Colors.red,
+                                  fontStyle: FontStyle.italic,
                                 ),
                               ),
-                              WidgetSpan(
-                                child: Transform.translate(
-                                  offset: const Offset(0, 6),
-                                  child: const Text(
-                                    'B',
-                                    //superscript is usually smaller in size
-                                    textScaleFactor: 0.8,
-                                    style: TextStyle(color: Colors.red),
-                                  ),
-                                ),
-                              ),
+                              // WidgetSpan(
+                              //   child: Transform.translate(
+                              //     offset: const Offset(0, 6),
+                              //     child: const Text(
+                              //       'B',
+                              //       //superscript is usually smaller in size
+                              //       textScaleFactor: 0.8,
+                              //       style: TextStyle(color: Colors.red),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -1091,10 +1149,10 @@ class Slide3DHState extends State<Slide3DH>
                         // ),
                         Text(
                           ' = $secretBob',
-                          // style: TextStyle(
-                          //     // fontSize: MediaQuery.of(context).size.width *
-                          //     //     0.015, //middleWidth,
-                          //     ),
+                          style: const TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.black,
+                          ),
                           textAlign: TextAlign.left,
                         ),
                       ],
@@ -1124,17 +1182,19 @@ class Slide3DHState extends State<Slide3DH>
                       text: TextSpan(
                         style: const TextStyle(
                           color: Colors.black,
+                          fontStyle: FontStyle.italic,
                         ),
                         children: [
                           const TextSpan(
-                            text: 'b = r',
+                            text: 'B = g',
                             style: TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
                           WidgetSpan(
                             child: Transform.translate(
-                              offset: const Offset(2, -10),
+                              offset: const Offset(0, -4),
                               // child: const Text(
                               //   's_B',
                               //   //superscript is usually smaller in size
@@ -1142,53 +1202,60 @@ class Slide3DHState extends State<Slide3DH>
                               //   style: TextStyle(color: Colors.red),
                               // ),
                               child: RichText(
-                                text: TextSpan(
-                                  style: const TextStyle(
+                                text: const TextSpan(
+                                  style: TextStyle(
                                     color: Colors.black,
+                                    fontStyle: FontStyle.italic,
                                   ),
                                   children: [
-                                    const TextSpan(
-                                      text: 'S',
+                                    TextSpan(
+                                      text: 'b',
                                       style: TextStyle(
+                                        fontStyle: FontStyle.italic,
                                         color: Colors.red,
                                       ),
                                     ),
-                                    WidgetSpan(
-                                      child: Transform.translate(
-                                        offset: const Offset(0, 4),
-                                        child: const Text(
-                                          'B',
-                                          //superscript is usually smaller in size
-                                          textScaleFactor: 0.8,
-                                          style: TextStyle(color: Colors.red),
-                                        ),
-                                      ),
-                                    ),
+                                    // WidgetSpan(
+                                    //   child: Transform.translate(
+                                    //     offset: const Offset(0, 4),
+                                    //     child: const Text(
+                                    //       'B',
+                                    //       //superscript is usually smaller in size
+                                    //       textScaleFactor: 0.8,
+                                    //       style: TextStyle(color: Colors.red),
+                                    //     ),
+                                    //   ),
+                                    // ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
                           TextSpan(
-                            text: ' mod n = $r',
+                            text: ' mod p = $g',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
                           WidgetSpan(
                             child: Transform.translate(
-                              offset: const Offset(2, -8),
+                              offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
                                 //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
-                                // style: TextStyle(color: Colors.red),
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                           TextSpan(
-                            text: ' mod $n = ${pow(r, secretBob) % n}',
+                            text: ' mod $p = ${pow(g, secretBob) % p}',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
@@ -1326,11 +1393,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'b = ${pow(r, secretBob) % n}; a = ${pow(r, secretAlice) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'B = ${pow(g, secretBob) % p}; A = ${pow(g, secretAlice) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1357,11 +1424,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'n = $n; r = $r',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'p = $p; g = $g',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1388,11 +1455,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'a = ${pow(r, secretAlice) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'A = ${pow(g, secretAlice) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1419,11 +1486,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'b = ${pow(r, secretBob) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'B = ${pow(g, secretBob) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1450,11 +1517,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'b = ${pow(r, secretBob) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'B = ${pow(g, secretBob) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1482,11 +1549,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'a = ${pow(r, secretAlice) % n}',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //shortWidth,
-                        // ),
+                        'A = ${pow(g, secretAlice) % p}',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1514,11 +1581,11 @@ class Slide3DHState extends State<Slide3DH>
                     child: Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        'n = $n; r = $r',
-                        // style: TextStyle(
-                        //   fontSize: MediaQuery.of(context).size.width *
-                        //       0.02, //middleWidth,
-                        // ),
+                        'p = $p; g = $g',
+                        style: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
@@ -1546,29 +1613,35 @@ class Slide3DHState extends State<Slide3DH>
                       text: TextSpan(
                         style: const TextStyle(
                           color: Colors.black,
+                          fontStyle: FontStyle.italic,
                         ),
                         children: [
                           TextSpan(
-                            text: 'S = ${pow(r, secretBob) % n}',
+                            text: 'S = ${pow(g, secretBob) % p}',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
                           WidgetSpan(
                             child: Transform.translate(
-                              offset: const Offset(2, -8),
+                              offset: const Offset(0, -6),
                               child: Text(
                                 '$secretAlice',
                                 //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
-                                // style: TextStyle(color: Colors.red),
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                           TextSpan(
                             text:
-                                ' mod $n = ${pow(pow(r, secretBob) % n, secretAlice) % n} ',
+                                ' mod $p = ${pow(pow(g, secretBob) % p, secretAlice) % p} ',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
@@ -1632,46 +1705,56 @@ class Slide3DHState extends State<Slide3DH>
                       text: TextSpan(
                         style: const TextStyle(
                           color: Colors.black,
+                          fontStyle: FontStyle.italic,
                         ),
                         children: [
                           TextSpan(
-                            text: 'S = ${pow(r, secretAlice) % n}',
+                            text: 'S = ${pow(g, secretAlice) % p}',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
                           WidgetSpan(
                             child: Transform.translate(
-                              offset: const Offset(2, -8),
+                              offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
                                 //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
-                                // style: TextStyle(color: Colors.red),
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                           TextSpan(
-                            text: ' mod $n = $r',
+                            text: ' mod $p = $g',
                             style: const TextStyle(
                               color: Colors.black,
+                              fontStyle: FontStyle.italic,
                             ),
                           ),
                           WidgetSpan(
                             child: Transform.translate(
-                              offset: const Offset(2, -8),
+                              offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
                                 //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
-                                // style: const TextStyle(color: Colors.red),
+                                style: const TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
                           TextSpan(
                             text:
-                                ' mod $n = ${pow(pow(r, secretAlice) % n, secretBob) % n}',
+                                ' mod $p = ${pow(pow(g, secretAlice) % p, secretBob) % p}',
                             style: const TextStyle(
+                              fontStyle: FontStyle.italic,
                               color: Colors.black,
                             ),
                           ),
@@ -2009,12 +2092,12 @@ class Slide3DHState extends State<Slide3DH>
                 onPressed: () {
                   switchOldValue = Global.switchValue;
                   scaleEnabledOldVal = Global.scaleEnabled;
-                  nControllerOldVal.text = nController.text;
-                  rControllerOldVal.text = rController.text;
+                  nControllerOldVal.text = pController.text;
+                  rControllerOldVal.text = gController.text;
                   secretBobControllerOldVal.text = secretBobController.text;
                   secretAliceControllerOldVal.text = secretAliceController.text;
-                  nOldVal = n;
-                  rOldVal = r;
+                  nOldVal = p;
+                  rOldVal = g;
                   secretBobOldVal = secretBob;
                   scretAliceOldVal = secretAlice;
 
@@ -2036,8 +2119,8 @@ class Slide3DHState extends State<Slide3DH>
                         textAlign: TextAlign.center,
                       ),
                       content: SizedBox(
-                        height: 300.0, // Change as per your requirement
-                        width: 500.0, // Change as per your requirement
+                        height: 300.0,
+                        width: 500.0,
                         child: RawScrollbar(
                           controller: scrollController,
                           thumbColor: Colors.blue,
@@ -2173,7 +2256,7 @@ class Slide3DHState extends State<Slide3DH>
                                 true,
                               ),
                               _buildRow(
-                                'n = ',
+                                'p = ',
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
                                   child: StatefulBuilder(
@@ -2188,13 +2271,16 @@ class Slide3DHState extends State<Slide3DH>
                                         child: TextField(
                                           focusNode: focus,
                                           keyboardType: TextInputType.number,
-                                          controller: nController,
+                                          controller: pController,
                                           inputFormatters: <TextInputFormatter>[
                                             LengthLimitingTextInputFormatter(3),
                                             FilteringTextInputFormatter
                                                 .digitsOnly
                                           ],
                                           decoration: const InputDecoration(
+                                            hintText: 'max (999)',
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
                                             contentPadding:
                                                 EdgeInsets.only(left: 10),
                                             border: OutlineInputBorder(),
@@ -2207,7 +2293,7 @@ class Slide3DHState extends State<Slide3DH>
                                 false,
                               ),
                               _buildRow(
-                                'r = ',
+                                'g = ',
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
                                   child: StatefulBuilder(
@@ -2222,13 +2308,16 @@ class Slide3DHState extends State<Slide3DH>
                                         height: 30,
                                         child: TextField(
                                           keyboardType: TextInputType.number,
-                                          controller: rController,
+                                          controller: gController,
                                           inputFormatters: <TextInputFormatter>[
                                             LengthLimitingTextInputFormatter(3),
                                             FilteringTextInputFormatter
                                                 .digitsOnly
                                           ],
                                           decoration: const InputDecoration(
+                                            hintText: 'max (999)',
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
                                             contentPadding:
                                                 EdgeInsets.only(left: 10),
                                             border: OutlineInputBorder(),
@@ -2241,7 +2330,8 @@ class Slide3DHState extends State<Slide3DH>
                                 false,
                               ),
                               _buildRow(
-                                AppLocalizations.of(context)!.secretBob,
+                                // AppLocalizations.of(context)!.secretBob,
+                                "b =",
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
                                   child: StatefulBuilder(
@@ -2262,6 +2352,9 @@ class Slide3DHState extends State<Slide3DH>
                                                 .digitsOnly
                                           ],
                                           decoration: const InputDecoration(
+                                            hintText: 'max (999)',
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
                                             contentPadding:
                                                 EdgeInsets.only(left: 10),
                                             border: OutlineInputBorder(),
@@ -2274,7 +2367,8 @@ class Slide3DHState extends State<Slide3DH>
                                 false,
                               ),
                               _buildRow(
-                                AppLocalizations.of(context)!.secretAlice,
+                                // AppLocalizations.of(context)!.secretAlice,
+                                "a =",
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
                                   child: StatefulBuilder(
@@ -2295,6 +2389,9 @@ class Slide3DHState extends State<Slide3DH>
                                                 .digitsOnly
                                           ],
                                           decoration: const InputDecoration(
+                                            hintText: 'max (999)',
+                                            hintStyle:
+                                                TextStyle(color: Colors.grey),
                                             contentPadding:
                                                 EdgeInsets.only(left: 10),
                                             border: OutlineInputBorder(),
@@ -2677,15 +2774,44 @@ class Slide3DHState extends State<Slide3DH>
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
-                            if (nController.text.isNotEmpty &&
-                                rController.text.isNotEmpty &&
+                            List roots = allroots(int.parse(pController.text));
+                            showDialog<String>(
+                              barrierDismissible: false,
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                scrollable: true,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(32.0))),
+                                title: const Text(
+                                  'Possible roots',
+                                  // AppLocalizations.of(context)!.settings,
+                                  textAlign: TextAlign.center,
+                                ),
+                                content: Text('$roots'),
+                                actions: <Widget>[
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, 'OK');
+                                      },
+                                      child: const Text('Ok')),
+                                ],
+                              ),
+                            );
+                          },
+                          child: const Text('Suggest root'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            if (pController.text.isNotEmpty &&
+                                gController.text.isNotEmpty &&
                                 secretBobController.text.isNotEmpty &&
                                 secretAliceController.text.isNotEmpty) {
-                              if (isPrime(int.parse(nController.text)) &&
-                                  isPrimitiveRoot(int.parse(rController.text),
-                                      int.parse(nController.text))) {
-                                n = int.parse(nController.text);
-                                r = int.parse(rController.text);
+                              if (isPrime(int.parse(pController.text)) &&
+                                  isPrimitvRoot(int.parse(gController.text),
+                                      int.parse(pController.text))) {
+                                p = int.parse(pController.text);
+                                g = int.parse(gController.text);
                                 secretAlice =
                                     int.parse(secretAliceController.text);
                                 secretBob = int.parse(secretBobController.text);
@@ -2694,7 +2820,7 @@ class Slide3DHState extends State<Slide3DH>
                               setState(
                                 () {
                                   isCanceled = false;
-                                  if (!isPrime(int.parse(nController.text))) {
+                                  if (!isPrime(int.parse(pController.text))) {
                                     showFlushBarMessage(
                                         const Icon(
                                           Icons.error,
@@ -2708,9 +2834,9 @@ class Slide3DHState extends State<Slide3DH>
                                         AppLocalizations.of(context)!
                                             .primeNumberErrorMessage,
                                         Colors.red);
-                                  } else if (!isPrimitiveRoot(
-                                      int.parse(rController.text),
-                                      int.parse(nController.text))) {
+                                  } else if (!isPrimitvRoot(
+                                      int.parse(gController.text),
+                                      int.parse(pController.text))) {
                                     showFlushBarMessage(
                                         const Icon(
                                           Icons.error,
@@ -2756,12 +2882,12 @@ class Slide3DHState extends State<Slide3DH>
                               Global.locale = locale;
                               DHKEVis.of(context)!.setLocale(
                                   Locale.fromSubtags(languageCode: locale));
-                              n = nOldVal;
-                              r = rOldVal;
+                              p = nOldVal;
+                              g = rOldVal;
                               secretBob = secretBobOldVal;
                               secretAlice = scretAliceOldVal;
-                              nController.text = nControllerOldVal.text;
-                              rController.text = rControllerOldVal.text;
+                              pController.text = nControllerOldVal.text;
+                              gController.text = rControllerOldVal.text;
                               secretBobController.text =
                                   secretBobControllerOldVal.text;
                               secretAliceController.text =
@@ -2819,8 +2945,8 @@ class Slide3DHState extends State<Slide3DH>
                     scretAliceOldVal = 0;
                     sliderOldValue = 0;
                     valOldValue = 0;
-                    n = 17;
-                    r = 3;
+                    p = 17;
+                    g = 3;
                     secretAlice = 9;
                     secretBob = 7;
                     Global.slider = 3;
@@ -2869,17 +2995,17 @@ class Slide3DHState extends State<Slide3DH>
                     verticalBottomOpacity = 0.0;
                     textVisibility = false;
 
-                    nController = TextEditingController()..text = n.toString();
-                    rController = TextEditingController()..text = r.toString();
+                    pController = TextEditingController()..text = p.toString();
+                    gController = TextEditingController()..text = g.toString();
                     secretBobController = TextEditingController()
                       ..text = secretBob.toString();
                     secretAliceController = TextEditingController()
                       ..text = secretAlice.toString();
 
                     nControllerOldVal = TextEditingController()
-                      ..text = n.toString();
+                      ..text = p.toString();
                     rControllerOldVal = TextEditingController()
-                      ..text = r.toString();
+                      ..text = g.toString();
                     secretBobControllerOldVal = TextEditingController()
                       ..text = secretBob.toString();
                     secretAliceControllerOldVal = TextEditingController()
@@ -2996,7 +3122,7 @@ class Slide3DHState extends State<Slide3DH>
                       numberPageDialog();
                     },
                     child: Text(
-                      '3: ${indexVisibilitySlide3DH + 1} / 6',
+                      '${indexVisibilitySlide3DH + 1} / 6',
                       style: const TextStyle(
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -3254,15 +3380,15 @@ class Slide3DHState extends State<Slide3DH>
         verticalBottomOpacity = 0.0;
         textVisibility = false;
 
-        nController = TextEditingController()..text = n.toString();
-        rController = TextEditingController()..text = r.toString();
+        pController = TextEditingController()..text = p.toString();
+        gController = TextEditingController()..text = g.toString();
         secretBobController = TextEditingController()
           ..text = secretBob.toString();
         secretAliceController = TextEditingController()
           ..text = secretAlice.toString();
 
-        nControllerOldVal = TextEditingController()..text = n.toString();
-        rControllerOldVal = TextEditingController()..text = r.toString();
+        nControllerOldVal = TextEditingController()..text = p.toString();
+        rControllerOldVal = TextEditingController()..text = g.toString();
         secretBobControllerOldVal = TextEditingController()
           ..text = secretBob.toString();
         secretAliceControllerOldVal = TextEditingController()

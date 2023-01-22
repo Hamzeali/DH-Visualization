@@ -10,7 +10,6 @@ class CirclePainter extends CustomPainter {
     final _paint = Paint()
       ..color = color
       ..strokeWidth = 2
-      // Use [PaintingStyle.fill] if you want the circle to be filled.
       ..style = paintingStyle;
     canvas.drawOval(
       Rect.fromLTWH(0, 0, size.width, size.height),
