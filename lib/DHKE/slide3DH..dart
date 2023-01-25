@@ -119,20 +119,12 @@ class Slide3DHState extends State<Slide3DH>
   @override
   void initState() {
     super.initState();
-    focus.addListener(onFocusChange);
     textVisibility = true;
-  }
-
-  bool onFocusChange() {
-    // isTextFieldFocused = focus.hasFocus;
-    debugPrint("Focus: ${focus.hasFocus.toString()}");
-    return focus.hasFocus;
   }
 
   @override
   // ignore: must_call_super
   void dispose() {
-    focus.removeListener(onFocusChange);
     focus.dispose();
     Global.replacedSliderValue = Global.slider;
     isLastIndex = [false, true];
@@ -140,7 +132,6 @@ class Slide3DHState extends State<Slide3DH>
     pageController3 = TextEditingController()..text = (0).toString();
     checkVisibility = 0;
     delay = true;
-    // dropdownValue = 'Deutsch';
     backToZero = 0;
     checkSettingsDuration = 0;
     isSettingsPressed = 0;
@@ -241,16 +232,6 @@ class Slide3DHState extends State<Slide3DH>
     return true;
   }
 
-  // List allGenerators(int p) {
-  //   List generators = [];
-  //   for (int i = 2; i < p; i++) {
-  //     if (isGenerator(i, p)) {
-  //       generators.add(i);
-  //     }
-  //   }
-  //   return generators;
-  // }
-
   int pow2(int base, int exponent, int modulus) {
     var result = 1;
     base %= modulus;
@@ -296,7 +277,6 @@ class Slide3DHState extends State<Slide3DH>
               HomePageDHState.returnAppBar[1]) *
           top,
       left: MediaQuery.of(context).size.width * left,
-      // duration: Duration(seconds: seconds),
       child: Visibility(
         visible: vis,
         child: AnimatedOpacity(
@@ -313,7 +293,6 @@ class Slide3DHState extends State<Slide3DH>
   }
 
   Timer selectPageNumber(int a) {
-    // stopFunction();
     pageNumberTimer = Timer.periodic(
       const Duration(seconds: 0),
       (Timer pageNumberTimer) {
@@ -322,11 +301,9 @@ class Slide3DHState extends State<Slide3DH>
             delay = true;
             seconds = 0;
             if (indexVisibilitySlide3DH == a) {
-              // openDialog(false);
               pageNumberTimer.cancel();
             }
             if (indexVisibilitySlide3DH < a && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide3DH++;
               pageController3 = TextEditingController()
                 ..text = (indexVisibilitySlide3DH + 1).toString();
@@ -383,7 +360,6 @@ class Slide3DHState extends State<Slide3DH>
               videoTimerVariable.cancel();
             }
             if (indexVisibilitySlide3DH < 5 && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide3DH++;
               pageController3 = TextEditingController()
                 ..text = (indexVisibilitySlide3DH + 1).toString();
@@ -421,11 +397,6 @@ class Slide3DHState extends State<Slide3DH>
               contentOpacity[6] = 1.0;
               isLastIndex[0] = true;
             }
-            // if (Languages.selectedLanguage) {
-            //   text = DescListDeutchDH.slide3Desc[indexVisibilitySlide3DH];
-            // } else {
-            //   text = DescListEnglishDH.slide3Desc[indexVisibilitySlide3DH];
-            // }
           },
         );
       },
@@ -444,7 +415,6 @@ class Slide3DHState extends State<Slide3DH>
               HomePageDHState.returnAppBar[1]) *
           0.1,
       left: MediaQuery.of(context).size.width * 0.535,
-      // duration: Duration(seconds: seconds),
       child: AnimatedOpacity(
         opacity: opacity,
         duration: Duration(seconds: seconds),
@@ -476,55 +446,6 @@ class Slide3DHState extends State<Slide3DH>
   @override
   Widget build(BuildContext context) {
     text = translate(context, indexVisibilitySlide3DH);
-    double longWidth = 0.0;
-    double shortWidth = 0.0;
-    double middleWidth = 0.0;
-    double fromTop = 0.0;
-    double marginValue = 0.0;
-
-    if (MediaQuery.of(context).size.width < 1000) {
-      longWidth = 0.1;
-      shortWidth = 0.025;
-      middleWidth = 0.015;
-    } else {
-      longWidth = 0.02;
-      shortWidth = 0.02;
-      middleWidth = 0.02;
-    }
-    if (MediaQuery.of(context).size.width < 700) {
-      marginValue = 8.0;
-    } else {
-      marginValue = 16.5;
-    }
-    if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.015;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.02;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      middleWidth = 0.025;
-    }
-    if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      fromTop = 0.1;
-    } else if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height < 600) {
-      fromTop = 0.1;
-    } else if (MediaQuery.of(context).size.height > 400 &&
-        MediaQuery.of(context).size.width < 1000) {
-      fromTop = 0.12;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      fromTop = 0.13;
-    } else if (MediaQuery.of(context).size.height < 400 &&
-        MediaQuery.of(context).size.width < 800) {
-      fromTop = 0.08;
-    } else if (MediaQuery.of(context).size.height > 400 &&
-        MediaQuery.of(context).size.width > 1000) {
-      fromTop = 0.15;
-    }
 
     if (isPressedDown == 2 && isPressedUp == 1 && desc) {
       containerSeconds = 2;
@@ -615,64 +536,17 @@ class Slide3DHState extends State<Slide3DH>
               1.0,
             ),
 
-            // Right-Arrow-horizontal-Image Position
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.2,
-            //     0.25,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.3,
-            //     true,
-            //     'assets/arrow-horizontal.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[2],
-            //   ),
-            // ),
-
             arrowPosition(
                 p1x: -0.34,
                 p1y: 0.08,
                 p2x: 0.18,
                 p2y: 0.08,
                 opacity: contentOpacity[2]),
-
-            // Arrow-vertical-Image Position
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.205,
-            //     0.195,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.2,
-            //     true,
-            //     'assets/arrow-vertical.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[2],
-            //   ),
-            // ),
             arrowPosition(
               p1x: -0.075,
               p1y: 0.08,
               p2x: -0.075,
               p2y: 0.36,
-              // opacity: contentOpacity[2],
               opacity: verticalTopOpacity,
             ),
             arrowPosition(
@@ -680,7 +554,6 @@ class Slide3DHState extends State<Slide3DH>
               p1y: 0.14,
               p2x: -0.075,
               p2y: 0.36,
-              // opacity: contentOpacity[4],
               opacity: verticalBottomOpacity,
             ),
 
@@ -688,28 +561,6 @@ class Slide3DHState extends State<Slide3DH>
                 indexVisibilitySlide3DH < 4 ? true : true),
             bulletPosition(0.32, 0.457, 1.0, Colors.white, true),
             bulletPosition(0.39, 0.457, 1.0, Colors.white, true),
-            // Left-Arrow-horizontal-Image Position
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.23,
-            //     0.25,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.02,
-            //     true,
-            //     'assets/left-arrow-horizontal.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[7],
-            //   ),
-            // ),
             arrowPosition(
               p1x: 0.18,
               p1y: 0.14,
@@ -733,8 +584,7 @@ class Slide3DHState extends State<Slide3DH>
                   child: Text(
                     AppLocalizations.of(context)!.text31,
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width *
-                          0.016, //longWidth,
+                      fontSize: MediaQuery.of(context).size.width * 0.016,
                     ),
                   ),
                 ),
@@ -817,12 +667,6 @@ class Slide3DHState extends State<Slide3DH>
                 child: AnimatedOpacity(
                   opacity: contentOpacity[3],
                   duration: Duration(seconds: seconds),
-                  // child: Text(
-                  //   'Secret s_A = $secretAlice',
-                  //   style: TextStyle(
-                  //     fontSize: MediaQuery.of(context).size.width * 0.02,
-                  //   ),
-                  // ),
                   child: FittedBox(
                     child: Wrap(
                       children: [
@@ -834,15 +678,6 @@ class Slide3DHState extends State<Slide3DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // const Text(
-                        //   's_A ',
-                        //   style: TextStyle(
-                        //     color: Colors.red,
-                        //     // fontSize: MediaQuery.of(context).size.width *
-                        //     //     0.02, //middleWidth,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: const TextSpan(
                             style: TextStyle(
@@ -857,34 +692,9 @@ class Slide3DHState extends State<Slide3DH>
                                   fontStyle: FontStyle.italic,
                                 ),
                               ),
-                              // WidgetSpan(
-                              //   child: Transform.translate(
-                              //     offset: const Offset(0, 6),
-                              //     child: const Text(
-                              //       'A',
-                              //       //superscript is usually smaller in size
-                              //       textScaleFactor: 0.8,
-                              //       style: TextStyle(color: Colors.red),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
-                        // Container(
-                        //   padding: EdgeInsets.only(top: marginValue),
-                        //   child: Text(
-                        //     '(Alice)',
-                        //     style: TextStyle(
-                        //       // fontSize: MediaQuery.of(context).size.width * 0.015,
-                        //       fontSize: (MediaQuery.of(context).size.width *
-                        //               shortWidth) /
-                        //           2,
-                        //       color: Colors.red[800],
-                        //     ),
-                        //     textAlign: TextAlign.left,
-                        //   ),
-                        // ),
                         Text(
                           ' = $secretAlice',
                           style: const TextStyle(
@@ -935,12 +745,6 @@ class Slide3DHState extends State<Slide3DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -4),
-                                // child: const Text(
-                                //   's_A',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: const TextSpan(
                                     style: TextStyle(
@@ -955,17 +759,6 @@ class Slide3DHState extends State<Slide3DH>
                                           color: Colors.red,
                                         ),
                                       ),
-                                      // WidgetSpan(
-                                      //   child: Transform.translate(
-                                      //     offset: const Offset(0, 4),
-                                      //     child: const Text(
-                                      //       'A',
-                                      //       //superscript is usually smaller in size
-                                      //       textScaleFactor: 0.8,
-                                      //       style: TextStyle(color: Colors.red),
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
@@ -983,9 +776,7 @@ class Slide3DHState extends State<Slide3DH>
                                 offset: const Offset(0, -6),
                                 child: Text(
                                   '$secretAlice',
-                                  //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
-                                  // style: TextStyle(color: Colors.red),
                                   style: const TextStyle(
                                     fontStyle: FontStyle.italic,
                                     color: Colors.black,
@@ -1047,7 +838,7 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.35,
-                right: MediaQuery.of(context).size.width * 0.24, //-0.01
+                right: MediaQuery.of(context).size.width * 0.24,
                 width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
@@ -1078,7 +869,7 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.45,
-                right: MediaQuery.of(context).size.width * 0.22, //-0.01
+                right: MediaQuery.of(context).size.width * 0.22,
                 width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
@@ -1097,15 +888,6 @@ class Slide3DHState extends State<Slide3DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // const Text(
-                        //   's_B ',
-                        //   style: TextStyle(
-                        //     color: Colors.red,
-                        //     // fontSize: MediaQuery.of(context).size.width *
-                        //     //     0.015, //middleWidth,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: const TextSpan(
                             style: TextStyle(
@@ -1119,34 +901,9 @@ class Slide3DHState extends State<Slide3DH>
                                   fontStyle: FontStyle.italic,
                                 ),
                               ),
-                              // WidgetSpan(
-                              //   child: Transform.translate(
-                              //     offset: const Offset(0, 6),
-                              //     child: const Text(
-                              //       'B',
-                              //       //superscript is usually smaller in size
-                              //       textScaleFactor: 0.8,
-                              //       style: TextStyle(color: Colors.red),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
-                        // Container(
-                        //   padding: EdgeInsets.only(top: marginValue),
-                        //   child: Text(
-                        //     '(Bob)',
-                        //     style: TextStyle(
-                        //       // fontSize: MediaQuery.of(context).size.width * 0.015,
-                        //       fontSize: (MediaQuery.of(context).size.width *
-                        //               shortWidth) /
-                        //           2,
-                        //       color: Colors.red[800],
-                        //     ),
-                        //     textAlign: TextAlign.left,
-                        //   ),
-                        // ),
                         Text(
                           ' = $secretBob',
                           style: const TextStyle(
@@ -1168,8 +925,8 @@ class Slide3DHState extends State<Slide3DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.55, //0.55
-                right: MediaQuery.of(context).size.width * 0.1, //-0.01
+                    0.55,
+                right: MediaQuery.of(context).size.width * 0.1,
                 width: MediaQuery.of(context).size.width * 0.24,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
@@ -1195,12 +952,6 @@ class Slide3DHState extends State<Slide3DH>
                           WidgetSpan(
                             child: Transform.translate(
                               offset: const Offset(0, -4),
-                              // child: const Text(
-                              //   's_B',
-                              //   //superscript is usually smaller in size
-                              //   textScaleFactor: 0.8,
-                              //   style: TextStyle(color: Colors.red),
-                              // ),
                               child: RichText(
                                 text: const TextSpan(
                                   style: TextStyle(
@@ -1215,17 +966,6 @@ class Slide3DHState extends State<Slide3DH>
                                         color: Colors.red,
                                       ),
                                     ),
-                                    // WidgetSpan(
-                                    //   child: Transform.translate(
-                                    //     offset: const Offset(0, 4),
-                                    //     child: const Text(
-                                    //       'B',
-                                    //       //superscript is usually smaller in size
-                                    //       textScaleFactor: 0.8,
-                                    //       style: TextStyle(color: Colors.red),
-                                    //     ),
-                                    //   ),
-                                    // ),
                                   ],
                                 ),
                               ),
@@ -1243,7 +983,6 @@ class Slide3DHState extends State<Slide3DH>
                               offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
-                                //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
                                 style: const TextStyle(
                                   fontStyle: FontStyle.italic,
@@ -1262,117 +1001,10 @@ class Slide3DHState extends State<Slide3DH>
                         ],
                       ),
                     ),
-                    // child: Align(
-                    //   alignment: Alignment.topLeft,
-                    //   child: Row(
-                    //     children: const [
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(top: 15.0),
-                    //         child: Text(
-                    //           'b = r',
-                    //           // style: TextStyle(
-                    //           //     // fontSize: MediaQuery.of(context).size.width *
-                    //           //     //     0.02, //shortWidth,
-                    //           //     ),
-                    //         ),
-                    //       ),
-                    //       Text(
-                    //         's_B',
-                    //         style: TextStyle(
-                    //           color: Colors.red,
-                    //           // fontSize:
-                    //           //     MediaQuery.of(context).size.width * 0.015,
-                    //           // fontSize: MediaQuery.of(context).size.width *
-                    //           //     shortWidth /
-                    //           //     1.5,
-                    //         ),
-                    //       ),
-                    //       // Text(
-                    //       //   '(Bob)',
-                    //       //   style: TextStyle(
-                    //       //     // fontSize:
-                    //       //     //     MediaQuery.of(context).size.width * 0.015,
-                    //       //     fontSize: MediaQuery.of(context).size.width *
-                    //       //         shortWidth /
-                    //       //         1.5,
-                    //       //     color: Colors.red,
-                    //       //   ),
-                    //       // ),
-                    //       Padding(
-                    //         padding: const EdgeInsets.only(top: 15.0),
-                    //         child: Text(
-                    //           'mod n ',
-                    //           // style: TextStyle(
-                    //           //     // fontSize: MediaQuery.of(context).size.width *
-                    //           //     //     0.02, //shortWidth,
-                    //           //     ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                   ),
                 ),
               ),
             ),
-
-            // Right-Text4_2
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.61,
-            //     right: MediaQuery.of(context).size.width * 0.02, //0.01
-            //     width: MediaQuery.of(context).size.width * 0.12,
-            //     height: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[4],
-            //       duration: Duration(seconds: seconds),
-            //       child: FittedBox(
-            //         child: Align(
-            //           alignment: Alignment.topLeft,
-            //           child: Row(
-            //             children: [
-            //               Padding(
-            //                 padding: const EdgeInsets.only(top: 15.0),
-            //                 child: Text(
-            //                   '= $r',
-            //                   // style: TextStyle(
-            //                   //     // fontSize: MediaQuery.of(context).size.width *
-            //                   //     //     0.02, //shortWidth,
-            //                   //     ),
-            //                 ),
-            //               ),
-            //               Text(
-            //                 '$secretBob',
-            //                 // style: TextStyle(
-            //                 //     // fontSize:
-            //                 //     //     MediaQuery.of(context).size.width * 0.015,
-            //                 //     // fontSize: MediaQuery.of(context).size.width *
-            //                 //     //     shortWidth /
-            //                 //     //     1.5,
-            //                 //     ),
-            //               ),
-            //               Padding(
-            //                 padding: const EdgeInsets.only(top: 15.0),
-            //                 child: Text(
-            //                   ' mod $n = ${pow(r, secretBob) % n}',
-            //                   // style: TextStyle(
-            //                   //     // fontSize: MediaQuery.of(context).size.width *
-            //                   //     //     0.02, //shortWidth,
-            //                   //     ),
-            //                 ),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
             // Right-Text 3
             Visibility(
@@ -1381,7 +1013,7 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.55,
-                right: MediaQuery.of(context).size.width * 0.22, //-0.01
+                right: MediaQuery.of(context).size.width * 0.22,
                 width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
@@ -1536,7 +1168,6 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.08,
-                //fromTop,
                 left: MediaQuery.of(context).size.width * 0.48,
                 width: MediaQuery.of(context).size.width * 0.05,
                 height: (MediaQuery.of(context).size.height -
@@ -1568,7 +1199,6 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.08,
-                //fromTop,
                 left: MediaQuery.of(context).size.width * 0.45,
                 width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
@@ -1628,7 +1258,6 @@ class Slide3DHState extends State<Slide3DH>
                               offset: const Offset(0, -6),
                               child: Text(
                                 '$secretAlice',
-                                //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
                                 style: const TextStyle(
                                   fontStyle: FontStyle.italic,
@@ -1649,42 +1278,10 @@ class Slide3DHState extends State<Slide3DH>
                       ),
                     ),
                   ),
-                  // child: Wrap(
-                  //   children: [
-                  //     Padding(
-                  //       padding: const EdgeInsets.only(top: 1.0),
-                  //       child: Text(
-                  //         'S = ${pow(r, secretBob) % n}',
-                  //         style: TextStyle(
-                  //           fontSize: MediaQuery.of(context).size.width *
-                  //               0.02, //middleWidth,
-                  //         ),
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       '$secretAlice',
-                  //       style: TextStyle(
-                  //         fontSize: MediaQuery.of(context).size.width * 0.015,
-                  //         // fontSize: (MediaQuery.of(context).size.width *
-                  //         //         middleWidth) /
-                  //         //     1.5,
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     Text(
-                  //       ' mod $n = ${pow(pow(r, secretBob) % n, secretAlice) % n} ',
-                  //       style: TextStyle(
-                  //         fontSize: MediaQuery.of(context).size.width *
-                  //             0.02, //middleWidth,
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ),
             ),
+
             // Right Modulo Result_1
             Visibility(
               visible: textVisibility,
@@ -1692,7 +1289,7 @@ class Slide3DHState extends State<Slide3DH>
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
                     0.6,
-                left: MediaQuery.of(context).size.width * 0.66, //-0.09
+                left: MediaQuery.of(context).size.width * 0.66,
                 width: MediaQuery.of(context).size.width * 0.22,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
@@ -1720,7 +1317,6 @@ class Slide3DHState extends State<Slide3DH>
                               offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
-                                //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
                                 style: const TextStyle(
                                   fontStyle: FontStyle.italic,
@@ -1741,7 +1337,6 @@ class Slide3DHState extends State<Slide3DH>
                               offset: const Offset(0, -6),
                               child: Text(
                                 '$secretBob',
-                                //superscript is usually smaller in size
                                 textScaleFactor: 0.8,
                                 style: const TextStyle(
                                   fontStyle: FontStyle.italic,
@@ -1762,73 +1357,9 @@ class Slide3DHState extends State<Slide3DH>
                       ),
                     ),
                   ),
-                  // child: Wrap(
-                  //   children: [
-                  //     Padding(
-                  //       padding: const EdgeInsets.only(top: 1.0),
-                  //       child: Text(
-                  //         'S = ${pow(r, secretAlice) % n}',
-                  //         style: TextStyle(
-                  //           fontSize: MediaQuery.of(context).size.width *
-                  //               0.02, //middleWidth,
-                  //         ),
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       '$secretBob',
-                  //       style: TextStyle(
-                  //         fontSize: MediaQuery.of(context).size.width * 0.015,
-                  //         // fontSize: (MediaQuery.of(context).size.width *
-                  //         //         middleWidth) /
-                  //         //     1.5,
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     Text(
-                  //       ' mod $n',
-                  //       style: TextStyle(
-                  //         fontSize: MediaQuery.of(context).size.width *
-                  //             0.02, //middleWidth,
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ),
             ),
-
-            // Right Modulo Result_2
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.72,
-            //     right: MediaQuery.of(context).size.width * 0.078,
-            //     width: MediaQuery.of(context).size.width * 0.1,
-            //     height: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[6],
-            //       duration: Duration(seconds: seconds),
-            //       child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: FittedBox(
-            //           child: Text(
-            //             ' = ${pow(pow(r, secretAlice) % n, secretBob) % n}',
-            //             style: TextStyle(
-            //               fontSize: MediaQuery.of(context).size.width *
-            //                   0.02, //middleWidth,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
             // Steps1
             MyPositioned(
@@ -1889,11 +1420,7 @@ class Slide3DHState extends State<Slide3DH>
               child: FloatingActionButton(
                 backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                 heroTag: "right9",
-                onPressed:
-                    // isLastIndex[0]
-                    //     ? null
-                    //     :
-                    () {
+                onPressed: () {
                   setState(
                     () {
                       if (videoButton == false) {
@@ -1910,7 +1437,6 @@ class Slide3DHState extends State<Slide3DH>
                         indexVisibilitySlide3DH++;
                         pageController3 = TextEditingController()
                           ..text = (indexVisibilitySlide3DH + 1).toString();
-                        // Languages.player.play("assets/steps.mp3");
                         stepsVisibility[0] = !stepsVisibility[0];
                         stepsVisibility[1] = !stepsVisibility[1];
                       }
@@ -1962,11 +1488,7 @@ class Slide3DHState extends State<Slide3DH>
               child: FloatingActionButton(
                 backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                 heroTag: "left9",
-                onPressed:
-                    // isLastIndex[1]
-                    //     ? null
-                    //     :
-                    () {
+                onPressed: () {
                   setState(
                     () {
                       if (videoButton == false) {
@@ -1982,7 +1504,6 @@ class Slide3DHState extends State<Slide3DH>
                       }
 
                       if (indexVisibilitySlide3DH == 0) {
-                        // Languages.player.play("assets/steps.mp3");
                         indexVisibilitySlide3DH--;
                         contentOpacity[0] = 0.0;
                         isLastIndex[1] = true;
@@ -2077,7 +1598,6 @@ class Slide3DHState extends State<Slide3DH>
             ),
 
             // Advanced-Setting-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom:
@@ -2114,7 +1634,6 @@ class Slide3DHState extends State<Slide3DH>
                           borderRadius:
                               BorderRadius.all(Radius.circular(32.0))),
                       title: Text(
-                        // 'Settings',
                         AppLocalizations.of(context)!.settings,
                         textAlign: TextAlign.center,
                       ),
@@ -2301,7 +1820,6 @@ class Slide3DHState extends State<Slide3DH>
                                         void Function(void Function())
                                             setState) {
                                       return SizedBox(
-                                        // width: 100,
                                         width:
                                             MediaQuery.of(context).size.width *
                                                 0.1,
@@ -2330,7 +1848,6 @@ class Slide3DHState extends State<Slide3DH>
                                 false,
                               ),
                               _buildRow(
-                                // AppLocalizations.of(context)!.secretBob,
                                 "b =",
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
@@ -2367,7 +1884,6 @@ class Slide3DHState extends State<Slide3DH>
                                 false,
                               ),
                               _buildRow(
-                                // AppLocalizations.of(context)!.secretAlice,
                                 "a =",
                                 Container(
                                   margin: const EdgeInsets.only(left: 18.0),
@@ -2407,370 +1923,6 @@ class Slide3DHState extends State<Slide3DH>
                           ),
                         ),
                       ),
-                      // content: Row(
-                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //   crossAxisAlignment: CrossAxisAlignment.start,
-                      //   children: [
-                      //     Column(
-                      //       crossAxisAlignment: CrossAxisAlignment.start,
-                      //       children: [
-                      //         SizedBox(
-                      //           // height: 10,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.02,
-                      //         ),
-                      //         // 'Animation-Geschwindigkeit',
-                      //         Text(
-                      //           AppLocalizations.of(context)!
-                      //               .animationSpeed,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 60,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.09,
-                      //         ),
-                      //         Text(
-                      //           // 'Sprache'
-                      //           AppLocalizations.of(context)!.appLanguage,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 60,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.09,
-                      //         ),
-                      //         Text(
-                      //           // 'Zoom Enable'
-                      //           AppLocalizations.of(context)!.zoomEnable,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 50,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.08,
-                      //         ),
-                      //         const Text(
-                      //           'n = ',
-                      //           textAlign: TextAlign.center,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 40,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.07,
-                      //         ),
-                      //         const Text(
-                      //           'r = ',
-                      //           textAlign: TextAlign.center,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 30,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.06,
-                      //         ),
-                      //         Text(
-                      //           // 'Secret (Bob) = ',
-                      //           AppLocalizations.of(context)!.secretBob,
-                      //           textAlign: TextAlign.center,
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 40,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.07,
-                      //         ),
-                      //         Text(
-                      //           // 'Secret (Alice) = ',
-                      //           AppLocalizations.of(context)!.secretAlice,
-                      //           textAlign: TextAlign.center,
-                      //         ),
-                      //       ],
-                      //     ),
-                      //     const SizedBox(
-                      //       width: 50,
-                      //     ),
-                      //     Column(
-                      //       crossAxisAlignment: CrossAxisAlignment.start,
-                      //       children: [
-                      //         StatefulBuilder(
-                      //           builder: (BuildContext context,
-                      //               void Function(void Function())
-                      //                   setState) {
-                      //             return Slider(
-                      //               value: Global.val.toDouble(),
-                      //               min: 1.0,
-                      //               max: 3.0,
-                      //               divisions: 2,
-                      //               label: Global.val.toString(),
-                      //               onChanged: (double newValue) {
-                      //                 setState(
-                      //                   () {
-                      //                     Global.val = newValue.round();
-
-                      //                     if (Global.val == 1) {
-                      //                       Global.slider = Global.val + 2;
-                      //                       if (!videoButton) {
-                      //                         videoTimerSlide3DH.cancel();
-                      //                         videoTimerSlide3DH =
-                      //                             videoTimerProblem();
-                      //                       }
-                      //                     } else if (Global.val == 3) {
-                      //                       Global.slider = Global.val - 2;
-                      //                       if (!videoButton) {
-                      //                         videoTimerSlide3DH.cancel();
-                      //                         videoTimerSlide3DH =
-                      //                             videoTimerProblem();
-                      //                       }
-                      //                     } else {
-                      //                       Global.slider = Global.val;
-                      //                       if (!videoButton) {
-                      //                         videoTimerSlide3DH.cancel();
-                      //                         videoTimerSlide3DH =
-                      //                             videoTimerProblem();
-                      //                       }
-                      //                     }
-                      //                   },
-                      //                 );
-                      //               },
-                      //             );
-                      //           },
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.04,
-                      //         ),
-                      //         Container(
-                      //           margin: const EdgeInsets.only(left: 18.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return DropdownButton<String>(
-                      //                 value: Global.selectedLanguage == true
-                      //                     ? Global.languages[0]
-                      //                     : Global.languages[1],
-                      //                 elevation: 16,
-                      //                 style: const TextStyle(
-                      //                   color: Colors.blue,
-                      //                 ),
-                      //                 underline: Container(
-                      //                   height: 2,
-                      //                   color: Colors.blueAccent,
-                      //                 ),
-                      //                 onChanged: (newValue) {
-                      //                   setState(
-                      //                     () {
-                      //                       dropdownValue = newValue!;
-                      //                       if (dropdownValue ==
-                      //                           Global.languages[1]) {
-                      //                         Global.selectedLanguage =
-                      //                             false;
-                      //                         MyApp.of(context)!.setLocale(
-                      //                             const Locale.fromSubtags(
-                      //                                 languageCode: 'en'));
-                      //                         Global.locale = 'en';
-                      //                       } else {
-                      //                         Global.selectedLanguage =
-                      //                             true;
-                      //                         MyApp.of(context)!.setLocale(
-                      //                             const Locale.fromSubtags(
-                      //                                 languageCode: 'de'));
-                      //                         Global.locale = 'de';
-                      //                       }
-                      //                     },
-                      //                   );
-                      //                   Provider.of<LanguageProvider>(
-                      //                           context,
-                      //                           listen: false)
-                      //                       .changeLanguage(1);
-                      //                 },
-                      //                 items: Global.languages
-                      //                     .map<DropdownMenuItem<String>>(
-                      //                   (String value) {
-                      //                     return DropdownMenuItem<String>(
-                      //                       value: value,
-                      //                       child: Text(value),
-                      //                     );
-                      //                   },
-                      //                 ).toList(),
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.04,
-                      //         ),
-                      //         Padding(
-                      //           padding: const EdgeInsets.all(10.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return CupertinoSwitch(
-                      //                 value: Global.switchValue,
-                      //                 onChanged: (value) {
-                      //                   setState(() {
-                      //                     Global.switchValue = value;
-                      //                     Global.scaleEnabled =
-                      //                         Global.switchValue;
-                      //                   });
-                      //                 },
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.04,
-                      //         ),
-                      //         Container(
-                      //           margin: const EdgeInsets.only(left: 18.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return SizedBox(
-                      //                 width: MediaQuery.of(context)
-                      //                         .size
-                      //                         .width *
-                      //                     0.1,
-                      //                 height: 30,
-                      //                 child: TextField(
-                      //                   keyboardType: TextInputType.number,
-                      //                   controller: nController,
-                      //                   inputFormatters: <
-                      //                       TextInputFormatter>[
-                      //                     LengthLimitingTextInputFormatter(
-                      //                         3),
-                      //                     FilteringTextInputFormatter
-                      //                         .digitsOnly
-                      //                   ],
-                      //                   decoration: const InputDecoration(
-                      //                     contentPadding:
-                      //                         EdgeInsets.only(left: 10),
-                      //                     border: OutlineInputBorder(),
-                      //                   ),
-                      //                 ),
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.055,
-                      //         ),
-                      //         Container(
-                      //           margin: const EdgeInsets.only(left: 18.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return SizedBox(
-                      //                 // width: 100,
-                      //                 width: MediaQuery.of(context)
-                      //                         .size
-                      //                         .width *
-                      //                     0.1,
-                      //                 height: 30,
-                      //                 child: TextField(
-                      //                   keyboardType: TextInputType.number,
-                      //                   controller: rController,
-                      //                   inputFormatters: <
-                      //                       TextInputFormatter>[
-                      //                     LengthLimitingTextInputFormatter(
-                      //                         3),
-                      //                     FilteringTextInputFormatter
-                      //                         .digitsOnly
-                      //                   ],
-                      //                   decoration: const InputDecoration(
-                      //                     contentPadding:
-                      //                         EdgeInsets.only(left: 10),
-                      //                     border: OutlineInputBorder(),
-                      //                   ),
-                      //                 ),
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.05,
-                      //         ),
-                      //         Container(
-                      //           margin: const EdgeInsets.only(left: 18.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return SizedBox(
-                      //                 width: MediaQuery.of(context)
-                      //                         .size
-                      //                         .width *
-                      //                     0.1,
-                      //                 height: 30,
-                      //                 child: TextField(
-                      //                   keyboardType: TextInputType.number,
-                      //                   controller: secretBobController,
-                      //                   inputFormatters: <
-                      //                       TextInputFormatter>[
-                      //                     LengthLimitingTextInputFormatter(
-                      //                         3),
-                      //                     FilteringTextInputFormatter
-                      //                         .digitsOnly
-                      //                   ],
-                      //                   decoration: const InputDecoration(
-                      //                     contentPadding:
-                      //                         EdgeInsets.only(left: 10),
-                      //                     border: OutlineInputBorder(),
-                      //                   ),
-                      //                 ),
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //         SizedBox(
-                      //           // height: 25,
-                      //           height: MediaQuery.of(context).size.height *
-                      //               0.05,
-                      //         ),
-                      //         Container(
-                      //           margin: const EdgeInsets.only(left: 18.0),
-                      //           child: StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return SizedBox(
-                      //                 width: MediaQuery.of(context)
-                      //                         .size
-                      //                         .width *
-                      //                     0.1,
-                      //                 height: 30,
-                      //                 child: TextField(
-                      //                   keyboardType: TextInputType.number,
-                      //                   controller: secretAliceController,
-                      //                   inputFormatters: <
-                      //                       TextInputFormatter>[
-                      //                     LengthLimitingTextInputFormatter(
-                      //                         3),
-                      //                     FilteringTextInputFormatter
-                      //                         .digitsOnly
-                      //                   ],
-                      //                   decoration: const InputDecoration(
-                      //                     contentPadding:
-                      //                         EdgeInsets.only(left: 10),
-                      //                     border: OutlineInputBorder(),
-                      //                   ),
-                      //                 ),
-                      //               );
-                      //             },
-                      //           ),
-                      //         ),
-                      //       ],
-                      //     ),
-                      //   ],
-                      // ),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
@@ -2785,7 +1937,6 @@ class Slide3DHState extends State<Slide3DH>
                                         Radius.circular(32.0))),
                                 title: const Text(
                                   'Possible roots',
-                                  // AppLocalizations.of(context)!.settings,
                                   textAlign: TextAlign.center,
                                 ),
                                 content: Text('$roots'),
@@ -2827,10 +1978,8 @@ class Slide3DHState extends State<Slide3DH>
                                           size: 32,
                                           color: Colors.white,
                                         ),
-                                        // 'Error',
                                         AppLocalizations.of(context)!
                                             .errorTitel,
-                                        // 'n must be prime number',
                                         AppLocalizations.of(context)!
                                             .primeNumberErrorMessage,
                                         Colors.red);
@@ -2843,10 +1992,8 @@ class Slide3DHState extends State<Slide3DH>
                                           size: 32,
                                           color: Colors.white,
                                         ),
-                                        // 'Error',
                                         AppLocalizations.of(context)!
                                             .errorTitel,
-                                        // 'n must be prime number',
                                         AppLocalizations.of(context)!
                                             .primitiveRootErrorMessage,
                                         Colors.red);
@@ -2860,9 +2007,7 @@ class Slide3DHState extends State<Slide3DH>
                                     size: 32,
                                     color: Colors.white,
                                   ),
-                                  // 'Error',
                                   AppLocalizations.of(context)!.errorTitel,
-                                  // 'Empty values are not accepted!',
                                   AppLocalizations.of(context)!
                                       .emptyErrorMessage,
                                   Colors.red);
@@ -2908,9 +2053,7 @@ class Slide3DHState extends State<Slide3DH>
                             size: 32,
                             color: Colors.white,
                           ),
-                          // 'Done',
                           AppLocalizations.of(context)!.doneTitel,
-                          // 'Your values have been set',
                           AppLocalizations.of(context)!.correctMessage,
                           Colors.green,
                         );
@@ -2924,7 +2067,6 @@ class Slide3DHState extends State<Slide3DH>
             ),
 
             // Video-Stop-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsStopButton,
@@ -3026,7 +2168,6 @@ class Slide3DHState extends State<Slide3DH>
             ),
 
             // Video-Play-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsVideoButton,
@@ -3058,7 +2199,6 @@ class Slide3DHState extends State<Slide3DH>
             ),
 
             // More-Button
-
             Positioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.13,
@@ -3146,23 +2286,19 @@ class Slide3DHState extends State<Slide3DH>
         children: <Widget>[
           const SizedBox(height: 12),
           const SizedBox(height: 12),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(child: Text(text)),
-                // VerticalDivider(color: Colors.red, width: 4.0),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 8, horizontal: isSwitch ? 35 : 20),
-                    child: widget,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(child: Text(text)),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(
+                      vertical: 8, horizontal: isSwitch ? 35 : 20),
+                  child: widget,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -3184,7 +2320,6 @@ class Slide3DHState extends State<Slide3DH>
               flex: 2,
               child: Text(
                 AppLocalizations.of(context)!.goToStep,
-                // 'Go to Page:',
                 textAlign: TextAlign.left,
               ),
             ),
@@ -3209,7 +2344,7 @@ class Slide3DHState extends State<Slide3DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -3231,9 +2366,7 @@ class Slide3DHState extends State<Slide3DH>
                       size: 32,
                       color: Colors.white,
                     ),
-                    // 'Error',
                     AppLocalizations.of(context)!.errorTitel,
-                    // 'n must be prime number',
                     AppLocalizations.of(context)!.outOfRangeError,
                     Colors.red);
               } else {
@@ -3317,18 +2450,8 @@ class Slide3DHState extends State<Slide3DH>
 
   stepNumber() {
     setState(() {
-      //videoTimerVariable.cancel();
-      // indexVisibilitySlide1DH = (int.parse(pageController1.text));
-
       stopFunction();
-
       selectPageNumber(int.parse(pageController3.text) - 1);
-
-      // if (controllerIndex > a) {
-      //   videoTimerProblem(int.parse(pageController1.text) - 1, 0);
-      // } else {
-      //   videoTimerProblemBack(int.parse(pageController1.text) - 1);
-      // }
     });
   }
 
@@ -3337,16 +2460,6 @@ class Slide3DHState extends State<Slide3DH>
       () {
         isLastIndex = [false, true];
         isCanceled = false;
-        // nOldVal = 0;
-        // rOldVal = 0;
-        // secretBobOldVal = 0;
-        // scretAliceOldVal = 0;
-        // sliderOldValue = 0;
-        // valOldValue = 0;
-        // n = 17;
-        // r = 3;
-        // secretAlice = 9;
-        // secretBob = 7;
         Global.slider = 3;
         Global.val = 1;
         Global.replacedSliderValue = Global.slider;
@@ -3396,8 +2509,6 @@ class Slide3DHState extends State<Slide3DH>
         delayTimer = Timer(const Duration(milliseconds: 50), () {
           setState(() {
             textVisibility = true;
-            // Global.slider = Global.replacedSliderValue;
-            // seconds = Global.slider;
             delayTimer.cancel();
           });
         });

@@ -76,9 +76,7 @@ class MyPositioned extends StatelessWidget {
       top: (MediaQuery.of(context).size.height - appBarHeight) * top,
       left: MediaQuery.of(context).size.width * left,
       width: MediaQuery.of(context).size.width * width,
-      // width: 200,
       height: (MediaQuery.of(context).size.height - appBarHeight) * height,
-      // height: 200,
       child: AnimatedOpacity(
         opacity: visibility == true ? opacity : 0.0,
         duration: Duration(seconds: seconds),

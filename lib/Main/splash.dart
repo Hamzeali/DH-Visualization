@@ -1,3 +1,6 @@
+/*
+This widget has been implemented with the help of 'Flutter Animation Gallery' application
+*/
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,19 +9,25 @@ import 'dart:async';
 import 'package:key_exchange_visualization/Main/intro.dart';
 
 class SplashWidget extends StatefulWidget {
+  const SplashWidget({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SplashWidgetState createState() => _SplashWidgetState();
 }
 
 class _SplashWidgetState extends State<SplashWidget> {
   @override
   Widget build(BuildContext context) {
-    return SecondPage();
+    return const SecondPage();
   }
 }
 
 class SecondPage extends StatefulWidget {
+  const SecondPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SecondPageState createState() => _SecondPageState();
 }
 
@@ -61,7 +70,7 @@ class _SecondPageState extends State<SecondPage> {
       setState(() {
         Navigator.of(context).pushReplacement(
           ThisIsFadeRoute(
-            route: Intro(),
+            route: const Intro(),
             page: const Center(),
           ),
         );
@@ -98,7 +107,6 @@ class _SecondPageState extends State<SecondPage> {
                       ? h * 0.4
                       : 20,
               width: 20,
-              // color: Colors.blue,
             ),
             AnimatedContainer(
               duration: Duration(
@@ -120,7 +128,6 @@ class _SecondPageState extends State<SecondPage> {
                       : 20,
               decoration: BoxDecoration(
                   color: _b ? Colors.blue : Colors.transparent,
-                  // shape: _c? BoxShape.rectangle : BoxShape.circle,
                   borderRadius: _d
                       ? const BorderRadius.only()
                       : BorderRadius.circular(30)),

@@ -106,7 +106,6 @@ class Slide4DHState extends State<Slide4DH>
     pageController4 = TextEditingController()..text = (0).toString();
     checkVisibility = 0;
     delay = true;
-    // dropdownValue = 'Deutsch';
     backToZero = 0;
     checkSettingsDuration = 0;
     isSettingsPressed = 0;
@@ -255,7 +254,6 @@ class Slide4DHState extends State<Slide4DH>
           () {
             seconds = 0;
             if (indexVisibilitySlide4DH == a) {
-              // openDialog(false);
               pageNumberTimer.cancel();
             }
             if (indexVisibilitySlide4DH < a) {
@@ -359,31 +357,20 @@ class Slide4DHState extends State<Slide4DH>
   Widget build(BuildContext context) {
     text = translate(context, indexVisibilitySlide4DH);
     double shortWidth = 0.0;
-    double middleWidth = 0.0;
-    double marginValue = 0.0;
 
     if (MediaQuery.of(context).size.width < 1000) {
       shortWidth = 0.025;
-      middleWidth = 0.015;
     } else {
       shortWidth = 0.02;
-      middleWidth = 0.02;
     }
     if (MediaQuery.of(context).size.width < 700) {
-      marginValue = 8.0;
-    } else {
-      marginValue = 16.5;
-    }
+    } else {}
     if (MediaQuery.of(context).size.width > 1000 &&
         MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.015;
     } else if (MediaQuery.of(context).size.width < 1000 &&
         MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.02;
     } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      middleWidth = 0.025;
-    }
+        MediaQuery.of(context).size.height > 400) {}
 
     if (isPressedDown == 2 && isPressedUp == 1 && desc) {
       containerSeconds = 2;
@@ -490,8 +477,7 @@ class Slide4DHState extends State<Slide4DH>
                   child: Text(
                     AppLocalizations.of(context)!.text4,
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width *
-                          0.016, //longWidth,
+                      fontSize: MediaQuery.of(context).size.width * 0.016,
                     ),
                   ),
                 ),
@@ -602,134 +588,25 @@ class Slide4DHState extends State<Slide4DH>
               ),
             ),
 
-            // a exchange between Alice and Eve
+            // 'A' exchange between Alice and Eve
             texVisibility(textVisibility, 0.05, 0.35, 0.01, 0.1,
                 contentOpacity[2], Alignment.topLeft, 'A', shortWidth),
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.05,
-            //     left: MediaQuery.of(context).size.width * 0.35,
-            //     width: MediaQuery.of(context).size.width * 0.2,
-            //     height: MediaQuery.of(context).size.height * 0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[2],
-            //       duration: Duration(seconds: seconds),
-            //       child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: FittedBox(
-            //           child: Text(
-            //             'a',
-            //             style: TextStyle(
-            //               fontSize:
-            //                   MediaQuery.of(context).size.width * shortWidth,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
-            // eb exchange between Alice and Eve
+            // 'EA' exchange between Alice and Eve
             texVisibility(textVisibility, 0.18, 0.35, 0.02, 0.1,
                 contentOpacity[5], Alignment.topLeft, 'EA', shortWidth),
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.18,
-            //     left: MediaQuery.of(context).size.width * 0.35,
-            //     width: MediaQuery.of(context).size.width * 0.2,
-            //     height: MediaQuery.of(context).size.height * 0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[5],
-            //       duration: Duration(seconds: seconds),
-            //       child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: FittedBox(
-            //           child: Text(
-            //             'eb',
-            //             style: TextStyle(
-            //               fontSize:
-            //                   MediaQuery.of(context).size.width * shortWidth,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
-            // b exchange between Bob and Eve
+            // 'B' exchange between Bob and Eve
             texVisibility(textVisibility, 0.05, 0.67, 0.01, 0.1,
                 contentOpacity[9], Alignment.topLeft, 'B', shortWidth),
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.05,
-            //     left: MediaQuery.of(context).size.width * 0.67,
-            //     width: MediaQuery.of(context).size.width * 0.2,
-            //     height: MediaQuery.of(context).size.height * 0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[9],
-            //       duration: Duration(seconds: seconds),
-            //       child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: FittedBox(
-            //           child: Text(
-            //             'b',
-            //             style: TextStyle(
-            //               fontSize:
-            //                   MediaQuery.of(context).size.width * shortWidth,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
-            // ea exchange between Bob and Eve
+            // 'EB' exchange between Bob and Eve
             texVisibility(textVisibility, 0.18, 0.67, 0.02, 0.1,
                 contentOpacity[12], Alignment.topLeft, 'EB', shortWidth),
-            // Visibility(
-            //   visible: textVisibility,
-            //   child: Positioned(
-            //     top: (MediaQuery.of(context).size.height -
-            //             HomePageDHState.returnAppBar[1]) *
-            //         0.18,
-            //     left: MediaQuery.of(context).size.width * 0.67,
-            //     width: MediaQuery.of(context).size.width * 0.2,
-            //     height: MediaQuery.of(context).size.height * 0.1,
-            //     child: AnimatedOpacity(
-            //       opacity: contentOpacity[12],
-            //       duration: Duration(seconds: seconds),
-            //       child: Align(
-            //         alignment: Alignment.topLeft,
-            //         child: FittedBox(
-            //           child: Text(
-            //             'ea',
-            //             style: TextStyle(
-            //               fontSize:
-            //                   MediaQuery.of(context).size.width * shortWidth,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
-            //Alice
+            //Alic part
 
-            // Secret S(Alice)
-
+            // Secret a
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -754,16 +631,6 @@ class Slide4DHState extends State<Slide4DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // Text(
-                        //   's_A',
-                        //   style: TextStyle(
-                        //     // fontSize: (MediaQuery.of(context).size.width *
-                        //     //         shortWidth) /
-                        //     //     2,
-                        //     color: Colors.red,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: const TextSpan(
                             style: TextStyle(
@@ -777,17 +644,6 @@ class Slide4DHState extends State<Slide4DH>
                                   color: Colors.red,
                                 ),
                               ),
-                              // WidgetSpan(
-                              //   child: Transform.translate(
-                              //     offset: const Offset(0, 6),
-                              //     child: const Text(
-                              //       'A',
-                              //       //superscript is usually smaller in size
-                              //       textScaleFactor: 0.8,
-                              //       style: TextStyle(color: Colors.red),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
@@ -798,8 +654,7 @@ class Slide4DHState extends State<Slide4DH>
               ),
             ),
 
-            // a = r^S(Alice) mod n
-
+            // A = g^a mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -830,12 +685,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -4),
-                                // child: const Text(
-                                //   's_A',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: const TextSpan(
                                     style: TextStyle(
@@ -849,17 +698,6 @@ class Slide4DHState extends State<Slide4DH>
                                           color: Colors.red,
                                         ),
                                       ),
-                                      // WidgetSpan(
-                                      //   child: Transform.translate(
-                                      //     offset: const Offset(0, 4),
-                                      //     child: const Text(
-                                      //       'A',
-                                      //       //superscript is usually smaller in size
-                                      //       textScaleFactor: 0.8,
-                                      //       style: TextStyle(color: Colors.red),
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
@@ -875,51 +713,13 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Text(
-                      //       'a = r',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Alice)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // S = eb^S(Alice) mod n
+            // S1 = EA^a mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -952,7 +752,6 @@ class Slide4DHState extends State<Slide4DH>
                                 offset: const Offset(0, 4),
                                 child: const Text(
                                   '1',
-                                  //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
@@ -970,12 +769,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -5),
-                                // child: const Text(
-                                //   's_A',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: const TextSpan(
                                     style: TextStyle(
@@ -989,17 +782,6 @@ class Slide4DHState extends State<Slide4DH>
                                           color: Colors.red,
                                         ),
                                       ),
-                                      // WidgetSpan(
-                                      //   child: Transform.translate(
-                                      //     offset: const Offset(0, 4),
-                                      //     child: const Text(
-                                      //       'A',
-                                      //       //superscript is usually smaller in size
-                                      //       textScaleFactor: 0.8,
-                                      //       style: TextStyle(color: Colors.red),
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
@@ -1015,56 +797,15 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         'S1 = eb',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Alice)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // Eve
+            // Eve part
 
-            // Secret es(Eve-Alice)
+            // Secret e1
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1089,16 +830,6 @@ class Slide4DHState extends State<Slide4DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // Text(
-                        //   's_EA',
-                        //   style: TextStyle(
-                        //     // fontSize: (MediaQuery.of(context).size.width *
-                        //     //         shortWidth) /
-                        //     //     2,
-                        //     color: Colors.red,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: TextSpan(
                             style: const TextStyle(
@@ -1117,7 +848,6 @@ class Slide4DHState extends State<Slide4DH>
                                   offset: const Offset(0, 4),
                                   child: const Text(
                                     '1',
-                                    //superscript is usually smaller in size
                                     textScaleFactor: 0.8,
                                     style: TextStyle(
                                         fontStyle: FontStyle.italic,
@@ -1131,36 +861,11 @@ class Slide4DHState extends State<Slide4DH>
                       ],
                     ),
                   ),
-                  // child: Wrap(
-                  //   children: [
-                  //     Text(
-                  //       'Secret s',
-                  //       style: TextStyle(
-                  //         fontSize:
-                  //             (MediaQuery.of(context).size.width * middleWidth),
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     Container(
-                  //       padding: EdgeInsets.only(top: marginValue),
-                  //       child: Text(
-                  //         '(Eve-Alice)',
-                  //         style: TextStyle(
-                  //           fontSize: (MediaQuery.of(context).size.width *
-                  //                   shortWidth) /
-                  //               2,
-                  //           color: Colors.red[800],
-                  //         ),
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ),
             ),
 
-            // Secret es(Eve-Bob)
+            // Secret e2
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1185,16 +890,6 @@ class Slide4DHState extends State<Slide4DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // Text(
-                        //   's_EB',
-                        //   style: TextStyle(
-                        //     // fontSize: (MediaQuery.of(context).size.width *
-                        //     //         shortWidth) /
-                        //     //     2,
-                        //     color: Colors.red,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: TextSpan(
                             style: const TextStyle(
@@ -1213,7 +908,6 @@ class Slide4DHState extends State<Slide4DH>
                                   offset: const Offset(0, 4),
                                   child: const Text(
                                     '2',
-                                    //superscript is usually smaller in size
                                     textScaleFactor: 0.8,
                                     style: TextStyle(
                                         fontStyle: FontStyle.italic,
@@ -1227,36 +921,11 @@ class Slide4DHState extends State<Slide4DH>
                       ],
                     ),
                   ),
-                  // child: Wrap(
-                  //   children: [
-                  //     Text(
-                  //       ';   Secret s',
-                  //       style: TextStyle(
-                  //         fontSize:
-                  //             (MediaQuery.of(context).size.width * middleWidth),
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     Container(
-                  //       padding: EdgeInsets.only(top: marginValue),
-                  //       child: Text(
-                  //         '(Eve-Bob)',
-                  //         style: TextStyle(
-                  //           fontSize: (MediaQuery.of(context).size.width *
-                  //                   shortWidth) /
-                  //               2,
-                  //           color: Colors.red[800],
-                  //         ),
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ),
             ),
 
-            // ea = r^S(Eve-Alice) mod n
+            // EA = g^e1 mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1287,12 +956,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -6),
-                                // child: const Text(
-                                //   's_EA',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: TextSpan(
                                     style: const TextStyle(
@@ -1311,7 +974,6 @@ class Slide4DHState extends State<Slide4DH>
                                           offset: const Offset(0, 4),
                                           child: const Text(
                                             '1',
-                                            //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
@@ -1334,54 +996,13 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         'ea = r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Eve-Alice)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // eb = r^S(Eve-Bob) mod n
+            // EB = g^e2 mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1412,12 +1033,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -6),
-                                // child: const Text(
-                                //   's_EB',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: TextSpan(
                                     style: const TextStyle(
@@ -1436,7 +1051,6 @@ class Slide4DHState extends State<Slide4DH>
                                           offset: const Offset(0, 4),
                                           child: const Text(
                                             '2',
-                                            //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
@@ -1459,54 +1073,13 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         '; eb = r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Eve-Bob)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // S1 = a^S(Eve-Alice) mod n
+            // S1 = A^e1 mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1539,7 +1112,6 @@ class Slide4DHState extends State<Slide4DH>
                                 offset: const Offset(0, 4),
                                 child: const Text(
                                   '1',
-                                  //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
@@ -1557,12 +1129,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -6),
-                                // child: const Text(
-                                //   's_EB',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: TextSpan(
                                     style: const TextStyle(
@@ -1581,7 +1147,6 @@ class Slide4DHState extends State<Slide4DH>
                                           offset: const Offset(0, 4),
                                           child: const Text(
                                             '1',
-                                            //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
@@ -1604,54 +1169,13 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         'S1 = a',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Eve-Alice)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // S2 = b^S(Eve-Bob) mod n
+            // S2 = B^e2 mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1684,7 +1208,6 @@ class Slide4DHState extends State<Slide4DH>
                                 offset: const Offset(0, 4),
                                 child: const Text(
                                   '2',
-                                  //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
@@ -1702,12 +1225,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -6),
-                                // child: const Text(
-                                //   's_EA',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: TextSpan(
                                     style: const TextStyle(
@@ -1726,7 +1243,6 @@ class Slide4DHState extends State<Slide4DH>
                                           offset: const Offset(0, 4),
                                           child: const Text(
                                             '2',
-                                            //superscript is usually smaller in size
                                             textScaleFactor: 0.8,
                                             style: TextStyle(
                                                 fontStyle: FontStyle.italic,
@@ -1749,56 +1265,15 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         '; S2 = b',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       'S',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //       ),
-                      //     ),
-                      //     Text(
-                      //       '(Eve-Alice)',
-                      //       style: TextStyle(
-                      //         fontSize: MediaQuery.of(context).size.width *
-                      //             middleWidth /
-                      //             1.5,
-                      //         color: Colors.red,
-                      //       ),
-                      //     ),
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(top: 15.0),
-                      //       child: Text(
-                      //         ' mod n', // = $r',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth,
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ],
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // Bob
+            // Bob part
 
-            // Secret S(Bob)
+            // Secret b
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1824,16 +1299,6 @@ class Slide4DHState extends State<Slide4DH>
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        // Text(
-                        //   's_B',
-                        //   style: TextStyle(
-                        //     // fontSize: (MediaQuery.of(context).size.width *
-                        //     //         shortWidth) /
-                        //     //     2,
-                        //     color: Colors.red,
-                        //   ),
-                        //   textAlign: TextAlign.left,
-                        // ),
                         RichText(
                           text: const TextSpan(
                             style: TextStyle(
@@ -1847,53 +1312,17 @@ class Slide4DHState extends State<Slide4DH>
                                   color: Colors.red,
                                 ),
                               ),
-                              // WidgetSpan(
-                              //   child: Transform.translate(
-                              //     offset: const Offset(0, 6),
-                              //     child: const Text(
-                              //       'B',
-                              //       //superscript is usually smaller in size
-                              //       textScaleFactor: 0.8,
-                              //       style: TextStyle(color: Colors.red),
-                              //     ),
-                              //   ),
-                              // ),
                             ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                  // child: Wrap(
-                  //   children: [
-                  //     Text(
-                  //       'Secret s',
-                  //       style: TextStyle(
-                  //         fontSize:
-                  //             (MediaQuery.of(context).size.width * middleWidth),
-                  //       ),
-                  //       textAlign: TextAlign.left,
-                  //     ),
-                  //     Container(
-                  //       padding: EdgeInsets.only(top: marginValue),
-                  //       child: Text(
-                  //         '(Bob)',
-                  //         style: TextStyle(
-                  //           fontSize: (MediaQuery.of(context).size.width *
-                  //                   shortWidth) /
-                  //               2,
-                  //           color: Colors.red[800],
-                  //         ),
-                  //         textAlign: TextAlign.left,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ),
               ),
             ),
 
-            // b = r^S(Bob) mod n
+            // B = g^b mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -1924,12 +1353,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -4),
-                                // child: const Text(
-                                //   's_B',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: const TextSpan(
                                     style: TextStyle(
@@ -1943,17 +1366,6 @@ class Slide4DHState extends State<Slide4DH>
                                           color: Colors.red,
                                         ),
                                       ),
-                                      // WidgetSpan(
-                                      //   child: Transform.translate(
-                                      //     offset: const Offset(0, 4),
-                                      //     child: const Text(
-                                      //       'B',
-                                      //       //superscript is usually smaller in size
-                                      //       textScaleFactor: 0.8,
-                                      //       style: TextStyle(color: Colors.red),
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
@@ -1969,56 +1381,13 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: FittedBox(
-                      //   child: Row(
-                      //     children: [
-                      //       Padding(
-                      //         padding: const EdgeInsets.only(top: 15.0),
-                      //         child: Text(
-                      //           'b = r',
-                      //           style: TextStyle(
-                      //             fontSize: MediaQuery.of(context).size.width *
-                      //                 middleWidth,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         'S',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth /
-                      //               1.5,
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         '(Bob)',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth /
-                      //               1.5,
-                      //           color: Colors.red,
-                      //         ),
-                      //       ),
-                      //       Padding(
-                      //         padding: const EdgeInsets.only(top: 15.0),
-                      //         child: Text(
-                      //           ' mod n', // = $r',
-                      //           style: TextStyle(
-                      //             fontSize: MediaQuery.of(context).size.width *
-                      //                 middleWidth,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                     ),
                   ),
                 ),
               ),
             ),
 
-            // S2 = ea^S(Bob) mod n
+            // S2 = EB^b mod p
             Visibility(
               visible: textVisibility,
               child: Positioned(
@@ -2049,7 +1418,6 @@ class Slide4DHState extends State<Slide4DH>
                                 offset: const Offset(0, 4),
                                 child: const Text(
                                   '2',
-                                  //superscript is usually smaller in size
                                   textScaleFactor: 0.8,
                                   style: TextStyle(
                                       fontStyle: FontStyle.italic,
@@ -2067,12 +1435,6 @@ class Slide4DHState extends State<Slide4DH>
                             WidgetSpan(
                               child: Transform.translate(
                                 offset: const Offset(0, -5),
-                                // child: const Text(
-                                //   's_B',
-                                //   //superscript is usually smaller in size
-                                //   textScaleFactor: 0.8,
-                                //   style: TextStyle(color: Colors.red),
-                                // ),
                                 child: RichText(
                                   text: const TextSpan(
                                     style: TextStyle(
@@ -2086,17 +1448,6 @@ class Slide4DHState extends State<Slide4DH>
                                           color: Colors.red,
                                         ),
                                       ),
-                                      // WidgetSpan(
-                                      //   child: Transform.translate(
-                                      //     offset: const Offset(0, 4),
-                                      //     child: const Text(
-                                      //       'B',
-                                      //       //superscript is usually smaller in size
-                                      //       textScaleFactor: 0.8,
-                                      //       style: TextStyle(color: Colors.red),
-                                      //     ),
-                                      //   ),
-                                      // ),
                                     ],
                                   ),
                                 ),
@@ -2112,49 +1463,6 @@ class Slide4DHState extends State<Slide4DH>
                           ],
                         ),
                       ),
-                      // child: FittedBox(
-                      //   child: Row(
-                      //     children: [
-                      //       Padding(
-                      //         padding: const EdgeInsets.only(top: 15.0),
-                      //         child: Text(
-                      //           'S2 = ea',
-                      //           style: TextStyle(
-                      //             fontSize: MediaQuery.of(context).size.width *
-                      //                 middleWidth,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         'S',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth /
-                      //               1.5,
-                      //         ),
-                      //       ),
-                      //       Text(
-                      //         '(Bob)',
-                      //         style: TextStyle(
-                      //           fontSize: MediaQuery.of(context).size.width *
-                      //               middleWidth /
-                      //               1.5,
-                      //           color: Colors.red,
-                      //         ),
-                      //       ),
-                      //       Padding(
-                      //         padding: const EdgeInsets.only(top: 15.0),
-                      //         child: Text(
-                      //           ' mod n', // = $r',
-                      //           style: TextStyle(
-                      //             fontSize: MediaQuery.of(context).size.width *
-                      //                 middleWidth,
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                     ),
                   ),
                 ),
@@ -2214,11 +1522,7 @@ class Slide4DHState extends State<Slide4DH>
               child: FloatingActionButton(
                 backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                 heroTag: "right9",
-                onPressed:
-                    // isLastIndex[0]
-                    //     ? null
-                    //     :
-                    () {
+                onPressed: () {
                   setState(
                     () {
                       if (videoButton == false) {
@@ -2243,11 +1547,7 @@ class Slide4DHState extends State<Slide4DH>
               child: FloatingActionButton(
                 backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                 heroTag: "left9",
-                onPressed:
-                    // isLastIndex[1]
-                    //     ? null
-                    //     :
-                    () {
+                onPressed: () {
                   setState(
                     () {
                       decrement();
@@ -2303,7 +1603,6 @@ class Slide4DHState extends State<Slide4DH>
             ),
 
             // Advanced-Setting-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom:
@@ -2335,9 +1634,9 @@ class Slide4DHState extends State<Slide4DH>
                         AppLocalizations.of(context)!.settings,
                         textAlign: TextAlign.center,
                       ),
-                      content: Container(
-                        height: 300.0, // Change as per your requirement
-                        width: 500.0, // Change as per your requirement
+                      content: SizedBox(
+                        height: 300.0,
+                        width: 500.0,
                         child: RawScrollbar(
                           controller: scrollController,
                           thumbColor: Colors.blue,
@@ -2476,171 +1775,6 @@ class Slide4DHState extends State<Slide4DH>
                           ),
                         ),
                       ),
-                      // content: SingleChildScrollView(
-                      //   scrollDirection: Axis.horizontal,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           const SizedBox(
-                      //             height: 10,
-                      //           ),
-                      //           // 'Animation-Geschwindigkeit',
-                      //           Text(
-                      //             AppLocalizations.of(context)!
-                      //                 .animationSpeed,
-                      //           ),
-
-                      //           const SizedBox(
-                      //             height: 60,
-                      //           ),
-                      //           Text(
-                      //             // 'Sprache'
-                      //             AppLocalizations.of(context)!.appLanguage,
-                      //           ),
-                      //           const SizedBox(
-                      //             height: 60,
-                      //           ),
-                      //           Text(
-                      //             // 'Zoom Enable'
-                      //             AppLocalizations.of(context)!.zoomEnable,
-                      //           ),
-                      //         ],
-                      //       ),
-                      //       const SizedBox(
-                      //         width: 50,
-                      //       ),
-                      //       Column(
-                      //         crossAxisAlignment: CrossAxisAlignment.start,
-                      //         children: [
-                      //           StatefulBuilder(
-                      //             builder: (BuildContext context,
-                      //                 void Function(void Function())
-                      //                     setState) {
-                      //               return Slider(
-                      //                 value: Global.val.toDouble(),
-                      //                 min: 1.0,
-                      //                 max: 3.0,
-                      //                 divisions: 2,
-                      //                 label: Global.val.toString(),
-                      //                 onChanged: (double newValue) {
-                      //                   setState(
-                      //                     () {
-                      //                       Global.val = newValue.round();
-
-                      //                       if (Global.val == 1) {
-                      //                         Global.slider = Global.val + 2;
-                      //                         if (!videoButton) {
-                      //                           videoTimerSlide4DH.cancel();
-                      //                           videoTimerSlide4DH =
-                      //                               videoTimerProblem();
-                      //                         }
-                      //                       } else if (Global.val == 3) {
-                      //                         Global.slider = Global.val - 2;
-                      //                         if (!videoButton) {
-                      //                           videoTimerSlide4DH.cancel();
-                      //                           videoTimerSlide4DH =
-                      //                               videoTimerProblem();
-                      //                         }
-                      //                       } else {
-                      //                         Global.slider = Global.val;
-                      //                         if (!videoButton) {
-                      //                           videoTimerSlide4DH.cancel();
-                      //                           videoTimerSlide4DH =
-                      //                               videoTimerProblem();
-                      //                         }
-                      //                       }
-                      //                     },
-                      //                   );
-                      //                 },
-                      //               );
-                      //             },
-                      //           ),
-                      //           const SizedBox(
-                      //             height: 25,
-                      //           ),
-                      //           Container(
-                      //             margin: const EdgeInsets.only(left: 18.0),
-                      //             child: StatefulBuilder(builder:
-                      //                 (BuildContext context,
-                      //                     void Function(void Function())
-                      //                         setState) {
-                      //               return DropdownButton<String>(
-                      //                 value: Global.selectedLanguage == true
-                      //                     ? Global.languages[0]
-                      //                     : Global.languages[1],
-                      //                 elevation: 16,
-                      //                 style: const TextStyle(
-                      //                     color: Colors.deepPurple),
-                      //                 underline: Container(
-                      //                   height: 2,
-                      //                   color: Colors.deepPurpleAccent,
-                      //                 ),
-                      //                 onChanged: (newValue) {
-                      //                   setState(
-                      //                     () {
-                      //                       dropdownValue = newValue!;
-                      //                       if (dropdownValue ==
-                      //                           Global.languages[1]) {
-                      //                         Global.selectedLanguage = false;
-                      //                         MyApp.of(context)!.setLocale(
-                      //                             const Locale.fromSubtags(
-                      //                                 languageCode: 'en'));
-                      //                         Global.locale = 'en';
-                      //                       } else {
-                      //                         Global.selectedLanguage = true;
-                      //                         MyApp.of(context)!.setLocale(
-                      //                             const Locale.fromSubtags(
-                      //                                 languageCode: 'de'));
-                      //                         Global.locale = 'de';
-                      //                       }
-                      //                     },
-                      //                   );
-                      //                   Provider.of<LanguageProvider>(context,
-                      //                           listen: false)
-                      //                       .changeLanguage(1);
-                      //                 },
-                      //                 items: Global.languages
-                      //                     .map<DropdownMenuItem<String>>(
-                      //                   (String value) {
-                      //                     return DropdownMenuItem<String>(
-                      //                       value: value,
-                      //                       child: Text(value),
-                      //                     );
-                      //                   },
-                      //                 ).toList(),
-                      //               );
-                      //             }),
-                      //           ),
-                      //           const SizedBox(
-                      //             height: 25,
-                      //           ),
-                      //           Padding(
-                      //             padding: const EdgeInsets.all(10.0),
-                      //             child: StatefulBuilder(
-                      //               builder: (BuildContext context,
-                      //                   void Function(void Function())
-                      //                       setState) {
-                      //                 return CupertinoSwitch(
-                      //                   value: Global.switchValue,
-                      //                   onChanged: (value) {
-                      //                     setState(() {
-                      //                       Global.switchValue = value;
-                      //                       Global.scaleEnabled =
-                      //                           Global.switchValue;
-                      //                     });
-                      //                   },
-                      //                 );
-                      //               },
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
@@ -2675,7 +1809,6 @@ class Slide4DHState extends State<Slide4DH>
             ),
 
             // Video-Stop-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsStopButton,
@@ -2758,7 +1891,6 @@ class Slide4DHState extends State<Slide4DH>
             ),
 
             // Video-Play-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsVideoButton,
@@ -2790,7 +1922,6 @@ class Slide4DHState extends State<Slide4DH>
             ),
 
             // More-Button
-
             Positioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.13,
@@ -2877,23 +2008,19 @@ class Slide4DHState extends State<Slide4DH>
         children: <Widget>[
           const SizedBox(height: 12),
           const SizedBox(height: 12),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(child: Text(text)),
-                // VerticalDivider(color: Colors.red, width: 4.0),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 8, horizontal: isSwitch ? 35 : 20),
-                    child: widget,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(child: Text(text)),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(
+                      vertical: 8, horizontal: isSwitch ? 35 : 20),
+                  child: widget,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -2940,7 +2067,7 @@ class Slide4DHState extends State<Slide4DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -2991,18 +2118,8 @@ class Slide4DHState extends State<Slide4DH>
 
   stepNumber() {
     setState(() {
-      //videoTimerVariable.cancel();
-      // indexVisibilitySlide1DH = (int.parse(pageController1.text));
-
       resetFunction();
-
       selectPageNumber(int.parse(pageController4.text) - 1);
-
-      // if (controllerIndex > a) {
-      //   videoTimerProblem(int.parse(pageController1.text) - 1, 0);
-      // } else {
-      //   videoTimerProblemBack(int.parse(pageController1.text) - 1);
-      // }
     });
   }
 
@@ -3039,7 +2156,7 @@ class Slide4DHState extends State<Slide4DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -3115,8 +2232,6 @@ class Slide4DHState extends State<Slide4DH>
         delayTimer = Timer(const Duration(milliseconds: 50), () {
           setState(() {
             textVisibility = true;
-            // Global.slider = Global.replacedSliderValue;
-            // seconds = Global.slider;
             delayTimer.cancel();
           });
         });

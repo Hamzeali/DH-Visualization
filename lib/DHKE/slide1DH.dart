@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, use_build_context_synchronously
 
 import 'dart:async';
 import 'package:another_flushbar/flushbar.dart';
@@ -19,7 +19,6 @@ import 'package:flutter/material.dart';
 import '../Main/language-provider.dart';
 import '../Main/global.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-// import 'dart:html';
 
 class Slide1DH extends StatefulWidget {
   const Slide1DH({Key? key}) : super(key: key);
@@ -132,13 +131,6 @@ List<GlobalKey<State<StatefulWidget>>> keys = [
 
 class Slide1DHState extends State<Slide1DH>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
-  // testPrint() {
-  //   WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  //     setState(() {});
-  //   });
-
-  //   print('testPrint');
-  // }
   finishShowCase() {
     setState(() {
       isShowCaseFinished = true;
@@ -177,10 +169,6 @@ class Slide1DHState extends State<Slide1DH>
       },
     );
   }
-
-  // static FloatingActionButton moreBtn = FloatingActionButton(
-  //   onPressed: () {},
-  // );
 
   setFirstLunch(bool firstLunch) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
@@ -236,95 +224,8 @@ class Slide1DHState extends State<Slide1DH>
     setFirstLunch(true);
     getLanguage();
 
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   showDialog(
-    //     context: context,
-    //     builder: (context) {
-    //       return const AlertDialog(
-    //         shape: RoundedRectangleBorder(
-    //             borderRadius: BorderRadius.all(Radius.circular(32.0))),
-    //         backgroundColor: Colors.blue,
-    //         content: Text(
-    //           'Grundidee kann mit Farben dargestellt werden (später werden wir sehen, wie es mit Zahlen funktioniert)',
-    //           style: TextStyle(
-    //             fontSize: 20,
-    //             color: Colors.white,
-    //           ),
-    //         ),
-    //       );
-    //     },
-    //   );
-    // });
-
-    // pressMoreBtn();
-    // WidgetsBinding.instance.addPostFrameCallback((_) async {
-    //   moreBtn = FloatingActionButton(
-    //     heroTag: "more9",
-    //     onPressed: () => setState(
-    //       () {
-    //         isSettingsPressed = 1;
-    //         settingButton = !settingButton;
-    //         if (!settingButton) {
-    //           settingsStopButton = 0.35;
-    //           settingsVideoButton = 0.24;
-    //           advancedSettingsButton = 0.46;
-    //           settingsButtonDuration = 100;
-    //           backToZero = 1;
-    //         } else {
-    //           settingsStopButton = 0.13;
-    //           settingsVideoButton = 0.13;
-    //           advancedSettingsButton = 0.13;
-    //           settingsButtonDuration = 100;
-    //           backToZero = 1;
-    //         }
-
-    //         timerSlide1DH = Timer(
-    //           const Duration(milliseconds: 100),
-    //           () {
-    //             setState(
-    //               () {
-    //                 checkSettingsDuration = 1;
-    //               },
-    //             );
-    //           },
-    //         );
-    //       },
-    //     ),
-    //     child: settingButton
-    //         ? Icon(Icons.more_vert,
-    //             size: MediaQuery.of(context).size.height * 0.05)
-    //         : Icon(Icons.close,
-    //             size: MediaQuery.of(context).size.height * 0.05),
-    //   );
-    // });
-
     WidgetsBinding.instance.addObserver(this);
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (_) {
-    //     ShowCaseWidget.of(context).startShowCase(
-    //       keys,
-    //     );
-    //   },
-    // );
-
     super.initState();
-  }
-
-  @override
-  void didChangeMetrics() {
-    // final RenderBox renderBox = _key.currentContext.findRenderObject();
-    // final position = renderBox.localToGlobal(Offset.zero);
-    isResizing = true;
-    if (screenHeight <= height) {
-      containerHeight = bigHeight;
-    } else {
-      containerHeight = screenHeight;
-    }
-    if (screenWidth <= width) {
-      containerWidth = bigWidth;
-    } else {
-      containerWidth = screenWidth;
-    }
   }
 
   @override
@@ -421,7 +322,6 @@ class Slide1DHState extends State<Slide1DH>
               HomePageDHState.returnAppBar[1]) *
           top,
       left: MediaQuery.of(context).size.width * left,
-      // duration: Duration(seconds: seconds),
       child: Visibility(
         visible: vis,
         child: AnimatedOpacity(
@@ -438,7 +338,6 @@ class Slide1DHState extends State<Slide1DH>
   }
 
   Timer selectPageNumber(int a, int sec) {
-    // stopFunction();
     pageNumberTimer = Timer.periodic(
       Duration(seconds: sec),
       (Timer pageNumberTimer) {
@@ -452,7 +351,6 @@ class Slide1DHState extends State<Slide1DH>
               pageNumberTimer.cancel();
             }
             if (indexVisibilitySlide1DH < a && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide1DH++;
               stepsVisibility[0] = !stepsVisibility[0];
               stepsVisibility[1] = !stepsVisibility[1];
@@ -475,7 +373,6 @@ class Slide1DHState extends State<Slide1DH>
               redPosition = 0.47;
               contentOpacity[6] = 0.5;
               contentOpacity[5] = 0.0;
-              // delay = false;
               delayTimer = Timer(Duration(seconds: sec == 0 ? 0 : seconds), () {
                 setState(() {
                   contentOpacity[0] = 0.0;
@@ -503,7 +400,6 @@ class Slide1DHState extends State<Slide1DH>
               colorsVisibility[2] = true;
             } else if (indexVisibilitySlide1DH == 5 && delay) {
               contentOpacity[8] = 0.0;
-              // delay = false;
               delayTimer = Timer(Duration(seconds: sec == 0 ? 0 : seconds), () {
                 setState(() {
                   contentOpacity[8] = 1.0;
@@ -526,12 +422,8 @@ class Slide1DHState extends State<Slide1DH>
               contentOpacity[6] = 0.0;
               contentOpacity[8] = 0.0;
               contentOpacity[10] = 1.0;
-              // delay = false;
               delayTimer = Timer(Duration(seconds: sec == 0 ? 0 : seconds), () {
                 setState(() {
-                  // contentOpacity[6] = 0.0;
-                  // contentOpacity[8] = 0.0;
-                  // contentOpacity[10] = 1.0;
                   delay = true;
                   delayTimer.cancel();
                 });
@@ -557,7 +449,6 @@ class Slide1DHState extends State<Slide1DH>
               videoTimerVariable.cancel();
             }
             if (indexVisibilitySlide1DH < 6 && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide1DH++;
               pageController1 = TextEditingController()
                 ..text = (indexVisibilitySlide1DH + 1).toString();
@@ -640,11 +531,6 @@ class Slide1DHState extends State<Slide1DH>
                 });
               });
             }
-            // if (Languages.selectedLanguage) {
-            //   text = DescListDeutchDH.slide1Desc[indexVisibilitySlide1DH];
-            // } else {
-            //   text = DescListEnglishDH.slide1Desc[indexVisibilitySlide1DH];
-            // }
           },
         );
       },
@@ -663,7 +549,6 @@ class Slide1DHState extends State<Slide1DH>
               HomePageDHState.returnAppBar[1]) *
           0.1,
       left: MediaQuery.of(context).size.width * 0.535,
-      // duration: Duration(seconds: seconds),
       child: AnimatedOpacity(
         opacity: opacity,
         duration: Duration(seconds: seconds),
@@ -694,53 +579,6 @@ class Slide1DHState extends State<Slide1DH>
 
   @override
   Widget build(BuildContext context) {
-    // moreBtn = FloatingActionButton(
-    //   heroTag: "more9",
-    //   onPressed: () => setState(
-    //     () {
-    //       isSettingsPressed = 1;
-    //       settingButton = !settingButton;
-    //       if (!settingButton) {
-    //         settingsStopButton = 0.35;
-    //         settingsVideoButton = 0.24;
-    //         advancedSettingsButton = 0.46;
-    //         settingsButtonDuration = 100;
-    //         backToZero = 1;
-    //       } else {
-    //         settingsStopButton = 0.13;
-    //         settingsVideoButton = 0.13;
-    //         advancedSettingsButton = 0.13;
-    //         settingsButtonDuration = 100;
-    //         backToZero = 1;
-    //       }
-
-    //       timerSlide1DH = Timer(
-    //         const Duration(milliseconds: 100),
-    //         () {
-    //           setState(
-    //             () {
-    //               checkSettingsDuration = 1;
-    //             },
-    //           );
-    //         },
-    //       );
-    //     },
-    //   ),
-    //   child: settingButton
-    //       ? Icon(Icons.more_vert,
-    //           size: MediaQuery.of(context).size.height * 0.05)
-    //       : Icon(Icons.close, size: MediaQuery.of(context).size.height * 0.05),
-    // );
-    // if (context.watch<LanguageProvider>().isMorePressed) {
-    //   Slide1DHState.moreBtn.onPressed!.call();
-    //   Provider.of<LanguageProvider>(context, listen: false)
-    //       .changeIsMorePressed(false);
-    // }
-    // Timer(const Duration(milliseconds: 100), () {
-    //   setState(() {
-    //     isResizing = false;
-    //   });
-    // });
     screenHeight = ((MediaQuery.of(context).size.height) -
         (HomePageDHState.returnAppBar[1]));
     screenWidth = MediaQuery.of(context).size.width;
@@ -760,17 +598,6 @@ class Slide1DHState extends State<Slide1DH>
 
     text = translate(context, indexVisibilitySlide1DH);
 
-    //print(screenWidth);
-    //print(screenHight);
-
-    // double windowHight = (window.screen?.height)!.toDouble();
-    // double windowWidth = (window.screen?.width)!.toDouble();
-    double longWidth = 0.0;
-    if (MediaQuery.of(context).size.width < 1000) {
-      longWidth = 0.1;
-    } else {
-      longWidth = 0.02;
-    }
     if (isPressedDown == 2 && isPressedUp == 1 && desc) {
       containerSeconds = 2;
       isPressedUp = 0;
@@ -792,33 +619,15 @@ class Slide1DHState extends State<Slide1DH>
       settingsButtonDuration = 0;
       checkSettingsDuration = 0;
     }
-    final _verticalScrollController = ScrollController();
-    final _horizontalScrollController = ScrollController();
     return InteractiveViewer(
       panEnabled: true,
       scaleEnabled: Global.scaleEnabled,
       maxScale: 4,
       child: Container(
         color: Colors.white,
-        // child: AdaptiveScrollbar(
-        //   sliderDefaultColor: Colors.grey.withOpacity(0.7),
-        //   sliderActiveColor: Colors.grey,
-        //   controller: _verticalScrollController,
-        //   child: AdaptiveScrollbar(
-        //     underColor: Colors.blueGrey.withOpacity(0.3),
-        //     sliderDefaultColor: Colors.grey.withOpacity(0.7),
-        //     sliderActiveColor: Colors.grey,
-        //     controller: _horizontalScrollController,
-        //     position: ScrollbarPosition.bottom,
-        //     child: SingleChildScrollView(
-        //       controller: _verticalScrollController,
-        //       scrollDirection: Axis.vertical,
-        //       child: SingleChildScrollView(
-        //         controller: _horizontalScrollController,
-        //         scrollDirection: Axis.horizontal,
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               height: containerHeight,
               width: containerWidth,
             ),
@@ -889,29 +698,6 @@ class Slide1DHState extends State<Slide1DH>
                 p2y: 0.17,
                 opacity: contentOpacity[2]),
 
-            // Right-Arrow-horizontal-Image Position
-            // Visibility(
-            //   visible: colorsVisibility[1],
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.26,
-            //     0.25,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.3,
-            //     true,
-            //     'assets/arrow-horizontal.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[2],
-            //   ),
-            // ),
-
             arrowPosition(
               p1x: -0.025,
               p1y: indexVisibilitySlide1DH == 4 ? 0.22 : 0.17,
@@ -920,29 +706,6 @@ class Slide1DHState extends State<Slide1DH>
               opacity: contentOpacity[2],
             ),
 
-            // Arrow-vertical-Image Position
-            // Visibility(
-            //   visible: colorsVisibility[1],
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.265,
-            //     0.195,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.2,
-            //     true,
-            //     'assets/arrow-vertical.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[2],
-            //   ),
-            // ),
-
             arrowPosition(
               p1x: 0.22,
               p1y: 0.22,
@@ -950,29 +713,6 @@ class Slide1DHState extends State<Slide1DH>
               p2y: 0.22,
               opacity: contentOpacity[11],
             ),
-
-            // Left-Arrow-horizontal-Image Position
-            // Visibility(
-            //   visible: colorsVisibility[3],
-            //   child: MyPositioned(
-            //     true,
-            //     false,
-            //     false,
-            //     false,
-            //     0.29,
-            //     0.25,
-            //     0.0,
-            //     0.0,
-            //     0.5,
-            //     0.02,
-            //     true,
-            //     'assets/left-arrow-horizontal.jpeg',
-            //     BoxFit.fill,
-            //     seconds,
-            //     HomePageDHState.returnAppBar[1],
-            //     contentOpacity[11],
-            //   ),
-            // ),
 
             bulletPosition(0.3, 0.505, 1.0, Colors.white,
                 indexVisibilitySlide1DH < 4 ? true : false),
@@ -1152,8 +892,8 @@ class Slide1DHState extends State<Slide1DH>
                 0.379,
                 0.0,
                 0.0,
-                0.065, //0.08,
-                0.085, //0.1,
+                0.065,
+                0.085,
                 true,
                 'assets/yellow.jpeg',
                 BoxFit.fill,
@@ -1171,11 +911,11 @@ class Slide1DHState extends State<Slide1DH>
                 false,
                 false,
                 0.52,
-                0.313, //0.3,
+                0.313,
                 0.0,
                 0.0,
-                0.065, //0.08,
-                0.085, //0.1,
+                0.065,
+                0.085,
                 true,
                 'assets/orange.jpeg',
                 BoxFit.fill,
@@ -1194,11 +934,11 @@ class Slide1DHState extends State<Slide1DH>
                 false,
                 false,
                 0.52,
-                0.247, //0.221,
+                0.247,
                 0.0,
                 0.0,
-                0.065, //0.08,
-                0.085, //0.1,
+                0.065,
+                0.085,
                 true,
                 'assets/blue.jpeg',
                 BoxFit.fill,
@@ -1447,7 +1187,6 @@ class Slide1DHState extends State<Slide1DH>
                   child: Text(
                     AppLocalizations.of(context)!.text1,
                     style: TextStyle(
-                      // fontSize: MediaQuery.of(context).size.width * longWidth,
                       fontSize: MediaQuery.of(context).size.width * 0.04,
                     ),
                   ),
@@ -1463,12 +1202,6 @@ class Slide1DHState extends State<Slide1DH>
             Positioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.02,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: Showcase(
@@ -1484,11 +1217,7 @@ class Slide1DHState extends State<Slide1DH>
                 child: FloatingActionButton(
                   backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                   heroTag: "right9",
-                  onPressed:
-                      // isLastIndex[0]
-                      //     ? null
-                      //     :
-                      () {
+                  onPressed: () {
                     setState(
                       () {
                         if (videoButton == false) {
@@ -1501,7 +1230,6 @@ class Slide1DHState extends State<Slide1DH>
                         }
 
                         if (indexVisibilitySlide1DH < 6 && delay) {
-                          // Languages.player.play("assets/steps.mp3");
                           indexVisibilitySlide1DH++;
                           pageController1 = TextEditingController()
                             ..text = (indexVisibilitySlide1DH + 1).toString();
@@ -1594,12 +1322,6 @@ class Slide1DHState extends State<Slide1DH>
             Positioned(
               left: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.02,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: Showcase(
@@ -1612,19 +1334,11 @@ class Slide1DHState extends State<Slide1DH>
                 ),
                 tooltipBackgroundColor: Colors.blue,
                 tooltipPadding: const EdgeInsets.all(12),
-                // tooltipBorderRadius: BorderRadius.all(Radius.circular(20)),
                 targetShapeBorder: const CircleBorder(),
-                // targetPadding: EdgeInsets.all(
-                //   -(MediaQuery.of(context).size.width * 0.07),
-                // ),
                 child: FloatingActionButton(
                   backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                   heroTag: "left9",
-                  onPressed:
-                      // isLastIndex[1]
-                      //     ? null
-                      //     :
-                      () {
+                  onPressed: () {
                     setState(
                       () {
                         if (videoButton == false) {
@@ -1639,7 +1353,6 @@ class Slide1DHState extends State<Slide1DH>
                         if (indexVisibilitySlide1DH == 0) text = '';
 
                         if (indexVisibilitySlide1DH == 0) {
-                          // Languages.player.play("assets/steps.mp3");
                           indexVisibilitySlide1DH--;
                           pageController1 = TextEditingController()
                             ..text = (indexVisibilitySlide1DH + 1).toString();
@@ -1658,7 +1371,6 @@ class Slide1DHState extends State<Slide1DH>
                           contentOpacity[5] = 0.0;
                           contentOpacity[6] = 0.0;
                         } else if (indexVisibilitySlide1DH == 3 && delay) {
-                          // Languages.player.play("assets/steps.mp3");
                           indexVisibilitySlide1DH--;
                           pageController1 = TextEditingController()
                             ..text = (indexVisibilitySlide1DH + 1).toString();
@@ -1687,7 +1399,6 @@ class Slide1DHState extends State<Slide1DH>
                           contentOpacity[9] = 0.0;
                           colorsVisibility[2] = false;
                         } else if (indexVisibilitySlide1DH == 5 && delay) {
-                          // Languages.player.play("assets/steps.mp3");
                           indexVisibilitySlide1DH--;
                           pageController1 = TextEditingController()
                             ..text = (indexVisibilitySlide1DH + 1).toString();
@@ -1717,7 +1428,6 @@ class Slide1DHState extends State<Slide1DH>
                           contentOpacity[8] = 1.0;
                         }
                         if (indexVisibilitySlide1DH > 0 && delay) {
-                          // Languages.player.play("assets/steps.mp3");
                           if (indexVisibilitySlide1DH == 0) {
                             delay = false;
                           }
@@ -1743,12 +1453,6 @@ class Slide1DHState extends State<Slide1DH>
             Positioned(
               left: MediaQuery.of(context).size.width * 0.458,
               bottom: MediaQuery.of(context).size.height * 0.001,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.08
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.08
-              //     : 56.0,
               width: MediaQuery.of(context).size.width * 0.08,
               height: MediaQuery.of(context).size.height * 0.08,
               child: Showcase(
@@ -1799,21 +1503,12 @@ class Slide1DHState extends State<Slide1DH>
             ),
 
             // Advanced-Setting-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom:
                   MediaQuery.of(context).size.height * advancedSettingsButton,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
-
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
-
               duration: Duration(
                   milliseconds: settingsButtonDuration + 200 * backToZero),
               child: Showcase(
@@ -1846,11 +1541,10 @@ class Slide1DHState extends State<Slide1DH>
                             borderRadius:
                                 BorderRadius.all(Radius.circular(32.0))),
                         title: Text(
-                          // 'Settings'
                           AppLocalizations.of(context)!.settings,
                           textAlign: TextAlign.center,
                         ),
-                        content: Container(
+                        content: SizedBox(
                           height: 300.0,
                           width: 500.0,
                           child: RawScrollbar(
@@ -2000,172 +1694,6 @@ class Slide1DHState extends State<Slide1DH>
                             ),
                           ),
                         ),
-                        // content: SingleChildScrollView(
-                        //   scrollDirection: Axis.horizontal,
-                        //   child: Row(
-                        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        //     crossAxisAlignment: CrossAxisAlignment.start,
-                        //     children: [
-                        //       Column(
-                        //         crossAxisAlignment: CrossAxisAlignment.start,
-                        //         children: [
-                        //           const SizedBox(
-                        //             height: 10,
-                        //           ),
-                        //           // 'Animation-Geschwindigkeit',
-                        //           Text(
-                        //             AppLocalizations.of(context)!
-                        //                 .animationSpeed,
-                        //           ),
-
-                        //           const SizedBox(
-                        //             height: 60,
-                        //           ),
-                        //           Text(
-                        //             // 'Sprache'
-                        //             AppLocalizations.of(context)!.appLanguage,
-                        //           ),
-                        //           const SizedBox(
-                        //             height: 60,
-                        //           ),
-                        //           Text(
-                        //             // 'Zoom Enable'
-                        //             AppLocalizations.of(context)!.zoomEnable,
-                        //           ),
-                        //         ],
-                        //       ),
-                        //       const SizedBox(
-                        //         width: 50,
-                        //       ),
-                        //       Column(
-                        //         crossAxisAlignment: CrossAxisAlignment.start,
-                        //         children: [
-                        //           StatefulBuilder(
-                        //             builder: (BuildContext context,
-                        //                 void Function(void Function())
-                        //                     setState) {
-                        //               return Slider(
-                        //                 value: Global.val.toDouble(),
-                        //                 min: 1.0,
-                        //                 max: 3.0,
-                        //                 divisions: 2,
-                        //                 label: Global.val.toString(),
-                        //                 onChanged: (double newValue) {
-                        //                   setState(
-                        //                     () {
-                        //                       Global.val = newValue.round();
-
-                        //                       if (Global.val == 1) {
-                        //                         Global.slider = Global.val + 2;
-                        //                         if (!videoButton) {
-                        //                           videoTimerSlide1DH.cancel();
-                        //                           videoTimerSlide1DH =
-                        //                               videoTimerProblem();
-                        //                         }
-                        //                       } else if (Global.val == 3) {
-                        //                         Global.slider = Global.val - 2;
-                        //                         if (!videoButton) {
-                        //                           videoTimerSlide1DH.cancel();
-                        //                           videoTimerSlide1DH =
-                        //                               videoTimerProblem();
-                        //                         }
-                        //                       } else {
-                        //                         Global.slider = Global.val;
-                        //                         if (!videoButton) {
-                        //                           videoTimerSlide1DH.cancel();
-                        //                           videoTimerSlide1DH =
-                        //                               videoTimerProblem();
-                        //                         }
-                        //                       }
-                        //                     },
-                        //                   );
-                        //                 },
-                        //               );
-                        //             },
-                        //           ),
-                        //           const SizedBox(
-                        //             height: 25,
-                        //           ),
-                        //           Container(
-                        //             margin: const EdgeInsets.only(left: 18.0),
-                        //             child: StatefulBuilder(builder:
-                        //                 (BuildContext context,
-                        //                     void Function(void Function())
-                        //                         setState) {
-                        //               return DropdownButton<String>(
-                        //                 value: Global.selectedLanguage == true
-                        //                     ? Global.languages[0]
-                        //                     : Global.languages[1],
-                        //                 elevation: 16,
-                        //                 style: const TextStyle(
-                        //                     color: Colors.deepPurple),
-                        //                 underline: Container(
-                        //                   height: 2,
-                        //                   color: Colors.deepPurpleAccent,
-                        //                 ),
-                        //                 onChanged: (newValue) {
-                        //                   setState(
-                        //                     () {
-                        //                       dropdownValue = newValue!;
-                        //                       if (dropdownValue ==
-                        //                           Global.languages[1]) {
-                        //                         Global.selectedLanguage = false;
-                        //                         MyApp.of(context)!.setLocale(
-                        //                             const Locale.fromSubtags(
-                        //                                 languageCode: 'en'));
-                        //                         Global.locale = 'en';
-                        //                       } else {
-                        //                         Global.selectedLanguage = true;
-                        //                         MyApp.of(context)!.setLocale(
-                        //                             const Locale.fromSubtags(
-                        //                                 languageCode: 'de'));
-                        //                         Global.locale = 'de';
-                        //                       }
-                        //                     },
-                        //                   );
-                        //                   Provider.of<LanguageProvider>(context,
-                        //                           listen: false)
-                        //                       .changeLanguage(1);
-                        //                 },
-                        //                 items: Global.languages
-                        //                     .map<DropdownMenuItem<String>>(
-                        //                   (String value) {
-                        //                     return DropdownMenuItem<String>(
-                        //                       value: value,
-                        //                       child: Text(value),
-                        //                     );
-                        //                   },
-                        //                 ).toList(),
-                        //               );
-                        //             }),
-                        //           ),
-                        //           const SizedBox(
-                        //             height: 25,
-                        //           ),
-                        //           Padding(
-                        //             padding: const EdgeInsets.all(10.0),
-                        //             child: StatefulBuilder(
-                        //               builder: (BuildContext context,
-                        //                   void Function(void Function())
-                        //                       setState) {
-                        //                 return CupertinoSwitch(
-                        //                   value: Global.switchValue,
-                        //                   onChanged: (value) {
-                        //                     setState(() {
-                        //                       Global.switchValue = value;
-                        //                       Global.scaleEnabled =
-                        //                           Global.switchValue;
-                        //                     });
-                        //                   },
-                        //                 );
-                        //               },
-                        //             ),
-                        //           ),
-                        //         ],
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                         actions: <Widget>[
                           TextButton(
                             onPressed: () {
@@ -2202,17 +1730,9 @@ class Slide1DHState extends State<Slide1DH>
             ),
 
             // Video-Stop-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsStopButton,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
-
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               duration: Duration(
@@ -2303,17 +1823,9 @@ class Slide1DHState extends State<Slide1DH>
             ),
 
             // Video-Play-Button
-
             AnimatedPositioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * settingsVideoButton,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
-
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               duration: Duration(milliseconds: settingsButtonDuration),
@@ -2354,17 +1866,9 @@ class Slide1DHState extends State<Slide1DH>
             ),
 
             // More-Button
-
             Positioned(
               right: MediaQuery.of(context).size.width * 0.01,
               bottom: MediaQuery.of(context).size.height * 0.13,
-              // width: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.width * 0.1
-              //     : 56.0,
-              // height: isShowCaseFinished
-              //     ? MediaQuery.of(context).size.height * 0.1
-              //     : 56.0,
-
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: Showcase(
@@ -2381,36 +1885,6 @@ class Slide1DHState extends State<Slide1DH>
                 child: FloatingActionButton(
                   heroTag: "more9",
                   onPressed: pressMoreBtn,
-                  // () => setState(
-                  //   () {
-                  //     isSettingsPressed = 1;
-                  //     settingButton = !settingButton;
-                  //     if (!settingButton) {
-                  //       settingsStopButton = 0.35;
-                  //       settingsVideoButton = 0.24;
-                  //       advancedSettingsButton = 0.46;
-                  //       settingsButtonDuration = 100;
-                  //       backToZero = 1;
-                  //     } else {
-                  //       settingsStopButton = 0.13;
-                  //       settingsVideoButton = 0.13;
-                  //       advancedSettingsButton = 0.13;
-                  //       settingsButtonDuration = 100;
-                  //       backToZero = 1;
-                  //     }
-
-                  //     timerSlide1DH = Timer(
-                  //       const Duration(milliseconds: 100),
-                  //       () {
-                  //         setState(
-                  //           () {
-                  //             checkSettingsDuration = 1;
-                  //           },
-                  //         );
-                  //       },
-                  //     );
-                  //   },
-                  // ),
                   child: settingButton
                       ? Icon(Icons.more_vert,
                           size: MediaQuery.of(context).size.height * 0.05)
@@ -2443,11 +1917,7 @@ class Slide1DHState extends State<Slide1DH>
                     ),
                     tooltipBackgroundColor: Colors.blue,
                     tooltipPadding: const EdgeInsets.all(12),
-                    // tooltipBorderRadius: BorderRadius.all(Radius.circular(20)),
                     targetShapeBorder: const CircleBorder(),
-                    // targetPadding: EdgeInsets.all(
-                    //   -(MediaQuery.of(context).size.width * 0.07),
-                    // ),
                     child: TextButton(
                       onPressed: () {
                         numberPageDialog();
@@ -2467,10 +1937,6 @@ class Slide1DHState extends State<Slide1DH>
             ),
           ],
         ),
-        // ),
-        // ),
-        // ),
-        // ),
       ),
     );
   }
@@ -2482,23 +1948,19 @@ class Slide1DHState extends State<Slide1DH>
         children: <Widget>[
           const SizedBox(height: 12),
           const SizedBox(height: 12),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(child: Text(text)),
-                // VerticalDivider(color: Colors.red, width: 4.0),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 8, horizontal: isSwitch ? 35 : 20),
-                    child: widget,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(child: Text(text)),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(
+                      vertical: 8, horizontal: isSwitch ? 35 : 20),
+                  child: widget,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -2538,7 +2000,7 @@ class Slide1DHState extends State<Slide1DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5,
           width: 300.0,
         ),
@@ -2587,7 +2049,6 @@ class Slide1DHState extends State<Slide1DH>
               flex: 2,
               child: Text(
                 AppLocalizations.of(context)!.goToStep,
-                // 'Go to Page:',
                 textAlign: TextAlign.left,
               ),
             ),
@@ -2612,7 +2073,7 @@ class Slide1DHState extends State<Slide1DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -2634,9 +2095,7 @@ class Slide1DHState extends State<Slide1DH>
                       size: 32,
                       color: Colors.white,
                     ),
-                    // 'Error',
                     AppLocalizations.of(context)!.errorTitel,
-                    // 'n must be prime number',
                     AppLocalizations.of(context)!.outOfRangeError,
                     Colors.red);
               } else {
@@ -2696,7 +2155,6 @@ class Slide1DHState extends State<Slide1DH>
       delayTimer.cancel();
       isLastIndex = [false, true];
       indexVisibilitySlide1DH = -1;
-      // pageController1 = TextEditingController()..text = (0).toString();
       checkVisibility = 0;
       delay = true;
       dropdownValue = 'Deutsch';

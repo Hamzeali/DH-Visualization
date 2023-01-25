@@ -2,28 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:key_exchange_visualization/Main/intro.dart';
 import 'package:key_exchange_visualization/Main/splash.dart';
 import 'package:provider/provider.dart';
-import 'DHKE/home-page-DH.dart';
 import 'Main/language-provider.dart';
 import 'dart:async';
-// import 'package:flutter/foundation.dart' show kIsWeb;
-// import 'dart:io' show Platform;
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
-  // if (Platform.isAndroid) {
-  //   // Android-specific code
-  // } else if (Platform.isIOS) {
-  //   // iOS-specific code
-  // } else if (Platform.isMacOS) {
-  //   print('MAC');
-  // }
-  // if (kIsWeb) {
-  //   print('WEB');
-  // } else {
-  //   print('MOBILE');
-  // }
-
   runApp(const DHKEVis());
 }
 
@@ -50,8 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
   double endVal = 0;
   @override
   void initState() {
-    // ignore: todo
-    // TODO: implement initState
     super.initState();
     endVal = 2;
     Timer(const Duration(seconds: 2), () {
@@ -122,7 +103,7 @@ class _DHKEVisState extends State<DHKEVis> {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         locale: locale,
         debugShowCheckedModeBanner: false,
-        home: SplashWidget(),
+        home: const SplashWidget(),
       ),
     );
   }

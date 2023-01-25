@@ -1,6 +1,4 @@
 // ignore_for_file: file_names
-
-// import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,7 +12,6 @@ class Description extends StatefulWidget {
   String desc;
   double appBarHeight;
   int seconds;
-  //print(time.toString().substring(6, 7));
   Description(this.visible, this.desc, this.descVisibility, this.seconds,
       this.appBarHeight, this.isSlide1DH,
       {Key? key})
@@ -37,23 +34,14 @@ class DescriptionState extends State<Description> {
   @override
   Widget build(BuildContext context) {
     return AnimatedPositioned(
-      // bottom: visible
-      //     ? (MediaQuery.of(context).size.height - appBarHeight) * 0.08
-      //     : (MediaQuery.of(context).size.height - appBarHeight) * -0.04,
-      // left: MediaQuery.of(context).size.width * 0.35, //0.1
-      // width: MediaQuery.of(context).size.width * 0.30, // 0.78
-      // height: visible
-      //     ? (MediaQuery.of(context).size.height - appBarHeight) * 0.26 // 0.23
-      //     : 0,
-
       bottom: widget.visible
           ? (MediaQuery.of(context).size.height - widget.appBarHeight) * 0.08
           : (MediaQuery.of(context).size.height - widget.appBarHeight) * -0.04,
-      left: MediaQuery.of(context).size.width * 0.1, //boxLeft, //0.1
-      width: MediaQuery.of(context).size.width * 0.8, //boxWidth, // 0.78
+      left: MediaQuery.of(context).size.width * 0.1,
+      width: MediaQuery.of(context).size.width * 0.8,
       height: widget.visible
           ? (MediaQuery.of(context).size.height - widget.appBarHeight) *
-              boxHeight // 0.23
+              boxHeight
           : 0,
       duration: Duration(seconds: widget.seconds),
       child: InkWell(
@@ -90,13 +78,11 @@ class DescriptionState extends State<Description> {
                       fontSize: 16,
                     ),
                     tooltipBackgroundColor: Colors.blue,
-                    targetBorderRadius: BorderRadius.all(Radius.circular(20)),
-                    // targetShapeBorder: const CircleBorder(),
+                    targetBorderRadius:
+                        const BorderRadius.all(Radius.circular(20)),
                     child: Container(
-                      // padding: const EdgeInsets.only(top: 10.0, right: 5.0, left: 4.0),
                       padding: const EdgeInsets.all(10.0),
                       decoration: const BoxDecoration(
-                        // color: Colors.indigo,
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -109,7 +95,6 @@ class DescriptionState extends State<Description> {
                           Radius.circular(20),
                         ),
                       ),
-                      // color: Colors.grey,
                       child: Visibility(
                         visible: widget.visible,
                         child: RawScrollbar(
@@ -150,10 +135,8 @@ class DescriptionState extends State<Description> {
                         ? SystemMouseCursors.text
                         : SystemMouseCursors.basic,
                     child: Container(
-                      // padding: const EdgeInsets.only(top: 10.0, right: 5.0, left: 4.0),
                       padding: const EdgeInsets.all(10.0),
                       decoration: const BoxDecoration(
-                        // color: Colors.indigo,
                         gradient: LinearGradient(
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter,
@@ -166,7 +149,6 @@ class DescriptionState extends State<Description> {
                           Radius.circular(20),
                         ),
                       ),
-                      // color: Colors.grey,
                       child: Visibility(
                         visible: widget.visible,
                         child: RawScrollbar(
@@ -175,26 +157,27 @@ class DescriptionState extends State<Description> {
                           radius: const Radius.circular(20),
                           thickness: 5,
                           child: SingleChildScrollView(
-                              controller: scrollController,
-                              child: isScaled
-                                  ? SelectableText(
-                                      widget.descVisibility ? widget.desc : '',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                                0.02,
-                                      ),
-                                    )
-                                  : Text(
-                                      widget.descVisibility ? widget.desc : '',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize:
-                                            MediaQuery.of(context).size.width *
-                                                0.02,
-                                      ),
-                                    )),
+                            controller: scrollController,
+                            child: isScaled
+                                ? SelectableText(
+                                    widget.descVisibility ? widget.desc : '',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.02,
+                                    ),
+                                  )
+                                : Text(
+                                    widget.descVisibility ? widget.desc : '',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize:
+                                          MediaQuery.of(context).size.width *
+                                              0.02,
+                                    ),
+                                  ),
+                          ),
                         ),
                       ),
                     ),

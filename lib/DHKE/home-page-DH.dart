@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:key_exchange_visualization/Main/intro.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import 'about.dart';
@@ -50,7 +49,6 @@ class HomePageDHState extends State<HomePageDH>
     controller = TabController(vsync: this, length: tabs.length);
     controller.addListener(() {
       setState(() {
-        // videoTimerProblem().cancel();
         tabIndex = controller.index;
       });
     });
@@ -59,7 +57,6 @@ class HomePageDHState extends State<HomePageDH>
       DeviceOrientation.landscapeLeft,
     ]);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
-    //SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
 
     super.initState();
   }
@@ -70,11 +67,7 @@ class HomePageDHState extends State<HomePageDH>
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeRight,
       DeviceOrientation.landscapeLeft,
-      // DeviceOrientation.portraitUp,
-      // DeviceOrientation.portraitDown,
     ]);
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-    //     overlays: SystemUiOverlay.values);
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
     controller.dispose();
@@ -85,14 +78,12 @@ class HomePageDHState extends State<HomePageDH>
   List appBarFunction(BuildContext context, TabController controller) {
     AppBar appBar = AppBar(
       leading: IconButton(
-        icon: Icon(Icons.arrow_back,
-            size: MediaQuery.of(context).size.height * 0.0456),
+        icon: Icon(
+          Icons.arrow_back,
+          size: MediaQuery.of(context).size.height * 0.0456,
+        ),
         onPressed: () {
           Navigator.pop(context);
-          // SystemChrome.setPreferredOrientations([
-          //   DeviceOrientation.portraitUp,
-          //   DeviceOrientation.portraitDown,
-          // ]);
         },
       ),
       actions: [
@@ -106,21 +97,17 @@ class HomePageDHState extends State<HomePageDH>
             fontSize: 16,
           ),
           tooltipBackgroundColor: Colors.blue,
-          // targetShapeBorder: const CircleBorder(),
           child: PopupMenuButton(
-            // add icon, by default "3 dot" icon
-            icon: Icon(Icons.menu,
-                size: MediaQuery.of(context).size.height * 0.035),
+            icon: Icon(
+              Icons.menu,
+              size: MediaQuery.of(context).size.height * 0.035,
+            ),
             itemBuilder: (context) {
               return [
                 PopupMenuItem<int>(
                   value: 0,
                   child: Text(AppLocalizations.of(context)!.dhke),
                 ),
-                // PopupMenuItem<int>(
-                //   value: 1,
-                //   child: Text("Introduction"),
-                // ),
               ];
             },
             onSelected: (value) {
@@ -128,17 +115,10 @@ class HomePageDHState extends State<HomePageDH>
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const About()));
               }
-
-              // if (value == 1) {
-              //   // Navigator.pop(context);
-              //   Navigator.of(context).push(
-              //       MaterialPageRoute(builder: (context) => const AppHomePage()));
-              // }
             },
           ),
         ),
       ],
-      // backgroundColor: Colors.blueGrey[900],
       toolbarHeight: MediaQuery.of(context).size.height * 0.06,
       flexibleSpace: Padding(
         padding: const EdgeInsets.only(bottom: 35.0),
@@ -153,10 +133,6 @@ class HomePageDHState extends State<HomePageDH>
                       : tabIndex == 2
                           ? AppLocalizations.of(context)!.slide3
                           : AppLocalizations.of(context)!.slide4,
-              // context.watch<MyProvider>().s,
-              // context.watch<LanguageProvider>().selectedLanguage == true
-              //     ? DescListDeutchDH.tabTitle[tabIndex]
-              //     : DescListEnglishDH.tabTitle[tabIndex],
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -179,122 +155,6 @@ class HomePageDHState extends State<HomePageDH>
     returnAppBar[1] = appBarHeight;
     return returnAppBar;
   }
-
-  // Timer videoTimerProblem() {
-  //   Timer videoTimerVariable =
-  //       Timer.periodic(Duration(seconds: slider), (Timer videoTimerVariable) {
-  //     setState(() {
-  //       // desc = true;
-  //       // descVisbility = true;
-  //       containerSeconds = 1;
-  //       //seconds = 3;
-  //       seconds = slider;
-  //       if (timerProblem == 0)
-  //         contentVisibility[indexVisibility] = true;
-  //       else if (timerProblem == 1) {
-  //         contentVisibility[15] = false;
-  //       } else if (timerProblem == 2) {
-  //         contentVisibility[15] = true;
-  //       }
-
-  //       if (contentVisibility[7] == true) messageOpacity = 1.0;
-  //       if (contentVisibility[10] == true) {
-  //         messagePosition[0] = 0.28;
-  //         messagePosition[1] = 0.41;
-  //       }
-  //       if (contentVisibility[12] == true) {
-  //         messagePosition[0] = 0.64;
-  //         messagePosition[1] = 0.52;
-  //       }
-  //       if (contentVisibility[14] == true) {
-  //         messagePosition[0] = 0.74;
-  //         messagePosition[1] = 0.15;
-  //         timerProblem++;
-  //       }
-
-  //       if (contentVisibility[15] == true) {
-  //         //seconds = 2;
-  //         messagePosition[0] = 0.875;
-  //         messagePosition[1] = 0.01;
-  //         if (timerProblem == 2) contentVisibility[16] = false;
-  //       }
-  //       if (timerProblem == 4) contentVisibility[16] = true;
-  //       if (contentVisibility[16] == true) {
-  //         messageOpacity = 0.0;
-  //         videoTimer.cancel();
-  //         timerProblem = 0;
-  //       }
-
-  //       descIndex = indexVisibility;
-  //       text = DescList.descList[descIndex];
-  //       indexVisibility++;
-
-  //       if (indexVisibility == contentVisibility.length) indexVisibility = 16;
-  //     });
-  //   });
-  //   return videoTimerVariable;
-  // }
-
-  // bool stop = true;
-  // Container videoButtonFunction(BuildContext context) {
-  //   return Container(
-  //     // width: MediaQuery.of(context).size.width * 0.07,
-  //     // height: MediaQuery.of(context).size.height * 0.07,
-  //     child: FloatingActionButton(
-  //       backgroundColor: Colors.green,
-  //       onPressed: () => setState(() {
-  //         desc = true;
-  //         descVisbility = true;
-  //         dropButton = false;
-  //         videoButton = !videoButton;
-  //         if (!videoButton) {
-  //           videoTimer = videoTimerProblem();
-  //         } else
-  //           videoTimer.cancel();
-  //       }),
-  //       child: videoButton
-  //           ? Icon(
-  //               Icons.play_arrow,
-  //             )
-  //           : Icon(
-  //               Icons.pause,
-  //             ),
-  //     ),
-  //   );
-  // }
-
-  // Container stopButtonFunction(BuildContext context) {
-  //   return Container(
-  //     // width: MediaQuery.of(context).size.width * 0.07,
-  //     // height: MediaQuery.of(context).size.height * 0.07,
-  //     child: FloatingActionButton(
-  //       backgroundColor: Colors.red,
-  //       onPressed: () => setState(() {
-  //         videoTimer.cancel();
-  //         videoButton = true;
-  //         for (var i = 0; i < 17; i++) {
-  //           contentVisibility[i] = false;
-  //         }
-  //         messagePosition[0] = 0.09;
-  //         messagePosition[1] = 0.01;
-  //         indexVisibility = 0;
-  //         messageOpacity = 0.0;
-  //         seconds = 0;
-  //         text = '';
-  //         desc = false;
-  //         descVisbility = false;
-  //         containerSeconds = 0;
-  //         descIndex = 0;
-  //         dropButton = true;
-  //         val = 1;
-  //         slider = 3;
-  //       }),
-  //       child: Icon(
-  //         Icons.stop,
-  //       ),
-  //     ),
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {

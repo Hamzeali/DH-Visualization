@@ -12,7 +12,6 @@ import '../main.dart';
 // ignore: implementation_imports
 import 'package:provider/src/provider.dart';
 import 'home-page-DH.dart';
-import 'description-widget.dart';
 import 'positioned-widget.dart';
 import 'package:flutter/material.dart';
 import '../Main/language-provider.dart';
@@ -496,7 +495,6 @@ class Slide2DHState extends State<Slide2DH>
               HomePageDHState.returnAppBar[1]) *
           top,
       left: MediaQuery.of(context).size.width * left,
-      // duration: Duration(seconds: seconds),
       child: AnimatedOpacity(
         duration: const Duration(seconds: 1),
         opacity: opacity,
@@ -521,20 +519,13 @@ class Slide2DHState extends State<Slide2DH>
               HomePageDHState.returnAppBar[1]) *
           0.05,
       duration: Duration(seconds: seconds),
-      // width: 20,
-      // height: 10,
       child: AnimatedOpacity(
         duration: const Duration(seconds: 1),
         opacity: opacity,
         child: FittedBox(
           child: Text(
             num,
-            style: TextStyle(fontSize: 20, color: color
-                // (MediaQuery.of(context).size.width -
-                //         HomePageDHState.returnAppBar[1]) *
-                //     0.035,
-                // fontWeight: FontWeight.bold,
-                ),
+            style: TextStyle(fontSize: 20, color: color),
           ),
         ),
       ),
@@ -553,7 +544,6 @@ class Slide2DHState extends State<Slide2DH>
               HomePageDHState.returnAppBar[1]) *
           0.1,
       left: MediaQuery.of(context).size.width * 0.535,
-      // duration: Duration(seconds: seconds),
       child: AnimatedOpacity(
         duration: const Duration(seconds: 1),
         opacity: opacity,
@@ -601,7 +591,6 @@ class Slide2DHState extends State<Slide2DH>
               pageNumberTimer.cancel();
             }
             if (indexVisibilitySlide2DH < a && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide2DH++;
               pageController2 = TextEditingController()
                 ..text = (indexVisibilitySlide2DH + 1).toString();
@@ -621,37 +610,16 @@ class Slide2DHState extends State<Slide2DH>
               numberOpacity[0] = 1.0;
               resultOpacity = 1.0;
               isLastIndex[1] = false;
-              // delay = false;
-              // delayTimer = Timer(Duration(seconds: seconds * 2), () {
-              //   setState(() {
-              //     // resVisibility = false;
-              //     resOpacity = 0.0;
-              //     x = 0.16;
-              //     y = 0.355;
-              //     delay = true;
-              //   });
-              // });
             } else if (indexVisibilitySlide2DH == 1 && delay) {
               prevResultOpacity = 1.0;
               numberColor[0] = Colors.black;
               numberOpacity[1] = 1.0;
               x2 = 0.812;
               y2 = 0.2;
-              // resOpacity[0] = 0.0;
-              // resOpacity[1] = 1.0;
-              // x[1] = 0.78;
-              // y[1] = 0.115;
               opTimer(0, false, 0);
               redBulletOpacity[0] = 0.0;
               blackBulletOpacity[0] = 1.0;
               redBulletOpacity[2] = 1.0;
-              // circlesOpacity[0] = 0.0;
-              // lineOpacity[0] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(1);
-
-              // circlesOpacity[1] = 0.0;
-              // circlesOpacity[2] = 1.0;
             } else if (indexVisibilitySlide2DH == 2 && delay) {
               numberColor[1] = Colors.black;
               numberOpacity[2] = 1.0;
@@ -664,14 +632,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[2] = 0.0;
               blackBulletOpacity[2] = 1.0;
               redBulletOpacity[8] = 1.0;
-
-              // circlesOpacity[1] = 0.0;
-              // lineOpacity[1] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(2);
-
-              // circlesOpacity[2] = 0.0;
-              // circlesOpacity[3] = 1.0;
             } else if (indexVisibilitySlide2DH == 3 && delay) {
               numberColor[2] = Colors.black;
               numberOpacity[3] = 1.0;
@@ -684,14 +644,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[8] = 0.0;
               blackBulletOpacity[8] = 1.0;
               redBulletOpacity[9] = 1.0;
-
-              // circlesOpacity[2] = 0.0;
-              // lineOpacity[2] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(3);
-
-              // circlesOpacity[3] = 0.0;
-              // circlesOpacity[4] = 1.0;
             } else if (indexVisibilitySlide2DH == 4 && delay) {
               numberColor[3] = Colors.black;
               numberOpacity[4] = 1.0;
@@ -704,14 +656,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[9] = 0.0;
               blackBulletOpacity[9] = 1.0;
               redBulletOpacity[12] = 1.0;
-
-              // circlesOpacity[3] = 0.0;
-              // lineOpacity[3] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(4);
-
-              // circlesOpacity[4] = 0.0;
-              // circlesOpacity[5] = 1.0;
             } else if (indexVisibilitySlide2DH == 5 && delay) {
               numberColor[4] = Colors.black;
               numberOpacity[5] = 1.0;
@@ -724,14 +668,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[12] = 0.0;
               blackBulletOpacity[12] = 1.0;
               redBulletOpacity[4] = 1.0;
-
-              // circlesOpacity[4] = 0.0;
-              // lineOpacity[4] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(5);
-
-              // circlesOpacity[5] = 0.0;
-              // circlesOpacity[6] = 1.0;
             } else if (indexVisibilitySlide2DH == 6 && delay) {
               numberColor[5] = Colors.black;
               numberOpacity[6] = 1.0;
@@ -744,14 +680,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[4] = 0.0;
               blackBulletOpacity[4] = 1.0;
               redBulletOpacity[14] = 1.0;
-
-              // circlesOpacity[5] = 0.0;
-              // lineOpacity[5] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(6);
-
-              // circlesOpacity[6] = 0.0;
-              // circlesOpacity[7] = 1.0;
             } else if (indexVisibilitySlide2DH == 7 && delay) {
               numberColor[6] = Colors.black;
               numberOpacity[7] = 1.0;
@@ -764,14 +692,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[14] = 0.0;
               blackBulletOpacity[14] = 1.0;
               redBulletOpacity[10] = 1.0;
-
-              // circlesOpacity[6] = 0.0;
-              // lineOpacity[6] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(7);
-
-              // circlesOpacity[7] = 0.0;
-              // circlesOpacity[8] = 1.0;
             } else if (indexVisibilitySlide2DH == 8 && delay) {
               numberColor[7] = Colors.black;
               numberOpacity[8] = 1.0;
@@ -784,14 +704,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[10] = 0.0;
               blackBulletOpacity[10] = 1.0;
               redBulletOpacity[15] = 1.0;
-
-              // circlesOpacity[7] = 0.0;
-              // lineOpacity[7] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(8);
-
-              // circlesOpacity[8] = 0.0;
-              // circlesOpacity[9] = 1.0;
             } else if (indexVisibilitySlide2DH == 9 && delay) {
               numberColor[8] = Colors.black;
               numberOpacity[9] = 1.0;
@@ -804,14 +716,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[15] = 0.0;
               blackBulletOpacity[15] = 1.0;
               redBulletOpacity[13] = 1.0;
-
-              // circlesOpacity[8] = 0.0;
-              // lineOpacity[8] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(9);
-
-              // circlesOpacity[9] = 0.0;
-              // circlesOpacity[10] = 1.0;
             } else if (indexVisibilitySlide2DH == 10 && delay) {
               numberColor[9] = Colors.black;
               numberOpacity[10] = 1.0;
@@ -824,14 +728,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[13] = 0.0;
               blackBulletOpacity[13] = 1.0;
               redBulletOpacity[7] = 1.0;
-
-              // circlesOpacity[9] = 0.0;
-              // lineOpacity[9] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(10);
-
-              // circlesOpacity[10] = 0.0;
-              // circlesOpacity[11] = 1.0;
             } else if (indexVisibilitySlide2DH == 11 && delay) {
               numberColor[10] = Colors.black;
               numberOpacity[11] = 1.0;
@@ -844,14 +740,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[7] = 0.0;
               blackBulletOpacity[7] = 1.0;
               redBulletOpacity[6] = 1.0;
-
-              // circlesOpacity[10] = 0.0;
-              // lineOpacity[10] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(11);
-
-              // circlesOpacity[11] = 0.0;
-              // circlesOpacity[12] = 1.0;
             } else if (indexVisibilitySlide2DH == 12 && delay) {
               numberColor[11] = Colors.black;
               numberOpacity[12] = 1.0;
@@ -864,14 +752,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[6] = 0.0;
               blackBulletOpacity[6] = 1.0;
               redBulletOpacity[3] = 1.0;
-
-              // circlesOpacity[11] = 0.0;
-              // lineOpacity[11] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(12);
-
-              // circlesOpacity[12] = 0.0;
-              // circlesOpacity[13] = 1.0;
             } else if (indexVisibilitySlide2DH == 13 && delay) {
               numberColor[12] = Colors.black;
               numberOpacity[13] = 1.0;
@@ -884,14 +764,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[3] = 0.0;
               blackBulletOpacity[3] = 1.0;
               redBulletOpacity[11] = 1.0;
-
-              // circlesOpacity[12] = 0.0;
-              // lineOpacity[12] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(13);
-
-              // circlesOpacity[13] = 0.0;
-              // circlesOpacity[14] = 1.0;
             } else if (indexVisibilitySlide2DH == 14 && delay) {
               numberColor[13] = Colors.black;
               numberOpacity[14] = 1.0;
@@ -904,21 +776,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[11] = 0.0;
               blackBulletOpacity[11] = 1.0;
               redBulletOpacity[1] = 1.0;
-
-              // circlesOpacity[13] = 0.0;
-              // lineOpacity[13] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(14);
-
-              // circlesOpacity[14] = 0.0;
-              // circlesOpacity[15] = 1.0;
-
-              // circlesOpacity[14] = 0.0;
-              // lineOpacity[14] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(15);
-              // circlesOpacity[15] = 0.0;
-              // circlesOpacity[16] = 1.0;
             } else if (indexVisibilitySlide2DH == 15 && delay) {
               numberColor[14] = Colors.black;
               numberOpacity[15] = 1.0;
@@ -941,16 +798,8 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[5] = 0.0;
               blackBulletOpacity[5] = 1.0;
               redBulletOpacity[0] = 1.0;
-
-              // circlesOpacity[16] = 0.0;
-              // circlesOpacity[17] = 1.0;
               isLastIndex[0] = true;
             }
-            // if (Languages.selectedLanguage) {
-            //   text = DescListDeutchDH.slide2Desc[indexVisibilitySlide2DH];
-            // } else {
-            //   text = DescListEnglishDH.slide2Desc[indexVisibilitySlide2DH];
-            // }
           },
         );
       },
@@ -971,7 +820,6 @@ class Slide2DHState extends State<Slide2DH>
               videoTimerVariable.cancel();
             }
             if (indexVisibilitySlide2DH < 16 && delay) {
-              // Languages.player.play("assets/steps.mp3");
               indexVisibilitySlide2DH++;
               pageController2 = TextEditingController()
                 ..text = (indexVisibilitySlide2DH + 1).toString();
@@ -991,37 +839,16 @@ class Slide2DHState extends State<Slide2DH>
               numberOpacity[0] = 1.0;
               resultOpacity = 1.0;
               isLastIndex[1] = false;
-              // delay = false;
-              // delayTimer = Timer(Duration(seconds: seconds * 2), () {
-              //   setState(() {
-              //     // resVisibility = false;
-              //     resOpacity = 0.0;
-              //     x = 0.16;
-              //     y = 0.355;
-              //     delay = true;
-              //   });
-              // });
             } else if (indexVisibilitySlide2DH == 1 && delay) {
               prevResultOpacity = 1.0;
               numberColor[0] = Colors.black;
               numberOpacity[1] = 1.0;
               x2 = 0.812;
               y2 = 0.2;
-              // resOpacity[0] = 0.0;
-              // resOpacity[1] = 1.0;
-              // x[1] = 0.78;
-              // y[1] = 0.115;
               opTimer(0, false, 1);
               redBulletOpacity[0] = 0.0;
               blackBulletOpacity[0] = 1.0;
               redBulletOpacity[2] = 1.0;
-              // circlesOpacity[0] = 0.0;
-              // lineOpacity[0] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(1);
-
-              // circlesOpacity[1] = 0.0;
-              // circlesOpacity[2] = 1.0;
             } else if (indexVisibilitySlide2DH == 2 && delay) {
               numberColor[1] = Colors.black;
               numberOpacity[2] = 1.0;
@@ -1034,14 +861,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[2] = 0.0;
               blackBulletOpacity[2] = 1.0;
               redBulletOpacity[8] = 1.0;
-
-              // circlesOpacity[1] = 0.0;
-              // lineOpacity[1] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(2);
-
-              // circlesOpacity[2] = 0.0;
-              // circlesOpacity[3] = 1.0;
             } else if (indexVisibilitySlide2DH == 3 && delay) {
               numberColor[2] = Colors.black;
               numberOpacity[3] = 1.0;
@@ -1054,14 +873,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[8] = 0.0;
               blackBulletOpacity[8] = 1.0;
               redBulletOpacity[9] = 1.0;
-
-              // circlesOpacity[2] = 0.0;
-              // lineOpacity[2] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(3);
-
-              // circlesOpacity[3] = 0.0;
-              // circlesOpacity[4] = 1.0;
             } else if (indexVisibilitySlide2DH == 4 && delay) {
               numberColor[3] = Colors.black;
               numberOpacity[4] = 1.0;
@@ -1074,14 +885,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[9] = 0.0;
               blackBulletOpacity[9] = 1.0;
               redBulletOpacity[12] = 1.0;
-
-              // circlesOpacity[3] = 0.0;
-              // lineOpacity[3] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(4);
-
-              // circlesOpacity[4] = 0.0;
-              // circlesOpacity[5] = 1.0;
             } else if (indexVisibilitySlide2DH == 5 && delay) {
               numberColor[4] = Colors.black;
               numberOpacity[5] = 1.0;
@@ -1094,14 +897,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[12] = 0.0;
               blackBulletOpacity[12] = 1.0;
               redBulletOpacity[4] = 1.0;
-
-              // circlesOpacity[4] = 0.0;
-              // lineOpacity[4] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(5);
-
-              // circlesOpacity[5] = 0.0;
-              // circlesOpacity[6] = 1.0;
             } else if (indexVisibilitySlide2DH == 6 && delay) {
               numberColor[5] = Colors.black;
               numberOpacity[6] = 1.0;
@@ -1114,14 +909,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[4] = 0.0;
               blackBulletOpacity[4] = 1.0;
               redBulletOpacity[14] = 1.0;
-
-              // circlesOpacity[5] = 0.0;
-              // lineOpacity[5] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(6);
-
-              // circlesOpacity[6] = 0.0;
-              // circlesOpacity[7] = 1.0;
             } else if (indexVisibilitySlide2DH == 7 && delay) {
               numberColor[6] = Colors.black;
               numberOpacity[7] = 1.0;
@@ -1134,14 +921,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[14] = 0.0;
               blackBulletOpacity[14] = 1.0;
               redBulletOpacity[10] = 1.0;
-
-              // circlesOpacity[6] = 0.0;
-              // lineOpacity[6] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(7);
-
-              // circlesOpacity[7] = 0.0;
-              // circlesOpacity[8] = 1.0;
             } else if (indexVisibilitySlide2DH == 8 && delay) {
               numberColor[7] = Colors.black;
               numberOpacity[8] = 1.0;
@@ -1154,14 +933,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[10] = 0.0;
               blackBulletOpacity[10] = 1.0;
               redBulletOpacity[15] = 1.0;
-
-              // circlesOpacity[7] = 0.0;
-              // lineOpacity[7] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(8);
-
-              // circlesOpacity[8] = 0.0;
-              // circlesOpacity[9] = 1.0;
             } else if (indexVisibilitySlide2DH == 9 && delay) {
               numberColor[8] = Colors.black;
               numberOpacity[9] = 1.0;
@@ -1174,14 +945,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[15] = 0.0;
               blackBulletOpacity[15] = 1.0;
               redBulletOpacity[13] = 1.0;
-
-              // circlesOpacity[8] = 0.0;
-              // lineOpacity[8] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(9);
-
-              // circlesOpacity[9] = 0.0;
-              // circlesOpacity[10] = 1.0;
             } else if (indexVisibilitySlide2DH == 10 && delay) {
               numberColor[9] = Colors.black;
               numberOpacity[10] = 1.0;
@@ -1194,14 +957,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[13] = 0.0;
               blackBulletOpacity[13] = 1.0;
               redBulletOpacity[7] = 1.0;
-
-              // circlesOpacity[9] = 0.0;
-              // lineOpacity[9] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(10);
-
-              // circlesOpacity[10] = 0.0;
-              // circlesOpacity[11] = 1.0;
             } else if (indexVisibilitySlide2DH == 11 && delay) {
               numberColor[10] = Colors.black;
               numberOpacity[11] = 1.0;
@@ -1214,14 +969,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[7] = 0.0;
               blackBulletOpacity[7] = 1.0;
               redBulletOpacity[6] = 1.0;
-
-              // circlesOpacity[10] = 0.0;
-              // lineOpacity[10] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(11);
-
-              // circlesOpacity[11] = 0.0;
-              // circlesOpacity[12] = 1.0;
             } else if (indexVisibilitySlide2DH == 12 && delay) {
               numberColor[11] = Colors.black;
               numberOpacity[12] = 1.0;
@@ -1234,14 +981,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[6] = 0.0;
               blackBulletOpacity[6] = 1.0;
               redBulletOpacity[3] = 1.0;
-
-              // circlesOpacity[11] = 0.0;
-              // lineOpacity[11] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(12);
-
-              // circlesOpacity[12] = 0.0;
-              // circlesOpacity[13] = 1.0;
             } else if (indexVisibilitySlide2DH == 13 && delay) {
               numberColor[12] = Colors.black;
               numberOpacity[13] = 1.0;
@@ -1254,14 +993,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[3] = 0.0;
               blackBulletOpacity[3] = 1.0;
               redBulletOpacity[11] = 1.0;
-
-              // circlesOpacity[12] = 0.0;
-              // lineOpacity[12] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(13);
-
-              // circlesOpacity[13] = 0.0;
-              // circlesOpacity[14] = 1.0;
             } else if (indexVisibilitySlide2DH == 14 && delay) {
               numberColor[13] = Colors.black;
               numberOpacity[14] = 1.0;
@@ -1274,21 +1005,6 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[11] = 0.0;
               blackBulletOpacity[11] = 1.0;
               redBulletOpacity[1] = 1.0;
-
-              // circlesOpacity[13] = 0.0;
-              // lineOpacity[13] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(14);
-
-              // circlesOpacity[14] = 0.0;
-              // circlesOpacity[15] = 1.0;
-
-              // circlesOpacity[14] = 0.0;
-              // lineOpacity[14] = 1.0;
-              // opacityTimer.cancel();
-              // opTimer(15);
-              // circlesOpacity[15] = 0.0;
-              // circlesOpacity[16] = 1.0;
             } else if (indexVisibilitySlide2DH == 15 && delay) {
               numberColor[14] = Colors.black;
               numberOpacity[15] = 1.0;
@@ -1311,16 +1027,8 @@ class Slide2DHState extends State<Slide2DH>
               redBulletOpacity[5] = 0.0;
               blackBulletOpacity[5] = 1.0;
               redBulletOpacity[0] = 1.0;
-
-              // circlesOpacity[16] = 0.0;
-              // circlesOpacity[17] = 1.0;
               isLastIndex[0] = true;
             }
-            // if (Languages.selectedLanguage) {
-            //   text = DescListDeutchDH.slide2Desc[indexVisibilitySlide2DH];
-            // } else {
-            //   text = DescListEnglishDH.slide2Desc[indexVisibilitySlide2DH];
-            // }
           },
         );
       },
@@ -1334,63 +1042,6 @@ class Slide2DHState extends State<Slide2DH>
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight =
-        (MediaQuery.of(context).size.height - HomePageDHState.returnAppBar[1]);
-    if (screenWidth >= 1200) {
-      w = 500;
-      h = 500;
-    } else if (screenWidth < 1200 && screenWidth >= 1000) {
-      w = 400;
-      h = 400;
-    } else if (screenWidth < 1000 && screenWidth >= 800) {
-      w = 300;
-      h = 300;
-    } else if (screenWidth < 800 && screenWidth >= 600) {
-      w = 200;
-      h = 200;
-    } else {
-      w = 200;
-      h = 200;
-    }
-
-    // ----------------------------------
-    double middleWidth = 0.0;
-    double modWidth = 0.0;
-    if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      modWidth = 0.07;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      modWidth = 0.02;
-    } else if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      modWidth = 0.03;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      modWidth = 0.025;
-    }
-
-    if (MediaQuery.of(context).size.width > 1200 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.015;
-    } else if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.015;
-    } else if (MediaQuery.of(context).size.width > 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      middleWidth = 0.022;
-    } else if (MediaQuery.of(context).size.width < 600 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.02;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height < 400) {
-      middleWidth = 0.018;
-    } else if (MediaQuery.of(context).size.width < 1000 &&
-        MediaQuery.of(context).size.height > 400) {
-      middleWidth = 0.025;
-    }
-
     if (isPressedDown == 2 && isPressedUp == 1 && desc) {
       containerSeconds = 2;
       isPressedUp = 0;
@@ -1423,7 +1074,6 @@ class Slide2DHState extends State<Slide2DH>
                     HomePageDHState.returnAppBar[1]) *
                 0.1,
             left: MediaQuery.of(context).size.width * 0.535,
-            // duration: Duration(seconds: seconds),
             child: CustomPaint(
               size: Size(
                   MediaQuery.of(context).size.width * 0.28,
@@ -1817,857 +1467,6 @@ class Slide2DHState extends State<Slide2DH>
             color: Colors.black,
           ),
 
-          // Positioned(
-          //   top: (MediaQuery.of(context).size.height -
-          //           HomePageDHState.returnAppBar[1]) *
-          //       0.7,
-          //   left: MediaQuery.of(context).size.width * 0.03,
-          //   width: MediaQuery.of(context).size.width * 0.5,
-          //   height: (MediaQuery.of(context).size.height -
-          //           HomePageDHState.returnAppBar[1]) *
-          //       0.1,
-          //   child: Container(
-          //     decoration:
-          //         BoxDecoration(border: Border.all(color: Colors.blueAccent)),
-          //     child: Row(
-          //       children: [
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               height: double.infinity,
-          //               color: Colors.blue,
-          //               child: Container(
-          //                 margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //                 child: FittedBox(
-          //                   child: Text(
-          //                     '1 ',
-          //                     style: TextStyle(
-          //                       color: Colors.white,
-          //                       fontSize: 5,
-          //                       fontWeight: FontWeight.bold,
-          //                     ),
-          //                     textAlign: TextAlign.center,
-          //                   ),
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '2 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '3 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '4 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '5 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '6 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '7 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '8 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '9 ',
-          //                   style: TextStyle(
-          //                     fontSize: 5,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '10',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '11',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '12',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '13',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '14',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //             flex: 10,
-          //             child: Container(
-          //               margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //               child: FittedBox(
-          //                 child: Text(
-          //                   '15',
-          //                   style: TextStyle(
-          //                     fontSize: fontSize,
-          //                     fontWeight: FontWeight.bold,
-          //                   ),
-          //                   textAlign: TextAlign.center,
-          //                 ),
-          //               ),
-          //             )),
-          //         Expanded(
-          //           flex: 1,
-          //           child: Container(
-          //             color: Colors.black,
-          //             height: (MediaQuery.of(context).size.height -
-          //                     HomePageDHState.returnAppBar[1]) *
-          //                 0.1,
-          //             // width: 1,
-          //           ),
-          //         ),
-          //         Expanded(
-          //           flex: 10,
-          //           child: Container(
-          //             margin: EdgeInsets.only(left: 3.0, right: 3.0),
-          //             child: FittedBox(
-          //               child: Text(
-          //                 '16',
-          //                 style: TextStyle(
-          //                   fontSize: fontSize,
-          //                   fontWeight: FontWeight.bold,
-          //                 ),
-          //                 textAlign: TextAlign.center,
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-
-          // Numbers
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.1, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     numbersLeft, // 0.6
-          //     0.35, // 0.35
-          //     0.6, // 0.6
-          //     true,
-          //     'assets/slide2Images/numbers.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     1.0,
-          //   ),
-          // ),
-
-          // // 0
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/0.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     1.0, //circlesOpacity[0],
-          //   ),
-          // ),
-          // // 1
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/1.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[1],
-          //   ),
-          // ),
-
-          // // 2
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/2.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[2],
-          //   ),
-          // ),
-
-          // // 3
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/3.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[3],
-          //   ),
-          // ),
-
-          // // 4
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/4.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[4],
-          //   ),
-          // ),
-
-          // // 5
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/5.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[5],
-          //   ),
-          // ),
-
-          // // 6
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/6.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[6],
-          //   ),
-          // ),
-
-          // // 7
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/7.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[7],
-          //   ),
-          // ),
-
-          // // 8
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/8.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[8],
-          //   ),
-          // ),
-
-          // // 9
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/9.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[9],
-          //   ),
-          // ),
-
-          // // 10
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/10.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[10],
-          //   ),
-          // ),
-
-          // // 11
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/11.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[11],
-          //   ),
-          // ),
-
-          // // 12
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/12.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[12],
-          //   ),
-          // ),
-
-          // // 13
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/13.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[13],
-          //   ),
-          // ),
-
-          // // 14
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/14.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[14],
-          //   ),
-          // ),
-
-          // // 15
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/15.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[15],
-          //   ),
-          // ),
-
-          // // 16
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/16.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[16],
-          //   ),
-          // ),
-
-          // // 17
-          // Visibility(
-          //   visible: circleVisibility,
-          //   child: MyPositioned(
-          //     false,
-          //     true,
-          //     false,
-          //     false,
-          //     0.142, // 0.1
-          //     0.0, // 0.0
-          //     0.0, // 0.0
-          //     0.535, // 0.6
-          //     0.305, // 0.35
-          //     0.52, // 0.6
-          //     true,
-          //     'assets/slide2Images/17.jpeg',
-          //     BoxFit.fill,
-          //     seconds,
-          //     HomePageDHState.returnAppBar[1],
-          //     circlesOpacity[17],
-          //   ),
-          // ),
-
           // Steps1
           MyPositioned(
             true,
@@ -2708,10 +1507,6 @@ class Slide2DHState extends State<Slide2DH>
             1.0,
           ),
 
-          // description
-          // Description(desc, text, descVisbility, containerSeconds,
-          //     HomePageDHState.returnAppBar[1], false),
-
           // Upper Text
           Positioned(
             top: (MediaQuery.of(context).size.height -
@@ -2719,32 +1514,18 @@ class Slide2DHState extends State<Slide2DH>
                 0.03,
             right: MediaQuery.of(context).size.width * 0.25,
             width: MediaQuery.of(context).size.width * 0.7,
-            // height: MediaQuery.of(context).size.height * 0.06,
             child: Align(
               alignment: Alignment.topLeft,
               child: FittedBox(
                 child: Text(
                   AppLocalizations.of(context)!.text2,
                   style: TextStyle(
-                    fontSize:
-                        MediaQuery.of(context).size.width * 0.017, //modWidth,
+                    fontSize: MediaQuery.of(context).size.width * 0.017,
                   ),
                 ),
               ),
             ),
           ),
-          // Container(
-          //   // height: 100,
-          //   // color: Colors.red,
-          //   child: AutoSizeText(
-          //     AppLocalizations.of(context)!.text2,
-          //     minFontSize: 5,
-          //     stepGranularity: 5,
-          //     style: TextStyle(fontSize: 30),
-          //     maxLines: 1,
-          //     overflow: TextOverflow.ellipsis,
-          //   ),
-          // ),
 
           Positioned(
             top: (MediaQuery.of(context).size.height -
@@ -2759,8 +1540,7 @@ class Slide2DHState extends State<Slide2DH>
                 child: Text(
                   'g = 3, p = 17',
                   style: TextStyle(
-                    fontSize:
-                        MediaQuery.of(context).size.width * 0.02, //middleWidth,
+                    fontSize: MediaQuery.of(context).size.width * 0.02,
                   ),
                 ),
               ),
@@ -2768,16 +1548,15 @@ class Slide2DHState extends State<Slide2DH>
           ),
 
           // previous operation
-
           Positioned(
             top: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
-                0.33, //0.4
+                0.33,
             left: MediaQuery.of(context).size.width * 0.065,
-            width: MediaQuery.of(context).size.width * 0.3, //0.25,
+            width: MediaQuery.of(context).size.width * 0.3,
             height: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
-                0.15, // 0.25
+                0.15,
             child: AnimatedOpacity(
               opacity: prevResultOpacity,
               duration: Duration(seconds: seconds),
@@ -2791,8 +1570,7 @@ class Slide2DHState extends State<Slide2DH>
                         child: Text(
                           'Previous operation: 3',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width *
-                                0.02, //modWidth,
+                            fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
                         ),
                       ),
@@ -2802,8 +1580,6 @@ class Slide2DHState extends State<Slide2DH>
                             : indexVisibilitySlide2DH - 1],
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width * 0.015,
-                          // modWidth /
-                          // 1.5,
                         ),
                       ),
                       Padding(
@@ -2811,8 +1587,7 @@ class Slide2DHState extends State<Slide2DH>
                         child: Text(
                           ' mod 17 = $prevResult',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width *
-                                0.02, //modWidth,
+                            fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
                         ),
                       ),
@@ -2827,12 +1602,12 @@ class Slide2DHState extends State<Slide2DH>
           Positioned(
             top: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
-                0.44, //0.4
+                0.44,
             left: MediaQuery.of(context).size.width * 0.065,
-            width: MediaQuery.of(context).size.width * 0.3, //0.25,
+            width: MediaQuery.of(context).size.width * 0.3,
             height: (MediaQuery.of(context).size.height -
                     HomePageDHState.returnAppBar[1]) *
-                0.15, // 0.25
+                0.15,
             child: AnimatedOpacity(
               opacity: resultOpacity,
               duration: Duration(seconds: seconds),
@@ -2846,8 +1621,7 @@ class Slide2DHState extends State<Slide2DH>
                         child: Text(
                           'New operation: 3',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width *
-                                0.02, //modWidth,
+                            fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
                         ),
                       ),
@@ -2857,8 +1631,6 @@ class Slide2DHState extends State<Slide2DH>
                             : indexVisibilitySlide2DH],
                         style: TextStyle(
                           fontSize: MediaQuery.of(context).size.width * 0.015,
-                          // modWidth /
-                          // 1.5,
                         ),
                       ),
                       Padding(
@@ -2866,8 +1638,7 @@ class Slide2DHState extends State<Slide2DH>
                         child: Text(
                           ' mod 17 = $result',
                           style: TextStyle(
-                            fontSize: MediaQuery.of(context).size.width *
-                                0.02, //modWidth,
+                            fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
                         ),
                       ),
@@ -2903,31 +1674,8 @@ class Slide2DHState extends State<Slide2DH>
             child: FloatingActionButton(
               backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
               heroTag: "right9",
-              onPressed:
-                  // isLastIndex[0]
-                  //     ? null
-                  //     :
-                  () => setState(
+              onPressed: () => setState(
                 () {
-                  // opacityTimer = Timer.periodic(
-                  //   Duration(seconds: 1),
-                  //   (_) {
-                  //     setState(
-                  //       () {
-                  //         if (isShown) {
-                  //           lineOpacity = 1.0;
-                  //           isShown = false;
-                  //         } else {
-                  //           lineOpacity = 0.2;
-                  //           isShown = true;
-                  //         }
-                  //       },
-                  //     );
-                  //   },
-                  // );
-                  // messagePosition[0] = 0.1;
-                  // messagePosition[1] = 0.535;
-
                   if (videoButton == false) {
                     videoTimerSlide2DH.cancel();
                   }
@@ -2939,7 +1687,6 @@ class Slide2DHState extends State<Slide2DH>
                   }
 
                   if (indexVisibilitySlide2DH < 16 && delay) {
-                    // Languages.player.play("assets/steps.mp3");
                     indexVisibilitySlide2DH++;
                     pageController2 = TextEditingController()
                       ..text = (indexVisibilitySlide2DH + 1).toString();
@@ -2950,7 +1697,6 @@ class Slide2DHState extends State<Slide2DH>
                       prevResult =
                           (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
                     }
-                    ;
                     result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
                   }
                   if (indexVisibilitySlide2DH == 0) {
@@ -2961,37 +1707,16 @@ class Slide2DHState extends State<Slide2DH>
                     numberOpacity[0] = 1.0;
                     resultOpacity = 1.0;
                     isLastIndex[1] = false;
-                    // delay = false;
-                    // delayTimer = Timer(Duration(seconds: seconds * 2), () {
-                    //   setState(() {
-                    //     // resVisibility = false;
-                    //     resOpacity = 0.0;
-                    //     x = 0.16;
-                    //     y = 0.355;
-                    //     delay = true;
-                    //   });
-                    // });
                   } else if (indexVisibilitySlide2DH == 1 && delay) {
                     prevResultOpacity = 1.0;
                     numberColor[0] = Colors.black;
                     numberOpacity[1] = 1.0;
                     x2 = 0.812;
                     y2 = 0.2;
-                    // resOpacity[0] = 0.0;
-                    // resOpacity[1] = 1.0;
-                    // x[1] = 0.78;
-                    // y[1] = 0.115;
                     opTimer(0, false, 1);
                     redBulletOpacity[0] = 0.0;
                     blackBulletOpacity[0] = 1.0;
                     redBulletOpacity[2] = 1.0;
-                    // circlesOpacity[0] = 0.0;
-                    // lineOpacity[0] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(1);
-
-                    // circlesOpacity[1] = 0.0;
-                    // circlesOpacity[2] = 1.0;
                   } else if (indexVisibilitySlide2DH == 2 && delay) {
                     numberColor[1] = Colors.black;
                     numberOpacity[2] = 1.0;
@@ -3004,14 +1729,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[2] = 0.0;
                     blackBulletOpacity[2] = 1.0;
                     redBulletOpacity[8] = 1.0;
-
-                    // circlesOpacity[1] = 0.0;
-                    // lineOpacity[1] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(2);
-
-                    // circlesOpacity[2] = 0.0;
-                    // circlesOpacity[3] = 1.0;
                   } else if (indexVisibilitySlide2DH == 3 && delay) {
                     numberColor[2] = Colors.black;
                     numberOpacity[3] = 1.0;
@@ -3024,14 +1741,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[8] = 0.0;
                     blackBulletOpacity[8] = 1.0;
                     redBulletOpacity[9] = 1.0;
-
-                    // circlesOpacity[2] = 0.0;
-                    // lineOpacity[2] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(3);
-
-                    // circlesOpacity[3] = 0.0;
-                    // circlesOpacity[4] = 1.0;
                   } else if (indexVisibilitySlide2DH == 4 && delay) {
                     numberColor[3] = Colors.black;
                     numberOpacity[4] = 1.0;
@@ -3044,14 +1753,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[9] = 0.0;
                     blackBulletOpacity[9] = 1.0;
                     redBulletOpacity[12] = 1.0;
-
-                    // circlesOpacity[3] = 0.0;
-                    // lineOpacity[3] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(4);
-
-                    // circlesOpacity[4] = 0.0;
-                    // circlesOpacity[5] = 1.0;
                   } else if (indexVisibilitySlide2DH == 5 && delay) {
                     numberColor[4] = Colors.black;
                     numberOpacity[5] = 1.0;
@@ -3064,14 +1765,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[12] = 0.0;
                     blackBulletOpacity[12] = 1.0;
                     redBulletOpacity[4] = 1.0;
-
-                    // circlesOpacity[4] = 0.0;
-                    // lineOpacity[4] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(5);
-
-                    // circlesOpacity[5] = 0.0;
-                    // circlesOpacity[6] = 1.0;
                   } else if (indexVisibilitySlide2DH == 6 && delay) {
                     numberColor[5] = Colors.black;
                     numberOpacity[6] = 1.0;
@@ -3084,14 +1777,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[4] = 0.0;
                     blackBulletOpacity[4] = 1.0;
                     redBulletOpacity[14] = 1.0;
-
-                    // circlesOpacity[5] = 0.0;
-                    // lineOpacity[5] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(6);
-
-                    // circlesOpacity[6] = 0.0;
-                    // circlesOpacity[7] = 1.0;
                   } else if (indexVisibilitySlide2DH == 7 && delay) {
                     numberColor[6] = Colors.black;
                     numberOpacity[7] = 1.0;
@@ -3104,14 +1789,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[14] = 0.0;
                     blackBulletOpacity[14] = 1.0;
                     redBulletOpacity[10] = 1.0;
-
-                    // circlesOpacity[6] = 0.0;
-                    // lineOpacity[6] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(7);
-
-                    // circlesOpacity[7] = 0.0;
-                    // circlesOpacity[8] = 1.0;
                   } else if (indexVisibilitySlide2DH == 8 && delay) {
                     numberColor[7] = Colors.black;
                     numberOpacity[8] = 1.0;
@@ -3124,14 +1801,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[10] = 0.0;
                     blackBulletOpacity[10] = 1.0;
                     redBulletOpacity[15] = 1.0;
-
-                    // circlesOpacity[7] = 0.0;
-                    // lineOpacity[7] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(8);
-
-                    // circlesOpacity[8] = 0.0;
-                    // circlesOpacity[9] = 1.0;
                   } else if (indexVisibilitySlide2DH == 9 && delay) {
                     numberColor[8] = Colors.black;
                     numberOpacity[9] = 1.0;
@@ -3144,14 +1813,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[15] = 0.0;
                     blackBulletOpacity[15] = 1.0;
                     redBulletOpacity[13] = 1.0;
-
-                    // circlesOpacity[8] = 0.0;
-                    // lineOpacity[8] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(9);
-
-                    // circlesOpacity[9] = 0.0;
-                    // circlesOpacity[10] = 1.0;
                   } else if (indexVisibilitySlide2DH == 10 && delay) {
                     numberColor[9] = Colors.black;
                     numberOpacity[10] = 1.0;
@@ -3164,14 +1825,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[13] = 0.0;
                     blackBulletOpacity[13] = 1.0;
                     redBulletOpacity[7] = 1.0;
-
-                    // circlesOpacity[9] = 0.0;
-                    // lineOpacity[9] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(10);
-
-                    // circlesOpacity[10] = 0.0;
-                    // circlesOpacity[11] = 1.0;
                   } else if (indexVisibilitySlide2DH == 11 && delay) {
                     numberColor[10] = Colors.black;
                     numberOpacity[11] = 1.0;
@@ -3184,14 +1837,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[7] = 0.0;
                     blackBulletOpacity[7] = 1.0;
                     redBulletOpacity[6] = 1.0;
-
-                    // circlesOpacity[10] = 0.0;
-                    // lineOpacity[10] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(11);
-
-                    // circlesOpacity[11] = 0.0;
-                    // circlesOpacity[12] = 1.0;
                   } else if (indexVisibilitySlide2DH == 12 && delay) {
                     numberColor[11] = Colors.black;
                     numberOpacity[12] = 1.0;
@@ -3204,14 +1849,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[6] = 0.0;
                     blackBulletOpacity[6] = 1.0;
                     redBulletOpacity[3] = 1.0;
-
-                    // circlesOpacity[11] = 0.0;
-                    // lineOpacity[11] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(12);
-
-                    // circlesOpacity[12] = 0.0;
-                    // circlesOpacity[13] = 1.0;
                   } else if (indexVisibilitySlide2DH == 13 && delay) {
                     numberColor[12] = Colors.black;
                     numberOpacity[13] = 1.0;
@@ -3224,14 +1861,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[3] = 0.0;
                     blackBulletOpacity[3] = 1.0;
                     redBulletOpacity[11] = 1.0;
-
-                    // circlesOpacity[12] = 0.0;
-                    // lineOpacity[12] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(13);
-
-                    // circlesOpacity[13] = 0.0;
-                    // circlesOpacity[14] = 1.0;
                   } else if (indexVisibilitySlide2DH == 14 && delay) {
                     numberColor[13] = Colors.black;
                     numberOpacity[14] = 1.0;
@@ -3244,21 +1873,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[11] = 0.0;
                     blackBulletOpacity[11] = 1.0;
                     redBulletOpacity[1] = 1.0;
-
-                    // circlesOpacity[13] = 0.0;
-                    // lineOpacity[13] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(14);
-
-                    // circlesOpacity[14] = 0.0;
-                    // circlesOpacity[15] = 1.0;
-
-                    // circlesOpacity[14] = 0.0;
-                    // lineOpacity[14] = 1.0;
-                    // opacityTimer.cancel();
-                    // opTimer(15);
-                    // circlesOpacity[15] = 0.0;
-                    // circlesOpacity[16] = 1.0;
                   } else if (indexVisibilitySlide2DH == 15 && delay) {
                     numberColor[14] = Colors.black;
                     numberOpacity[15] = 1.0;
@@ -3281,17 +1895,8 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[5] = 0.0;
                     blackBulletOpacity[5] = 1.0;
                     redBulletOpacity[0] = 1.0;
-
-                    // circlesOpacity[16] = 0.0;
-                    // circlesOpacity[17] = 1.0;
                     isLastIndex[0] = true;
                   }
-                  // if (Languages.selectedLanguage) {
-                  //   text = DescListDeutchDH.slide2Desc[indexVisibilitySlide2DH];
-                  // } else {
-                  //   text =
-                  //       DescListEnglishDH.slide2Desc[indexVisibilitySlide2DH];
-                  // }
                 },
               ),
               child: Icon(Icons.arrow_forward,
@@ -3308,11 +1913,7 @@ class Slide2DHState extends State<Slide2DH>
             child: FloatingActionButton(
               heroTag: "left9",
               backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
-              onPressed:
-                  // isLastIndex[1]
-                  //     ? null
-                  //     :
-                  () => setState(
+              onPressed: () => setState(
                 () {
                   if (videoButton == false) {
                     videoTimerSlide2DH.cancel();
@@ -3324,7 +1925,6 @@ class Slide2DHState extends State<Slide2DH>
                     openDialog(true);
                   }
                   if (indexVisibilitySlide2DH == 0) {
-                    // Languages.player.play("assets/steps.mp3");
                     indexVisibilitySlide2DH--;
                     pageController2 = TextEditingController()
                       ..text = (indexVisibilitySlide2DH + 1).toString();
@@ -3334,9 +1934,6 @@ class Slide2DHState extends State<Slide2DH>
                     redBulletOpacity[0] = 0.0;
                     numberOpacity[0] = 0.0;
                     resultOpacity = 0.0;
-                    // circlesOpacity[0] = 1.0;
-                    // circlesOpacity[1] = 0.0;
-                    // resultOpacity = 0.0;
                     isLastIndex[1] = true;
                   } else if (indexVisibilitySlide2DH == 1 && delay) {
                     prevResultOpacity = 0.0;
@@ -3347,13 +1944,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[0] = 0.0;
                     lineOpacity[0] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(0);
                     redBulletOpacity[0] = 1.0;
                     blackBulletOpacity[0] = 0.0;
                     redBulletOpacity[2] = 0.0;
-
-                    // circlesOpacity[1] = 1.0;
-                    // circlesOpacity[2] = 0.0;
                   } else if (indexVisibilitySlide2DH == 2 && delay) {
                     numberColor[1] = Colors.red;
                     numberOpacity[2] = 0.0;
@@ -3364,12 +1957,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[1] = 0.0;
                     lineOpacity[1] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(1);
                     redBulletOpacity[2] = 1.0;
                     blackBulletOpacity[2] = 0.0;
                     redBulletOpacity[8] = 0.0;
-                    // circlesOpacity[2] = 1.0;
-                    // circlesOpacity[3] = 0.0;
                   } else if (indexVisibilitySlide2DH == 3 && delay) {
                     numberColor[2] = Colors.red;
                     numberOpacity[3] = 0.0;
@@ -3380,12 +1970,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[2] = 0.0;
                     lineOpacity[2] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(2);
                     redBulletOpacity[8] = 1.0;
                     blackBulletOpacity[8] = 0.0;
                     redBulletOpacity[9] = 0.0;
-                    // circlesOpacity[3] = 1.0;
-                    // circlesOpacity[4] = 0.0;
                   } else if (indexVisibilitySlide2DH == 4 && delay) {
                     numberColor[3] = Colors.red;
                     numberOpacity[4] = 0.0;
@@ -3396,12 +1983,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[3] = 0.0;
                     lineOpacity[3] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(3);
                     redBulletOpacity[9] = 1.0;
                     blackBulletOpacity[9] = 0.0;
                     redBulletOpacity[12] = 0.0;
-                    // circlesOpacity[4] = 1.0;
-                    // circlesOpacity[5] = 0.0;
                   } else if (indexVisibilitySlide2DH == 5 && delay) {
                     numberColor[4] = Colors.red;
                     numberOpacity[5] = 0.0;
@@ -3412,12 +1996,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[4] = 0.0;
                     lineOpacity[4] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(4);
                     redBulletOpacity[12] = 1.0;
                     blackBulletOpacity[12] = 0.0;
                     redBulletOpacity[4] = 0.0;
-                    // circlesOpacity[5] = 1.0;
-                    // circlesOpacity[6] = 0.0;
                   } else if (indexVisibilitySlide2DH == 6 && delay) {
                     numberColor[5] = Colors.red;
                     numberOpacity[6] = 0.0;
@@ -3428,12 +2009,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[5] = 0.0;
                     lineOpacity[5] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(5);
                     redBulletOpacity[4] = 1.0;
                     blackBulletOpacity[4] = 0.0;
                     redBulletOpacity[14] = 0.0;
-                    // circlesOpacity[6] = 1.0;
-                    // circlesOpacity[7] = 0.0;
                   } else if (indexVisibilitySlide2DH == 7 && delay) {
                     numberColor[6] = Colors.red;
                     numberOpacity[7] = 0.0;
@@ -3444,12 +2022,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[6] = 0.0;
                     lineOpacity[6] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(6);
                     redBulletOpacity[14] = 1.0;
                     blackBulletOpacity[14] = 0.0;
                     redBulletOpacity[10] = 0.0;
-                    // circlesOpacity[7] = 1.0;
-                    // circlesOpacity[8] = 0.0;
                   } else if (indexVisibilitySlide2DH == 8 && delay) {
                     numberColor[7] = Colors.red;
                     numberOpacity[8] = 0.0;
@@ -3460,12 +2035,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[7] = 0.0;
                     lineOpacity[7] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(7);
                     redBulletOpacity[10] = 1.0;
                     blackBulletOpacity[10] = 0.0;
                     redBulletOpacity[15] = 0.0;
-                    // circlesOpacity[8] = 1.0;
-                    // circlesOpacity[9] = 0.0;
                   } else if (indexVisibilitySlide2DH == 9 && delay) {
                     numberColor[8] = Colors.red;
                     numberOpacity[9] = 0.0;
@@ -3476,12 +2048,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[8] = 0.0;
                     lineOpacity[8] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(8);
                     redBulletOpacity[15] = 1.0;
                     blackBulletOpacity[15] = 0.0;
                     redBulletOpacity[13] = 0.0;
-                    // circlesOpacity[9] = 1.0;
-                    // circlesOpacity[10] = 0.0;
                   } else if (indexVisibilitySlide2DH == 10 && delay) {
                     numberColor[9] = Colors.red;
                     numberOpacity[10] = 0.0;
@@ -3492,12 +2061,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[9] = 0.0;
                     lineOpacity[9] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(9);
                     redBulletOpacity[13] = 1.0;
                     blackBulletOpacity[13] = 0.0;
                     redBulletOpacity[7] = 0.0;
-                    // circlesOpacity[10] = 1.0;
-                    // circlesOpacity[11] = 0.0;
                   } else if (indexVisibilitySlide2DH == 11 && delay) {
                     numberColor[10] = Colors.red;
                     numberOpacity[11] = 0.0;
@@ -3508,12 +2074,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[10] = 0.0;
                     lineOpacity[10] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(10);
                     redBulletOpacity[7] = 1.0;
                     blackBulletOpacity[7] = 0.0;
                     redBulletOpacity[6] = 0.0;
-                    // circlesOpacity[11] = 1.0;
-                    // circlesOpacity[12] = 0.0;
                   } else if (indexVisibilitySlide2DH == 12 && delay) {
                     numberColor[11] = Colors.red;
                     numberOpacity[12] = 0.0;
@@ -3524,12 +2087,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[11] = 0.0;
                     lineOpacity[11] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(11);
                     redBulletOpacity[6] = 1.0;
                     blackBulletOpacity[6] = 0.0;
                     redBulletOpacity[3] = 0.0;
-                    // circlesOpacity[12] = 1.0;
-                    // circlesOpacity[13] = 0.0;
                   } else if (indexVisibilitySlide2DH == 13 && delay) {
                     numberColor[12] = Colors.red;
                     numberOpacity[13] = 0.0;
@@ -3540,12 +2100,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[12] = 0.0;
                     lineOpacity[12] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(12);
                     redBulletOpacity[3] = 1.0;
                     blackBulletOpacity[3] = 0.0;
                     redBulletOpacity[11] = 0.0;
-                    // circlesOpacity[13] = 1.0;
-                    // circlesOpacity[14] = 0.0;
                   } else if (indexVisibilitySlide2DH == 14 && delay) {
                     numberColor[13] = Colors.red;
                     numberOpacity[14] = 0.0;
@@ -3556,12 +2113,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[13] = 0.0;
                     lineOpacity[13] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(13);
                     redBulletOpacity[11] = 1.0;
                     blackBulletOpacity[11] = 0.0;
                     redBulletOpacity[1] = 0.0;
-                    // circlesOpacity[14] = 1.0;
-                    // circlesOpacity[15] = 0.0;
                   } else if (indexVisibilitySlide2DH == 15 && delay) {
                     numberColor[14] = Colors.red;
                     numberOpacity[15] = 0.0;
@@ -3572,12 +2126,9 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[14] = 0.0;
                     lineOpacity[14] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(14);
                     redBulletOpacity[1] = 1.0;
                     blackBulletOpacity[1] = 0.0;
                     redBulletOpacity[5] = 0.0;
-                    // circlesOpacity[15] = 1.0;
-                    // circlesOpacity[16] = 0.0;
                   } else if (indexVisibilitySlide2DH == 16 && delay) {
                     numberColor[15] = Colors.red;
                     circlesOpacity[14] = 1.0;
@@ -3585,30 +2136,19 @@ class Slide2DHState extends State<Slide2DH>
                     circlesOpacity[15] = 0.0;
                     lineOpacity[15] = 0.0;
                     opacityTimer.cancel();
-                    // opTimer(15);
                     blackBulletOpacity[0] = 1.0;
                     redBulletOpacity[5] = 1.0;
                     blackBulletOpacity[5] = 0.0;
                     redBulletOpacity[0] = 0.0;
-                    // circlesOpacity[16] = 1.0;
-                    // circlesOpacity[17] = 0.0;
                     isLastIndex[0] = false;
                   }
                   if (indexVisibilitySlide2DH > 0 && delay) {
-                    // Languages.player.play("assets/steps.mp3");
                     if (indexVisibilitySlide2DH == 0) {
                       delay = false;
                     }
                     indexVisibilitySlide2DH--;
                     stepsVisibility[0] = !stepsVisibility[0];
                     stepsVisibility[1] = !stepsVisibility[1];
-                    // if (Languages.selectedLanguage) {
-                    //   text =
-                    //       DescListDeutchDH.slide2Desc[indexVisibilitySlide2DH];
-                    // } else {
-                    //   text =
-                    //       DescListEnglishDH.slide2Desc[indexVisibilitySlide2DH];
-                    // }
                   }
                   if (indexVisibilitySlide2DH >= 0) {
                     if (indexVisibilitySlide2DH > 0) {
@@ -3637,23 +2177,6 @@ class Slide2DHState extends State<Slide2DH>
               onPressed: () => setState(
                 () {
                   openIntroDialog();
-                  // isPressedUp = 1;
-                  // isPressedDown = 2;
-
-                  // dropButton = !dropButton;
-                  // containerSeconds = 2;
-                  // desc = !desc;
-                  // timerSlide2DH = Timer(
-                  //   const Duration(seconds: 2),
-                  //   () {
-                  //     setState(
-                  //       () {
-                  //         descVisbility = desc;
-                  //         checkVisibility = 1;
-                  //       },
-                  //     );
-                  //   },
-                  // );
                 },
               ),
               child: dropButton
@@ -3669,11 +2192,9 @@ class Slide2DHState extends State<Slide2DH>
           ),
 
           // Advanced-Setting-Button
-
           AnimatedPositioned(
             right: MediaQuery.of(context).size.width * 0.01,
-            bottom: MediaQuery.of(context).size.height *
-                advancedSettingsButton, // 0.46
+            bottom: MediaQuery.of(context).size.height * advancedSettingsButton,
             width: MediaQuery.of(context).size.width * 0.1,
             height: MediaQuery.of(context).size.height * 0.1,
             duration: Duration(
@@ -3696,13 +2217,12 @@ class Slide2DHState extends State<Slide2DH>
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(32.0))),
                     title: Text(
-                      // 'Settings',
                       AppLocalizations.of(context)!.settings,
                       textAlign: TextAlign.center,
                     ),
-                    content: Container(
-                      height: 300.0, // Change as per your requirement
-                      width: 500.0, // Change as per your requirement
+                    content: SizedBox(
+                      height: 300.0,
+                      width: 500.0,
                       child: RawScrollbar(
                         controller: scrollController,
                         thumbColor: Colors.blue,
@@ -3840,282 +2360,6 @@ class Slide2DHState extends State<Slide2DH>
                         ),
                       ),
                     ),
-
-                    // content: SingleChildScrollView(
-                    //   scrollDirection: Axis.horizontal,
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //     children: [
-                    //       Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           const SizedBox(
-                    //             height: 10,
-                    //           ),
-                    //           // 'Animation-Geschwindigkeit',
-                    //           Text(
-                    //             AppLocalizations.of(context)!.animationSpeed,
-                    //           ),
-
-                    //           const SizedBox(
-                    //             height: 60,
-                    //           ),
-                    //           Text(
-                    //             // 'Sprache'
-                    //             AppLocalizations.of(context)!.appLanguage,
-                    //           ),
-                    //           const SizedBox(
-                    //             height: 60,
-                    //           ),
-                    //           Text(
-                    //             // 'Zoom Enable'
-                    //             AppLocalizations.of(context)!.zoomEnable,
-                    //           ),
-                    //         ],
-                    //       ),
-                    //       const SizedBox(
-                    //         width: 50,
-                    //       ),
-                    //       Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           StatefulBuilder(
-                    //             builder: (BuildContext context,
-                    //                 void Function(void Function()) setState) {
-                    //               return Slider(
-                    //                 value: Global.val.toDouble(),
-                    //                 min: 1.0,
-                    //                 max: 3.0,
-                    //                 divisions: 2,
-                    //                 label: Global.val.toString(),
-                    //                 onChanged: (double newValue) {
-                    //                   setState(
-                    //                     () {
-                    //                       Global.val = newValue.round();
-
-                    //                       if (Global.val == 1) {
-                    //                         Global.slider = Global.val + 2;
-                    //                         if (!videoButton) {
-                    //                           videoTimerSlide2DH.cancel();
-                    //                           videoTimerSlide2DH =
-                    //                               videoTimerProblem();
-                    //                         }
-                    //                       } else if (Global.val == 3) {
-                    //                         Global.slider = Global.val - 2;
-                    //                         if (!videoButton) {
-                    //                           videoTimerSlide2DH.cancel();
-                    //                           videoTimerSlide2DH =
-                    //                               videoTimerProblem();
-                    //                         }
-                    //                       } else {
-                    //                         Global.slider = Global.val;
-                    //                         if (!videoButton) {
-                    //                           videoTimerSlide2DH.cancel();
-                    //                           videoTimerSlide2DH =
-                    //                               videoTimerProblem();
-                    //                         }
-                    //                       }
-                    //                     },
-                    //                   );
-                    //                 },
-                    //               );
-                    //             },
-                    //           ),
-                    //           const SizedBox(
-                    //             height: 25,
-                    //           ),
-                    //           Container(
-                    //             margin: const EdgeInsets.only(left: 18.0),
-                    //             child: StatefulBuilder(builder: (BuildContext
-                    //                     context,
-                    //                 void Function(void Function()) setState) {
-                    //               return DropdownButton<String>(
-                    //                 value: Global.selectedLanguage == true
-                    //                     ? Global.languages[0]
-                    //                     : Global.languages[1],
-                    //                 elevation: 16,
-                    //                 style: const TextStyle(
-                    //                     color: Colors.deepPurple),
-                    //                 underline: Container(
-                    //                   height: 2,
-                    //                   color: Colors.deepPurpleAccent,
-                    //                 ),
-                    //                 onChanged: (newValue) {
-                    //                   setState(
-                    //                     () {
-                    //                       dropdownValue = newValue!;
-                    //                       if (dropdownValue ==
-                    //                           Global.languages[1]) {
-                    //                         Global.selectedLanguage = false;
-                    //                         MyApp.of(context)!.setLocale(
-                    //                             const Locale.fromSubtags(
-                    //                                 languageCode: 'en'));
-                    //                         Global.locale = 'en';
-                    //                       } else {
-                    //                         Global.selectedLanguage = true;
-                    //                         MyApp.of(context)!.setLocale(
-                    //                             const Locale.fromSubtags(
-                    //                                 languageCode: 'de'));
-                    //                         Global.locale = 'de';
-                    //                       }
-                    //                     },
-                    //                   );
-                    //                   Provider.of<LanguageProvider>(context,
-                    //                           listen: false)
-                    //                       .changeLanguage(1);
-                    //                 },
-                    //                 items: Global.languages
-                    //                     .map<DropdownMenuItem<String>>(
-                    //                   (String value) {
-                    //                     return DropdownMenuItem<String>(
-                    //                       value: value,
-                    //                       child: Text(value),
-                    //                     );
-                    //                   },
-                    //                 ).toList(),
-                    //               );
-                    //             }),
-                    //           ),
-                    //           const SizedBox(
-                    //             height: 25,
-                    //           ),
-                    //           Padding(
-                    //             padding: const EdgeInsets.all(10.0),
-                    //             child: StatefulBuilder(
-                    //               builder: (BuildContext context,
-                    //                   void Function(void Function())
-                    //                       setState) {
-                    //                 return CupertinoSwitch(
-                    //                   value: Global.switchValue,
-                    //                   onChanged: (value) {
-                    //                     setState(() {
-                    //                       Global.switchValue = value;
-                    //                       Global.scaleEnabled =
-                    //                           Global.switchValue;
-                    //                     });
-                    //                   },
-                    //                 );
-                    //               },
-                    //             ),
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    // content: SingleChildScrollView(
-                    //   child: Column(
-                    //     crossAxisAlignment: CrossAxisAlignment.stretch,
-                    //     children: [
-                    //       SingleChildScrollView(
-                    //         scrollDirection: Axis.horizontal,
-                    //         child: Row(
-                    //           children: [
-                    //             Text(
-                    //               // 'Animation-Geschwindigkeit:',
-                    //               AppLocalizations.of(context)!.animationSpeed,
-                    //             ),
-                    //             const SizedBox(
-                    //               width: 50,
-                    //             ),
-                    //             StatefulBuilder(
-                    //               builder: (BuildContext context,
-                    //                   void Function(void Function()) setState) {
-                    //                 return Slider(
-                    //                   value: Languages.val.toDouble(),
-                    //                   min: 1.0,
-                    //                   max: 3.0,
-                    //                   divisions: 2,
-                    //                   label: Languages.val.toString(),
-                    //                   onChanged: (double newValue) {
-                    //                     setState(
-                    //                       () {
-                    //                         Languages.val = newValue.round();
-
-                    //                         if (Languages.val == 1) {
-                    //                           Languages.slider =
-                    //                               Languages.val + 2;
-                    //                           if (!videoButton) {
-                    //                             videoTimerSlide2DH.cancel();
-                    //                             videoTimerSlide2DH =
-                    //                                 videoTimerProblem();
-                    //                           }
-                    //                         } else if (Languages.val == 3) {
-                    //                           Languages.slider =
-                    //                               Languages.val - 2;
-                    //                           if (!videoButton) {
-                    //                             videoTimerSlide2DH.cancel();
-                    //                             videoTimerSlide2DH =
-                    //                                 videoTimerProblem();
-                    //                           }
-                    //                         } else {
-                    //                           Languages.slider = Languages.val;
-                    //                           if (!videoButton) {
-                    //                             videoTimerSlide2DH.cancel();
-                    //                             videoTimerSlide2DH =
-                    //                                 videoTimerProblem();
-                    //                           }
-                    //                         }
-                    //                       },
-                    //                     );
-                    //                   },
-                    //                 );
-                    //               },
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //       Row(
-                    //         children: [
-                    //           Text(
-                    //             // 'Sprache:',
-                    //             AppLocalizations.of(context)!.appLanguage,
-                    //           ),
-                    //           const SizedBox(
-                    //             width: 205,
-                    //           ),
-                    //           StatefulBuilder(builder: (BuildContext context,
-                    //               void Function(void Function()) setState) {
-                    //             return DropdownButton<String>(
-                    //               value: Languages.selectedLanguage == true
-                    //                   ? Languages.languages[0]
-                    //                   : Languages.languages[1],
-                    //               elevation: 16,
-                    //               style:
-                    //                   const TextStyle(color: Colors.deepPurple),
-                    //               underline: Container(
-                    //                 height: 2,
-                    //                 color: Colors.deepPurpleAccent,
-                    //               ),
-                    //               onChanged: (newValue) {
-                    //                 setState(
-                    //                   () {
-                    //                     dropdownValue = newValue!;
-                    //                     if (dropdownValue ==
-                    //                         Languages.languages[1]) {
-                    //                       Languages.selectedLanguage = false;
-                    //                     } else {
-                    //                       Languages.selectedLanguage = true;
-                    //                     }
-                    //                   },
-                    //                 );
-                    //               },
-                    //               items: Languages.languages
-                    //                   .map<DropdownMenuItem<String>>(
-                    //                 (String value) {
-                    //                   return DropdownMenuItem<String>(
-                    //                     value: value,
-                    //                     child: Text(value),
-                    //                   );
-                    //                 },
-                    //               ).toList(),
-                    //             );
-                    //           }),
-                    //         ],
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
                     actions: <Widget>[
                       TextButton(
                         onPressed: () {
@@ -4153,7 +2397,6 @@ class Slide2DHState extends State<Slide2DH>
           ),
 
           // Video-Stop-Button
-
           AnimatedPositioned(
             right: MediaQuery.of(context).size.width * 0.01,
             bottom: MediaQuery.of(context).size.height * settingsStopButton,
@@ -4389,7 +2632,6 @@ class Slide2DHState extends State<Slide2DH>
           ),
 
           // Video-Play-Button
-
           AnimatedPositioned(
             right: MediaQuery.of(context).size.width * 0.01,
             bottom: MediaQuery.of(context).size.height * settingsVideoButton,
@@ -4421,7 +2663,6 @@ class Slide2DHState extends State<Slide2DH>
           ),
 
           // More-Button
-
           Positioned(
             right: MediaQuery.of(context).size.width * 0.01,
             bottom: MediaQuery.of(context).size.height * 0.13,
@@ -4508,23 +2749,19 @@ class Slide2DHState extends State<Slide2DH>
         children: <Widget>[
           const SizedBox(height: 12),
           const SizedBox(height: 12),
-          Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Expanded(child: Text(text)),
-                // VerticalDivider(color: Colors.red, width: 4.0),
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 8, horizontal: isSwitch ? 35 : 20),
-                    child: widget,
-                  ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Expanded(child: Text(text)),
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(
+                      vertical: 8, horizontal: isSwitch ? 35 : 20),
+                  child: widget,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       ),
@@ -4564,7 +2801,7 @@ class Slide2DHState extends State<Slide2DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -4603,7 +2840,6 @@ class Slide2DHState extends State<Slide2DH>
               flex: 2,
               child: Text(
                 AppLocalizations.of(context)!.goToStep,
-                // 'Go to Page:',
                 textAlign: TextAlign.left,
               ),
             ),
@@ -4628,7 +2864,7 @@ class Slide2DHState extends State<Slide2DH>
             ),
           ],
         ),
-        content: Container(
+        content: const SizedBox(
           height: 5.0,
           width: 300.0,
         ),
@@ -4650,9 +2886,7 @@ class Slide2DHState extends State<Slide2DH>
                       size: 32,
                       color: Colors.white,
                     ),
-                    // 'Error',
                     AppLocalizations.of(context)!.errorTitel,
-                    // 'n must be prime number',
                     AppLocalizations.of(context)!.outOfRangeError,
                     Colors.red);
               } else {
@@ -4726,7 +2960,6 @@ class Slide2DHState extends State<Slide2DH>
           scrollable: true,
           title: Text(
             AppLocalizations.of(context)!.introduction,
-            // 'Introduction',
             textAlign: TextAlign.center,
           ),
           content: Column(
@@ -4735,7 +2968,6 @@ class Slide2DHState extends State<Slide2DH>
             children: [
               Text(
                 AppLocalizations.of(context)!.intro36,
-                // '- What is primitive root of prime number?',
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.red,
@@ -4744,7 +2976,6 @@ class Slide2DHState extends State<Slide2DH>
               const SizedBox(
                 height: 20,
               ),
-
               Text(
                 AppLocalizations.of(context)!.intro37,
                 style: const TextStyle(
@@ -4755,10 +2986,8 @@ class Slide2DHState extends State<Slide2DH>
               const SizedBox(
                 height: 20,
               ),
-
               Text(
                 AppLocalizations.of(context)!.intro38,
-                // '- What is primitive root of prime number?',
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.red,
@@ -4767,7 +2996,6 @@ class Slide2DHState extends State<Slide2DH>
               const SizedBox(
                 height: 20,
               ),
-
               Text(
                 AppLocalizations.of(context)!.intro39,
                 style: const TextStyle(
@@ -4778,590 +3006,8 @@ class Slide2DHState extends State<Slide2DH>
               const SizedBox(
                 height: 20,
               ),
-              // Text(
-              //   AppLocalizations.of(context)!.intro0,
-              //   // '- What is primitive root of prime number?',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //     color: Colors.red,
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro1,
-              //         // text: '• A primitive root ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: '(r)',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro2,
-              //         // text: ' is a primitive root modulo ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: '(n)',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro3,
-              //         // text: ' if every number coprime to ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: 'r',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '1',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.blue,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod n, r',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '2',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.blue,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod n, ..., r',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             'n-1',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.blue,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       // const TextSpan(
-              //       //   text: '(n)',
-              //       //   style: TextStyle(
-              //       //     color: Colors.blue,
-              //       //     fontStyle: FontStyle.italic,
-              //       //   ),
-              //       // ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro4,
-              //         // text: ' is congruent to a power of ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       // const TextSpan(
-              //       //   text: '(r)',
-              //       //   style: TextStyle(
-              //       //     color: Colors.blue,
-              //       //     fontStyle: FontStyle.italic,
-              //       //   ),
-              //       // ),
-              //       // TextSpan(
-              //       //   text: AppLocalizations.of(context)!.intro5,
-              //       //   // text: ' modulo ',
-              //       //   style: const TextStyle(
-              //       //     fontSize: 20,
-              //       //     color: Colors.black,
-              //       //   ),
-              //       // ),
-              //       // const TextSpan(
-              //       //   text: '(n)',
-              //       //   style: TextStyle(
-              //       //     color: Colors.blue,
-              //       //     fontStyle: FontStyle.italic,
-              //       //   ),
-              //       // ),
-              //       // const TextSpan(
-              //       //   text: '.',
-              //       //   style: TextStyle(
-              //       //     color: Colors.blue,
-              //       //     fontStyle: FontStyle.italic,
-              //       //   ),
-              //       // ),
-              //     ],
-              //   ),
-              // ),
-              // // RichText(
-              // //   text: TextSpan(
-              // //     style: const TextStyle(
-              // //       fontSize: 20,
-              // //       color: Colors.black,
-              // //     ),
-              // //     children: [
-              // // TextSpan(
-              // //   text: AppLocalizations.of(context)!.intro6,
-              // //   // text: '• In other words we can call ',
-              // //   style: const TextStyle(
-              // //     fontSize: 20,
-              // //     color: Colors.black,
-              // //   ),
-              // // ),
-              // // const TextSpan(
-              // //   text: '(r)',
-              // //   style: TextStyle(
-              // //     color: Colors.blue,
-              // //     fontStyle: FontStyle.italic,
-              // //   ),
-              // // ),
-              // // TextSpan(
-              // //   text: AppLocalizations.of(context)!.intro7,
-              // //   // text: ' primitive root of the prime number ',
-              // //   style: const TextStyle(
-              // //     fontSize: 20,
-              // //     color: Colors.black,
-              // //   ),
-              // // ),
-              // // const TextSpan(
-              // //   text: '(n)',
-              // //   style: TextStyle(
-              // //     color: Colors.blue,
-              // //     fontStyle: FontStyle.italic,
-              // //   ),
-              // // ),
-              // // TextSpan(
-              // //   text: AppLocalizations.of(context)!.intro8,
-              // //   // text: ' if ',
-              // //   style: const TextStyle(
-              // //     fontSize: 20,
-              // //     color: Colors.black,
-              // //   ),
-              // // ),
-              // // const TextSpan(
-              // //   text: 'r',
-              // //   style: TextStyle(
-              // //     color: Colors.blue,
-              // //     fontStyle: FontStyle.italic,
-              // //   ),
-              // // ),
-              // // WidgetSpan(
-              // //   child: Transform.translate(
-              // //     offset: const Offset(2, -10),
-              // //     child: const Text(
-              // //       '1',
-              // //       //superscript is usually smaller in size
-              // //       textScaleFactor: 1,
-              // //       style: TextStyle(
-              // //         color: Colors.blue,
-              // //         fontStyle: FontStyle.italic,
-              // //       ),
-              // //     ),
-              // //   ),
-              // // ),
-              // // const TextSpan(
-              // //   text: ' mod n, r',
-              // //   style: TextStyle(
-              // //     color: Colors.blue,
-              // //     fontStyle: FontStyle.italic,
-              // //   ),
-              // // ),
-              // // WidgetSpan(
-              // //   child: Transform.translate(
-              // //     offset: const Offset(2, -10),
-              // //     child: const Text(
-              // //       '2',
-              // //       //superscript is usually smaller in size
-              // //       textScaleFactor: 1,
-              // //       style: TextStyle(
-              // //         color: Colors.blue,
-              // //         fontStyle: FontStyle.italic,
-              // //       ),
-              // //     ),
-              // //   ),
-              // // ),
-              // // const TextSpan(
-              // //   text: ' mod n, ..., r',
-              // //   style: TextStyle(
-              // //     color: Colors.blue,
-              // //     fontStyle: FontStyle.italic,
-              // //   ),
-              // // ),
-              // // WidgetSpan(
-              // //   child: Transform.translate(
-              // //     offset: const Offset(2, -10),
-              // //     child: const Text(
-              // //       'n-1',
-              // //       //superscript is usually smaller in size
-              // //       textScaleFactor: 1,
-              // //       style: TextStyle(
-              // //         color: Colors.blue,
-              // //         fontStyle: FontStyle.italic,
-              // //       ),
-              // //     ),
-              // //   ),
-              // // ),
-              // // TextSpan(
-              // //   text: AppLocalizations.of(context)!.intro9,
-              // //   // text: ' are distinct.',
-              // //   style: const TextStyle(
-              // //     fontSize: 20,
-              // //     color: Colors.black,
-              // //   ),
-              // // ),
-              // //     ],
-              // //   ),
-              // // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro10,
-              //         // text: '-> Example: ',
-              //         style: const TextStyle(
-              //           color: Colors.green,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro11,
-              //         // text: 'Let\'s assume that ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: 'r = 2',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro12,
-              //         // text: ' and ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: 'n = 5',
-              //         style: TextStyle(
-              //           color: Colors.blue,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' :',
-              //         style: TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Text(
-              //   AppLocalizations.of(context)!.intro13,
-              //   // '    After calculating the modulos, we get:',
-              //   style: const TextStyle(
-              //     fontSize: 20,
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       const TextSpan(
-              //         text: '      2',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '1',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.purple,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod 5 = 2 ',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       const TextSpan(
-              //         text: '      2',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '2',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.purple,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod 5 = 4 ',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       const TextSpan(
-              //         text: '      2',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '3',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.purple,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod 5 = 3 ',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       const TextSpan(
-              //         text: '      2',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       WidgetSpan(
-              //         child: Transform.translate(
-              //           offset: const Offset(2, -10),
-              //           child: const Text(
-              //             '4',
-              //             //superscript is usually smaller in size
-              //             textScaleFactor: 1,
-              //             style: TextStyle(
-              //               color: Colors.purple,
-              //               fontStyle: FontStyle.italic,
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' mod 5 = 1 ',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              // RichText(
-              //   text: TextSpan(
-              //     style: const TextStyle(
-              //       fontSize: 20,
-              //       color: Colors.black,
-              //     ),
-              //     children: [
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro14,
-              //         // text: '    As we see, all results are ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro15,
-              //         // text: ' dstinct',
-              //         style: const TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro16,
-              //         // text: ', so we can say that ',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: '2',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro17,
-              //         // text: ' is a primitive root of the prime number',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: '5',
-              //         style: TextStyle(
-              //           color: Colors.purple,
-              //           fontStyle: FontStyle.italic,
-              //         ),
-              //       ),
-              //       TextSpan(
-              //         text: AppLocalizations.of(context)!.intro18,
-              //         // text: '',
-              //         style: const TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //       const TextSpan(
-              //         text: ' .',
-              //         style: TextStyle(
-              //           fontSize: 20,
-              //           color: Colors.black,
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
               Text(
                 AppLocalizations.of(context)!.intro19,
-                // '- Discrete Logarithm Problem:',
                 style: const TextStyle(
                   fontSize: 20,
                   color: Colors.red,
@@ -5379,7 +3025,6 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro20,
-                      // ' • In a finite group, the discrete logarithm is hard to compute. Thus, the ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5387,7 +3032,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro21,
-                      // text: 'exponential function',
                       style: const TextStyle(
                         color: Colors.blue,
                         fontStyle: FontStyle.italic,
@@ -5395,7 +3039,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro22,
-                      // text: ' is a ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5403,7 +3046,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro23,
-                      // text: 'one-way function.',
                       style: const TextStyle(
                         color: Colors.blue,
                         fontStyle: FontStyle.italic,
@@ -5424,7 +3066,6 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro24,
-                      // text: ' • But what is one-way function?',
                       style: const TextStyle(
                         color: Colors.purple,
                       ),
@@ -5441,7 +3082,6 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro25,
-                      // text: '   -> Assuming that we have data',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5456,7 +3096,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro26,
-                      // text: '. it is easy to calculate ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5471,7 +3110,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro27,
-                      // '. But it is very difficult to compute its inverse function.',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5492,14 +3130,12 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro10,
-                      // text: '   -> Example: ',
                       style: const TextStyle(
                         color: Colors.green,
                       ),
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro28,
-                      // text: 'Let\'s take: ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5514,7 +3150,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro12,
-                      // text: ' and ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5546,7 +3181,6 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro29,
-                      // text: '   Computing ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5564,7 +3198,6 @@ class Slide2DHState extends State<Slide2DH>
                         offset: const Offset(2, -10),
                         child: const Text(
                           '1',
-                          //superscript is usually smaller in size
                           textScaleFactor: 1,
                           style: TextStyle(
                             color: Colors.blue,
@@ -5582,7 +3215,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro30,
-                      // ' is easy, but when we want to copute the inverse function, it will be really hard.',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5600,7 +3232,6 @@ class Slide2DHState extends State<Slide2DH>
                   children: [
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro31,
-                      // text: '   In other words, if we have ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5618,7 +3249,6 @@ class Slide2DHState extends State<Slide2DH>
                         offset: const Offset(2, -10),
                         child: const Text(
                           'x',
-                          //superscript is usually smaller in size
                           textScaleFactor: 1,
                           style: TextStyle(
                             color: Colors.blue,
@@ -5636,7 +3266,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro32,
-                      // text: ', it will be very hard to know the value of ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5651,7 +3280,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro33,
-                      // text: '. Where ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5666,7 +3294,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro34,
-                      // text: ' can be  ',
                       style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -5681,7 +3308,6 @@ class Slide2DHState extends State<Slide2DH>
                     ),
                     TextSpan(
                       text: AppLocalizations.of(context)!.intro35,
-                      // text: '1, 17, 33, ...',
                       style: const TextStyle(
                         color: Colors.blue,
                         fontStyle: FontStyle.italic,
@@ -5699,34 +3325,10 @@ class Slide2DHState extends State<Slide2DH>
               ),
             ],
           ),
-          // content: RichText(
-          //   text: TextSpan(
-          //     children: [
-          //       const TextSpan(
-          //         text: 'ea = r',
-          //       ),
-          //       WidgetSpan(
-          //         child: Transform.translate(
-          //           offset: const Offset(2, -10),
-          //           child: const Text(
-          //             's_EA',
-          //             //superscript is usually smaller in size
-          //             textScaleFactor: 1,
-          //             style: TextStyle(color: Colors.red),
-          //           ),
-          //         ),
-          //       ),
-          //       const TextSpan(
-          //         text: ' mod n',
-          //       ),
-          //     ],
-          //   ),
-          // ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.pop(context, 'Ok');
-                // HomePageDHState.controller.animateTo(1);
               },
               child: const Text(
                 'Ok',
@@ -5749,429 +3351,6 @@ class Slide2DHState extends State<Slide2DH>
     });
   }
 
-  // stepNumber() {
-  //   setState(() {
-  //     int controllerIndex = (int.parse(pageController2.text));
-  //     int a = indexVisibilitySlide2DH;
-  //     indexVisibilitySlide2DH = (int.parse(pageController2.text)) - 1;
-
-  //     if (controllerIndex > a) {
-  //       while (controllerIndex >= a) {
-  //         if (indexVisibilitySlide2DH != 0) {
-  //           prevResult = (pow(3, indexVisibilitySlide2DH - 1).toInt()) % 17;
-  //         }
-  //         result = (pow(3, indexVisibilitySlide2DH).toInt()) % 17;
-  //         if (controllerIndex == 16 && delay) {
-  //           numberColor[15] = Colors.black;
-  //           circlesOpacity[14] = 0.0;
-  //           lineOpacity[14] = 1.0;
-  //           opTimer(15, true);
-  //           blackBulletOpacity[0] = 0.0;
-  //           redBulletOpacity[5] = 0.0;
-  //           blackBulletOpacity[5] = 1.0;
-  //           redBulletOpacity[0] = 1.0;
-  //           isLastIndex[0] = true;
-  //         } else if (controllerIndex == 15 && delay) {
-  //           numberColor[14] = Colors.black;
-  //           numberOpacity[15] = 1.0;
-  //           x16 = 0.78;
-  //           y16 = 0.52;
-  //           circlesOpacity[13] = 0.0;
-  //           lineOpacity[13] = 1.0;
-  //           opTimer(14, true);
-  //           redBulletOpacity[1] = 0.0;
-  //           blackBulletOpacity[1] = 1.0;
-  //           redBulletOpacity[5] = 1.0;
-  //         } else if (controllerIndex == 14 && delay) {
-  //           numberColor[13] = Colors.black;
-  //           numberOpacity[14] = 1.0;
-  //           x15 = 0.78;
-  //           y15 = 0.115;
-  //           circlesOpacity[12] = 0.0;
-  //           lineOpacity[12] = 1.0;
-  //           opTimer(13, true);
-  //           redBulletOpacity[11] = 0.0;
-  //           blackBulletOpacity[11] = 1.0;
-  //           redBulletOpacity[1] = 1.0;
-  //         } else if (controllerIndex == 13 && delay) {
-  //           numberColor[12] = Colors.black;
-  //           numberOpacity[13] = 1.0;
-  //           x14 = 0.475;
-  //           y14 = 0.311;
-  //           circlesOpacity[11] = 0.0;
-  //           lineOpacity[11] = 1.0;
-  //           opTimer(12, true);
-  //           redBulletOpacity[3] = 0.0;
-  //           blackBulletOpacity[3] = 1.0;
-  //           redBulletOpacity[11] = 1.0;
-  //         } else if (controllerIndex == 12 && delay) {
-  //           numberColor[11] = Colors.black;
-  //           numberOpacity[12] = 1.0;
-  //           x13 = 0.825;
-  //           y13 = 0.31;
-  //           circlesOpacity[10] = 0.0;
-  //           lineOpacity[10] = 1.0;
-  //           opTimer(11, true);
-  //           redBulletOpacity[6] = 0.0;
-  //           blackBulletOpacity[6] = 1.0;
-  //           redBulletOpacity[3] = 1.0;
-  //         } else if (controllerIndex == 11 && delay) {
-  //           numberColor[10] = Colors.black;
-  //           numberOpacity[11] = 1.0;
-  //           x12 = 0.723;
-  //           y12 = 0.57;
-  //           circlesOpacity[9] = 0.0;
-  //           lineOpacity[9] = 1.0;
-  //           opTimer(10, true);
-  //           redBulletOpacity[7] = 0.0;
-  //           blackBulletOpacity[7] = 1.0;
-  //           redBulletOpacity[6] = 1.0;
-  //         } else if (controllerIndex == 10 && delay) {
-  //           numberColor[9] = Colors.black;
-  //           numberOpacity[10] = 1.0;
-  //           x11 = 0.65;
-  //           y11 = 0.59;
-  //           circlesOpacity[8] = 0.0;
-  //           lineOpacity[8] = 1.0;
-  //           opTimer(9, true);
-  //           redBulletOpacity[13] = 0.0;
-  //           blackBulletOpacity[13] = 1.0;
-  //           redBulletOpacity[7] = 1.0;
-  //         } else if (controllerIndex == 9 && delay) {
-  //           numberColor[8] = Colors.black;
-  //           numberOpacity[9] = 1.0;
-  //           x10 = 0.52;
-  //           y10 = 0.11;
-  //           circlesOpacity[7] = 0.0;
-  //           lineOpacity[7] = 1.0;
-  //           opTimer(8, true);
-  //           redBulletOpacity[15] = 0.0;
-  //           blackBulletOpacity[15] = 1.0;
-  //           redBulletOpacity[13] = 1.0;
-  //         } else if (controllerIndex == 8 && delay) {
-  //           numberColor[7] = Colors.black;
-  //           numberOpacity[8] = 1.0;
-  //           x9 = 0.65;
-  //           y9 = 0.035;
-  //           circlesOpacity[6] = 0.0;
-  //           lineOpacity[6] = 1.0;
-  //           opTimer(7, true);
-  //           redBulletOpacity[10] = 0.0;
-  //           blackBulletOpacity[10] = 1.0;
-  //           redBulletOpacity[15] = 1.0;
-  //         } else if (controllerIndex == 7 && delay) {
-  //           numberColor[6] = Colors.black;
-  //           numberOpacity[7] = 1.0;
-  //           x8 = 0.49;
-  //           y8 = 0.42;
-  //           circlesOpacity[5] = 0.0;
-  //           lineOpacity[5] = 1.0;
-  //           opTimer(6, true);
-  //           redBulletOpacity[14] = 0.0;
-  //           blackBulletOpacity[14] = 1.0;
-  //           redBulletOpacity[10] = 1.0;
-  //         } else if (controllerIndex == 6 && delay) {
-  //           numberColor[5] = Colors.black;
-  //           numberOpacity[6] = 1.0;
-  //           x7 = 0.585;
-  //           y7 = 0.052;
-  //           circlesOpacity[4] = 0.0;
-  //           lineOpacity[4] = 1.0;
-  //           opTimer(5, true);
-  //           redBulletOpacity[4] = 0.0;
-  //           blackBulletOpacity[4] = 1.0;
-  //           redBulletOpacity[14] = 1.0;
-  //         } else if (controllerIndex == 5 && delay) {
-  //           numberColor[4] = Colors.black;
-  //           numberOpacity[5] = 1.0;
-  //           x6 = 0.815;
-  //           y6 = 0.42;
-  //           circlesOpacity[3] = 0.0;
-  //           lineOpacity[3] = 1.0;
-  //           opTimer(4, true);
-  //           redBulletOpacity[12] = 0.0;
-  //           blackBulletOpacity[12] = 1.0;
-  //           redBulletOpacity[4] = 1.0;
-  //         } else if (controllerIndex == 4 && delay) {
-  //           numberColor[3] = Colors.black;
-  //           numberOpacity[4] = 1.0;
-  //           x5 = 0.49;
-  //           y5 = 0.2;
-  //           circlesOpacity[2] = 0.0;
-  //           lineOpacity[2] = 1.0;
-  //           opTimer(3, true);
-  //           redBulletOpacity[9] = 0.0;
-  //           blackBulletOpacity[9] = 1.0;
-  //           redBulletOpacity[12] = 1.0;
-  //         } else if (controllerIndex == 3 && delay) {
-  //           numberColor[2] = Colors.black;
-  //           numberOpacity[3] = 1.0;
-  //           x4 = 0.52;
-  //           y4 = 0.5;
-  //           circlesOpacity[1] = 0.0;
-  //           lineOpacity[1] = 1.0;
-  //           opTimer(2, true);
-  //           redBulletOpacity[8] = 0.0;
-  //           blackBulletOpacity[8] = 1.0;
-  //           redBulletOpacity[9] = 1.0;
-  //         } else if (controllerIndex == 2 && delay) {
-  //           numberColor[1] = Colors.black;
-  //           numberOpacity[2] = 1.0;
-  //           x3 = 0.58;
-  //           y3 = 0.57;
-  //           circlesOpacity[0] = 0.0;
-  //           lineOpacity[0] = 1.0;
-  //           opTimer(1, true);
-  //           redBulletOpacity[2] = 0.0;
-  //           blackBulletOpacity[2] = 1.0;
-  //           redBulletOpacity[8] = 1.0;
-  //         } else if (controllerIndex == 1 && delay) {
-  //           numberColor[0] = Colors.black;
-  //           numberOpacity[1] = 1.0;
-  //           x2 = 0.812;
-  //           y2 = 0.2;
-  //           opTimer(0, true);
-  //           redBulletOpacity[0] = 0.0;
-  //           blackBulletOpacity[0] = 1.0;
-  //           redBulletOpacity[2] = 1.0;
-  //           prevResultOpacity = 1.0;
-  //         } else if (controllerIndex == 0) {
-  //           numberOpacity[0] = 1.0;
-  //           x1 = 0.728;
-  //           y1 = 0.06;
-  //           redBulletOpacity[0] = 1.0;
-  //           numberOpacity[0] = 1.0;
-  //           resultOpacity = 1.0;
-  //           isLastIndex[1] = false;
-  //         }
-  //         controllerIndex--;
-  //       }
-  //     } else {
-  //       print(controllerIndex);
-  //       while (a >= controllerIndex) {
-  //         if (a == 0) {
-  //           pageController2 = TextEditingController()
-  //             ..text = (indexVisibilitySlide2DH + 1).toString();
-  //           numberOpacity[0] = 0.0;
-  //           x1 = 0.16;
-  //           y1 = 0.355;
-  //           redBulletOpacity[0] = 0.0;
-  //           numberOpacity[0] = 0.0;
-  //           resultOpacity = 0.0;
-
-  //           isLastIndex[1] = true;
-  //         } else if (a == 1 && delay) {
-  //           prevResultOpacity = 0.0;
-  //           numberColor[0] = Colors.red;
-  //           numberOpacity[1] = 0.0;
-  //           x2 = 0.16;
-  //           y2 = 0.355;
-  //           circlesOpacity[0] = 0.0;
-  //           lineOpacity[0] = 0.0;
-  //           redBulletOpacity[0] = 1.0;
-  //           blackBulletOpacity[0] = 0.0;
-  //           redBulletOpacity[2] = 0.0;
-  //         } else if (a == 2 && delay) {
-  //           numberColor[1] = Colors.red;
-  //           numberOpacity[2] = 0.0;
-  //           x3 = 0.16;
-  //           y3 = 0.355;
-  //           circlesOpacity[0] = 1.0;
-  //           lineOpacity[0] = 0.0;
-  //           circlesOpacity[1] = 0.0;
-  //           lineOpacity[1] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[2] = 1.0;
-  //           blackBulletOpacity[2] = 0.0;
-  //           redBulletOpacity[8] = 0.0;
-  //         } else if (a == 3 && delay) {
-  //           numberColor[2] = Colors.red;
-  //           numberOpacity[3] = 0.0;
-  //           x4 = 0.16;
-  //           y4 = 0.355;
-  //           circlesOpacity[1] = 1.0;
-  //           lineOpacity[1] = 0.0;
-  //           circlesOpacity[2] = 0.0;
-  //           lineOpacity[2] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[8] = 1.0;
-  //           blackBulletOpacity[8] = 0.0;
-  //           redBulletOpacity[9] = 0.0;
-  //         } else if (a == 4 && delay) {
-  //           numberColor[3] = Colors.red;
-  //           numberOpacity[4] = 0.0;
-  //           x5 = 0.16;
-  //           y5 = 0.355;
-  //           circlesOpacity[2] = 1.0;
-  //           lineOpacity[2] = 0.0;
-  //           circlesOpacity[3] = 0.0;
-  //           lineOpacity[3] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[9] = 1.0;
-  //           blackBulletOpacity[9] = 0.0;
-  //           redBulletOpacity[12] = 0.0;
-  //         } else if (a == 5 && delay) {
-  //           numberColor[4] = Colors.red;
-  //           numberOpacity[5] = 0.0;
-  //           x6 = 0.16;
-  //           y6 = 0.355;
-  //           circlesOpacity[3] = 1.0;
-  //           lineOpacity[3] = 0.0;
-  //           circlesOpacity[4] = 0.0;
-  //           lineOpacity[4] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[12] = 1.0;
-  //           blackBulletOpacity[12] = 0.0;
-  //           redBulletOpacity[4] = 0.0;
-  //         } else if (a == 6 && delay) {
-  //           numberColor[5] = Colors.red;
-  //           numberOpacity[6] = 0.0;
-  //           x7 = 0.16;
-  //           y7 = 0.355;
-  //           circlesOpacity[4] = 1.0;
-  //           lineOpacity[4] = 0.0;
-  //           circlesOpacity[5] = 0.0;
-  //           lineOpacity[5] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[4] = 1.0;
-  //           blackBulletOpacity[4] = 0.0;
-  //           redBulletOpacity[14] = 0.0;
-  //         } else if (a == 7 && delay) {
-  //           numberColor[6] = Colors.red;
-  //           numberOpacity[7] = 0.0;
-  //           x8 = 0.16;
-  //           y8 = 0.355;
-  //           circlesOpacity[5] = 1.0;
-  //           lineOpacity[5] = 0.0;
-  //           circlesOpacity[6] = 0.0;
-  //           lineOpacity[6] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[14] = 1.0;
-  //           blackBulletOpacity[14] = 0.0;
-  //           redBulletOpacity[10] = 0.0;
-  //         } else if (a == 8 && delay) {
-  //           numberColor[7] = Colors.red;
-  //           numberOpacity[8] = 0.0;
-  //           x9 = 0.16;
-  //           y9 = 0.355;
-  //           circlesOpacity[6] = 1.0;
-  //           lineOpacity[6] = 0.0;
-  //           circlesOpacity[7] = 0.0;
-  //           lineOpacity[7] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[10] = 1.0;
-  //           blackBulletOpacity[10] = 0.0;
-  //           redBulletOpacity[15] = 0.0;
-  //         } else if (a == 9 && delay) {
-  //           numberColor[8] = Colors.red;
-  //           numberOpacity[9] = 0.0;
-  //           x10 = 0.16;
-  //           y10 = 0.355;
-  //           circlesOpacity[7] = 1.0;
-  //           lineOpacity[7] = 0.0;
-  //           circlesOpacity[8] = 0.0;
-  //           lineOpacity[8] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[15] = 1.0;
-  //           blackBulletOpacity[15] = 0.0;
-  //           redBulletOpacity[13] = 0.0;
-  //         } else if (a == 10 && delay) {
-  //           numberColor[9] = Colors.red;
-  //           numberOpacity[10] = 0.0;
-  //           x11 = 0.16;
-  //           y11 = 0.355;
-  //           circlesOpacity[8] = 1.0;
-  //           lineOpacity[8] = 0.0;
-  //           circlesOpacity[9] = 0.0;
-  //           lineOpacity[9] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[13] = 1.0;
-  //           blackBulletOpacity[13] = 0.0;
-  //           redBulletOpacity[7] = 0.0;
-  //         } else if (a == 11 && delay) {
-  //           numberColor[10] = Colors.red;
-  //           numberOpacity[11] = 0.0;
-  //           x12 = 0.16;
-  //           y12 = 0.355;
-  //           circlesOpacity[9] = 1.0;
-  //           lineOpacity[9] = 0.0;
-  //           circlesOpacity[10] = 0.0;
-  //           lineOpacity[10] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[7] = 1.0;
-  //           blackBulletOpacity[7] = 0.0;
-  //           redBulletOpacity[6] = 0.0;
-  //         } else if (a == 12 && delay) {
-  //           numberColor[11] = Colors.red;
-  //           numberOpacity[12] = 0.0;
-  //           x13 = 0.16;
-  //           y13 = 0.355;
-  //           circlesOpacity[10] = 1.0;
-  //           lineOpacity[10] = 0.0;
-  //           circlesOpacity[11] = 0.0;
-  //           lineOpacity[11] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[6] = 1.0;
-  //           blackBulletOpacity[6] = 0.0;
-  //           redBulletOpacity[3] = 0.0;
-  //         } else if (a == 13 && delay) {
-  //           numberColor[12] = Colors.red;
-  //           numberOpacity[13] = 0.0;
-  //           x14 = 0.16;
-  //           y14 = 0.355;
-  //           circlesOpacity[11] = 1.0;
-  //           lineOpacity[11] = 0.0;
-  //           circlesOpacity[12] = 0.0;
-  //           lineOpacity[12] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[3] = 1.0;
-  //           blackBulletOpacity[3] = 0.0;
-  //           redBulletOpacity[11] = 0.0;
-  //         } else if (a == 14 && delay) {
-  //           numberColor[13] = Colors.red;
-  //           numberOpacity[14] = 0.0;
-  //           x15 = 0.16;
-  //           y15 = 0.355;
-  //           circlesOpacity[12] = 1.0;
-  //           lineOpacity[12] = 0.0;
-  //           circlesOpacity[13] = 0.0;
-  //           lineOpacity[13] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[11] = 1.0;
-  //           blackBulletOpacity[11] = 0.0;
-  //           redBulletOpacity[1] = 0.0;
-  //         } else if (a == 15 && delay) {
-  //           numberColor[14] = Colors.red;
-  //           numberOpacity[15] = 0.0;
-  //           x16 = 0.16;
-  //           y16 = 0.355;
-  //           circlesOpacity[13] = 1.0;
-  //           lineOpacity[13] = 0.0;
-  //           circlesOpacity[14] = 0.0;
-  //           lineOpacity[14] = 0.0;
-  //           opacityTimer.cancel();
-  //           redBulletOpacity[1] = 1.0;
-  //           blackBulletOpacity[1] = 0.0;
-  //           redBulletOpacity[5] = 0.0;
-  //         } else if (a == 16 && delay) {
-  //           numberColor[15] = Colors.red;
-  //           circlesOpacity[14] = 1.0;
-  //           lineOpacity[14] = 0.0;
-  //           circlesOpacity[15] = 0.0;
-  //           lineOpacity[15] = 0.0;
-  //           opacityTimer.cancel();
-  //           blackBulletOpacity[0] = 1.0;
-  //           redBulletOpacity[5] = 1.0;
-  //           blackBulletOpacity[5] = 0.0;
-  //           redBulletOpacity[0] = 0.0;
-  //           isLastIndex[0] = false;
-  //         }
-  //         a--;
-  //       }
-  //     }
-  //   });
-  // }
-
   void showFlushBarMessage(
       Icon icon, String title, String message, Color backgroundColor) {
     Flushbar(
@@ -6193,14 +3372,12 @@ class Slide2DHState extends State<Slide2DH>
       Global.val = 1;
       Global.replacedSliderValue = Global.slider;
       videoTimerVariable.cancel();
-      // videoTimerProblem().cancel();
       timerSlide2DH.cancel();
       delayTimer.cancel();
       videoTimerSlide2DH.cancel();
       opacityTimer.cancel();
       videoTimerVariable.cancel;
       pageNumberTimer.cancel();
-      // selectPageNumber(0, 0).cancel();
       isLastIndex = [false, true];
       indexVisibilitySlide2DH = -1;
       checkVisibility = 0;

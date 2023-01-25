@@ -57,23 +57,19 @@ class AboutState extends State<About> {
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about1,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 25,
                           color: Colors.red,
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about2,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -81,7 +77,6 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 20,
                     ),
@@ -89,7 +84,6 @@ class AboutState extends State<About> {
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about3,
-                        // '- Diffie-Hellman Protocol',
                         style: const TextStyle(
                           fontSize: 25,
                           color: Colors.red,
@@ -99,12 +93,10 @@ class AboutState extends State<About> {
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about4,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -112,16 +104,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about5,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -129,16 +118,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about6,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -146,16 +132,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about7,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -163,7 +146,6 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
@@ -171,7 +153,6 @@ class AboutState extends State<About> {
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about8,
-                        // '- Diffie-Hellman Protocol',
                         style: const TextStyle(
                           fontSize: 25,
                           color: Colors.black,
@@ -182,12 +163,10 @@ class AboutState extends State<About> {
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about9,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -195,16 +174,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about10,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -212,16 +188,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about11,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -229,16 +202,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about12,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -246,12 +216,10 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 50),
                       child: Text(
                         AppLocalizations.of(context)!.about13,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -259,16 +227,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about14,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -280,7 +245,6 @@ class AboutState extends State<About> {
                       margin: const EdgeInsets.only(left: 50),
                       child: Text(
                         AppLocalizations.of(context)!.about15,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -288,16 +252,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about16,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -305,12 +266,10 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 50),
                       child: Text(
                         AppLocalizations.of(context)!.about17,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -318,12 +277,10 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 50),
                       child: Text(
                         AppLocalizations.of(context)!.about18,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -331,16 +288,13 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about19,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -348,7 +302,6 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
                     const SizedBox(
                       height: 20,
                     ),
@@ -356,7 +309,6 @@ class AboutState extends State<About> {
                       margin: const EdgeInsets.only(left: 20),
                       child: Text(
                         AppLocalizations.of(context)!.about20,
-                        // '- Diffie-Hellman Protocol',
                         style: const TextStyle(
                           fontSize: 25,
                           color: Colors.red,
@@ -366,12 +318,10 @@ class AboutState extends State<About> {
                     const SizedBox(
                       height: 14,
                     ),
-
                     Container(
                       margin: const EdgeInsets.only(left: 30),
                       child: Text(
                         AppLocalizations.of(context)!.about21,
-                        // '- The idea of Diffie-Hellman',
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
@@ -379,604 +329,6 @@ class AboutState extends State<About> {
                         ),
                       ),
                     ),
-
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 20),
-                    //   child: Text(
-                    //     AppLocalizations.of(context)!.about7,
-                    //     // '- The idea of Diffie-Hellman',
-                    //     style: const TextStyle(
-                    //       fontSize: 20,
-                    //       height: 1.8,
-                    //       color: Colors.black,
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 20,
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 20),
-                    //   child: Text(
-                    //     AppLocalizations.of(context)!.about8,
-                    //     // '- The idea of Diffie-Hellman',
-                    //     style: const TextStyle(
-                    //       fontSize: 20,
-                    //       height: 1.8,
-                    //       color: Colors.black,
-                    //     ),
-                    //   ),
-                    // ),
-                    // // Container(
-                    // //   margin: const EdgeInsets.all(20),
-                    // //   child: RichText(
-                    // //     text: TextSpan(
-                    // //       style: const TextStyle(
-                    // //         height: 1.8,
-                    // //         fontSize: 20,
-                    // //         color: Colors.black,
-                    // //       ),
-                    // //       children: [
-                    // //         TextSpan(
-                    // //           text: AppLocalizations.of(context)!.about7,
-                    // //           // text: 'Let\'s consider the scenario. ',
-                    // //           style: const TextStyle(
-                    // //             color: Colors.black,
-                    // //           ),
-                    // //         ),
-                    // //         // TextSpan(
-                    // //         //   text: 'Alice ',
-                    // //         //   style: TextStyle(
-                    // //         //     fontWeight: FontWeight.bold,
-                    // //         //     color: Colors.black,
-                    // //         //   ),
-                    // //         // ),
-                    // //         // TextSpan(
-                    // //         //   text: AppLocalizations.of(context)!.about8,
-                    // //         //   // text: 'and ',
-                    // //         //   style: TextStyle(
-                    // //         //     color: Colors.black,
-                    // //         //   ),
-                    // //         // ),
-                    // //         // TextSpan(
-                    // //         //   text: 'Bob ',
-                    // //         //   style: TextStyle(
-                    // //         //     fontWeight: FontWeight.bold,
-                    // //         //     color: Colors.black,
-                    // //         //   ),
-                    // //         // ),
-                    // //         TextSpan(
-                    // //           text: AppLocalizations.of(context)!.about8,
-                    // //           // 'Alcie and Bob want to send secure messages to each other over the internet, and in the middle there is Eve, who will try to read the messages:',
-                    // //           style: const TextStyle(
-                    // //             color: Colors.black,
-                    // //           ),
-                    // //         ),
-                    // //         // TextSpan(
-                    // //         //   text: 'Eve',
-                    // //         //   style: TextStyle(
-                    // //         //     fontWeight: FontWeight.bold,
-                    // //         //     color: Colors.black,
-                    // //         //   ),
-                    // //         // ),
-                    // //         // TextSpan(
-                    // //         //   text: ', who will try to read the messages:',
-                    // //         //   style: TextStyle(
-                    // //         //     color: Colors.black,
-                    // //         //   ),
-                    // //         // ),
-                    // //       ],
-                    // //     ),
-                    // //   ),
-                    // // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about9,
-                    //           // text: '- Alice selects a multiplicative group ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '(n) ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about10,
-                    //           // text: 'and a primitive root ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '(r) ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about11,
-                    //           // text: ', ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 'n ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         // TextSpan(
-                    //         //   text: AppLocalizations.of(context)!.about12,
-                    //         //   // text: 'and ',
-                    //         //   style: TextStyle(
-                    //         //     color: Colors.black,
-                    //         //   ),
-                    //         // ),
-                    //         // TextSpan(
-                    //         //   text: 'r ',
-                    //         //   style: TextStyle(
-                    //         //     fontWeight: FontWeight.bold,
-                    //         //     color: Colors.black,
-                    //         //   ),
-                    //         // ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about12,
-                    //           // text: 'must be ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about13,
-                    //           // text: 'prime ',
-                    //           style: const TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about14,
-                    //           // text: 'numbers.',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about15,
-                    //           // '- Alice shares these two numbers over the internet with Bob. Sharing of (',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 'n ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about16,
-                    //           // text: 'and ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 'r ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about17,
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about18,
-                    //           // text: '- Alice will choose her secret number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 's_A',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about19,
-                    //           // ' and keep it for herself. Then Alice will calculate a new number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '\'a\' ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about20,
-                    //           // '(Alice\'s public number) through the following fomula and share it with Bob:',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '\na = r',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         WidgetSpan(
-                    //           child: Transform.translate(
-                    //             offset: const Offset(2, -10),
-                    //             child: const Text(
-                    //               's_A',
-                    //               //superscript is usually smaller in size
-                    //               textScaleFactor: 1,
-                    //               style: TextStyle(
-                    //                 color: Colors.blue,
-                    //                 fontStyle: FontStyle.italic,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: ' mod n\n',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // //----
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about21,
-                    //           // '- Bob will do same process. He will choose his secret number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 's_B',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about22,
-                    //           // ' and keep it for himself. Bob will calcualte a new number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '\'b\' ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about23,
-                    //           // '(Bob\'s public number) through the a similar fomula and share it with Alice:',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '\nb = r',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         WidgetSpan(
-                    //           child: Transform.translate(
-                    //             offset: const Offset(2, -10),
-                    //             child: const Text(
-                    //               's_B',
-                    //               //superscript is usually smaller in size
-                    //               textScaleFactor: 1,
-                    //               style: TextStyle(
-                    //                 color: Colors.blue,
-                    //                 fontStyle: FontStyle.italic,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: ' mod n\n',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // //---
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         const TextSpan(
-                    //           text: '\'a\' ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about16,
-                    //           // text: 'and ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '\'b\' ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about24,
-                    //           // 'will be public and Eve can get the calue of each.',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about25,
-                    //           // '- Now Alice and Bob will generate the shared secret number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '(S) ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about26,
-                    //           // 'which will be used in the encryption and decryption process. The formula for generating the key is as follows ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about27,
-                    //           // text: 'For Alice: ',
-                    //           style: const TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 'S = b',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         WidgetSpan(
-                    //           child: Transform.translate(
-                    //             offset: const Offset(2, -10),
-                    //             child: const Text(
-                    //               's_A',
-                    //               //superscript is usually smaller in size
-                    //               textScaleFactor: 1,
-                    //               style: TextStyle(
-                    //                 color: Colors.blue,
-                    //                 fontStyle: FontStyle.italic,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: ' mod n',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about28,
-                    //           // text: 'For Bob: ',
-                    //           style: const TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: 'S = a',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //         WidgetSpan(
-                    //           child: Transform.translate(
-                    //             offset: const Offset(2, -10),
-                    //             child: const Text(
-                    //               's_B',
-                    //               //superscript is usually smaller in size
-                    //               textScaleFactor: 1,
-                    //               style: TextStyle(
-                    //                 color: Colors.blue,
-                    //                 fontStyle: FontStyle.italic,
-                    //               ),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: ' mod n',
-                    //           style: TextStyle(
-                    //             color: Colors.blue,
-                    //             fontStyle: FontStyle.italic,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
-                    // Container(
-                    //   margin: const EdgeInsets.only(left: 30),
-                    //   child: RichText(
-                    //     text: TextSpan(
-                    //       style: const TextStyle(
-                    //         height: 1.8,
-                    //         fontSize: 20,
-                    //         color: Colors.black,
-                    //       ),
-                    //       children: [
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about29,
-                    //           // text: 'The secret number ',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         const TextSpan(
-                    //           text: '(S) ',
-                    //           style: TextStyle(
-                    //             fontWeight: FontWeight.bold,
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //         TextSpan(
-                    //           text: AppLocalizations.of(context)!.about30,
-                    //           // 'will bot be shared, so only Alice and Bob will have it, Eve will not.',
-                    //           style: const TextStyle(
-                    //             color: Colors.black,
-                    //           ),
-                    //         ),
-                    //       ],
-                    //     ),
-                    //   ),
-                    // ),
                   ],
                 ),
               ],
