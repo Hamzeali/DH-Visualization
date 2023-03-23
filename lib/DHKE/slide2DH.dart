@@ -1568,7 +1568,7 @@ class Slide2DHState extends State<Slide2DH>
                       Padding(
                         padding: const EdgeInsets.only(top: 15.0),
                         child: Text(
-                          'Previous operation: 3',
+                          '${AppLocalizations.of(context)!.prevOp} 3',
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
@@ -1619,7 +1619,7 @@ class Slide2DHState extends State<Slide2DH>
                       Padding(
                         padding: const EdgeInsets.only(top: 15.0),
                         child: Text(
-                          'New operation: 3',
+                          '${AppLocalizations.of(context)!.newOp} 3',
                           style: TextStyle(
                             fontSize: MediaQuery.of(context).size.width * 0.02,
                           ),
@@ -1672,6 +1672,7 @@ class Slide2DHState extends State<Slide2DH>
             width: MediaQuery.of(context).size.width * 0.1,
             height: MediaQuery.of(context).size.height * 0.1,
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipRightBtn,
               backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
               heroTag: "right9",
               onPressed: () => setState(
@@ -1911,6 +1912,7 @@ class Slide2DHState extends State<Slide2DH>
             width: MediaQuery.of(context).size.width * 0.1,
             height: MediaQuery.of(context).size.height * 0.1,
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipLeftBtn,
               heroTag: "left9",
               backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
               onPressed: () => setState(
@@ -2173,6 +2175,7 @@ class Slide2DHState extends State<Slide2DH>
             width: MediaQuery.of(context).size.width * 0.08,
             height: MediaQuery.of(context).size.height * 0.08,
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipDescBtn,
               heroTag: "middle9",
               onPressed: () => setState(
                 () {
@@ -2200,6 +2203,7 @@ class Slide2DHState extends State<Slide2DH>
             duration: Duration(
                 milliseconds: settingsButtonDuration + 200 * backToZero),
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipSettingsBtn,
               heroTag: "settings9",
               backgroundColor: Colors.orange,
               onPressed: () {
@@ -2405,6 +2409,7 @@ class Slide2DHState extends State<Slide2DH>
             duration: Duration(
                 milliseconds: settingsButtonDuration + 100 * backToZero),
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipResetBtn,
               heroTag: "stop9",
               backgroundColor: Colors.red,
               onPressed: () => setState(
@@ -2639,6 +2644,7 @@ class Slide2DHState extends State<Slide2DH>
             height: MediaQuery.of(context).size.height * 0.1,
             duration: Duration(milliseconds: settingsButtonDuration),
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipPlayBtn,
               heroTag: "play9",
               backgroundColor: Colors.green,
               onPressed: () => setState(
@@ -2669,6 +2675,7 @@ class Slide2DHState extends State<Slide2DH>
             width: MediaQuery.of(context).size.width * 0.1,
             height: MediaQuery.of(context).size.height * 0.1,
             child: FloatingActionButton(
+              tooltip: AppLocalizations.of(context)!.toolTipMoreBtn,
               heroTag: "more9",
               onPressed: () => setState(
                 () {
@@ -3030,27 +3037,27 @@ class Slide2DHState extends State<Slide2DH>
                         color: Colors.black,
                       ),
                     ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro21,
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro22,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro23,
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
+                    // TextSpan(
+                    //   text: AppLocalizations.of(context)!.intro21,
+                    //   style: const TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
+                    // TextSpan(
+                    //   text: AppLocalizations.of(context)!.intro22,
+                    //   style: const TextStyle(
+                    //     fontSize: 20,
+                    //     color: Colors.black,
+                    //   ),
+                    // ),
+                    // TextSpan(
+                    //   text: AppLocalizations.of(context)!.intro23,
+                    //   style: const TextStyle(
+                    //     color: Colors.blue,
+                    //     fontStyle: FontStyle.italic,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
@@ -3058,271 +3065,271 @@ class Slide2DHState extends State<Slide2DH>
                 height: 10,
               ),
               RichText(
-                text: TextSpan(
-                  style: const TextStyle(
+                text: const TextSpan(
+                  style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                   ),
                   children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro24,
-                      style: const TextStyle(
-                        color: Colors.purple,
-                      ),
-                    ),
+                    // TextSpan(
+                    //   text: AppLocalizations.of(context)!.intro24,
+                    //   style: const TextStyle(
+                    //     color: Colors.purple,
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro25,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' x',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro26,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' f(x)',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro27,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro10,
-                      style: const TextStyle(
-                        color: Colors.green,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro28,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'r = 3',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro12,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'n = 17',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' :',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro29,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '3',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          '1',
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 17 = 3',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro30,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              RichText(
-                text: TextSpan(
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro31,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '3',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    WidgetSpan(
-                      child: Transform.translate(
-                        offset: const Offset(2, -10),
-                        child: const Text(
-                          'x',
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontStyle: FontStyle.italic,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const TextSpan(
-                      text: ' mod 17 = 3',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro32,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'x',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro33,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: 'x',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro34,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '1, 17, 33, ..., ',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    TextSpan(
-                      text: AppLocalizations.of(context)!.intro35,
-                      style: const TextStyle(
-                        color: Colors.blue,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    const TextSpan(
-                      text: '.',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro25,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' x',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro26,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' f(x)',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro27,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro10,
+              //         style: const TextStyle(
+              //           color: Colors.green,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro28,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'r = 3',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro12,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'n = 17',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' :',
+              //         style: TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro29,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '3',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             '1',
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 17 = 3',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro30,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              // RichText(
+              //   text: TextSpan(
+              //     style: const TextStyle(
+              //       fontSize: 20,
+              //       color: Colors.black,
+              //     ),
+              //     children: [
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro31,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '3',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       WidgetSpan(
+              //         child: Transform.translate(
+              //           offset: const Offset(2, -10),
+              //           child: const Text(
+              //             'x',
+              //             textScaleFactor: 1,
+              //             style: TextStyle(
+              //               color: Colors.blue,
+              //               fontStyle: FontStyle.italic,
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: ' mod 17 = 3',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro32,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'x',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro33,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: 'x',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro34,
+              //         style: const TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '1, 17, 33, ..., ',
+              //         style: TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       TextSpan(
+              //         text: AppLocalizations.of(context)!.intro35,
+              //         style: const TextStyle(
+              //           color: Colors.blue,
+              //           fontStyle: FontStyle.italic,
+              //         ),
+              //       ),
+              //       const TextSpan(
+              //         text: '.',
+              //         style: TextStyle(
+              //           fontSize: 20,
+              //           color: Colors.black,
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
           actions: <Widget>[

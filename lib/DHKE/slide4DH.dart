@@ -186,7 +186,7 @@ class Slide4DHState extends State<Slide4DH>
       case 14:
         return AppLocalizations.of(ctx)!.slide4Item14;
       default:
-        return "";
+        return AppLocalizations.of(ctx)!.slide4Item15;
     }
   }
 
@@ -614,19 +614,20 @@ class Slide4DHState extends State<Slide4DH>
                         HomePageDHState.returnAppBar[1]) *
                     0.35,
                 left: MediaQuery.of(context).size.width * 0.05,
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[0],
                   duration: Duration(seconds: seconds),
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                           ),
                           textAlign: TextAlign.left,
@@ -660,12 +661,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.5,
+                    0.45,
                 left: MediaQuery.of(context).size.width * 0.05,
-                width: MediaQuery.of(context).size.width * 0.15,
+                width: MediaQuery.of(context).size.width * 0.11,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[1],
                   duration: Duration(seconds: seconds),
@@ -725,12 +726,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.65,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.05,
-                width: MediaQuery.of(context).size.width * 0.18,
+                width: MediaQuery.of(context).size.width * 0.13,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[6],
                   duration: Duration(seconds: seconds),
@@ -813,19 +814,20 @@ class Slide4DHState extends State<Slide4DH>
                         HomePageDHState.returnAppBar[1]) *
                     0.35,
                 left: MediaQuery.of(context).size.width * 0.31,
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[3],
                   duration: Duration(seconds: seconds),
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                           ),
                           textAlign: TextAlign.left,
@@ -873,19 +875,20 @@ class Slide4DHState extends State<Slide4DH>
                         HomePageDHState.returnAppBar[1]) *
                     0.35,
                 left: MediaQuery.of(context).size.width * 0.5,
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[10],
                   duration: Duration(seconds: seconds),
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                           ),
                           textAlign: TextAlign.left,
@@ -931,12 +934,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.5,
+                    0.45,
                 left: MediaQuery.of(context).size.width * 0.31,
-                width: MediaQuery.of(context).size.width * 0.17,
+                width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[4],
                   duration: Duration(seconds: seconds),
@@ -1008,12 +1011,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.5,
+                    0.45,
                 left: MediaQuery.of(context).size.width * 0.5,
-                width: MediaQuery.of(context).size.width * 0.17,
+                width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[11],
                   duration: Duration(seconds: seconds),
@@ -1085,12 +1088,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.65,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.31,
-                width: MediaQuery.of(context).size.width * 0.17,
+                width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[6],
                   duration: Duration(seconds: seconds),
@@ -1181,12 +1184,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.65,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.5,
-                width: MediaQuery.of(context).size.width * 0.17,
+                width: MediaQuery.of(context).size.width * 0.12,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[13],
                   duration: Duration(seconds: seconds),
@@ -1281,19 +1284,20 @@ class Slide4DHState extends State<Slide4DH>
                         HomePageDHState.returnAppBar[1]) *
                     0.35,
                 left: MediaQuery.of(context).size.width * 0.71,
-                width: MediaQuery.of(context).size.width * 0.12,
+                width: MediaQuery.of(context).size.width * 0.1,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[7],
                   duration: Duration(seconds: seconds),
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                             color: Colors.black,
                           ),
@@ -1328,12 +1332,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.5,
+                    0.45,
                 left: MediaQuery.of(context).size.width * 0.71,
-                width: MediaQuery.of(context).size.width * 0.15,
+                width: MediaQuery.of(context).size.width * 0.11,
                 height: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.1,
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[8],
                   duration: Duration(seconds: seconds),
@@ -1393,10 +1397,12 @@ class Slide4DHState extends State<Slide4DH>
               child: Positioned(
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.65,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.71,
-                width: MediaQuery.of(context).size.width * 0.18,
-                height: MediaQuery.of(context).size.height * 0.1,
+                width: MediaQuery.of(context).size.width * 0.13,
+                height: (MediaQuery.of(context).size.height -
+                        HomePageDHState.returnAppBar[1]) *
+                    0.08,
                 child: AnimatedOpacity(
                   opacity: contentOpacity[13],
                   duration: Duration(seconds: seconds),
@@ -1520,6 +1526,7 @@ class Slide4DHState extends State<Slide4DH>
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipRightBtn,
                 backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                 heroTag: "right9",
                 onPressed: () {
@@ -1545,6 +1552,7 @@ class Slide4DHState extends State<Slide4DH>
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipLeftBtn,
                 backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                 heroTag: "left9",
                 onPressed: () {
@@ -1568,6 +1576,7 @@ class Slide4DHState extends State<Slide4DH>
               width: MediaQuery.of(context).size.width * 0.08,
               height: MediaQuery.of(context).size.height * 0.08,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipDescBtn,
                 heroTag: "middle9",
                 onPressed: () => setState(
                   () {
@@ -1612,6 +1621,7 @@ class Slide4DHState extends State<Slide4DH>
               duration: Duration(
                   milliseconds: settingsButtonDuration + 200 * backToZero),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipSettingsBtn,
                 heroTag: "settings9",
                 backgroundColor: Colors.orange,
                 onPressed: () {
@@ -1817,6 +1827,7 @@ class Slide4DHState extends State<Slide4DH>
               duration: Duration(
                   milliseconds: settingsButtonDuration + 100 * backToZero),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipResetBtn,
                 heroTag: "stop9",
                 backgroundColor: Colors.red,
                 onPressed: () => setState(
@@ -1898,6 +1909,7 @@ class Slide4DHState extends State<Slide4DH>
               height: MediaQuery.of(context).size.height * 0.1,
               duration: Duration(milliseconds: settingsButtonDuration),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipPlayBtn,
                 heroTag: "play9",
                 backgroundColor: Colors.green,
                 onPressed: () => setState(

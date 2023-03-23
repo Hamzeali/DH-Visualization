@@ -1179,15 +1179,15 @@ class Slide1DHState extends State<Slide1DH>
                       HomePageDHState.returnAppBar[1]) *
                   0.03,
               left: MediaQuery.of(context).size.width * 0.05,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.06,
+              width: MediaQuery.of(context).size.width * 0.8,
+              height: MediaQuery.of(context).size.height * 0.08,
               child: Align(
                 alignment: Alignment.topLeft,
                 child: FittedBox(
                   child: Text(
                     AppLocalizations.of(context)!.text1,
                     style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontSize: MediaQuery.of(context).size.width * 0.08,
                     ),
                   ),
                 ),
@@ -1215,6 +1215,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipBackgroundColor: Colors.blue,
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipRightBtn,
                   backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                   heroTag: "right9",
                   onPressed: () {
@@ -1336,6 +1337,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipLeftBtn,
                   backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                   heroTag: "left9",
                   onPressed: () {
@@ -1467,6 +1469,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipDescBtn,
                   heroTag: "middle9",
                   onPressed: () => setState(
                     () {
@@ -1523,6 +1526,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipSettingsBtn,
                   heroTag: "settings9",
                   backgroundColor: Colors.orange,
                   onPressed: () {
@@ -1749,6 +1753,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipResetBtn,
                   heroTag: "stop9",
                   backgroundColor: Colors.red,
                   onPressed: () => setState(
@@ -1841,6 +1846,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipPlayBtn,
                   heroTag: "play9",
                   backgroundColor: Colors.green,
                   onPressed: () => setState(
@@ -1883,6 +1889,7 @@ class Slide1DHState extends State<Slide1DH>
                 tooltipPadding: const EdgeInsets.all(12),
                 targetShapeBorder: const CircleBorder(),
                 child: FloatingActionButton(
+                  tooltip: AppLocalizations.of(context)!.toolTipMoreBtn,
                   heroTag: "more9",
                   onPressed: pressMoreBtn,
                   child: settingButton

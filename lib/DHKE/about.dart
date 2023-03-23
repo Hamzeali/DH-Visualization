@@ -1,5 +1,9 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../Main/global.dart';
 
@@ -15,7 +19,7 @@ class AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Diffie-Hellman'),
+        title: const SelectableText('Diffie-Hellman'),
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
@@ -40,7 +44,7 @@ class AboutState extends State<About> {
               children: [
                 Container(
                   margin: const EdgeInsets.all(20),
-                  child: Text(
+                  child: SelectableText(
                     AppLocalizations.of(context)!.about0,
                     // 'What is DHKE?',
                     style: const TextStyle(
@@ -55,7 +59,7 @@ class AboutState extends State<About> {
                   children: [
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about1,
                         style: const TextStyle(
                           fontSize: 25,
@@ -68,7 +72,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about2,
                         style: const TextStyle(
                           fontSize: 20,
@@ -82,7 +86,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about3,
                         style: const TextStyle(
                           fontSize: 25,
@@ -95,7 +99,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about4,
                         style: const TextStyle(
                           fontSize: 20,
@@ -109,7 +113,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about5,
                         style: const TextStyle(
                           fontSize: 20,
@@ -123,7 +127,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about6,
                         style: const TextStyle(
                           fontSize: 20,
@@ -137,7 +141,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about7,
                         style: const TextStyle(
                           fontSize: 20,
@@ -151,7 +155,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about8,
                         style: const TextStyle(
                           fontSize: 25,
@@ -165,7 +169,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about9,
                         style: const TextStyle(
                           fontSize: 20,
@@ -179,7 +183,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about10,
                         style: const TextStyle(
                           fontSize: 20,
@@ -193,7 +197,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about11,
                         style: const TextStyle(
                           fontSize: 20,
@@ -207,7 +211,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about12,
                         style: const TextStyle(
                           fontSize: 20,
@@ -218,7 +222,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 50),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about13,
                         style: const TextStyle(
                           fontSize: 20,
@@ -232,7 +236,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about14,
                         style: const TextStyle(
                           fontSize: 20,
@@ -243,7 +247,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 50),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about15,
                         style: const TextStyle(
                           fontSize: 20,
@@ -257,7 +261,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about16,
                         style: const TextStyle(
                           fontSize: 20,
@@ -268,7 +272,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 50),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about17,
                         style: const TextStyle(
                           fontSize: 20,
@@ -279,7 +283,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 50),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about18,
                         style: const TextStyle(
                           fontSize: 20,
@@ -293,7 +297,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about19,
                         style: const TextStyle(
                           fontSize: 20,
@@ -307,7 +311,7 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 20),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about20,
                         style: const TextStyle(
                           fontSize: 25,
@@ -320,12 +324,58 @@ class AboutState extends State<About> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: SelectableText(
                         AppLocalizations.of(context)!.about21,
                         style: const TextStyle(
                           fontSize: 20,
                           height: 1.8,
                           color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      child: SelectableText(
+                        AppLocalizations.of(context)!.ref,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: AppLocalizations.of(context)!.wiki,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                height: 1.8,
+                                color: Colors.black,
+                              ),
+                            ),
+                            TextSpan(
+                              text: AppLocalizations.of(context)!.url,
+                              // text: 'Wikipedia',
+                              style: const TextStyle(
+                                fontSize: 20,
+                                height: 1.8,
+                                color: Colors.blue,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  launch(AppLocalizations.of(context)!.url);
+                                },
+                            ),
+                          ],
                         ),
                       ),
                     ),

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:key_exchange_visualization/DHKE/aboutApp.dart';
 import 'package:showcaseview/showcaseview.dart';
 
 import 'about.dart';
@@ -108,12 +109,19 @@ class HomePageDHState extends State<HomePageDH>
                   value: 0,
                   child: Text(AppLocalizations.of(context)!.dhke),
                 ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text(AppLocalizations.of(context)!.aboutApp),
+                ),
               ];
             },
             onSelected: (value) {
               if (value == 0) {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const About()));
+              } else {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const AboutApp()));
               }
             },
           ),

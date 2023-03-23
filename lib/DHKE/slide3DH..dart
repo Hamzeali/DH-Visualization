@@ -670,9 +670,10 @@ class Slide3DHState extends State<Slide3DH>
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                             color: Colors.black,
                           ),
@@ -880,9 +881,10 @@ class Slide3DHState extends State<Slide3DH>
                   child: FittedBox(
                     child: Wrap(
                       children: [
-                        const Text(
-                          'Secret ',
-                          style: TextStyle(
+                        Text(
+                          // 'Secret ',
+                          AppLocalizations.of(context)!.secret,
+                          style: const TextStyle(
                             fontStyle: FontStyle.italic,
                             color: Colors.black,
                           ),
@@ -1227,9 +1229,12 @@ class Slide3DHState extends State<Slide3DH>
             Visibility(
               visible: textVisibility,
               child: Positioned(
+                // top: (MediaQuery.of(context).size.height -
+                //         HomePageDHState.returnAppBar[1]) *
+                //     0.6,
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.6,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.05,
                 width: MediaQuery.of(context).size.width * 0.15,
                 height: (MediaQuery.of(context).size.height -
@@ -1286,9 +1291,12 @@ class Slide3DHState extends State<Slide3DH>
             Visibility(
               visible: textVisibility,
               child: Positioned(
+                // top: (MediaQuery.of(context).size.height -
+                //         HomePageDHState.returnAppBar[1]) *
+                //     0.6,
                 top: (MediaQuery.of(context).size.height -
                         HomePageDHState.returnAppBar[1]) *
-                    0.6,
+                    0.55,
                 left: MediaQuery.of(context).size.width * 0.66,
                 width: MediaQuery.of(context).size.width * 0.22,
                 height: (MediaQuery.of(context).size.height -
@@ -1418,6 +1426,7 @@ class Slide3DHState extends State<Slide3DH>
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipRightBtn,
                 backgroundColor: isLastIndex[0] ? Colors.grey : Colors.blue,
                 heroTag: "right9",
                 onPressed: () {
@@ -1486,6 +1495,7 @@ class Slide3DHState extends State<Slide3DH>
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipLeftBtn,
                 backgroundColor: isLastIndex[1] ? Colors.grey : Colors.blue,
                 heroTag: "left9",
                 onPressed: () {
@@ -1563,6 +1573,7 @@ class Slide3DHState extends State<Slide3DH>
               width: MediaQuery.of(context).size.width * 0.08,
               height: MediaQuery.of(context).size.height * 0.08,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipDescBtn,
                 heroTag: "middle9",
                 onPressed: () => setState(
                   () {
@@ -1607,6 +1618,7 @@ class Slide3DHState extends State<Slide3DH>
               duration: Duration(
                   milliseconds: settingsButtonDuration + 200 * backToZero),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipSettingsBtn,
                 heroTag: "settings9",
                 backgroundColor: Colors.orange,
                 onPressed: () {
@@ -1950,7 +1962,8 @@ class Slide3DHState extends State<Slide3DH>
                               ),
                             );
                           },
-                          child: const Text('Suggest root'),
+                          child:
+                              Text(AppLocalizations.of(context)!.suggestRoot),
                         ),
                         TextButton(
                           onPressed: () {
@@ -2075,6 +2088,7 @@ class Slide3DHState extends State<Slide3DH>
               duration: Duration(
                   milliseconds: settingsButtonDuration + 100 * backToZero),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipResetBtn,
                 heroTag: "stop9",
                 backgroundColor: Colors.red,
                 onPressed: () => setState(
@@ -2175,6 +2189,7 @@ class Slide3DHState extends State<Slide3DH>
               height: MediaQuery.of(context).size.height * 0.1,
               duration: Duration(milliseconds: settingsButtonDuration),
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipPlayBtn,
                 heroTag: "play9",
                 backgroundColor: Colors.green,
                 onPressed: () => setState(
@@ -2205,6 +2220,7 @@ class Slide3DHState extends State<Slide3DH>
               width: MediaQuery.of(context).size.width * 0.1,
               height: MediaQuery.of(context).size.height * 0.1,
               child: FloatingActionButton(
+                tooltip: AppLocalizations.of(context)!.toolTipMoreBtn,
                 heroTag: "more9",
                 onPressed: () => setState(
                   () {
