@@ -29,6 +29,7 @@
     "sceneStart1": "So let's start the scenes...",
 
     "secret": "Secret ",
+    "possibleRoots": "Primitive roots mod p:",
 
     "toolTipRightBtn": "Next step",
     "toolTipLeftBtn": "Previous step",
@@ -104,7 +105,7 @@
     "intro35": "etc",
 
     "intro36": "- What is a generator?",
-    "intro37": "A generator g of a group is an element that can be used to generate every other element in the group through repeated application of the group operation. In the case of a group of integers modulo a prime number p, the generator is raised to all possible powers from 1 to p-1, and these powers take all values of the other elements of the group (unequal zero) exactly once.",
+    "intro37": "A generator g of a group is an element that can be used to generate every other element in the group through repeated application of the group operation. In the case of a group of integers modulo a prime number p, the generator is raised to all possible powers from 1 to p-1, and these powers take all values of the other elements of the group exactly once.",
     "intro38": "- Scenario of the scene",
     "intro39": "This scene considers the multiplicative group modulo the prime p = 17. The group contains as elements all numbers from 1 to 16. As generator we choose g = 3. Then we can  generate with the power g^i modulo p all elements of the group. The exponent i runs through all values from 1 to 16.",
 
@@ -118,7 +119,7 @@
     "showCase1": "Go one step backward.",
     "showCase2": "Show or hide the description box.",
     "showCase3": "Change the settings of the application.",
-    "showCase4": "Reset the scene and start again.",
+    "showCase4": "Reset the scene and start from the beginning.",
     "showCase5": "Let the app run in automatic mode.",
     "showCase6": "It has three buttons inside.",
     "showCase7": "Step number. Each scene consists of several steps. You can also set this number directly",

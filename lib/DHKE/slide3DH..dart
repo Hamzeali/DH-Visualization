@@ -1938,29 +1938,44 @@ class Slide3DHState extends State<Slide3DH>
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
-                            List roots = allroots(int.parse(pController.text));
-                            showDialog<String>(
-                              barrierDismissible: false,
-                              context: context,
-                              builder: (BuildContext context) => AlertDialog(
-                                scrollable: true,
-                                shape: const RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(32.0))),
-                                title: const Text(
-                                  'Possible roots',
-                                  textAlign: TextAlign.center,
+                            if (isPrime(int.parse(pController.text))) {
+                              List roots =
+                                  allroots(int.parse(pController.text));
+                              showDialog<String>(
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (BuildContext context) => AlertDialog(
+                                  scrollable: true,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(32.0))),
+                                  title: Text(
+                                    AppLocalizations.of(context)!
+                                        .possibleRoots, //'Possible roots',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: Center(child: Text('$roots')),
+                                  actions: <Widget>[
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.pop(context, 'OK');
+                                        },
+                                        child: const Text('Ok')),
+                                  ],
                                 ),
-                                content: Text('$roots'),
-                                actions: <Widget>[
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context, 'OK');
-                                      },
-                                      child: const Text('Ok')),
-                                ],
-                              ),
-                            );
+                              );
+                            } else {
+                              showFlushBarMessage(
+                                  const Icon(
+                                    Icons.error,
+                                    size: 32,
+                                    color: Colors.white,
+                                  ),
+                                  AppLocalizations.of(context)!.errorTitel,
+                                  AppLocalizations.of(context)!
+                                      .primeNumberErrorMessage,
+                                  Colors.red);
+                            }
                           },
                           child:
                               Text(AppLocalizations.of(context)!.suggestRoot),
@@ -1973,7 +1988,9 @@ class Slide3DHState extends State<Slide3DH>
                                 secretAliceController.text.isNotEmpty) {
                               if (isPrime(int.parse(pController.text)) &&
                                   isPrimitvRoot(int.parse(gController.text),
-                                      int.parse(pController.text))) {
+                                      int.parse(pController.text)) &&
+                                  int.parse(pController.text) >
+                                      int.parse(gController.text)) {
                                 p = int.parse(pController.text);
                                 g = int.parse(gController.text);
                                 secretAlice =
@@ -1997,8 +2014,10 @@ class Slide3DHState extends State<Slide3DH>
                                             .primeNumberErrorMessage,
                                         Colors.red);
                                   } else if (!isPrimitvRoot(
-                                      int.parse(gController.text),
-                                      int.parse(pController.text))) {
+                                          int.parse(gController.text),
+                                          int.parse(pController.text)) ||
+                                      int.parse(pController.text) <
+                                          int.parse(gController.text)) {
                                     showFlushBarMessage(
                                         const Icon(
                                           Icons.error,

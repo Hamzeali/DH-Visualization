@@ -485,16 +485,16 @@ class Slide4DHState extends State<Slide4DH>
             ),
 
             // Alice-Line
-            linePosition(0.3, 0.02, 0.002, 0.5),
+            linePosition(0.3, 0.02, 0.002, 0.33),
 
             // Bob-Line
-            linePosition(0.3, 0.98, 0.002, 0.5),
+            linePosition(0.3, 0.98, 0.002, 0.33),
 
             // Eve-Alice Line
-            linePosition(0.3, 0.3, 0.002, 0.5),
+            linePosition(0.3, 0.3, 0.002, 0.33),
 
             // Eve-Bob Line
-            linePosition(0.3, 0.7, 0.002, 0.5),
+            linePosition(0.3, 0.7, 0.002, 0.33),
 
             // Right-Arrow between Alice and Eve
             Visibility(
