@@ -54,7 +54,7 @@
     "about8": "Procedure:",
     "about9": "Alice and Bob want to negotiate a secret session key S via a channel that may be intercepted.",
     "about10": "1. They select a prime number p and a random number g (with 2 ≤ g ≤ p−2) and exchange this information openly.",
-    "about11": "2. Alice now selects a random number a from {1,···,p−2}, and keeps it secret. Similarly, Bob selects a random number b, and keeps it secret.",
+    "about11": "2. Alice now selects a random number a from 1,···,p−2, and keeps it secret. Similarly, Bob selects a random number b, and keeps it secret.",
     "about12": "3. Alice now calculates A = g^a (mod p).",
     "about13": "Bob calculates A = g^b (mod p).",
     "about14": "4. Alice sends the result A to Bob. Bob sends the result B to Alice.",

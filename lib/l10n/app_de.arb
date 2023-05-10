@@ -55,7 +55,7 @@
     "about8": "Verfahren:",
     "about9": "Alice und Bob wollen einen geheimen Sitzungsschlüssel S über einen Kanal aushandeln, der abgehört werden kann.",
     "about10": "1. Sie wählen eine Primzahl p und eine Zufallszahl g (mit 2 ≤ g ≤ p-2) und tauschen diese Informationen offen aus.",
-    "about11": "2. Alice wählt nun eine Zufallszahl a aus {1,...,p-2}, und hält sie geheim. Analog dazu wählt Bob eine Zufallszahl b und hält sie geheim.",
+    "about11": "2. Alice wählt nun eine Zufallszahl a aus 1,...,p-2, und hält sie geheim. Analog dazu wählt Bob eine Zufallszahl b und hält sie geheim.",
     "about12": "3. Alice berechnet nun A = g^a (mod p).",
     "about13": "Bob berechnet B = g^b (mod p).",
     "about14": "4. Alice sendet das Ergebnis A an Bob. Bob sendet das Ergebnis B an Alice.",
