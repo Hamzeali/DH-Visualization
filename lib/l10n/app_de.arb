@@ -9,7 +9,7 @@
     "doneTitel": "Erledigt",
     "correctMessage": "Die Werte sind gesetzt.",
     "settings": "Einstellungen",
-    "animationSpeed": "AAnimations-Geschwindigkeit",
+    "animationSpeed": "Animations-Geschwindigkeit",
     "appLanguage": "Sprache ",
     "zoomEnable": "Zoom aktivieren",
     "secretBob": "Geheim (Bob)",
@@ -133,7 +133,7 @@
     "aboutApp1": "Die Flutter-App 'DHKE' wurde im Zuge einer Bachelorarbeit von ",
     "ali": "https://www.linkedin.com/in/hamze-ali-65b000207/",
     "aboutApp2": " für das CrypTool-Projekt entwickelt.",
-    "aboutApp3": "(C) 2023, Freeware, Open-Source (gemäß Apache 2), CrypTool ",
+    "aboutApp3": "(C) 2023, Freeware, Open-Source (gemäß Apache 2), CrypTool (",
     "aboutApp4": "https://www.cryptool.org",
     "aboutApp5": "Letzte Änderung / Built:  22.03.2023",
 
