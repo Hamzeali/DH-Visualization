@@ -1,8 +1,16 @@
 # key_exchange_visualization
 
-This work is about the implementation of a didactic application that visualizes the “Diffie-Hellman protocol”. This protocol provides an algorithm that allows two parties to securely agree on a shared secret key over an insecure channel.
-The goal of this work is to describe this cryptographic protocol in a simple way to understand the key exchange process. The protocol is visualized using “Flutter” technology.
+This project focuses on developing a user-friendly application that demonstrates the functionality of the "Diffie-Hellman protocol." The protocol offers a secure algorithm enabling two parties to establish a shared secret key even when communicating through an insecure channel.
 
-To test the application you can visit the following link:
+Our primary objective is to present this cryptographic protocol in a clear and easily comprehensible manner, emphasizing the key exchange process. The visualization of the protocol is achieved through the utilization of cutting-edge "Flutter" technology.
 
-<a href="https://diffi-hellman-vis.000webhostapp.com">Diffie Hellman Visualization</a>
+The application is available across multiple platforms, including:
+
+Android
+iOS
+Desktop (compatible with all operating systems)
+Web
+
+To explore the web version of the application, kindly access the following link:
+
+<a href="https://diffie-hellman-visualization.com">Diffie Hellman Visualization</a>
