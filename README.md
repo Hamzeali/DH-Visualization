@@ -6,10 +6,10 @@ Our primary objective is to present this cryptographic protocol in a clear and e
 
 The application is available across multiple platforms, including:
 
-Android
-iOS
-Desktop (compatible with all operating systems)
-Web
+- Android
+- iOS
+- Desktop (compatible with all operating systems)
+- Web
 
 To explore the web version of the application, kindly access the following link:
 
